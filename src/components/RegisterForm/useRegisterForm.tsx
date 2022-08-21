@@ -34,6 +34,7 @@ export const useRegisterForm = (inputIds: GeneralObject) => {
 
     return () => {
       Object.values(inputIds).forEach((id) => {
+        // eslint-disable-next-line @typescript-eslint/no-empty-function
         document.getElementById(id)?.removeEventListener("blur", () => {});
       });
     };

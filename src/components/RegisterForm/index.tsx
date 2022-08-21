@@ -48,7 +48,6 @@ export const RegisterForm: React.FC = () => {
           placeholder="Email Address"
           autoComplete="off"
           spellCheck={false}
-          autoFocus={true}
         />
         {inputErrors[inputIds.email] !== undefined && (
           <FormHelperText color={"red.200"}>

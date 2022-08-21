@@ -9,7 +9,7 @@ const DEFAULT_DELAY = 2000;
  * @param cb
  * @param delay
  */
-export const delayInvoke = (cb: Function, delay?: number) => {
+export const delayInvoke = (cb: () => void, delay?: number) => {
   if (import.meta.env.VITE_MOCK_DELAYS === "true") {
     setTimeout(() => {
       cb();

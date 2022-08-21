@@ -8,9 +8,9 @@ import { initializeRecaptchaVerifier } from "@/lib/Auth";
  * @param phoneNumber
  */
 export const useMobileAuthForm = (phoneNumber: string) => {
-  const [formState, setFormState] = useState<FormState>("idle");
-  const [inputErrors, setInputErrors] = useState<Record<string, any>>({});
-  const [submitError, setSubmitError] = useState<string | null>(null);
+  const [formState, _setFormState] = useState<FormState>("idle");
+  const [inputErrors, _setInputErrors] = useState<Record<string, any>>({});
+  const [submitError, _setSubmitError] = useState<string | null>(null);
 
   const submit = (ev: React.FormEvent) => {
     ev.preventDefault();

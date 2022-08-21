@@ -25,7 +25,7 @@ export const ArrowNavManager: React.FC<ArrowNavManagerProps> = (props) => {
   const onKeyDown = useCallback(
     (e: any) => {
       let newCursor = 0;
-      let lastIndex = children.length - 1;
+      const lastIndex = children.length - 1;
       if (cursor !== -1 && (e.key === " " || e.key === "Enter")) {
         const currentNode = items.current[cursor];
         e.preventDefault();
@@ -62,6 +62,7 @@ export const ArrowNavManager: React.FC<ArrowNavManagerProps> = (props) => {
 
   return (
     <div
+      role="button"
       id={bodyId}
       tabIndex={0}
       onKeyDown={onKeyDown}

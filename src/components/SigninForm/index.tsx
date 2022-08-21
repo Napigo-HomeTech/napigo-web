@@ -41,7 +41,6 @@ export const SigninForm: React.FC = () => {
         placeholder="Email Address"
         autoComplete="off"
         spellCheck={false}
-        autoFocus={true}
       />
 
       <Form.PasswordField

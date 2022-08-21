@@ -31,6 +31,7 @@ export const useSignInForm = (inputKeys: GeneralObject) => {
 
     return () => {
       Object.values(inputKeys).forEach((id) => {
+        // eslint-disable-next-line @typescript-eslint/no-empty-function
         document.getElementById(id)?.removeEventListener("blur", () => {});
       });
     };
@@ -50,7 +51,7 @@ export const useSignInForm = (inputKeys: GeneralObject) => {
   const submit = async (ev: React.FormEvent) => {
     ev.preventDefault();
 
-    let formData: GeneralObject = {};
+    const formData: GeneralObject = {};
 
     Object.values(inputKeys).forEach((id) => {
       const input = document.getElementById(id) as HTMLInputElement;

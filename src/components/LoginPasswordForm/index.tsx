@@ -22,7 +22,7 @@ export const LoginPasswordForm: React.FC = () => {
     }
   }, [formState, toggle]);
 
-  const onChangingPassword = (ev: React.MouseEvent) => {
+  const onChangingPassword = (_: React.MouseEvent) => {
     if (formState === "onsuccess") {
       resetForm();
     }

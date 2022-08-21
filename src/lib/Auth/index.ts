@@ -33,23 +33,15 @@ firebaseAuth.setPersistence(browserLocalPersistence);
  * Normally will be used before updating new password for user
  */
 export const reauthenticate = async (user: User, password: string) => {
-  try {
-    const creds = EmailAuthProvider.credential(user.email as string, password);
-    await reauthenticateWithCredential(user, creds);
-  } catch (err) {
-    throw err;
-  }
+  const creds = EmailAuthProvider.credential(user.email as string, password);
+  await reauthenticateWithCredential(user, creds);
 };
 
 /**
  *
  */
 export const updatePasswordMethod = async (user: User, newPassword: string) => {
-  try {
-    await updatePassword(user, newPassword);
-  } catch (err) {
-    throw err;
-  }
+  await updatePassword(user, newPassword);
 };
 
 /**
@@ -59,11 +51,7 @@ export const updatePasswordMethod = async (user: User, newPassword: string) => {
  * @returns
  */
 export const updateEmailMethod = async (user: User, newEmail: string) => {
-  try {
-    await updateEmail(user, newEmail);
-  } catch (err) {
-    throw err;
-  }
+  await updateEmail(user, newEmail);
 };
 
 /**
@@ -72,11 +60,7 @@ export const updateEmailMethod = async (user: User, newEmail: string) => {
  * @param password
  */
 export const loginMethod = async (email: string, password: string) => {
-  try {
-    return await signInWithEmailAndPassword(firebaseAuth, email, password);
-  } catch (err) {
-    throw err;
-  }
+  return await signInWithEmailAndPassword(firebaseAuth, email, password);
 };
 
 /**
@@ -87,11 +71,7 @@ export const loginMethod = async (email: string, password: string) => {
  * @param nickname
  */
 export const registerMethod = async (email: string, password: string) => {
-  try {
-    return await createUserWithEmailAndPassword(firebaseAuth, email, password);
-  } catch (err) {
-    throw err;
-  }
+  return await createUserWithEmailAndPassword(firebaseAuth, email, password);
 };
 
 /**
@@ -163,16 +143,18 @@ export const initializeRecaptchaVerifier = () => {
     "recaptcha-container",
     {
       size: "invisible",
-      callback: (response: any) => {},
+      // eslint-disable-next-line @typescript-eslint/no-empty-function
+      callback: (_response: any) => {},
     },
     firebaseAuth
   );
 };
 
-export const linkPhoneAuthToCurrentUser = async (phoneNumber: string) => {
-  try {
-    // todo
-  } catch (err) {
-    throw err;
-  }
+export const linkPhoneAuthToCurrentUser = async (_phoneNumber: string) => {
+  // todo
+  // try {
+  //   // todo
+  // } catch (err) {
+  //   throw err;
+  // }
 };

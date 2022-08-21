@@ -48,6 +48,7 @@ export const MobileAuthForm: React.FC = () => {
   const [selected, setSelected] = useState<CountryOption | null>(null);
   const [input, setInput] = useState<string>("");
 
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { submit, formState, submitError, inputErrors } =
     useMobileAuthForm(input);
 

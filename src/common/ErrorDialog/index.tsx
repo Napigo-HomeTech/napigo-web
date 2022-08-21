@@ -22,6 +22,7 @@ export const ErrorDialog: React.FC<ErrorDialogProps> = ({ closeable, err }) => {
   const { isOpen: isDisplay, onClose } = useDisclosure({ defaultIsOpen: true });
 
   return (
+    // eslint-disable-next-line @typescript-eslint/no-empty-function
     <Modal isOpen={isDisplay} isCentered onClose={() => {}}>
       <ModalOverlay />
       <ModalContent>
@@ -35,8 +36,9 @@ export const ErrorDialog: React.FC<ErrorDialogProps> = ({ closeable, err }) => {
               <>{err.message}</>
             ) : (
               <>
-                Sorry, We couldn't proceed further any operation due to some
-                error occured, please try again sometimes or refresh the app
+                Sorry, We couldn &lsquo; t proceed further any operation due to
+                some error occured, please try again sometimes or refresh the
+                app
               </>
             )}
           </Text>

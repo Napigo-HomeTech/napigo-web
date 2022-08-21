@@ -27,7 +27,7 @@ export const ConfirmEmail: React.FC = () => {
     }
   }, [loadStatus]);
 
-  const sendEmail = async (ev: React.MouseEvent) => {
+  const sendEmail = async (_: React.MouseEvent) => {
     if (user) {
       try {
         setLoadStatus("loading");
@@ -41,7 +41,7 @@ export const ConfirmEmail: React.FC = () => {
     }
   };
 
-  const handleLogout = async (ev: React.MouseEvent) => {
+  const handleLogout = async (_: React.MouseEvent) => {
     await auth.signOut();
   };
 
