@@ -6,6 +6,7 @@ import React, { createContext, useContext, useEffect, useState } from "react";
 import { MdPhoneIphone as MobileIcon } from "react-icons/md";
 import { AddMobileForm } from "./AddMobile";
 import { MobileReadOnly } from "./MobileReadOnly";
+import { MobileUpdateForm } from "./MobileUpdateForm";
 
 /**
  *
@@ -98,7 +99,7 @@ export const MobileNumberSetting: React.FC = () => {
           </Text>
           {formType === "onLoading" && <></>}
           {formType === "verified" && <MobileReadOnly />}
-          {formType === "onUpdate" && <>Updating Phone</>}
+          {formType === "onUpdate" && <MobileUpdateForm />}
           {formType === "notVerified" && <AddMobileForm />}
         </VStack>
       </Card>
