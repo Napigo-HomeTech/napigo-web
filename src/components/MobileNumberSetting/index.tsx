@@ -10,9 +10,8 @@ import React, {
   useState,
 } from "react";
 import { MdPhoneIphone as MobileIcon } from "react-icons/md";
-import { AddMobileForm } from "./AddMobile";
+import { MobileForm } from "./MobileForm";
 import { MobileReadOnly } from "./MobileReadOnly";
-import { MobileUpdateForm } from "./MobileUpdateForm";
 
 /**
  *
@@ -63,16 +62,12 @@ export const MobileNumberSetting: React.FC = () => {
   useEffect(() => {
     const user = getUser();
     const phoneNo = user?.phoneNumber ?? null;
-    /**
-     * Testing code
-     */
     if (!isEmpty(phoneNo)) {
       setFormType("verified");
       setNumber(phoneNo);
       return;
     }
-    setNumber("+65 9018 4631");
-    setFormType("verified");
+    setFormType("notVerified");
   }, []);
 
   const value = {
@@ -107,8 +102,8 @@ export const MobileNumberSetting: React.FC = () => {
           </Text>
           {formType === "onLoading" && <></>}
           {formType === "verified" && <MobileReadOnly />}
-          {formType === "onUpdate" && <MobileUpdateForm />}
-          {formType === "notVerified" && <AddMobileForm />}
+          {formType === "onUpdate" && <MobileForm />}
+          {formType === "notVerified" && <MobileForm />}
         </VStack>
       </Card>
     </MobileSettingContext.Provider>

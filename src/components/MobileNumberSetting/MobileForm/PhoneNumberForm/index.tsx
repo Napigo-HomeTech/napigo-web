@@ -15,24 +15,56 @@ import { Select } from "chakra-react-select";
 import {
   getCountriesOptionData,
   CountryOption,
+  getOptionByCountry,
 } from "@/lib/utils/tel-countries.util";
 import { Form } from "@/elements";
 import { PhoneIcon } from "@chakra-ui/icons";
 import parsePhoneNumber, { AsYouType, CountryCode } from "libphonenumber-js";
 import { usePhoneNumberForm } from "./usePhoneNumberForm";
+import { useMobileSetting } from "../..";
 
 const countries = getCountriesOptionData();
+
+/**
+ *
+ * @param verifiedPhoneNumber
+ * @returns
+ */
+const _getSelected = (verifiedPhoneNumber: string) => {
+  const phoneNumber = parsePhoneNumber(verifiedPhoneNumber ?? "");
+  const targetItem = getOptionByCountry(phoneNumber?.country ?? "");
+  return targetItem;
+};
 
 /**
  *
  * @returns
  */
 export const PhoneNumberForm: React.FC = () => {
-  const [country, setCountry] = useState<CountryOption | null>(null);
-  const [phoneNumber, setPhoneNumber] = useState<string>("");
+  const { formType, verifiedPhoneNumber, setFormType } = useMobileSetting();
+
+  const [country, setCountry] = useState<CountryOption | null>(() => {
+    if (formType === "onUpdate") {
+      return _getSelected(verifiedPhoneNumber ?? "") ?? null;
+    }
+    return null;
+  });
+  const [phoneNumber, setPhoneNumber] = useState<string>(() => {
+    if (formType === "onUpdate") {
+      return verifiedPhoneNumber ?? "";
+    }
+    return "";
+  });
 
   const { submit, submitError, setSubmitError, formState } =
     usePhoneNumberForm();
+
+  /**
+   *
+   */
+  const getDefaultSelectedCountry = useCallback(() => {
+    return _getSelected(verifiedPhoneNumber ?? "");
+  }, [verifiedPhoneNumber]);
 
   const formatNumber = useCallback(
     (value: string) => {
@@ -73,6 +105,7 @@ export const PhoneNumberForm: React.FC = () => {
             size="md"
             useBasicStyles
             placeholder="Select Country"
+            defaultValue={getDefaultSelectedCountry()}
             options={countries}
             onChange={(data) => {
               setCountry(data);
@@ -112,14 +145,26 @@ export const PhoneNumberForm: React.FC = () => {
           <AlertDescription>{submitError} </AlertDescription>
         </Alert>
       )}
-      <Button
-        size="sm"
-        type="submit"
-        isLoading={formState === "submitting"}
-        disabled={disableSendOtp}
-      >
-        Send OTP
-      </Button>
+      <HStack>
+        <Button
+          size="sm"
+          type="submit"
+          isLoading={formState === "submitting"}
+          disabled={disableSendOtp}
+        >
+          Send OTP
+        </Button>
+        {formType === "onUpdate" && (
+          <Button
+            size="sm"
+            type="button"
+            variant="ghost"
+            onClick={() => setFormType("verified")}
+          >
+            Cancel
+          </Button>
+        )}
+      </HStack>
     </VStack>
   );
 };

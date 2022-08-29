@@ -26,7 +26,7 @@ export const useAddMobileFormContext = () => {
  *
  * @returns
  */
-export const AddMobileForm: React.FC = () => {
+export const MobileForm: React.FC = () => {
   const [formType, setFormType] = useState<FormType>("phone-number");
   const [verificationId, setVerificationId] = useState<string | null>(null);
   const [cachePhoneNumber, setCachePhoneNumber] = useState<string | null>(null);
