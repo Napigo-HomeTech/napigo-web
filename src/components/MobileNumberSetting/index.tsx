@@ -2,7 +2,13 @@ import { Card } from "@/elements";
 import { getUser } from "@/lib/Auth";
 import { Divider, Heading, HStack, Text, VStack } from "@chakra-ui/react";
 import { isEmpty } from "lodash";
-import React, { createContext, useContext, useEffect, useState } from "react";
+import React, {
+  createContext,
+  useCallback,
+  useContext,
+  useEffect,
+  useState,
+} from "react";
 import { MdPhoneIphone as MobileIcon } from "react-icons/md";
 import { AddMobileForm } from "./AddMobile";
 import { MobileReadOnly } from "./MobileReadOnly";
@@ -50,9 +56,10 @@ export const MobileNumberSetting: React.FC = () => {
   const [recentlyVerified, setRecentlyVerified] = useState<boolean>(false);
   const [verifiedPhoneNumber, setNumber] = useState<string | null>(null);
 
-  const isRecentlyVerified = (isRecent: boolean) => {
+  const isRecentlyVerified = useCallback((isRecent: boolean) => {
     setRecentlyVerified(isRecent);
-  };
+  }, []);
+
   useEffect(() => {
     const user = getUser();
     const phoneNo = user?.phoneNumber ?? null;
@@ -64,7 +71,8 @@ export const MobileNumberSetting: React.FC = () => {
       setNumber(phoneNo);
       return;
     }
-    setFormType("notVerified");
+    setNumber("+65 9018 4631");
+    setFormType("verified");
   }, []);
 
   const value = {

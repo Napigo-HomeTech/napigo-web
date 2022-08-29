@@ -1,7 +1,7 @@
 import { freezePage } from "@/lib/Dom";
 import { delayInvoke } from "@/lib/utils/delays";
 import { FormState } from "@/types";
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import { useAddMobileFormContext } from "..";
 import { useMobileSetting } from "../..";
 
@@ -24,26 +24,29 @@ export const useOtpForm = () => {
    *
    * @param code
    */
-  const submit = (code: string) => {
-    setFormState("submitting");
+  const submit = useCallback(
+    (value: string) => {
+      setFormState("submitting");
 
-    const targetElem = _getAllPinInput();
-    targetElem.forEach((item) => {
-      const el = item as HTMLInputElement;
-      el?.blur();
-    });
+      const targetElem = _getAllPinInput();
+      targetElem.forEach((item) => {
+        const el = item as HTMLInputElement;
+        el?.blur();
+      });
 
-    freezePage(true);
-    delayInvoke(async () => {
-      freezePage(false);
-      setFormState("onsuccess");
-      setNumber(cachePhoneNumber ?? "");
-      setFormType("verified");
-      isRecentlyVerified(true);
-    });
-  };
+      freezePage(true);
+      delayInvoke(async () => {
+        freezePage(false);
+        setFormState("onsuccess");
+        setNumber(cachePhoneNumber ?? "");
+        setFormType("verified");
+        isRecentlyVerified(true);
+      });
+    },
+    [formState]
+  );
 
-  const resendOtp = () => {
+  const resendOtp = useCallback(() => {
     /**
      * Making sure the form have no errors
      */
@@ -56,7 +59,7 @@ export const useOtpForm = () => {
       setFormState("idle");
       freezePage(false);
     });
-  };
+  }, []);
 
   return {
     submit,

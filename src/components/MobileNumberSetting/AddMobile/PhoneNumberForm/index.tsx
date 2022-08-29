@@ -1,4 +1,5 @@
 import React, { useCallback, useMemo, useState } from "react";
+import { isEmpty } from "lodash";
 import {
   Alert,
   AlertDescription,
@@ -10,42 +11,17 @@ import {
   InputLeftElement,
   VStack,
 } from "@chakra-ui/react";
-import { OptionBase, Select } from "chakra-react-select";
-import countriesRawData from "../countriesRawData";
-import getCountryFlag from "country-flag-icons/unicode";
+import { Select } from "chakra-react-select";
+import {
+  getCountriesOptionData,
+  CountryOption,
+} from "@/lib/utils/tel-countries.util";
 import { Form } from "@/elements";
 import { PhoneIcon } from "@chakra-ui/icons";
 import parsePhoneNumber, { AsYouType, CountryCode } from "libphonenumber-js";
 import { usePhoneNumberForm } from "./usePhoneNumberForm";
-import { isEmpty } from "lodash";
 
-interface CountryOption extends OptionBase {
-  label: string;
-  value: string;
-}
-
-/**
- * Compute and transform the listing of countries to the Select
- * data format listing
- * @returns
- */
-const _getCountriesOptionData = () => {
-  const listing: CountryOption[] = [];
-
-  countriesRawData.forEach((item: any) => {
-    const name = item[0];
-    const iso = item[2];
-    const flagIcon = getCountryFlag(iso);
-
-    listing.push({
-      label: `${flagIcon} ${name}`,
-      value: iso,
-    });
-  });
-
-  return listing;
-};
-const countries = _getCountriesOptionData();
+const countries = getCountriesOptionData();
 
 /**
  *
@@ -77,7 +53,7 @@ export const PhoneNumberForm: React.FC = () => {
     [country]
   );
 
-  const disabledVerify = useMemo(() => {
+  const disableSendOtp = useMemo(() => {
     return isEmpty(phoneNumber) || isEmpty(country);
   }, [phoneNumber, country]);
 
@@ -132,17 +108,15 @@ export const PhoneNumberForm: React.FC = () => {
             right={1}
             onClick={() => setSubmitError(null)}
           />
-          <VStack width="100" gap={0} alignItems="flex-start">
-            <AlertTitle>Error !</AlertTitle>
-            <AlertDescription>{submitError} </AlertDescription>
-          </VStack>
+          <AlertTitle>Error !</AlertTitle>
+          <AlertDescription>{submitError} </AlertDescription>
         </Alert>
       )}
       <Button
         size="sm"
         type="submit"
         isLoading={formState === "submitting"}
-        disabled={disabledVerify}
+        disabled={disableSendOtp}
       >
         Send OTP
       </Button>

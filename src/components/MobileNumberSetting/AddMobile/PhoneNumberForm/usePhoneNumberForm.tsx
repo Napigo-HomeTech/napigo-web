@@ -8,7 +8,7 @@ import {
   getAuth,
   PhoneAuthProvider,
 } from "firebase/auth";
-import React, { useState } from "react";
+import React, { useCallback, useState } from "react";
 import { useAddMobileFormContext } from "..";
 const auth = getAuth();
 
@@ -22,7 +22,7 @@ export const usePhoneNumberForm = () => {
   const { setFormType, setVerificationId, setCachePhoneNumber } =
     useAddMobileFormContext();
 
-  const submit = (ev: React.FormEvent) => {
+  const submit = useCallback((ev: React.FormEvent) => {
     ev.preventDefault();
 
     const elem = document.getElementById("mobile_no") as HTMLInputElement;
@@ -72,7 +72,7 @@ export const usePhoneNumberForm = () => {
       //   freezePage(false);
       // }
     });
-  };
+  }, []);
 
   return {
     formState,
