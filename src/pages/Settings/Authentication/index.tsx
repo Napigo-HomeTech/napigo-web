@@ -5,6 +5,7 @@ import React from "react";
 import { LoginEmailForm } from "@/components/LoginEmailForm";
 import { LoginPasswordForm } from "@/components/LoginPasswordForm";
 import { MobileAuthSection } from "./MobileAuthSection";
+import { MobileNumberSetting } from "@/components/MobileNumberSetting";
 
 export const SettingAuthenticationPage: React.FC = () => {
   return (
@@ -27,7 +28,8 @@ export const SettingAuthenticationPage: React.FC = () => {
       <SectionContainer title="Password">
         <LoginPasswordForm />
       </SectionContainer>
-      <MobileAuthSection />
+      <MobileNumberSetting />
+      {/* <MobileAuthSection /> */}
     </VStack>
   );
 };

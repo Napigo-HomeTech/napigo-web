@@ -10,6 +10,7 @@ import {
   updatePassword,
   updateEmail,
   RecaptchaVerifier,
+  PhoneAuthProvider,
 } from "firebase/auth";
 import { freezePage } from "@/lib/Dom";
 import { AccountActions, AppContextActions } from "@/lib/Redux";
@@ -20,6 +21,7 @@ import { useDispatch } from "react-redux";
 declare global {
   interface Window {
     recaptchaVerifier: any;
+    phoneVerificationId: any;
   }
 }
 
@@ -29,6 +31,8 @@ declare global {
 const firebaseAuth = getAuth();
 firebaseAuth.setPersistence(browserLocalPersistence);
 
+/** export the actual firebase auth object to be use within components */
+export const auth = firebaseAuth;
 /**
  * Normally will be used before updating new password for user
  */
@@ -148,13 +152,4 @@ export const initializeRecaptchaVerifier = () => {
     },
     firebaseAuth
   );
-};
-
-export const linkPhoneAuthToCurrentUser = async (_phoneNumber: string) => {
-  // todo
-  // try {
-  //   // todo
-  // } catch (err) {
-  //   throw err;
-  // }
 };
