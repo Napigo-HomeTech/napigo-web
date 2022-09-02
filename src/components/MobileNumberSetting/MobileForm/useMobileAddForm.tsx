@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { isEmpty } from "lodash";
 import React, { useEffect, useState } from "react";
 import { initializeRecaptchaVerifier, auth } from "@/lib/Auth";
@@ -68,10 +69,12 @@ export const useMobileAddForm = () => {
           switch (authError.code) {
             case AuthErrorCodes.INVALID_PHONE_NUMBER:
               setInputErrors({ ["mobile_no"]: "Invalid Mobile Number" });
+              break;
             default: {
               setSubmitError(
                 "Unable to send OTP request due to unknown Mobile number format"
               );
+              break;
             }
           }
           return;

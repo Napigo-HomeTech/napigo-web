@@ -1,5 +1,6 @@
 import { Card } from "@/elements";
 import { getUser } from "@/lib/Auth";
+import { DefaultCallback } from "@/types";
 import { Divider, Heading, HStack, Text, VStack } from "@chakra-ui/react";
 import { isEmpty } from "lodash";
 import React, {
@@ -35,10 +36,10 @@ type FormContextProps = {
  */
 const MobileSettingContext = createContext<FormContextProps>({
   formType: "onLoading",
-  setFormType: () => {},
+  setFormType: DefaultCallback,
   verifiedPhoneNumber: null,
-  setNumber: () => {},
-  isRecentlyVerified: () => {},
+  setNumber: DefaultCallback,
+  isRecentlyVerified: DefaultCallback,
   recentlyVerified: false,
 });
 

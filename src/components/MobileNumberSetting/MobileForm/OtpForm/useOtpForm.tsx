@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { freezePage } from "@/lib/Dom";
 import { delayInvoke } from "@/lib/utils/delays";
 import { FormState } from "@/types";
@@ -43,7 +44,7 @@ export const useOtpForm = () => {
         isRecentlyVerified(true);
       });
     },
-    [formState]
+    [cachePhoneNumber, isRecentlyVerified, setFormType, setNumber]
   );
 
   const resendOtp = useCallback(() => {

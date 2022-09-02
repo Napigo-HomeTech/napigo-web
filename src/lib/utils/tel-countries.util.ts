@@ -15,8 +15,8 @@ export interface CountryOption extends OptionBase {
 export const getCountriesOptionData = () => {
   const options: CountryOption[] = [];
 
-  let n = countriesRawData.length,
-    idx = 0;
+  const n = countriesRawData.length;
+  let idx = 0;
 
   for (; idx < n; idx++) {
     const target = countriesRawData[idx];

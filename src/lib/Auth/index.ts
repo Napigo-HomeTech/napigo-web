@@ -10,7 +10,6 @@ import {
   updatePassword,
   updateEmail,
   RecaptchaVerifier,
-  PhoneAuthProvider,
 } from "firebase/auth";
 import { freezePage } from "@/lib/Dom";
 import { AccountActions, AppContextActions } from "@/lib/Redux";

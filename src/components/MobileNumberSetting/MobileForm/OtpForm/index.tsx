@@ -53,7 +53,7 @@ export const OtpForm: React.FC = () => {
         <FormLabel
           children={
             <>
-              Enter the code we've just sent on your mobile phone{" "}
+              Enter the code we\`ve just sent on your mobile phone{" "}
               <Text color="brand.500">{cachePhoneNumber}</Text>
             </>
           }
