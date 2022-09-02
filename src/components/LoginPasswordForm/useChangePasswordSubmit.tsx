@@ -11,6 +11,7 @@ import { FormState, GeneralObject } from "@/types";
  * , will also handle errors
  */
 export const useChangePasswordSubmit = (inputKeys: GeneralObject) => {
+  const user = getUser() as User;
   const [formState, setFormState] = useState<FormState>("idle");
   const [inputErrors, setInputErrors] = useState<GeneralObject>({});
   const [submitError, setSubmitError] = useState<string | null>(null);
@@ -38,47 +39,40 @@ export const useChangePasswordSubmit = (inputKeys: GeneralObject) => {
     };
   }, [clearFormErrors, inputKeys]);
 
-  const user = getUser() as User;
-
   const resetForm = () => {
     clearFormErrors();
     setFormState("idle");
   };
 
+  /**
+   *
+   * @param ev
+   * @returns
+   */
   const submit = async (ev: React.FormEvent) => {
     ev.preventDefault();
-
     const formData: GeneralObject = {};
-
     Object.values(inputKeys).forEach((id) => {
       const input = document.getElementById(id) as HTMLInputElement;
       input.blur();
-
       formData[id] = input.value;
     });
-
     const { error, value } = ChangePasswordFormSchema.validate(formData);
-
     if (error) {
       const err = error?.details[0];
       const errPath = err.path[0] as string;
       setInputErrors({ [errPath]: err?.message });
       return;
     }
-
     const canSubmit = Boolean(formState === "idle" || formState === "onerror");
-
     if (canSubmit) {
       clearFormErrors();
       setFormState("submitting");
-
       freezePage(true);
-
       delayInvoke(async () => {
         try {
           await reauthenticate(user, value["old-password"]);
           await updatePasswordMethod(user, value["new-password"]);
-
           setFormState("onsuccess");
           clearFormErrors();
         } catch (err) {
