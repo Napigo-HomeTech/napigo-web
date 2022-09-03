@@ -16,10 +16,11 @@ import {
   getCountriesOptionData,
   CountryOption,
   getOptionByCountry,
+  formatPhoneNumber,
 } from "@/lib/utils/tel-countries.util";
 import { Form } from "@/elements";
 import { PhoneIcon } from "@chakra-ui/icons";
-import parsePhoneNumber, { AsYouType, CountryCode } from "libphonenumber-js";
+import parsePhoneNumber from "libphonenumber-js";
 import { usePhoneNumberForm } from "./usePhoneNumberForm";
 import { useMobileSetting } from "../..";
 
@@ -56,6 +57,9 @@ export const PhoneNumberForm: React.FC = () => {
     return "";
   });
 
+  /**
+   *
+   */
   const { submit, submitError, setSubmitError, formState } =
     usePhoneNumberForm();
 
@@ -66,28 +70,43 @@ export const PhoneNumberForm: React.FC = () => {
     return _getSelected(verifiedPhoneNumber ?? "");
   }, [verifiedPhoneNumber]);
 
+  /**
+   *
+   */
   const formatNumber = useCallback(
     (value: string) => {
       let val = value;
       if (country !== null) {
-        const raw = new AsYouType(
-          country.value.toUpperCase() as CountryCode
-        ).input(value);
-        const parseNumber = parsePhoneNumber(
-          raw,
-          country.value.toUpperCase() as CountryCode
-        );
-        val = parseNumber?.formatInternational() ?? value;
-        return val;
+        val = formatPhoneNumber(value, country.value);
       }
       return val;
     },
     [country]
   );
 
+  /**
+   *
+   */
   const disableSendOtp = useMemo(() => {
     return isEmpty(phoneNumber) || isEmpty(country);
   }, [phoneNumber, country]);
+
+  /**
+   *
+   * @param country
+   */
+  const handleOnChangeCountry = (country: CountryOption) => {
+    if (phoneNumber.length > 0) {
+      try {
+        setCountry(country);
+        setPhoneNumber(
+          formatPhoneNumber(phoneNumber, country.value.toUpperCase())
+        );
+      } catch (err) {
+        setCountry(country);
+      }
+    }
+  };
 
   return (
     <VStack
@@ -108,7 +127,7 @@ export const PhoneNumberForm: React.FC = () => {
             defaultValue={getDefaultSelectedCountry()}
             options={countries}
             onChange={(data) => {
-              setCountry(data);
+              handleOnChangeCountry(data as CountryOption);
             }}
           />
         </Box>

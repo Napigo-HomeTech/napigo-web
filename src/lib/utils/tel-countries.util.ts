@@ -1,5 +1,6 @@
 import { OptionBase } from "chakra-react-select";
 import getCountryFlag from "country-flag-icons/unicode";
+import parsePhoneNumber, { AsYouType, CountryCode } from "libphonenumber-js";
 import countriesRawData from "./countriesRawData";
 
 export interface CountryOption extends OptionBase {
@@ -41,4 +42,19 @@ export const getOptionByCountry = (
   return list.find(
     (val: CountryOption) => val.value.toLowerCase() === country.toLowerCase()
   );
+};
+
+/**
+ *
+ * @param phoneNumberRaw
+ * @param countryCode
+ */
+export const formatPhoneNumber = (
+  phoneNumberRaw: string,
+  countryCode: string
+) => {
+  const code = countryCode.toUpperCase() as CountryCode;
+  const raw = new AsYouType(code).input(phoneNumberRaw);
+  const parseNumber = parsePhoneNumber(raw, code);
+  return parseNumber?.formatInternational() ?? phoneNumberRaw;
 };
