@@ -1,7 +1,7 @@
 import React from "react";
-import { SigninForm } from "@/components/SigninForm";
-import { FIXTURES } from "@/constant/global-fixture";
+import { SigninForm } from "@/components/Authentication/SigninForm";
 import { Box, Text } from "@chakra-ui/react";
+import { getMessage } from "@/constant/datasets/fixtures";
 
 export const SigninPage: React.FC = () => {
   return (
@@ -13,7 +13,7 @@ export const SigninPage: React.FC = () => {
       mx="auto"
     >
       <Text fontSize="xl" fontWeight={"bold"}>
-        {FIXTURES.auth.signin_form_title}
+        {getMessage("authenticationStrings", "login.form.title")}
       </Text>
       <SigninForm />
     </Box>

@@ -106,6 +106,9 @@ export const sendEmailVerificationMethod = async (user: User) => {
       url: window.location.origin,
     });
   } catch (err: any) {
+    /**
+     * TODO error loggin system
+     */
     console.log(err);
   }
 };

@@ -2,9 +2,10 @@ import { Divider, Heading, HStack, VStack, Button } from "@chakra-ui/react";
 import { Link as RouterLink } from "react-router-dom";
 import { Card } from "@/elements";
 import React from "react";
-import { LoginEmailForm } from "@/components/LoginEmailForm";
-import { LoginPasswordForm } from "@/components/LoginPasswordForm";
-import { MobileNumberSetting } from "@/components/MobileNumberSetting";
+import { LoginEmailForm } from "@/components/Settings/Authentication/LoginEmailForm";
+import { LoginPasswordForm } from "@/components/Settings/Authentication/LoginPasswordForm";
+import { MobileNumberSetting } from "@/components/Settings/Authentication/MobileNumberSetting";
+import { getMessage } from "@/constant/datasets/fixtures";
 
 export const SettingAuthenticationPage: React.FC = () => {
   return (
@@ -16,15 +17,30 @@ export const SettingAuthenticationPage: React.FC = () => {
       gap={5}
     >
       <HStack w="100%" justifyContent="space-between" p={0} alignItems="end">
-        <Heading size="md">Authentication</Heading>
+        <Heading size="md">
+          {getMessage("settingsStrings", "authentication.title")}
+        </Heading>
         <Button as={RouterLink} to={`/user/console`} size="sm">
-          Back to console
+          {getMessage(
+            "settingsStrings",
+            "authentication.back-console.buttontext"
+          )}
         </Button>
       </HStack>
-      <SectionContainer title="Login Email Address">
+      <SectionContainer
+        title={getMessage(
+          "settingsStrings",
+          "authentication.emailloginform.heading"
+        )}
+      >
         <LoginEmailForm />
       </SectionContainer>
-      <SectionContainer title="Password">
+      <SectionContainer
+        title={getMessage(
+          "settingsStrings",
+          "authentication.passwordform.heading"
+        )}
+      >
         <LoginPasswordForm />
       </SectionContainer>
       <MobileNumberSetting />

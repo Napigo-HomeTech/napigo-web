@@ -1,6 +1,6 @@
 import { IfFeatureEnabled } from "@growthbook/growthbook-react";
 import { NapigoLogo as NavLogo } from "@/common/Logo";
-import { UserMenu } from "@/components/UserMenu";
+import { UserMenu } from "@/components/Nav/UserMenu";
 import { featureFlags } from "@/config/feature-flags";
 import React from "react";
 import {
@@ -17,6 +17,7 @@ import {
   useColorModeValue,
 } from "@chakra-ui/react";
 import { SearchField } from "@/elements/Form";
+import { getMessage } from "@/constant/datasets/fixtures";
 
 export const Nav: React.FunctionComponent = () => {
   const background = useColorModeValue("base-bg", "whiteAlpha.50");
@@ -56,7 +57,7 @@ export const Nav: React.FunctionComponent = () => {
             feature={featureFlags.show_navbar_services_dropdown}
           >
             <Button variant="ghost" leftIcon={<ServicesIcon />}>
-              Services
+              {getMessage("navStrings", "service.buttontext")}
             </Button>
           </IfFeatureEnabled>
           <Box
@@ -71,7 +72,7 @@ export const Nav: React.FunctionComponent = () => {
                 <SearchField
                   autoComplete="off"
                   spellCheck={false}
-                  placeholder="Search anything"
+                  placeholder={getMessage("navStrings", "search.placeholder")}
                   bg="base-2-bg"
                 />
               </Box>
