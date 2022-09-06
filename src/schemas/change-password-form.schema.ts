@@ -2,7 +2,7 @@ import joi from "joi";
 
 export const ChangePasswordFormSchema = joi.object({
   "old-password": joi.string().required().messages({
-    "string.empty": "Old password is required",
+    "string.empty": "Current password is required",
   }),
   "new-password": joi
     .string()

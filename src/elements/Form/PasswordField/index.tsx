@@ -51,6 +51,8 @@ export const PasswordField: React.FC<PasswordFieldProps> = (props) => {
       {label && <FormLabel>{label}</FormLabel>}
       <InputGroup>
         <Input
+          cursor={readOnly ? "default" : "text"}
+          pointerEvents={readOnly ? "none" : undefined}
           pr={"10px"}
           id={id}
           size={size ?? "md"}

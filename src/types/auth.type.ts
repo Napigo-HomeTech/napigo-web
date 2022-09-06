@@ -10,20 +10,18 @@ export interface AuthResponseBase {
 /**
  *
  */
-export interface LoginResponse extends AuthResponseBase {}
+export type LoginResponse = AuthResponseBase;
 
 /**
  *
  */
-export interface RegisterResponse extends AuthResponseBase {}
+export type RegisterResponse = AuthResponseBase;
 
 /**
  *
  */
-export interface ReauthenticateResponse
-  extends Omit<AuthResponseBase, "user"> {}
+export type ReauthenticateResponse = Omit<AuthResponseBase, "user">;
 
-export interface UpdatePasswordResponse
-  extends Omit<AuthResponseBase, "user"> {}
+export type UpdatePasswordResponse = Omit<AuthResponseBase, "user">;
 
-export interface UpdateEmailResponse extends Omit<AuthResponseBase, "user"> {}
+export type UpdateEmailResponse = Omit<AuthResponseBase, "user">;

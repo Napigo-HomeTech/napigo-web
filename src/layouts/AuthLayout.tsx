@@ -1,9 +1,10 @@
-import { AuthGreeting } from "../components/AuthGreeting";
+import { AuthGreeting } from "../components/Authentication/AuthGreeting";
 import React from "react";
-import { Outlet } from "react-router-dom";
+import { Outlet, useLocation } from "react-router-dom";
 import { Container, Box } from "@chakra-ui/react";
 
 export const AuthLayout: React.FC = () => {
+  const location = useLocation();
   return (
     <Container
       maxW={"900px"}
@@ -27,7 +28,11 @@ export const AuthLayout: React.FC = () => {
           justifyContent={"center"}
           display="flex"
         >
-          <AuthGreeting />
+          <AuthGreeting
+            type={
+              location.pathname.includes("/register") ? "register" : "login"
+            }
+          />
         </Box>
         <Box
           w={{ sm: "100%", md: "50%" }}

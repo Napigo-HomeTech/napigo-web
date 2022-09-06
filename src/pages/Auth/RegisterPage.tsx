@@ -1,10 +1,10 @@
-import { RegisterForm } from "@/components/RegisterForm";
+import { RegisterForm } from "@/components/Authentication/RegisterForm";
 import { featureFlags } from "@/config/feature-flags";
-import { FIXTURES } from "@/constant/global-fixture";
 import React from "react";
 import { Box, Text } from "@chakra-ui/react";
 
 import { useFeatureRestrictRoute } from "@/routers/useFeatureRestrictRoute";
+import { getMessage } from "@/constant/datasets/fixtures";
 
 export const RegisterPage: React.FC = () => {
   useFeatureRestrictRoute(featureFlags.enable_self_registration);
@@ -18,7 +18,7 @@ export const RegisterPage: React.FC = () => {
       mx={"auto"}
     >
       <Text fontSize="xl" fontWeight={"bold"}>
-        {FIXTURES.auth.register_form_title}
+        {getMessage("authenticationStrings", "register.form.title")}
       </Text>
       <RegisterForm />
     </Box>

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 import React, { Fragment } from "react";
 import LottiePlayer from "react-lottie-player";
 import loaderAnim from "../../assets/napi-anim.json";

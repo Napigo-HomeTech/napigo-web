@@ -68,7 +68,7 @@ export const ClickAwayListener: FunctionComponent<Props> = ({
   const handleChildRef = (childRef: HTMLElement) => {
     node.current = childRef;
 
-    let { ref } = children as typeof children & {
+    const { ref } = children as typeof children & {
       ref: RefCallback<HTMLElement> | MutableRefObject<HTMLElement>;
     };
 

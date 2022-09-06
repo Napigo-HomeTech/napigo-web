@@ -16,19 +16,15 @@ const db = getFirestore(app);
  * @returns
  */
 const getAccount = async (uid: string) => {
-  try {
-    const docRef = doc(db, "accounts", uid);
-    const docSnap = await getDoc(docRef);
+  const docRef = doc(db, "accounts", uid);
+  const docSnap = await getDoc(docRef);
 
-    if (docSnap.exists()) {
-      const data = docSnap.data();
-      data.last_logged_in = new Date(data.last_logged_in).toISOString();
-      return data;
-    } else {
-      return null;
-    }
-  } catch (e) {
-    throw e;
+  if (docSnap.exists()) {
+    const data = docSnap.data();
+    data.last_logged_in = new Date(data.last_logged_in).toISOString();
+    return data;
+  } else {
+    return null;
   }
 };
 
@@ -38,13 +34,8 @@ const getAccount = async (uid: string) => {
  * @returns
  */
 const saveAccount = async (acc: Account) => {
-  try {
-    const docRef = doc(db, "accounts", acc.uid);
-    await setDoc(docRef, acc);
-    return;
-  } catch (e) {
-    throw e;
-  }
+  const docRef = doc(db, "accounts", acc.uid);
+  await setDoc(docRef, acc);
 };
 
 /**
@@ -53,13 +44,8 @@ const saveAccount = async (acc: Account) => {
  * @returns
  */
 const updateAccount = async (uid: string, newEmail: string) => {
-  try {
-    const docRef = doc(db, "accounts", uid);
-    await updateDoc(docRef, { email: newEmail });
-    return;
-  } catch (e) {
-    throw e;
-  }
+  const docRef = doc(db, "accounts", uid);
+  await updateDoc(docRef, { email: newEmail });
 };
 
 /**

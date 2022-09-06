@@ -31,6 +31,7 @@ export const AppLoader: React.FC = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: "100%" }}
             exit={{ opacity: 0 }}
+            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
             // @ts-ignore no problem in operation, although type error appears.
             transition={{
               delay: 0.5,
@@ -58,6 +59,7 @@ export const AppLoader: React.FC = () => {
                 opacity: 0,
                 translateY: 0,
               }}
+              // eslint-disable-next-line @typescript-eslint/ban-ts-comment
               // @ts-ignore no problem in operation, although type error appears.
               transition={{
                 transform: {

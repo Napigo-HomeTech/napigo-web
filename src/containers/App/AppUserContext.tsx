@@ -3,7 +3,6 @@ import { freezePage } from "@/lib/Dom";
 import { accountStore } from "@/lib/Firestore";
 import { AccountActions, AppContextActions } from "@/lib/Redux";
 import { RootState } from "@/lib/Redux/store";
-import { initAllCountriesPhoneCode } from "@/lib/utils/countries";
 import { delayInvoke } from "@/lib/utils/delays";
 import React, { Fragment, useCallback, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -35,10 +34,6 @@ export const AppUserContext: React.FC<AppUserContextProps> = ({ children }) => {
         delayInvoke(() => {
           dispatch(AccountActions.setAccount(acc));
           dispatch(AppContextActions.accountReady(true));
-          /**
-           * The data list will be cache in a window object -  not in redux btw
-           */
-          initAllCountriesPhoneCode();
         }, 3000);
       } catch (err) {
         dispatch(

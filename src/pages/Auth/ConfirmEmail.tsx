@@ -1,13 +1,13 @@
-import React, { useCallback, useState } from "react";
-import { FIXTURES } from "@/constant/global-fixture";
+import React, { useMemo, useState } from "react";
 import { getUser, sendEmailVerificationMethod } from "@/lib/Auth";
 import { delayInvoke } from "@/lib/utils/delays";
 import { FaCheckCircle, FaEnvelope } from "react-icons/fa";
 import { LoadStatus } from "@/types";
 import { getAuth } from "firebase/auth";
-import { Box, Heading, Text, Button } from "@chakra-ui/react";
+import { Box, Heading, Text, Button, HStack } from "@chakra-ui/react";
 import { Card } from "@/elements";
 import { Navigate } from "react-router-dom";
+import { getMessage } from "@/constant/datasets/fixtures";
 
 const auth = getAuth();
 
@@ -16,18 +16,27 @@ export const ConfirmEmail: React.FC = () => {
 
   const [loadStatus, setLoadStatus] = useState<LoadStatus>("idle");
 
-  const setDescText = useCallback(() => {
+  const DescriptionText = useMemo(() => {
     switch (loadStatus) {
       case "idle":
-        return FIXTURES.confirm_email.pre_description;
+        return getMessage(
+          "authenticationStrings",
+          "email-confirmation.pre.description"
+        );
       case "onsuccess":
-        return FIXTURES.confirm_email.post_description;
+        return getMessage(
+          "authenticationStrings",
+          "email-confirmation.post.description"
+        );
       default:
-        return "";
+        return getMessage(
+          "authenticationStrings",
+          "email-confirmation.pre.description"
+        );
     }
   }, [loadStatus]);
 
-  const sendEmail = async (ev: React.MouseEvent) => {
+  const sendEmail = async (_: React.MouseEvent) => {
     if (user) {
       try {
         setLoadStatus("loading");
@@ -41,7 +50,7 @@ export const ConfirmEmail: React.FC = () => {
     }
   };
 
-  const handleLogout = async (ev: React.MouseEvent) => {
+  const handleLogout = async (_: React.MouseEvent) => {
     await auth.signOut();
   };
 
@@ -76,21 +85,35 @@ export const ConfirmEmail: React.FC = () => {
 
         <Heading size="md">
           {loadStatus === "onsuccess"
-            ? FIXTURES.confirm_email.send_title
-            : FIXTURES.confirm_email.title}
+            ? getMessage(
+                "authenticationStrings",
+                "email-confirmation.post.title"
+              )
+            : getMessage(
+                "authenticationStrings",
+                "email-confirmation.pre.title"
+              )}
         </Heading>
-        <Text textAlign="center">{setDescText()}</Text>
+        <Text textAlign="center">{DescriptionText}</Text>
 
-        <Button
-          colorScheme="brand"
-          onClick={sendEmail}
-          isLoading={loadStatus === "loading"}
-        >
-          {FIXTURES.confirm_email.buttonText[loadStatus]}
-        </Button>
-        <Button variant="ghost" onClick={handleLogout}>
-          {FIXTURES.confirm_email.buttonText.logoutNow}
-        </Button>
+        <HStack gap={2}>
+          <Button
+            colorScheme="brand"
+            onClick={sendEmail}
+            isLoading={loadStatus === "loading"}
+          >
+            {getMessage(
+              "authenticationStrings",
+              `email-confirmation.${loadStatus}.buttontext`
+            )}
+          </Button>
+          <Button variant="ghost" onClick={handleLogout}>
+            {getMessage(
+              "authenticationStrings",
+              "email-confirmation.logoutnow.buttontext"
+            )}
+          </Button>
+        </HStack>
       </Card>
     </Box>
   );
