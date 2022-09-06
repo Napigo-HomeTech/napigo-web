@@ -16,18 +16,21 @@ export const NapigoApp: React.FC = () => {
     <ChakraProvider theme={appTheme}>
       <BuildBanner />
       <Router>
-        {import.meta.env.VITE_PRE_LAUNCH === "true" && <PreLaunch />}
-        <Provider store={store}>
-          <ErrorBoundary
-            renderFallbackComponent={(err) => (
-              <ErrorDialog err={err} closeable={true} />
-            )}
-          >
-            <FeatureFlag>
-              <App />
-            </FeatureFlag>
-          </ErrorBoundary>
-        </Provider>
+        {import.meta.env.VITE_PRE_LAUNCH === "true" ? (
+          <PreLaunch />
+        ) : (
+          <Provider store={store}>
+            <ErrorBoundary
+              renderFallbackComponent={(err) => (
+                <ErrorDialog err={err} closeable={true} />
+              )}
+            >
+              <FeatureFlag>
+                <App />
+              </FeatureFlag>
+            </ErrorBoundary>
+          </Provider>
+        )}
       </Router>
     </ChakraProvider>
   );
