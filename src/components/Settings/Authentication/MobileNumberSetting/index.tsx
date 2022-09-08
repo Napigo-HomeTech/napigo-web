@@ -11,18 +11,13 @@ import React, {
   useEffect,
   useState,
 } from "react";
+import parsePhoneNumber from "libphonenumber-js";
 import { MdPhoneIphone as MobileIcon } from "react-icons/md";
 import { MobileForm } from "./MobileForm";
 import { MobileReadOnly } from "./MobileReadOnly";
 
-/**
- *
- */
 type FormDisplayType = "onLoading" | "verified" | "onUpdate" | "notVerified";
 
-/**
- *
- */
 type FormContextProps = {
   formType: FormDisplayType;
   setFormType: (type: FormDisplayType) => void;
@@ -41,10 +36,6 @@ const MobileSettingContext = createContext<FormContextProps>({
   recentlyVerified: false,
 });
 
-/**
- *
- * @returns
- */
 export const useMobileSetting = () => {
   return useContext(MobileSettingContext);
 };
@@ -61,9 +52,16 @@ export const MobileNumberSetting: React.FC = () => {
   useEffect(() => {
     const user = getUser();
     const phoneNo = user?.phoneNumber ?? null;
-    if (!isEmpty(phoneNo)) {
+    if (!isEmpty(phoneNo) || phoneNo !== null) {
       setFormType("verified");
-      setNumber(phoneNo);
+      const formattedPhoneNumber = parsePhoneNumber(
+        phoneNo as string
+      )?.formatInternational();
+      /**
+       * fallback to original format provided by Firebase if
+       * parsing the number failed get result
+       */
+      setNumber(formattedPhoneNumber ?? phoneNo);
       return;
     }
     setFormType("notVerified");
