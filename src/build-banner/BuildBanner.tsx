@@ -15,7 +15,8 @@ export const BuildBanner: React.FC = () => {
         gap={2}
       >
         <Text>
-          UAT Environment Build, Build ID: [{import.meta.env.VITE_BUILD_ID}]
+          UAT Environment Build, Build ID: [{import.meta.env.VITE_BUILD_ID}] [
+          {import.meta.env.VITE_NAME}]
         </Text>
         <Text fontSize={"sm"} fontWeight="light">
           powered by {import.meta.env.VITE_POWERED_BY}
