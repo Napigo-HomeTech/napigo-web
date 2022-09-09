@@ -11,8 +11,10 @@ import {
   FormHelperText,
   FormErrorMessage,
 } from "@chakra-ui/react";
-import { MdVisibility as VisibleIcon } from "react-icons/md";
-import { MdVisibilityOff as VisibleOffIcon } from "react-icons/md";
+import {
+  MdVisibility as VisibleIcon,
+  MdVisibilityOff as VisibleOffIcon,
+} from "react-icons/md";
 import { isEmpty } from "lodash";
 
 const ShowIcon = () => {

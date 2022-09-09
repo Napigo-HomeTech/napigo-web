@@ -76,7 +76,6 @@ const useInitDataLoadingListener = () => {
     moduleStates.forEach((mod) => {
       if (!mod) {
         appReady = false;
-        return;
       }
     });
     if (appReady) {

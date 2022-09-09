@@ -1,6 +1,4 @@
 import { initializeApp } from "firebase/app";
-// import { connectAuthEmulator, getAuth } from "firebase/auth";
-// import { connectFirestoreEmulator, getFirestore } from "firebase/firestore";
 
 const firebaseConfig = {
   apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
@@ -13,15 +11,5 @@ const firebaseConfig = {
 };
 
 const app = initializeApp(firebaseConfig);
-
-// const auth = getAuth();
-// const db = getFirestore(app);
-
-// const ENV = import.meta.env.VITE_ENVIRONMENT;
-
-// if (ENV === "development") {
-//   connectAuthEmulator(auth, "http://localhost:9099");
-//   connectFirestoreEmulator(db, "localhost", 9091);
-// }
 
 export default app;

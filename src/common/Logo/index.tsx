@@ -1,4 +1,3 @@
-export * from "./LogoContainer";
 export * from "./NapigoLogo";
 export * from "./NapigoLogoMd";
 export * from "./NapigoLogoLg";

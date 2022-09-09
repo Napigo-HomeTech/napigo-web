@@ -1,4 +1,4 @@
-import { AuthError, AuthErrorCodes, updateProfile } from "firebase/auth";
+import { AuthErrorCodes, updateProfile } from "firebase/auth";
 import { createAccountRecord } from "@/lib/Accounts";
 import { registerMethod } from "@/lib/Auth";
 import { freezePage } from "@/lib/Dom";
@@ -8,6 +8,7 @@ import React, { useCallback, useEffect, useState } from "react";
 import { RegisterFormSchema } from "@/schemas/register-form.schema";
 import { FormState } from "@/types";
 import { GeneralObject } from "@/types/global.type";
+import Joi from "joi";
 
 /**
  *
@@ -45,78 +46,103 @@ export const useRegisterForm = (inputIds: GeneralObject) => {
     setSubmitError(null);
   }, []);
 
-  const submit = async (ev: React.FormEvent) => {
-    ev.preventDefault();
+  /** */
+  const handleValidationError = useCallback((error: Joi.ValidationError) => {
+    /** Update the state with Errors to be display in the input */
+    const err = error?.details[0];
+    const errPath = err.path[0] as string;
+    setInputErrors({ [errPath]: err?.message });
+  }, []);
 
-    const formData: GeneralObject = {};
+  /** */
+  const validateForm = useCallback(() => {
+    const formData: Record<string, any> = {};
 
     Object.values(inputIds).forEach((id) => {
       const input = document.getElementById(id) as HTMLInputElement;
       input.blur();
       formData[id] = input.value;
     });
+    return RegisterFormSchema.validate(formData);
+  }, [inputIds]);
 
-    const { error, value } = RegisterFormSchema.validate(formData);
-
-    if (error) {
-      /** Update the state with Errors to be display in the input */
-      const err = error?.details[0];
-      const errPath = err.path[0] as string;
-      setInputErrors({ [errPath]: err?.message });
-      return;
+  /** */
+  const handleAuthError = useCallback((code: string) => {
+    switch (code) {
+      case AuthErrorCodes.EMAIL_EXISTS:
+        setSubmitError("Email already registered");
+        break;
+      case AuthErrorCodes.WEAK_PASSWORD:
+        setSubmitError("Password is weak");
+        break;
+      case AuthErrorCodes.INVALID_EMAIL:
+        setSubmitError("Email is an invalid email address");
+        break;
+      default:
+        setSubmitError("Unable to register account");
+        break;
     }
+    setFormStatus("onerror");
+  }, []);
 
-    const canSubmit = Boolean(
-      formStatus === "idle" || formStatus === "onerror"
-    );
-
-    if (canSubmit) {
-      clearFormErrors();
+  /** */
+  const handleFormSubmit = useCallback(
+    (formData: Record<string, any>) => {
       setFormStatus("submitting");
-
       freezePage(true);
 
       delayInvoke(async () => {
         try {
           const { user } = await registerMethod(
-            value[inputIds.email],
-            value[inputIds.password]
+            formData[inputIds.email],
+            formData[inputIds.psw]
           );
-
-          const username = value[inputIds.username];
-
+          const username = formData[inputIds.username];
           if (!isEmpty(username)) {
             await updateProfile(user, { displayName: username });
           }
-
           await createAccountRecord(user);
-
           setFormStatus("onsuccess");
         } catch (err: any) {
+          setFormStatus("onerror");
           if (err.code) {
-            const authError = err as AuthError;
-            switch (authError.code) {
-              case AuthErrorCodes.EMAIL_EXISTS:
-                setSubmitError("Email already registered");
-                break;
-              case AuthErrorCodes.WEAK_PASSWORD:
-                setSubmitError("Password is weak");
-                break;
-              case AuthErrorCodes.INVALID_EMAIL:
-                setSubmitError("Email is an invalid email address");
-                break;
-              default:
-                setSubmitError("Unable to register account");
-                break;
-            }
-            setFormStatus("onerror");
+            handleAuthError(err.code);
+            return;
           }
+          setSubmitError("Unable to register account ");
         } finally {
           freezePage(false);
         }
       });
-    }
-  };
+    },
+    [handleAuthError, inputIds.email, inputIds.psw, inputIds.username]
+  );
+
+  const submit = useCallback(
+    (ev: React.FormEvent) => {
+      ev.preventDefault();
+
+      const { error, value: formData } = validateForm();
+      if (error) {
+        handleValidationError(error);
+        return;
+      }
+      const CAN_SUBMIT = Boolean(
+        formStatus === "idle" || formStatus === "onerror"
+      );
+      if (CAN_SUBMIT) {
+        clearFormErrors();
+        handleFormSubmit(formData);
+      }
+    },
+    [
+      clearFormErrors,
+      formStatus,
+      handleFormSubmit,
+      handleValidationError,
+      validateForm,
+    ]
+  );
 
   return {
     submit,

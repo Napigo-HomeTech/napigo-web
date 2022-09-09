@@ -13,7 +13,7 @@ import { getMessage } from "@/constant/datasets/fixtures";
  */
 const inputIds = {
   email: "signin-email",
-  password: "signin-password",
+  psw: "signin-password",
 };
 
 export const SigninForm: React.FC = () => {
@@ -47,12 +47,12 @@ export const SigninForm: React.FC = () => {
       />
 
       <Form.PasswordField
-        id={inputIds.password}
+        id={inputIds.psw}
         placeholder={getMessage(
           "authenticationStrings",
           "login.form.password-input.placeholder"
         )}
-        error={inputErrors[inputIds.password]}
+        error={inputErrors[inputIds.psw]}
       />
 
       <FormError message={submitError} title="Error !" alignment="stack" />

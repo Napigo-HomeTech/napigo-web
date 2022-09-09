@@ -5,11 +5,15 @@ import { Outlet } from "react-router-dom";
 type HorizontalMenuLayoutProps = {
   menu: React.ReactElement;
   contentBackground: string;
+  /**
+   * For additional Component to be added at the top of the Menu
+   */
+  menuTopExtras?: React.ReactElement;
 };
 export const VerticalMenuLayout: React.FC<HorizontalMenuLayoutProps> = (
   props
 ) => {
-  const { menu, contentBackground } = props;
+  const { menu, contentBackground, menuTopExtras } = props;
 
   return (
     <HStack
@@ -20,6 +24,7 @@ export const VerticalMenuLayout: React.FC<HorizontalMenuLayoutProps> = (
       bg={contentBackground}
     >
       <Box width="300px" top={"70px"} left={0} position="sticky" height="auto">
+        {menuTopExtras && <>{menuTopExtras}</>}
         {menu}
       </Box>
       <Box flex={1}>

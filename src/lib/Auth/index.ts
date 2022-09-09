@@ -44,7 +44,7 @@ export const reauthenticate = async (user: User, password: string) => {
  *
  */
 export const updatePasswordMethod = async (user: User, newPassword: string) => {
-  await updatePassword(user, newPassword);
+  return updatePassword(user, newPassword);
 };
 
 /**
@@ -63,7 +63,7 @@ export const updateEmailMethod = async (user: User, newEmail: string) => {
  * @param password
  */
 export const loginMethod = async (email: string, password: string) => {
-  return await signInWithEmailAndPassword(firebaseAuth, email, password);
+  return signInWithEmailAndPassword(firebaseAuth, email, password);
 };
 
 /**
@@ -74,7 +74,7 @@ export const loginMethod = async (email: string, password: string) => {
  * @param nickname
  */
 export const registerMethod = async (email: string, password: string) => {
-  return await createUserWithEmailAndPassword(firebaseAuth, email, password);
+  return createUserWithEmailAndPassword(firebaseAuth, email, password);
 };
 
 /**
@@ -106,9 +106,7 @@ export const sendEmailVerificationMethod = async (user: User) => {
       url: window.location.origin,
     });
   } catch (err: any) {
-    /**
-     * TODO error loggin system
-     */
+    // eslint-disable-next-line no-console
     console.log(err);
   }
 };
