@@ -3,19 +3,22 @@ import settingsStrings from "./defaults/settings";
 import loadingsStrings from "./defaults/loadings";
 import navStrings from "./defaults/nav";
 import commonStrings from "./defaults/commons";
+import profileStrings from "./defaults/profile";
 
 type AuthStringKey = keyof typeof authenticationStrings;
 type SettingsKey = keyof typeof settingsStrings;
 type LoadingsKey = keyof typeof loadingsStrings;
 type NavKey = keyof typeof navStrings;
 type CommonKey = keyof typeof commonStrings;
+type ProfileKey = keyof typeof profileStrings;
 
 type StringsMessageKey =
   | AuthStringKey
   | SettingsKey
   | LoadingsKey
   | NavKey
-  | CommonKey;
+  | CommonKey
+  | ProfileKey;
 
 const fixtures = {
   authenticationStrings: { ...authenticationStrings },
@@ -23,6 +26,7 @@ const fixtures = {
   loadingsStrings: { ...loadingsStrings },
   navStrings: { ...navStrings },
   commonStrings: { ...commonStrings },
+  profileStrings: { ...profileStrings },
 };
 
 /**
@@ -54,6 +58,10 @@ export const getMessage = (
     case "commonStrings": {
       const section = fixtures[key] as typeof commonStrings;
       return section[messageKey as CommonKey];
+    }
+    case "profileStrings": {
+      const section = fixtures[key] as typeof profileStrings;
+      return section[messageKey as ProfileKey];
     }
     default:
       return messageKey;

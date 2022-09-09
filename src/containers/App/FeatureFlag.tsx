@@ -4,6 +4,7 @@ import { featureFlags, getFeatureFlags } from "@/config/feature-flags";
 
 const growthbook = new GrowthBook({
   trackingCallback: (experiment, result) => {
+    // eslint-disable-next-line no-console
     console.log({
       experimentId: experiment.key,
       variationId: result.variationId,
