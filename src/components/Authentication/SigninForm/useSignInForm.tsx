@@ -83,7 +83,7 @@ export const useSignInForm = (inputKeys: GeneralObject) => {
        */
       delayInvoke(async () => {
         try {
-          await loginMethod(value[inputKeys.email], value[inputKeys.password]);
+          await loginMethod(value[inputKeys.email], value[inputKeys.psw]);
         } catch (err: any) {
           if (err.code) {
             const authError = err as AuthError;

@@ -16,7 +16,7 @@ import { getMessage } from "@/constant/datasets/fixtures";
 
 const inputIds = {
   email: "register-email",
-  password: "register-password",
+  psw: "register-password",
   username: "register-username",
 };
 
@@ -60,8 +60,8 @@ export const RegisterForm: React.FC = () => {
       </FormControl>
 
       <Form.PasswordField
-        id={inputIds.password}
-        error={inputErrors[inputIds.password]}
+        id={inputIds.psw}
+        error={inputErrors[inputIds.psw]}
         placeholder={getMessage(
           "authenticationStrings",
           "register.form.password-input.placholder"

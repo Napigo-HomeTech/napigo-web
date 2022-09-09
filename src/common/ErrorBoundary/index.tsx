@@ -47,9 +47,6 @@ export class ErrorBoundary extends Component<
   }
 
   public componentDidCatch(error: Error, errorInfo: ErrorInfo) {
-    /**
-     * @TODO error logging to external Log System
-     */
     this.setState({ error, errorInfo });
   }
 
