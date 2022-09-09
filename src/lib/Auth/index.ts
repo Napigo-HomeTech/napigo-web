@@ -109,6 +109,7 @@ export const sendEmailVerificationMethod = async (user: User) => {
     /**
      * TODO error loggin system
      */
+    // eslint-disable-next-line no-console
     console.log(err);
   }
 };
