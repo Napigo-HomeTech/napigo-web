@@ -77,16 +77,11 @@ export const useChangePasswordSubmit = (inputKeys: GeneralObject) => {
           clearFormErrors();
         } catch (err) {
           setFormState("onerror");
-          setSubmitError("Unable to update Password");
           const authError = err as AuthError;
-          switch (authError.code) {
-            case AuthErrorCodes.INVALID_PASSWORD:
-              setInputErrors({ "old-password": "Wrong Password" });
-              break;
-            default:
-              setSubmitError("Unable to change password.");
-              break;
+          if (authError.code === AuthErrorCodes.INVALID_PASSWORD) {
+            setInputErrors({ "old-password": "Wrong Password" });
           }
+          setSubmitError("Unable to change password");
         } finally {
           freezePage(false);
         }

@@ -161,10 +161,12 @@ export const PhoneNumberForm: React.FC = () => {
             right={1}
             onClick={() => setSubmitError(null)}
           />
-          <AlertTitle>
-            {getMessage("commonStrings", "alert.error.title")}
-          </AlertTitle>
-          <AlertDescription>{submitError} </AlertDescription>
+          <Box>
+            <AlertTitle>
+              {getMessage("commonStrings", "alert.error.title")}
+            </AlertTitle>
+            <AlertDescription>{submitError} </AlertDescription>
+          </Box>
         </Alert>
       )}
       <HStack>

@@ -17,23 +17,16 @@ export const ConfirmEmail: React.FC = () => {
   const [loadStatus, setLoadStatus] = useState<LoadStatus>("idle");
 
   const DescriptionText = useMemo(() => {
-    switch (loadStatus) {
-      case "idle":
-        return getMessage(
-          "authenticationStrings",
-          "email-confirmation.pre.description"
-        );
-      case "onsuccess":
-        return getMessage(
-          "authenticationStrings",
-          "email-confirmation.post.description"
-        );
-      default:
-        return getMessage(
-          "authenticationStrings",
-          "email-confirmation.pre.description"
-        );
+    if (loadStatus === "onsuccess") {
+      return getMessage(
+        "authenticationStrings",
+        "email-confirmation.post.description"
+      );
     }
+    return getMessage(
+      "authenticationStrings",
+      "email-confirmation.pre.description"
+    );
   }, [loadStatus]);
 
   const sendEmail = async (_: React.MouseEvent) => {
