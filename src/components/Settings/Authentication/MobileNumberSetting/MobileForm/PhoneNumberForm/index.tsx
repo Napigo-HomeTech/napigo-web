@@ -45,35 +45,29 @@ const _getSelected = (verifiedPhoneNumber: string) => {
 export const PhoneNumberForm: React.FC = () => {
   const { formType, verifiedPhoneNumber, setFormType } = useMobileSetting();
 
+  /**
+   * The Country Value where user have selected, this is to enable
+   * AsYouType API to trigger during  onchange phone number input
+   */
   const [country, setCountry] = useState<CountryOption | null>(() => {
     if (formType === "onUpdate") {
       return _getSelected(verifiedPhoneNumber ?? "") ?? null;
     }
     return null;
   });
-  const [phoneNumber, setPhoneNumber] = useState<string>(() => {
-    if (formType === "onUpdate") {
-      return verifiedPhoneNumber ?? "";
-    }
-    return "";
-  });
-
   /**
-   *
+   * Caching the finalised displayed of the phone number value, normally after
+   * formatting using the AsYouType API
    */
+  const [phoneNumber, setPhoneNumber] = useState<string>("");
+
   const { submit, submitError, setSubmitError, formState } =
     usePhoneNumberForm();
 
-  /**
-   *
-   */
   const getDefaultSelectedCountry = useCallback(() => {
     return _getSelected(verifiedPhoneNumber ?? "");
   }, [verifiedPhoneNumber]);
 
-  /**
-   *
-   */
   const formatNumber = useCallback(
     (value: string) => {
       let val = value;
@@ -85,9 +79,6 @@ export const PhoneNumberForm: React.FC = () => {
     [country]
   );
 
-  /**
-   *
-   */
   const disableSendOtp = useMemo(() => {
     return isEmpty(phoneNumber) || isEmpty(country);
   }, [phoneNumber, country]);
@@ -170,10 +161,12 @@ export const PhoneNumberForm: React.FC = () => {
             right={1}
             onClick={() => setSubmitError(null)}
           />
-          <AlertTitle>
-            {getMessage("commonStrings", "alert.error.title")}
-          </AlertTitle>
-          <AlertDescription>{submitError} </AlertDescription>
+          <Box>
+            <AlertTitle>
+              {getMessage("commonStrings", "alert.error.title")}
+            </AlertTitle>
+            <AlertDescription>{submitError} </AlertDescription>
+          </Box>
         </Alert>
       )}
       <HStack>
