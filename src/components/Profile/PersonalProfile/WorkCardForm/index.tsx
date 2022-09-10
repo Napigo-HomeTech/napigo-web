@@ -1,5 +1,6 @@
 import { Card } from "@/elements";
 import { TextField } from "@/elements/Form";
+import { getOrganisationAutoComplete } from "@/lib/Apis/organisation";
 import {
   Divider,
   FormLabel,
@@ -8,7 +9,7 @@ import {
   Heading,
   HStack,
 } from "@chakra-ui/react";
-import { Select } from "chakra-react-select";
+import { AsyncCreatableSelect, Select } from "chakra-react-select";
 import React from "react";
 
 const employmentTypeOptions = [
@@ -75,9 +76,19 @@ export const WorkCardForm: React.FC = () => {
 
         <GridItem colSpan={2}>
           <FormLabel>Organization</FormLabel>
-          <Select
+          <AsyncCreatableSelect
             selectedOptionStyle="check"
+            isMulti={false}
+            allowCreateWhileLoading
+            formatCreateLabel={(inputValue) => {
+              return `Add "${inputValue}"`;
+            }}
             size="md"
+            loadOptions={(inputValue: string, callback) => {
+              getOrganisationAutoComplete(inputValue).then((result) => {
+                callback(result);
+              });
+            }}
             useBasicStyles
             placeholder="Company Name"
             options={employmentTypeOptions}
