@@ -112,7 +112,7 @@ export const MobileNumberSetting: React.FC = () => {
 const HeadBar = () => (
   <VStack width="inherit">
     <HStack width="inherit">
-      <Heading size="md" mb="5px">
+      <Heading size="sm" fontWeight="bold" mb="5px">
         {getMessage("settingsStrings", "authentication.mobileform.heading")}
       </Heading>
       <MobileIcon size={20} />

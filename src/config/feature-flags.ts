@@ -67,6 +67,10 @@ export const featureFlags = {
    *
    */
   show_navbar_messages_dropdown: "show_navbar_messages_dropdown",
+  /**
+   *
+   */
+  enable_edit_avatar: "enable_edit_avatar",
 };
 
 /**
