@@ -27,7 +27,7 @@ export const PersonalInfoCardForm: React.FC = () => {
           <Heading size="sm" fontWeight={"normal"} color="shadow-text">
             {getMessage(
               "profileStrings",
-              "pesonal-profile.personal-information.avatar.label"
+              "personal-profile.personal-information.avatar.label"
             )}
           </Heading>
           <HStack
