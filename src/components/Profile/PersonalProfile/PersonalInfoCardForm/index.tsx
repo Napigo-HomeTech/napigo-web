@@ -13,7 +13,6 @@ import {
   Button,
   Divider,
   Grid,
-  GridItem,
 } from "@chakra-ui/react";
 import React from "react";
 
@@ -58,36 +57,21 @@ export const PersonalInfoCardForm: React.FC = () => {
       </HStack>
       <Divider />
       <Grid
-        h="200px"
-        templateRows="repeat(2, 1fr)"
-        templateColumns="repeat(4, 1fr)"
+        templateRows="repeat(1, 1fr)"
+        templateColumns="1fr 1fr"
         gap={4}
+        paddingBottom={0}
       >
-        <GridItem colSpan={2}>
-          <TextField
-            label="Profile Name"
-            isReadOnly
-            value={account?.displayName ?? ""}
-          />
-        </GridItem>
-        <GridItem colSpan={2}>
-          <TextField
-            label="Contact Number"
-            isReadOnly
-            value={user?.phoneNumber ?? ""}
-          />
-        </GridItem>
-        <GridItem colSpan={2}>
-          <TextField label="Email" isReadOnly value={user?.email ?? ""} />
-        </GridItem>
-        <GridItem
-          colSpan={2}
-          display="flex"
-          alignItems="flex-end"
-          justifyContent={"flex-end"}
-          pb="20px"
-          gap={2}
-        ></GridItem>
+        <TextField
+          label="Profile Name"
+          isReadOnly
+          value={account?.displayName ?? ""}
+        />
+        <TextField
+          label="Profile Name"
+          isReadOnly
+          value={account?.displayName ?? ""}
+        />
       </Grid>
     </Card>
   );
