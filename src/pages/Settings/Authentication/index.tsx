@@ -17,7 +17,7 @@ export const SettingAuthenticationPage: React.FC = () => {
       gap={5}
     >
       <HStack w="100%" justifyContent="space-between" p={0} alignItems="end">
-        <Heading size="md">
+        <Heading size="lg" fontWeight={"normal"}>
           {getMessage("settingsStrings", "authentication.title")}
         </Heading>
         <Button as={RouterLink} to={`/user/console`} size="sm">
@@ -80,7 +80,7 @@ export const SectionTitle = (props: any) => {
   return (
     <VStack width="inherit">
       <HStack width="100%" justifyContent="space-between">
-        <Heading size="md" mb="5px">
+        <Heading size="sm" fontWeight="bold" mb="5px">
           {title}
         </Heading>
         {rightControl}

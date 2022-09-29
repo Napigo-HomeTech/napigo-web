@@ -1,4 +1,20 @@
 import { Colors } from "@chakra-ui/react";
+import { TinyColor } from "@ctrl/tinycolor";
+import { memoizedGet as get } from "@chakra-ui/utils";
+
+/**
+ * Replacing the deprecated function from Chakra UI
+ * @param theme
+ * @param color
+ * @param fallback
+ * @returns
+ */
+export const getColor = (theme: any, color: string, fallback?: () => void) => {
+  const hex = get(theme, `colors.${color}`, color);
+  const { isValid } = new TinyColor(hex);
+  return isValid ? hex : fallback?.();
+};
+
 /**
  *
  */

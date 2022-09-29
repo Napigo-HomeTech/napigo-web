@@ -29,4 +29,5 @@ export type Account = {
   last_logged_in: string;
   role: AccountRole;
   uid: string;
+  phoneNumber: string | null;
 };

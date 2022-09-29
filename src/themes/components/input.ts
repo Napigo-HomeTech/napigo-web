@@ -4,7 +4,8 @@ import type {
   PartsStyleObject,
   SystemStyleObject,
 } from "@chakra-ui/styled-system";
-import { getColor, mode } from "@chakra-ui/theme-tools";
+import { getColor } from "../foundations/colors";
+import { mode } from "@chakra-ui/theme-tools";
 
 const baseStyle: PartsStyleObject<typeof parts> = {
   field: {
@@ -83,7 +84,6 @@ const variantOutline: PartsStyleFunction<typeof parts> = (props) => {
     field: {
       border: "1px solid",
       borderColor: "inherit",
-      // bg: "inherit",
       bg: mode("gray.50", "gray.800")(props),
       _hover: {
         borderColor: mode("gray.300", "whiteAlpha.400")(props),
@@ -120,7 +120,7 @@ const variantFilled: PartsStyleFunction<typeof parts> = (props) => {
 
   return {
     field: {
-      border: "2px solid",
+      border: "1px solid",
       borderColor: "transparent",
       bg: mode("gray.100", "whiteAlpha.50")(props),
       _hover: {
@@ -143,7 +143,7 @@ const variantFilled: PartsStyleFunction<typeof parts> = (props) => {
       },
     },
     addon: {
-      border: "2px solid",
+      border: "1px solid",
       borderColor: "transparent",
       bg: mode("gray.100", "whiteAlpha.50")(props),
     },
