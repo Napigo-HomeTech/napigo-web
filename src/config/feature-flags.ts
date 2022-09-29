@@ -71,6 +71,26 @@ export const featureFlags = {
    *
    */
   enable_edit_avatar: "enable_edit_avatar",
+  /**
+   *
+   */
+  enable_module_finance: "enable_module_finance",
+  /**
+   *
+   */
+  enable_module_event_calendar: "enable_module_event_calendar",
+  /**
+   *
+   */
+  enable_module_travel_planner: "enable_module_travel_planner",
+  /**
+   *
+   */
+  enable_module_biteform: "enable_module_biteform",
+  /**
+   *
+   */
+  enable_module_document: "enable_module_document",
 };
 
 /**

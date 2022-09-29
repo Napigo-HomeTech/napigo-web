@@ -4,20 +4,14 @@ import { UserMenu } from "@/components/Nav/UserMenu";
 import { featureFlags } from "@/config/feature-flags";
 import React from "react";
 import {
-  MdSpaceDashboard as ServicesIcon,
   MdOutlineNotifications as NotifIcon,
   MdOutlineEmail as MessageIcon,
 } from "react-icons/md";
 import { Link } from "react-router-dom";
-import {
-  Box,
-  HStack,
-  IconButton,
-  Button,
-  useColorModeValue,
-} from "@chakra-ui/react";
+import { Box, HStack, IconButton, useColorModeValue } from "@chakra-ui/react";
 import { SearchField } from "@/elements/Form";
 import { getMessage } from "@/constant/datasets/fixtures";
+import { ServiceMenu } from "./ServiceMenu";
 
 export const Nav: React.FunctionComponent = () => {
   const background = useColorModeValue("base-bg", "whiteAlpha.50");
@@ -56,9 +50,7 @@ export const Nav: React.FunctionComponent = () => {
           <IfFeatureEnabled
             feature={featureFlags.show_navbar_services_dropdown}
           >
-            <Button variant="ghost" leftIcon={<ServicesIcon />}>
-              {getMessage("navStrings", "service.buttontext")}
-            </Button>
+            <ServiceMenu />
           </IfFeatureEnabled>
           <Box
             display="flex"
