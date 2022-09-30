@@ -31,31 +31,31 @@ const ServiceItems = [
   {
     Icon: FinancingIcon,
     text: "Financing",
-    goto: "/finance",
+    goto: "finance",
     featureFlag: featureFlags.enable_module_finance,
   },
   {
     Icon: EventIcon,
     text: "Event & Calendar",
-    goto: "/event-calendar",
+    goto: "event-calendar",
     featureFlag: featureFlags.enable_module_event_calendar,
   },
   {
     Icon: TravelPlannerIcon,
     text: "Travel Planner",
-    goto: "/travel-planner",
+    goto: "travel-planner",
     featureFlag: featureFlags.enable_module_travel_planner,
   },
   {
     Icon: BiteFormIcon,
     text: "BiteForms",
-    goto: "/bite-forms",
+    goto: "bite-forms",
     featureFlag: featureFlags.enable_module_biteform,
   },
   {
     Icon: DocumentIcon,
     text: "Documents",
-    goto: "/documents",
+    goto: "documents",
     featureFlag: featureFlags.enable_module_document,
   },
 ];

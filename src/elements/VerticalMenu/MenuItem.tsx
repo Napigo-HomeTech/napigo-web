@@ -2,7 +2,7 @@ import { useColorModeValue, Button } from "@chakra-ui/react";
 import React, { useMemo } from "react";
 import { Link as RouterLink, useLocation } from "react-router-dom";
 
-type MenuItemProps = {
+export type MenuItemProps = {
   name: string;
   displayText: string;
   icon?: React.ReactElement;

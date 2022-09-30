@@ -4,6 +4,7 @@ import loadingsStrings from "./defaults/loadings";
 import navStrings from "./defaults/nav";
 import commonStrings from "./defaults/commons";
 import profileStrings from "./defaults/profile";
+import financeStrings from "./defaults/finance";
 
 type AuthStringKey = keyof typeof authenticationStrings;
 type SettingsKey = keyof typeof settingsStrings;
@@ -11,6 +12,7 @@ type LoadingsKey = keyof typeof loadingsStrings;
 type NavKey = keyof typeof navStrings;
 type CommonKey = keyof typeof commonStrings;
 type ProfileKey = keyof typeof profileStrings;
+type FinanceKey = keyof typeof financeStrings;
 
 type StringsMessageKey =
   | AuthStringKey
@@ -18,19 +20,22 @@ type StringsMessageKey =
   | LoadingsKey
   | NavKey
   | CommonKey
-  | ProfileKey;
+  | ProfileKey
+  | FinanceKey;
 
-const fixtures = {
+export const fixtures = {
   authenticationStrings: { ...authenticationStrings },
   settingsStrings: { ...settingsStrings },
   loadingsStrings: { ...loadingsStrings },
   navStrings: { ...navStrings },
   commonStrings: { ...commonStrings },
   profileStrings: { ...profileStrings },
+  financeStrings: { ...financeStrings },
 };
 
 /**
- *
+ * @deprecated soon will use another simply method to get Strings
+ * Text
  * @param key
  * @returns
  */
@@ -62,6 +67,10 @@ export const getMessage = (
     case "profileStrings": {
       const section = fixtures[key] as typeof profileStrings;
       return section[messageKey as ProfileKey];
+    }
+    case "financeStrings": {
+      const section = fixtures[key] as typeof financeStrings;
+      return section[messageKey as FinanceKey];
     }
     default:
       return messageKey;

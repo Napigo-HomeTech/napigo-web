@@ -1,7 +1,7 @@
 import { VStack } from "@chakra-ui/react";
 import { uniqueId } from "lodash";
 import React from "react";
-import { MenuItem } from "./MenuItem";
+import { MenuItem, MenuItemProps } from "./MenuItem";
 
 export type MenuItem = {
   /**
@@ -25,12 +25,12 @@ export type MenuItem = {
 };
 
 type VerticalMenuProps = {
-  menus: MenuItem[];
+  menus: MenuItemProps[];
 };
 export const VerticalMenu: React.FC<VerticalMenuProps> = ({ menus }) => {
   return (
     <VStack py="30px" px="20px">
-      {menus.map((item: MenuItem) => (
+      {menus.map((item: MenuItemProps) => (
         <MenuItem key={uniqueId()} {...item} />
       ))}
     </VStack>
