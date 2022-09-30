@@ -1,25 +1,21 @@
 import { fixtures } from "@/constant/datasets/fixtures";
-import { VerticalMenu } from "@/elements";
-import { VerticalMenuLayout } from "@/layouts/VerticalMenuLayout";
-import { Heading, HStack } from "@chakra-ui/react";
 import React from "react";
 import { MdMonetizationOn, MdMoneyOff } from "react-icons/md";
 import { Navigate, Route, Routes } from "react-router-dom";
+import { ModulePage } from "../ModulePage";
 
-const ICON_SIZE = 20;
-
-const FINANCE_MENUS = [
+const financeMenus = [
   {
-    icon: <MdMonetizationOn size={ICON_SIZE} />,
+    icon: <MdMonetizationOn />,
     name: "Banks",
     displayText: fixtures.financeStrings["finance.menu.bank.text"],
-    to: "",
+    goto: "",
   },
   {
-    icon: <MdMoneyOff size={ICON_SIZE} />,
+    icon: <MdMoneyOff />,
     name: "Debt",
     displayText: fixtures.financeStrings["finance.menu.debt.text"],
-    to: "/user/settings/authentication",
+    goto: "/user/settings/authentication",
   },
 ];
 
@@ -28,16 +24,10 @@ export const FinanceContainer: React.FC = () => {
     <Routes>
       <Route
         element={
-          <VerticalMenuLayout
-            menu={<VerticalMenu menus={FINANCE_MENUS} />}
+          <ModulePage
+            menus={financeMenus}
             contentBackground="inherit"
-            menuTopExtras={
-              <HStack width="full" p="20px" paddingBottom={0} margin={0}>
-                <Heading size="lg" fontWeight="semibold">
-                  {fixtures.financeStrings["finance.page.title"]}
-                </Heading>
-              </HStack>
-            }
+            title="Finance"
           />
         }
       >
