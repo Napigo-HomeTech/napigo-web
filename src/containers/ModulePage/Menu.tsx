@@ -1,5 +1,5 @@
 import React, { useMemo } from "react";
-import { Button } from "@chakra-ui/react";
+import { Button, Text } from "@chakra-ui/react";
 import { Link as RouterLink, useLocation } from "react-router-dom";
 import { MenuItem } from ".";
 
@@ -23,7 +23,7 @@ export const Menu: React.FC<MenuItem> = (props) => {
       variant={"ghost"}
       bg={isActive ? activeMenuBg : undefined}
       color={isActive ? activeMenuTextColor : undefined}
-      leftIcon={React.cloneElement(icon, { size: 20 })}
+      leftIcon={React.cloneElement(icon, { size: 16 })}
       justifyContent="start"
       _hover={{
         bg: isActive ? activeMenuBg : undefined,
@@ -31,7 +31,9 @@ export const Menu: React.FC<MenuItem> = (props) => {
       }}
       _active={{ bg: "transparent" }}
     >
-      {displayText}
+      <Text ml="10px" fontWeight="medium">
+        {displayText}
+      </Text>
     </Button>
   );
 };

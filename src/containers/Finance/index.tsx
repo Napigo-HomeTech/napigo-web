@@ -1,21 +1,45 @@
 import { fixtures } from "@/constant/datasets/fixtures";
 import React from "react";
-import { MdMonetizationOn, MdMoneyOff } from "react-icons/md";
+import {
+  FaDollarSign as BudgetIcon,
+  FaCoins as AccountIcon,
+  FaChartLine as ReportIcon,
+  FaCopy as TemplateIcon,
+  FaSlidersH as SettingIcon,
+} from "react-icons/fa";
 import { Navigate, Route, Routes } from "react-router-dom";
 import { ModulePage } from "../ModulePage";
 
 const financeMenus = [
   {
-    icon: <MdMonetizationOn />,
-    name: "Banks",
-    displayText: fixtures.financeStrings["finance.menu.bank.text"],
+    icon: <AccountIcon />,
+    name: "accounts",
+    displayText: fixtures.financeStrings["finance.menu.accounts.text"],
     goto: "",
   },
   {
-    icon: <MdMoneyOff />,
-    name: "Debt",
-    displayText: fixtures.financeStrings["finance.menu.debt.text"],
-    goto: "/user/settings/authentication",
+    icon: <BudgetIcon />,
+    name: "budget",
+    displayText: fixtures.financeStrings["finance.menu.budget.text"],
+    goto: "budgeting",
+  },
+  {
+    icon: <ReportIcon />,
+    name: "report",
+    displayText: fixtures.financeStrings["finance.menu.report.text"],
+    goto: "report",
+  },
+  {
+    icon: <TemplateIcon />,
+    name: "template",
+    displayText: fixtures.financeStrings["finance.menu.template.text"],
+    goto: "template",
+  },
+  {
+    icon: <SettingIcon />,
+    name: "settings",
+    displayText: fixtures.financeStrings["finance.menu.settings.text"],
+    goto: "settings",
   },
 ];
 
@@ -31,8 +55,12 @@ export const FinanceContainer: React.FC = () => {
           />
         }
       >
-        <Route index element={<Navigate to="banks" />} />
-        <Route path="banks" element={<div>Hello Banks</div>} />
+        <Route index element={<Navigate to="accounts" />} />
+        <Route path="accounts" element={<div>Accounts</div>} />
+        <Route path="budgeting" element={<div>Budgeting</div>} />
+        <Route path="report" element={<div>Report</div>} />
+        <Route path="template" element={<div>Template</div>} />
+        <Route path="settings" element={<div>Settings</div>} />
       </Route>
     </Routes>
   );
