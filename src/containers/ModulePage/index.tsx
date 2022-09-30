@@ -68,7 +68,7 @@ export const ModulePage: React.FC<ModulePageProps> = (props) => {
         )}
         <VStack py="30px" px="20px">
           {menus.map((item: MenuItem) => (
-            <Menu {...item} key={uniqueId()} />
+            <Menu key={uniqueId()} {...item} />
           ))}
         </VStack>
       </Box>
