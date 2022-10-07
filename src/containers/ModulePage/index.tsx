@@ -44,13 +44,24 @@ export const ModulePage: React.FC<ModulePageProps> = (props) => {
   const { menus, contentBackground, title } = props;
   return (
     <HStack
-      gap={2}
+      spacing={0}
+      display={"flex"}
+      flexDirection={"row"}
       alignItems="start"
-      position="sticky"
+      justifyContent={"flex-start"}
       w="100vw"
       bg={contentBackground}
     >
-      <Box width="300px" top="70px" left={0} position="sticky" height="auto">
+      <Box
+        width="300px"
+        top="70px"
+        position={"sticky"}
+        left={0}
+        margin={0}
+        minHeight={"calc(100vh - 70px)"}
+        height="auto"
+        borderRightWidth={"0.5px"}
+      >
         {title && (
           <VStack
             width="full"
@@ -72,7 +83,7 @@ export const ModulePage: React.FC<ModulePageProps> = (props) => {
           ))}
         </VStack>
       </Box>
-      <Box flex={1}>
+      <Box flex={1} margin={0} paddingX={"20px"}>
         <Outlet />
       </Box>
     </HStack>
