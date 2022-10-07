@@ -1,4 +1,5 @@
 import { fixtures } from "@/constant/datasets/fixtures";
+import { AccountsPage } from "@/pages/Finance/Accounts";
 import React from "react";
 import {
   FaDollarSign as BudgetIcon,
@@ -56,7 +57,7 @@ export const FinanceContainer: React.FC = () => {
         }
       >
         <Route index element={<Navigate to="accounts" />} />
-        <Route path="accounts" element={<div>Accounts</div>} />
+        <Route path="accounts" element={<AccountsPage />} />
         <Route path="budgeting" element={<div>Budgeting</div>} />
         <Route path="report" element={<div>Report</div>} />
         <Route path="template" element={<div>Template</div>} />
