@@ -5,25 +5,25 @@ import { OtpForm } from "./OtpForm";
 import { PhoneNumberForm } from "./PhoneNumberForm";
 
 type ContextProps = {
-  verificationId: string | null;
-  setVerificationId: (id: string) => void;
-  confirmationResult: ConfirmationResult | null;
-  setConfirmationResult: (obj: ConfirmationResult) => void;
-  setFormType: (type: FormType) => void;
-  cachePhoneNumber: string | null;
-  setCachePhoneNumber: (phoneNum: string) => void;
+    verificationId: string | null;
+    setVerificationId: (id: string) => void;
+    confirmationResult: ConfirmationResult | null;
+    setConfirmationResult: (obj: ConfirmationResult) => void;
+    setFormType: (type: FormType) => void;
+    cachePhoneNumber: string | null;
+    setCachePhoneNumber: (phoneNum: string) => void;
 };
 
 type FormType = "phone-number" | "otp";
 
 const AddMobileFormContext = createContext<ContextProps>({
-  verificationId: null,
-  setVerificationId: DefaultCallback,
-  confirmationResult: null,
-  setConfirmationResult: DefaultCallback,
-  setFormType: DefaultCallback,
-  cachePhoneNumber: null,
-  setCachePhoneNumber: DefaultCallback,
+    verificationId: null,
+    setVerificationId: DefaultCallback,
+    confirmationResult: null,
+    setConfirmationResult: DefaultCallback,
+    setFormType: DefaultCallback,
+    cachePhoneNumber: null,
+    setCachePhoneNumber: DefaultCallback,
 });
 
 /**
@@ -31,7 +31,7 @@ const AddMobileFormContext = createContext<ContextProps>({
  * @returns
  */
 export const useAddMobileFormContext = () => {
-  return useContext(AddMobileFormContext);
+    return useContext(AddMobileFormContext);
 };
 
 /**
@@ -39,28 +39,27 @@ export const useAddMobileFormContext = () => {
  * @returns
  */
 export const MobileForm: React.FC = () => {
-  const [formType, setFormType] = useState<FormType>("phone-number");
-  const [verificationId, setVerificationId] = useState<string | null>(null);
+    const [formType, setFormType] = useState<FormType>("phone-number");
+    const [verificationId, setVerificationId] = useState<string | null>(null);
 
-  const [confirmationResult, setConfirmationResult] =
-    useState<ConfirmationResult | null>(null);
+    const [confirmationResult, setConfirmationResult] = useState<ConfirmationResult | null>(null);
 
-  const [cachePhoneNumber, setCachePhoneNumber] = useState<string | null>(null);
+    const [cachePhoneNumber, setCachePhoneNumber] = useState<string | null>(null);
 
-  const value = {
-    verificationId,
-    setVerificationId,
-    confirmationResult,
-    setConfirmationResult,
-    setFormType,
-    cachePhoneNumber,
-    setCachePhoneNumber,
-  };
+    const value = {
+        verificationId,
+        setVerificationId,
+        confirmationResult,
+        setConfirmationResult,
+        setFormType,
+        cachePhoneNumber,
+        setCachePhoneNumber,
+    };
 
-  return (
-    <AddMobileFormContext.Provider value={value}>
-      {formType === "phone-number" && <PhoneNumberForm />}
-      {formType === "otp" && <OtpForm />}
-    </AddMobileFormContext.Provider>
-  );
+    return (
+        <AddMobileFormContext.Provider value={value}>
+            {formType === "phone-number" && <PhoneNumberForm />}
+            {formType === "otp" && <OtpForm />}
+        </AddMobileFormContext.Provider>
+    );
 };

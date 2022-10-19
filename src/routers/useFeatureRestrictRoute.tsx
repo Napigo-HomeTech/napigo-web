@@ -8,12 +8,12 @@ import { useNavigate } from "react-router-dom";
  * @param feature
  */
 export const useFeatureRestrictRoute = (feature: string) => {
-  const enable = useFeature(feature).on;
-  const navigate = useNavigate();
+    const enable = useFeature(feature).on;
+    const navigate = useNavigate();
 
-  useEffect(() => {
-    if (!enable) {
-      navigate("/");
-    }
-  }, [enable, navigate]);
+    useEffect(() => {
+        if (!enable) {
+            navigate("/");
+        }
+    }, [enable, navigate]);
 };

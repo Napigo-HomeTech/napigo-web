@@ -14,23 +14,16 @@ type CommonKey = keyof typeof commonStrings;
 type ProfileKey = keyof typeof profileStrings;
 type FinanceKey = keyof typeof financeStrings;
 
-type StringsMessageKey =
-  | AuthStringKey
-  | SettingsKey
-  | LoadingsKey
-  | NavKey
-  | CommonKey
-  | ProfileKey
-  | FinanceKey;
+type StringsMessageKey = AuthStringKey | SettingsKey | LoadingsKey | NavKey | CommonKey | ProfileKey | FinanceKey;
 
 export const fixtures = {
-  authenticationStrings: { ...authenticationStrings },
-  settingsStrings: { ...settingsStrings },
-  loadingsStrings: { ...loadingsStrings },
-  navStrings: { ...navStrings },
-  commonStrings: { ...commonStrings },
-  profileStrings: { ...profileStrings },
-  financeStrings: { ...financeStrings },
+    authenticationStrings: { ...authenticationStrings },
+    settingsStrings: { ...settingsStrings },
+    loadingsStrings: { ...loadingsStrings },
+    navStrings: { ...navStrings },
+    commonStrings: { ...commonStrings },
+    profileStrings: { ...profileStrings },
+    financeStrings: { ...financeStrings },
 };
 
 /**
@@ -39,40 +32,37 @@ export const fixtures = {
  * @param key
  * @returns
  */
-export const getMessage = (
-  key: keyof typeof fixtures,
-  messageKey: StringsMessageKey
-) => {
-  switch (key) {
-    case "authenticationStrings": {
-      const section = fixtures[key] as typeof authenticationStrings;
-      return section[messageKey as AuthStringKey];
+export const getMessage = (key: keyof typeof fixtures, messageKey: StringsMessageKey) => {
+    switch (key) {
+        case "authenticationStrings": {
+            const section = fixtures[key] as typeof authenticationStrings;
+            return section[messageKey as AuthStringKey];
+        }
+        case "settingsStrings": {
+            const section = fixtures[key] as typeof settingsStrings;
+            return section[messageKey as SettingsKey];
+        }
+        case "loadingsStrings": {
+            const section = fixtures[key] as typeof loadingsStrings;
+            return section[messageKey as LoadingsKey];
+        }
+        case "navStrings": {
+            const section = fixtures[key] as typeof navStrings;
+            return section[messageKey as NavKey];
+        }
+        case "commonStrings": {
+            const section = fixtures[key] as typeof commonStrings;
+            return section[messageKey as CommonKey];
+        }
+        case "profileStrings": {
+            const section = fixtures[key] as typeof profileStrings;
+            return section[messageKey as ProfileKey];
+        }
+        case "financeStrings": {
+            const section = fixtures[key] as typeof financeStrings;
+            return section[messageKey as FinanceKey];
+        }
+        default:
+            return messageKey;
     }
-    case "settingsStrings": {
-      const section = fixtures[key] as typeof settingsStrings;
-      return section[messageKey as SettingsKey];
-    }
-    case "loadingsStrings": {
-      const section = fixtures[key] as typeof loadingsStrings;
-      return section[messageKey as LoadingsKey];
-    }
-    case "navStrings": {
-      const section = fixtures[key] as typeof navStrings;
-      return section[messageKey as NavKey];
-    }
-    case "commonStrings": {
-      const section = fixtures[key] as typeof commonStrings;
-      return section[messageKey as CommonKey];
-    }
-    case "profileStrings": {
-      const section = fixtures[key] as typeof profileStrings;
-      return section[messageKey as ProfileKey];
-    }
-    case "financeStrings": {
-      const section = fixtures[key] as typeof financeStrings;
-      return section[messageKey as FinanceKey];
-    }
-    default:
-      return messageKey;
-  }
 };

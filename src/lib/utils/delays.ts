@@ -10,11 +10,11 @@ const DEFAULT_DELAY = 2000;
  * @param delay
  */
 export const delayInvoke = (cb: () => void, delay?: number) => {
-  if (import.meta.env.VITE_MOCK_DELAYS === "true") {
-    setTimeout(() => {
-      cb();
-    }, delay ?? DEFAULT_DELAY);
-  } else {
-    cb();
-  }
+    if (import.meta.env.VITE_MOCK_DELAYS === "true") {
+        setTimeout(() => {
+            cb();
+        }, delay ?? DEFAULT_DELAY);
+    } else {
+        cb();
+    }
 };
