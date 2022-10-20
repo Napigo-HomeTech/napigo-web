@@ -3,7 +3,7 @@ import { Button, Menu, MenuButton, MenuList, MenuItem, HStack, Text, Box } from 
 import { uniqueId } from "lodash";
 import { MdSpaceDashboard as ServicesIcon } from "react-icons/md";
 import { IoChevronDown as DropdownIcon } from "react-icons/io5";
-import { getMessage } from "@/constant/datasets/fixtures";
+import { fixtures } from "@/constant/datasets/fixtures";
 import { Link as RouterLink } from "react-router-dom";
 import { featureFlags } from "@/config/feature-flags";
 /**
@@ -55,7 +55,7 @@ export const ServiceMenu: React.FC = () => {
     return (
         <Menu>
             <MenuButton as={Button} leftIcon={<ServicesIcon />} rightIcon={<DropdownIcon />} colorScheme="brand">
-                {getMessage("navStrings", "service.buttontext")}
+                {fixtures.navStrings["service.buttontext"]}
             </MenuButton>
             <MenuList width="auto" maxHeight="600px" overflow="scroll">
                 {ServiceItems.map((item) => (

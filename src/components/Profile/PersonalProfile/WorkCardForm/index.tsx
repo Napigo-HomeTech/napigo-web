@@ -5,7 +5,7 @@ import { getOrganisationAutoComplete } from "@/lib/Apis/organisation";
 import { Divider, FormControl, FormLabel, Grid, GridItem, Heading, HStack } from "@chakra-ui/react";
 import { AsyncCreatableSelect, Select } from "chakra-react-select";
 import React from "react";
-import { getMessage } from "@/constant/datasets/fixtures";
+import { fixtures } from "@/constant/datasets/fixtures";
 
 const employmentTypeOptions = [
     {
@@ -46,26 +46,26 @@ export const WorkCardForm: React.FC = () => {
     return (
         <Card width="100%">
             <HStack width="100%">
-                <Heading size="md">{getMessage("profileStrings", "work.section.title")}</Heading>
+                <Heading size="md">{fixtures.profileStrings["work.section.title"]}</Heading>
             </HStack>
             <Divider />
             <Grid h="200px" templateRows="repeat(2, 1fr)" templateColumns="repeat(4, 1fr)" gap={4}>
                 <GridItem colSpan={2}>
                     <TextField
-                        label={getMessage("profileStrings", "work.job-title.input.label")}
-                        placeholder={getMessage("profileStrings", "work.job-title.input.placeholder")}
+                        label={fixtures.profileStrings["work.job-title.input.label"]}
+                        placeholder={fixtures.profileStrings["work.job-title.input.placeholder"]}
                     />
                 </GridItem>
                 <GridItem colSpan={2}>
                     <FormControl>
-                        <FormLabel>{getMessage("profileStrings", "work.employment-type.select.label")}</FormLabel>
+                        <FormLabel>{fixtures.profileStrings["work.employment-type.select.label"]}</FormLabel>
                         <Select selectedOptionStyle="check" size="md" useBasicStyles placeholder="Employment Type" options={employmentTypeOptions} />
                     </FormControl>
                 </GridItem>
 
                 <GridItem colSpan={2}>
                     <FormControl>
-                        <FormLabel>{getMessage("profileStrings", "work.organization.select.label")}</FormLabel>
+                        <FormLabel>{fixtures.profileStrings["work.organization.select.label"]}</FormLabel>
                         <AsyncCreatableSelect
                             selectedOptionStyle="check"
                             isMulti={false}
@@ -94,7 +94,7 @@ export const WorkCardForm: React.FC = () => {
                                      *@TODO need to redefined date formating accross entities and layers
                                      */
                                 }}
-                                label={getMessage("profileStrings", "work.start.input.label")}
+                                label={fixtures.profileStrings["work.start.input.label"]}
                             />
                         </FormControl>
                         <FormControl>
@@ -104,7 +104,7 @@ export const WorkCardForm: React.FC = () => {
                                      *@TODO need to redefined date formating accross entities and layers
                                      */
                                 }}
-                                label={getMessage("profileStrings", "work.until.input.label")}
+                                label={fixtures.profileStrings["work.until.input.label"]}
                             />
                         </FormControl>
                     </HStack>

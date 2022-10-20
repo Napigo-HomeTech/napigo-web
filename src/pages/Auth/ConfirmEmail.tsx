@@ -7,7 +7,7 @@ import { getAuth } from "firebase/auth";
 import { Box, Heading, Text, Button, HStack } from "@chakra-ui/react";
 import { Card } from "@/elements";
 import { Navigate } from "react-router-dom";
-import { getMessage } from "@/constant/datasets/fixtures";
+import { fixtures } from "@/constant/datasets/fixtures";
 
 const auth = getAuth();
 
@@ -18,9 +18,9 @@ export const ConfirmEmail: React.FC = () => {
 
     const DescriptionText = useMemo(() => {
         if (loadStatus === "onsuccess") {
-            return getMessage("authenticationStrings", "email-confirmation.post.description");
+            return fixtures.authenticationStrings["email-confirmation.post.description"];
         }
-        return getMessage("authenticationStrings", "email-confirmation.pre.description");
+        return fixtures.authenticationStrings["email-confirmation.pre.description"];
     }, [loadStatus]);
 
     const sendEmail = async (_: React.MouseEvent) => {
@@ -60,17 +60,17 @@ export const ConfirmEmail: React.FC = () => {
 
                 <Heading size="md">
                     {loadStatus === "onsuccess"
-                        ? getMessage("authenticationStrings", "email-confirmation.post.title")
-                        : getMessage("authenticationStrings", "email-confirmation.pre.title")}
+                        ? fixtures.authenticationStrings["email-confirmation.post.title"]
+                        : fixtures.authenticationStrings["email-confirmation.pre.title"]}
                 </Heading>
                 <Text textAlign="center">{DescriptionText}</Text>
 
                 <HStack gap={2}>
                     <Button colorScheme="brand" onClick={sendEmail} isLoading={loadStatus === "loading"}>
-                        {getMessage("authenticationStrings", `email-confirmation.${loadStatus}.buttontext`)}
+                        {fixtures.authenticationStrings[`email-confirmation.${loadStatus}.buttontext`]}
                     </Button>
                     <Button variant="ghost" onClick={handleLogout}>
-                        {getMessage("authenticationStrings", "email-confirmation.logoutnow.buttontext")}
+                        {fixtures.authenticationStrings["email-confirmation.logoutnow.buttontext"]}
                     </Button>
                 </HStack>
             </Card>

@@ -23,7 +23,7 @@ import {
 } from "@chakra-ui/react";
 import { MdAccountCircle as ProfileIcon, MdLaunch as AccountSettingIcon, MdGroup as MembersIcon, MdLogout as LogoutIcon } from "react-icons/md";
 import { SmallAddIcon } from "@chakra-ui/icons";
-import { getMessage } from "@/constant/datasets/fixtures";
+import { fixtures } from "@/constant/datasets/fixtures";
 
 const MenuIconSize = 20;
 
@@ -59,7 +59,7 @@ export const UserMenu: React.FC = () => {
                     <Avatar size={"sm"} name={account?.displayName ?? account?.email} src={account?.photo_url ?? ""} />
                 </MenuButton>
                 <MenuList w="270px">
-                    <MenuGroup title={getMessage("navStrings", "usermenu.dropdown.title")}>
+                    <MenuGroup title={fixtures.navStrings["usermenu.dropdown.title"]}>
                         <HStack p={"10px"}>
                             <Avatar name={account?.displayName ?? account?.email} src={account?.photo_url ?? ""} />
                             <VStack justifyContent={"start"} alignItems="start">
@@ -78,7 +78,7 @@ export const UserMenu: React.FC = () => {
                             replace={window.location.pathname.includes("settings/general")}
                             icon={<AccountSettingIcon size={MenuIconSize} />}
                         >
-                            {getMessage("navStrings", "usermenu.dropdown.item.setting.linktext")}
+                            {fixtures.navStrings["usermenu.dropdown.item.setting.linktext"]}
                         </MenuItem>
                     </IfFeatureEnabled>
 
@@ -89,7 +89,7 @@ export const UserMenu: React.FC = () => {
                             replace={window.location.pathname.includes("profile")}
                             icon={<ProfileIcon size={MenuIconSize} />}
                         >
-                            {getMessage("navStrings", "usermenu.dropdown.item.profile.linktext")}
+                            {fixtures.navStrings["usermenu.dropdown.item.profile.linktext"]}
                         </MenuItem>
                     </IfFeatureEnabled>
 
@@ -100,13 +100,13 @@ export const UserMenu: React.FC = () => {
                             replace={window.location.pathname.includes("members")}
                             icon={<MembersIcon size={MenuIconSize} />}
                         >
-                            {getMessage("navStrings", "usermenu.dropdown.item.members.linktext")}
+                            {fixtures.navStrings["usermenu.dropdown.item.members.linktext"]}
                         </MenuItem>
                     </IfFeatureEnabled>
 
                     <Divider orientation="horizontal" />
                     <MenuItem icon={<LogoutIcon size={MenuIconSize} />} onClick={handleLogout}>
-                        {getMessage("navStrings", "usermenu.dropdown.item.logout.linktext")}
+                        {fixtures.navStrings["usermenu.dropdown.item.logout.linktext"]}
                     </MenuItem>
                 </MenuList>
             </>

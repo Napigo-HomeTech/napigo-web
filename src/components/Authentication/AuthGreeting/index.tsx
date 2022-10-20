@@ -1,7 +1,7 @@
 import { NapigoLogoLg as Logo } from "../../../common/Logo";
 import React from "react";
 import { Box, VStack, Text } from "@chakra-ui/react";
-import { getMessage } from "@/constant/datasets/fixtures";
+import { fixtures } from "@/constant/datasets/fixtures";
 
 type AuthGreetingProps = {
     type: "register" | "login";
@@ -18,7 +18,7 @@ export const AuthGreeting: React.FC<AuthGreetingProps> = ({ type }) => {
                 px={{ base: "20px", md: 0 }}
                 fontSize={{ base: "sm", md: "md" }}
             >
-                {getMessage("authenticationStrings", `${type}.subtext`)}
+                {fixtures.authenticationStrings[`${type}.subtext`]}
             </Text>
         </VStack>
     );

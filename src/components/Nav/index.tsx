@@ -7,7 +7,7 @@ import { MdOutlineNotifications as NotifIcon, MdOutlineEmail as MessageIcon } fr
 import { Link } from "react-router-dom";
 import { Box, HStack, IconButton, useColorModeValue } from "@chakra-ui/react";
 import { SearchField } from "@/elements/Form";
-import { getMessage } from "@/constant/datasets/fixtures";
+import { fixtures } from "@/constant/datasets/fixtures";
 import { ServiceMenu } from "./ServiceMenu";
 
 export const Nav: React.FunctionComponent = () => {
@@ -43,7 +43,7 @@ export const Nav: React.FunctionComponent = () => {
                                 <SearchField
                                     autoComplete="off"
                                     spellCheck={false}
-                                    placeholder={getMessage("navStrings", "search.placeholder")}
+                                    placeholder={fixtures.navStrings["search.placeholder"]}
                                     bg="base-2-bg"
                                 />
                             </Box>

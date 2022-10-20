@@ -5,23 +5,23 @@ import React from "react";
 import { LoginEmailForm } from "@/components/Settings/Authentication/LoginEmailForm";
 import { LoginPasswordForm } from "@/components/Settings/Authentication/LoginPasswordForm";
 import { MobileNumberSetting } from "@/components/Settings/Authentication/MobileNumberSetting";
-import { getMessage } from "@/constant/datasets/fixtures";
+import { fixtures } from "@/constant/datasets/fixtures";
 
 export const SettingAuthenticationPage: React.FC = () => {
     return (
         <VStack display="flex" flexDirection="column" maxWidth="700px" py="30px" gap={5}>
             <HStack w="100%" justifyContent="space-between" p={0} alignItems="end">
                 <Heading size="lg" fontWeight={"normal"}>
-                    {getMessage("settingsStrings", "authentication.title")}
+                    {fixtures.settingsStrings["authentication.title"]}
                 </Heading>
                 <Button as={RouterLink} to={`/user/console`} size="sm">
-                    {getMessage("settingsStrings", "authentication.back-console.buttontext")}
+                    {fixtures.settingsStrings["authentication.back-console.buttontext"]}
                 </Button>
             </HStack>
-            <SectionContainer title={getMessage("settingsStrings", "authentication.emailloginform.heading")}>
+            <SectionContainer title={fixtures.settingsStrings["authentication.emailloginform.heading"]}>
                 <LoginEmailForm />
             </SectionContainer>
-            <SectionContainer title={getMessage("settingsStrings", "authentication.passwordform.heading")}>
+            <SectionContainer title={fixtures.settingsStrings["authentication.passwordform.heading"]}>
                 <LoginPasswordForm />
             </SectionContainer>
             <MobileNumberSetting />

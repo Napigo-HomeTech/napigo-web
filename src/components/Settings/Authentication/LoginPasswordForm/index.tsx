@@ -5,7 +5,7 @@ import { featureFlags } from "@/config/feature-flags";
 import { Form } from "@/elements";
 import { useChangePasswordSubmit } from "./useChangePasswordSubmit";
 import { FormAlert } from "./FormAlert";
-import { getMessage } from "@/constant/datasets/fixtures";
+import { fixtures } from "@/constant/datasets/fixtures";
 
 const inputKeys = {
     "old-password": "old-password",
@@ -35,7 +35,7 @@ export const LoginPasswordForm: React.FC = () => {
                 {!changingPassword && (
                     <Fragment>
                         <Form.PasswordField
-                            value={getMessage("settingsStrings", "authentication.passwordform.readonly-input")}
+                            value={fixtures.settingsStrings["authentication.passwordform.readonly-input"]}
                             contentEditable={false}
                             isReadOnly
                             alwaysMask
@@ -52,11 +52,11 @@ export const LoginPasswordForm: React.FC = () => {
                         <HStack justifyContent="flex-start" w="100%">
                             <IfFeatureEnabled feature={featureFlags.enable_password_change}>
                                 <Button size="sm" onClick={onChangingPassword}>
-                                    {getMessage("settingsStrings", "authentication.passwordform.changepassword.buttontext")}
+                                    {fixtures.settingsStrings["authentication.passwordform.changepassword.buttontext"]}
                                 </Button>
                             </IfFeatureEnabled>
                             <Button size="sm" variant="outline" colorScheme="blue">
-                                {getMessage("settingsStrings", "authentication.passwordform.forgotpassword.buttontext")}
+                                {fixtures.settingsStrings["authentication.passwordform.forgotpassword.buttontext"]}
                             </Button>
                         </HStack>
                     </Fragment>
@@ -64,17 +64,17 @@ export const LoginPasswordForm: React.FC = () => {
                 {changingPassword && (
                     <VStack as="form" onSubmit={submit} width="100%" gap={4}>
                         <Form.PasswordField
-                            label={getMessage("settingsStrings", "authentication.passwordform.input.currentpassword.label")}
+                            label={fixtures.settingsStrings["authentication.passwordform.input.currentpassword.label"]}
                             id="old-password"
                             error={inputErrors["old-password"]}
                             contentEditable={false}
                         />
                         <Form.PasswordField
-                            label={getMessage("settingsStrings", "authentication.passwordform.input.newpassword.label")}
+                            label={fixtures.settingsStrings["authentication.passwordform.input.newpassword.label"]}
                             id="new-password"
                             error={inputErrors["new-password"]}
                             contentEditable={false}
-                            helperText={getMessage("settingsStrings", "authentication.passwordform.input.newpassword.helpertext")}
+                            helperText={fixtures.settingsStrings["authentication.passwordform.input.newpassword.helpertext"]}
                         />
                         <FormAlert
                             visible={formState === "onerror"}
@@ -87,7 +87,7 @@ export const LoginPasswordForm: React.FC = () => {
 
                         <HStack justifyContent="flex-start" w="100%">
                             <Button type="submit" size="sm" colorScheme="brand" isLoading={formState === "submitting"}>
-                                {getMessage("settingsStrings", "authentication.passwordform.submit.buttontext")}
+                                {fixtures.settingsStrings["authentication.passwordform.submit.buttontext"]}
                             </Button>
                             <Button
                                 size="sm"
@@ -96,7 +96,7 @@ export const LoginPasswordForm: React.FC = () => {
                                     toggle();
                                 }}
                             >
-                                {getMessage("settingsStrings", "authentication.passwordform.cancel.buttontext")}
+                                {fixtures.settingsStrings["authentication.passwordform.cancel.buttontext"]},
                             </Button>
                         </HStack>
                     </VStack>

@@ -1,4 +1,4 @@
-import { getMessage } from "@/constant/datasets/fixtures";
+import { fixtures } from "@/constant/datasets/fixtures";
 import { Form } from "@/elements";
 import { PhoneIcon } from "@chakra-ui/icons";
 import { Alert, AlertDescription, AlertTitle, Button, HStack, InputLeftElement, VStack } from "@chakra-ui/react";
@@ -13,8 +13,8 @@ export const MobileReadOnly: React.FC = () => {
             {recentlyVerified && (
                 <Alert status="success" variant="left-accent">
                     <VStack alignItems="flex-start">
-                        <AlertTitle>{getMessage("settingsStrings", "authentication.mobileform.verified-alert.title")}</AlertTitle>
-                        <AlertDescription>{getMessage("settingsStrings", "authentication.mobileform.verified-alert.description")}</AlertDescription>
+                        <AlertTitle>{fixtures.settingsStrings["authentication.mobileform.verified-alert.title"]}</AlertTitle>
+                        <AlertDescription>{fixtures.settingsStrings["authentication.mobileform.verified-alert.description"]}</AlertDescription>
                     </VStack>
                 </Alert>
             )}
@@ -23,7 +23,7 @@ export const MobileReadOnly: React.FC = () => {
                 id="mobile_no"
                 isReadOnly
                 value={verifiedPhoneNumber ?? ""}
-                placeholder={getMessage("settingsStrings", "authentication.mobileform.readonly.input.placeholder")}
+                placeholder={fixtures.settingsStrings["authentication.mobileform.readonly.input.placeholder"]}
                 inputLeftElement={
                     <InputLeftElement
                         children={
@@ -35,7 +35,7 @@ export const MobileReadOnly: React.FC = () => {
                 }
             />
             <Button size="sm" onClick={() => setFormType("onUpdate")}>
-                {getMessage("settingsStrings", "authentication.mobileform.update-number.buttontext")}
+                {fixtures.settingsStrings["authentication.mobileform.update-number.buttontext"]}
             </Button>
         </VStack>
     );

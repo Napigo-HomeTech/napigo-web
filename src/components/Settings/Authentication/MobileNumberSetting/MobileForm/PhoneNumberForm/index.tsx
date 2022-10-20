@@ -8,7 +8,7 @@ import { PhoneIcon } from "@chakra-ui/icons";
 import parsePhoneNumber from "libphonenumber-js";
 import { usePhoneNumberForm } from "./usePhoneNumberForm";
 import { useMobileSetting } from "../..";
-import { getMessage } from "@/constant/datasets/fixtures";
+import { fixtures } from "@/constant/datasets/fixtures";
 
 const countries = getCountriesOptionData();
 
@@ -93,7 +93,7 @@ export const PhoneNumberForm: React.FC = () => {
                         selectedOptionStyle="check"
                         size="md"
                         useBasicStyles
-                        placeholder={getMessage("settingsStrings", "authentication.mobileform.notverified.select-country.input.placeholder")}
+                        placeholder={fixtures.settingsStrings["authentication.mobileform.notverified.select-country.input.placeholder"]}
                         defaultValue={getDefaultSelectedCountry()}
                         options={countries}
                         onChange={(data) => {
@@ -105,7 +105,7 @@ export const PhoneNumberForm: React.FC = () => {
                     name="mobile_no"
                     id="mobile_no"
                     value={phoneNumber}
-                    placeholder={getMessage("settingsStrings", "authentication.mobileform.notverified.mobile-no.input.placeholder")}
+                    placeholder={fixtures.settingsStrings["authentication.mobileform.notverified.mobile-no.input.placeholder"]}
                     onChange={(ev) => {
                         setPhoneNumber(formatNumber(ev.target.value ?? ""));
                     }}
@@ -126,18 +126,18 @@ export const PhoneNumberForm: React.FC = () => {
                 <Alert status="error" variant="left-accent">
                     <CloseButton position="absolute" top={2} right={1} onClick={() => setSubmitError(null)} />
                     <Box>
-                        <AlertTitle>{getMessage("commonStrings", "alert.error.title")}</AlertTitle>
+                        <AlertTitle>{fixtures.commonStrings["alert.error.title"]}</AlertTitle>
                         <AlertDescription>{submitError} </AlertDescription>
                     </Box>
                 </Alert>
             )}
             <HStack>
                 <Button size="sm" type="submit" isLoading={formState === "submitting"} disabled={disableSendOtp}>
-                    {getMessage("settingsStrings", "authentication.mobileform.notverified.send-otp.buttontext")}
+                    {fixtures.settingsStrings["authentication.mobileform.notverified.send-otp.buttontext"]}
                 </Button>
                 {formType === "onUpdate" && (
                     <Button size="sm" type="button" variant="ghost" onClick={() => setFormType("verified")}>
-                        {getMessage("settingsStrings", "authentication.mobileform.update-no.cancel.buttontext")}
+                        {fixtures.settingsStrings["authentication.mobileform.update-no.cancel.buttontext"]}
                     </Button>
                 )}
             </HStack>

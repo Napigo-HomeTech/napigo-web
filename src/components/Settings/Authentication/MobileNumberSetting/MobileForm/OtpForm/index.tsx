@@ -17,7 +17,7 @@ import {
 import { useOtpForm } from "./useOtpForm";
 import { isEmpty } from "lodash";
 import { useAddMobileFormContext } from "..";
-import { getMessage } from "@/constant/datasets/fixtures";
+import { fixtures } from "@/constant/datasets/fixtures";
 
 /**
  *
@@ -37,7 +37,7 @@ export const OtpForm: React.FC = () => {
                 <FormLabel
                     children={
                         <>
-                            {getMessage("settingsStrings", "authentication.mobileform.otp-sent.description")}
+                            {fixtures.settingsStrings["authentication.mobileform.otp-sent.description"]}
                             <Text color="brand.500">{cachePhoneNumber}</Text>
                         </>
                     }
@@ -49,10 +49,8 @@ export const OtpForm: React.FC = () => {
                     {formState === "onsuccess" ? (
                         <Alert status="success" variant="left-accent">
                             <VStack alignItems="flex-start">
-                                <AlertTitle>{getMessage("settingsStrings", "authentication.mobileform.otp-success.title")}</AlertTitle>
-                                <AlertDescription>
-                                    {getMessage("settingsStrings", "authentication.mobileform.otp-success.description")}
-                                </AlertDescription>
+                                <AlertTitle>{fixtures.settingsStrings["authentication.mobileform.otp-success.title"]}</AlertTitle>
+                                <AlertDescription>{fixtures.settingsStrings["authentication.mobileform.otp-success.description"]}</AlertDescription>
                             </VStack>
                         </Alert>
                     ) : (
@@ -83,7 +81,7 @@ export const OtpForm: React.FC = () => {
             </FormControl>
             {resending === "sent" && formState === "idle" && (
                 <Text fontSize="sm" color="green.500">
-                    {getMessage("settingsStrings", "authentication.mobileform.otp-resent.description")}
+                    {fixtures.settingsStrings["authentication.mobileform.otp-resent.description"]}
                 </Text>
             )}
 
@@ -98,7 +96,7 @@ export const OtpForm: React.FC = () => {
                         }}
                         isLoading={resending === "sending"}
                     >
-                        {getMessage("settingsStrings", "authentication.mobileform.otp-resend.buttontext")}
+                        {fixtures.settingsStrings["authentication.mobileform.otp-resend.buttontext"]}
                     </Button>
 
                     <Button
@@ -108,7 +106,7 @@ export const OtpForm: React.FC = () => {
                             setFormType?.("phone-number");
                         }}
                     >
-                        {getMessage("settingsStrings", "authentication.mobileform.otp.use-another-number.buttontext")}
+                        {fixtures.settingsStrings["authentication.mobileform.otp.use-another-number.buttontext"]}
                     </Button>
                 </HStack>
             )}

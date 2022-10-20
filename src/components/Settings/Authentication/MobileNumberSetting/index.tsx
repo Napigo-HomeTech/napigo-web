@@ -1,4 +1,4 @@
-import { getMessage } from "@/constant/datasets/fixtures";
+import { fixtures } from "@/constant/datasets/fixtures";
 import { Card } from "@/elements";
 import { getUser } from "@/lib/Auth";
 import { DefaultCallback } from "@/types";
@@ -76,9 +76,9 @@ export const MobileNumberSetting: React.FC = () => {
 
                     <Text>
                         {formType === "notVerified" ? (
-                            <>{getMessage("settingsStrings", "authentication.mobileform.notverified.description")}</>
+                            <>{fixtures.settingsStrings["authentication.mobileform.notverified.description"]}</>
                         ) : (
-                            <>{getMessage("settingsStrings", "authentication.mobileform.verified.description")}</>
+                            <>{fixtures.settingsStrings["authentication.mobileform.verified.description"]}</>
                         )}
                     </Text>
                     {formType === "onLoading" && <></>}
@@ -95,7 +95,7 @@ const HeadBar = () => (
     <VStack width="inherit">
         <HStack width="inherit">
             <Heading size="sm" fontWeight="bold" mb="5px">
-                {getMessage("settingsStrings", "authentication.mobileform.heading")}
+                {fixtures.settingsStrings["authentication.mobileform.heading"]},
             </Heading>
             <MobileIcon size={20} />
         </HStack>

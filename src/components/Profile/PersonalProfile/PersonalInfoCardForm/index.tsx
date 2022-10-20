@@ -1,4 +1,4 @@
-import { getMessage } from "@/constant/datasets/fixtures";
+import { fixtures } from "@/constant/datasets/fixtures";
 import { Card } from "@/elements";
 import { Avatar } from "@/elements/Avatar";
 import { TextField } from "@/elements/Form";
@@ -16,7 +16,7 @@ export const PersonalInfoCardForm: React.FC = () => {
             <HStack width="inherit">
                 <VStack alignItems={"flex-start"} width="inherit">
                     <Heading size="sm" fontWeight={"normal"} color="shadow-text">
-                        {getMessage("profileStrings", "personal-profile.personal-information.avatar.label")}
+                        {fixtures.profileStrings["personal-profile.personal-information.avatar.label"]}
                     </Heading>
                     <HStack alignItems="center" justifyContent="start" gap={4} width="inherit">
                         <Avatar width="60px" height="60px" name={account?.displayName ?? ""} src={user?.photoURL ?? ""} />

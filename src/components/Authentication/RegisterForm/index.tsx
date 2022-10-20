@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useRegisterForm } from "./useRegisterForm";
 import { FormControl, Input, Box, FormHelperText, Alert, AlertIcon, AlertTitle, Button } from "@chakra-ui/react";
 import { Form } from "@/elements";
-import { getMessage } from "@/constant/datasets/fixtures";
+import { fixtures } from "@/constant/datasets/fixtures";
 
 const inputIds = {
     email: "register-email",
@@ -29,7 +29,7 @@ export const RegisterForm: React.FC = () => {
                     isInvalid={inputErrors[inputIds.email] !== undefined}
                     id={inputIds.email}
                     type={"email"}
-                    placeholder={getMessage("authenticationStrings", "register.form.email-input.placeholder")}
+                    placeholder={fixtures.authenticationStrings["register.form.email-input.placeholder"]}
                     autoComplete="off"
                     spellCheck={false}
                 />
@@ -39,14 +39,14 @@ export const RegisterForm: React.FC = () => {
             <Form.PasswordField
                 id={inputIds.psw}
                 error={inputErrors[inputIds.psw]}
-                placeholder={getMessage("authenticationStrings", "register.form.password-input.placholder")}
+                placeholder={fixtures.authenticationStrings["register.form.password-input.placholder"]}
             />
 
             <FormControl>
                 <Input
                     id={inputIds.username}
                     type={"text"}
-                    placeholder={getMessage("authenticationStrings", "register.form.name-input.placeholder")}
+                    placeholder={fixtures.authenticationStrings["register.form.name-input.placeholder"]}
                     autoComplete="off"
                     spellCheck={false}
                 />
@@ -60,11 +60,11 @@ export const RegisterForm: React.FC = () => {
             )}
 
             <Button type="submit" isLoading={formStatus === "submitting"} w={"100%"} colorScheme="brand">
-                {getMessage("authenticationStrings", "register.form.submit.buttontext")}
+                {fixtures.authenticationStrings["register.form.submit.buttontext"]}
             </Button>
 
             <Button w={"100%"} onClick={() => navigate("/auth")}>
-                {getMessage("authenticationStrings", "register.form.login.buttontext")}
+                {fixtures.authenticationStrings["register.form.login.buttontext"]}
             </Button>
         </Box>
     );
