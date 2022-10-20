@@ -12,26 +12,22 @@ import { ChakraProvider } from "@chakra-ui/react";
 import { BuildBanner } from "@/build-banner/BuildBanner";
 
 export const NapigoApp: React.FC = () => {
-  return (
-    <ChakraProvider theme={appTheme}>
-      <BuildBanner />
-      <Router>
-        {import.meta.env.VITE_PRE_LAUNCH === "true" ? (
-          <PreLaunch />
-        ) : (
-          <Provider store={store}>
-            <ErrorBoundary
-              renderFallbackComponent={(err) => (
-                <ErrorDialog err={err} closeable={true} />
-              )}
-            >
-              <FeatureFlag>
-                <App />
-              </FeatureFlag>
-            </ErrorBoundary>
-          </Provider>
-        )}
-      </Router>
-    </ChakraProvider>
-  );
+    return (
+        <ChakraProvider theme={appTheme}>
+            <BuildBanner />
+            <Router>
+                {import.meta.env.VITE_PRE_LAUNCH === "true" ? (
+                    <PreLaunch />
+                ) : (
+                    <Provider store={store}>
+                        <ErrorBoundary renderFallbackComponent={(err) => <ErrorDialog err={err} closeable={true} />}>
+                            <FeatureFlag>
+                                <App />
+                            </FeatureFlag>
+                        </ErrorBoundary>
+                    </Provider>
+                )}
+            </Router>
+        </ChakraProvider>
+    );
 };

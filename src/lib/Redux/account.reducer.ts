@@ -2,11 +2,11 @@ import { createAction, createReducer } from "@reduxjs/toolkit";
 import type { Account } from "@/types";
 
 export interface AccountState {
-  account: Account | null;
+    account: Account | null;
 }
 
 const initialState: AccountState = {
-  account: null,
+    account: null,
 };
 
 /**
@@ -15,16 +15,16 @@ const initialState: AccountState = {
 const setAccount = createAction<Account | null>("account/setAccount");
 
 const accountReducer = createReducer(initialState, (build) => {
-  build.addCase(setAccount, (state, action) => {
-    state.account = action.payload;
-  });
+    build.addCase(setAccount, (state, action) => {
+        state.account = action.payload;
+    });
 });
 
 /**
  * Export all account related actions via actions object
  */
 export const actions = {
-  setAccount,
+    setAccount,
 };
 
 export default accountReducer;

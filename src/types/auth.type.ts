@@ -4,8 +4,8 @@ import { AuthError, User } from "firebase/auth";
  *
  */
 export interface AuthResponseBase {
-  error: AuthError | null;
-  user: User | null;
+    error: AuthError | null;
+    user: User | null;
 }
 /**
  *

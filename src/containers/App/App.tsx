@@ -7,41 +7,40 @@ import { UserRoutes } from "@/routers/UserRoutes";
 const auth = getAuth();
 
 export const App: React.FC = () => {
-  const [isAuthenticated, setAuthenticated] = useState<boolean>(false);
-  const [isAuthing, setIsAuththing] = useState<boolean>(true);
-  const [emailNeedConfirmation, setEmailNeedConfirmation] =
-    useState<boolean>(false);
+    const [isAuthenticated, setAuthenticated] = useState<boolean>(false);
+    const [isAuthing, setIsAuththing] = useState<boolean>(true);
+    const [emailNeedConfirmation, setEmailNeedConfirmation] = useState<boolean>(false);
 
-  useEffect(() => {
-    const authCheck = onAuthStateChanged(auth, (user: User | null) => {
-      setIsAuththing(false);
-      if (user) {
-        setAuthenticated(true);
-        if (!user.emailVerified) {
-          setEmailNeedConfirmation(true);
-        }
-      }
-      if (user === null) {
-        setAuthenticated(false);
-        setEmailNeedConfirmation(false);
-      }
-    });
+    useEffect(() => {
+        const authCheck = onAuthStateChanged(auth, (user: User | null) => {
+            setIsAuththing(false);
+            if (user) {
+                setAuthenticated(true);
+                if (!user.emailVerified) {
+                    setEmailNeedConfirmation(true);
+                }
+            }
+            if (user === null) {
+                setAuthenticated(false);
+                setEmailNeedConfirmation(false);
+            }
+        });
 
-    return () => {
-      authCheck();
-    };
-  }, []);
+        return () => {
+            authCheck();
+        };
+    }, []);
 
-  switch (true) {
-    case isAuthing:
-      return <></>;
-    case !isAuthenticated:
-      return <AuthRoutes />;
-    case isAuthenticated && emailNeedConfirmation:
-      return <PreAuthRoutes />;
-    case isAuthenticated && !emailNeedConfirmation:
-      return <UserRoutes />;
-    default:
-      return <></>;
-  }
+    switch (true) {
+        case isAuthing:
+            return <></>;
+        case !isAuthenticated:
+            return <AuthRoutes />;
+        case isAuthenticated && emailNeedConfirmation:
+            return <PreAuthRoutes />;
+        case isAuthenticated && !emailNeedConfirmation:
+            return <UserRoutes />;
+        default:
+            return <></>;
+    }
 };

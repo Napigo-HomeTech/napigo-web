@@ -1,0 +1,14 @@
+{
+    "editor.fontFamily": "SF Mono, Menlo, Monaco, 'Courier New', monospace",
+    "editor.fontWeight": "400",
+    "workbench.colorCustomizations": {
+        // "editor.background": "#0c1317"
+        // "editor.background": "#060606"
+        // "editor.background": "#327cae"
+    },
+    "prettier.configPath": ".prettierrc",
+    "editor.fontSize": 14,
+    "editor.tabSize": 4,
+    "editor.cursorStyle": "block",
+    "workbench.iconTheme": "material-icon-theme"
+}
