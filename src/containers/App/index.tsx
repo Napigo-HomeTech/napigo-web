@@ -10,13 +10,14 @@ import { PreLaunch } from "./PreLaunch";
 import { appTheme } from "@/themes";
 import { ChakraProvider } from "@chakra-ui/react";
 import { BuildBanner } from "@/build-banner/BuildBanner";
+import { AppConfig } from "@/config/app.config";
 
 export const NapigoApp: React.FC = () => {
     return (
         <ChakraProvider theme={appTheme}>
             <BuildBanner />
             <Router>
-                {import.meta.env.VITE_PRE_LAUNCH === "true" ? (
+                {AppConfig.prelaunch === "true" ? (
                     <PreLaunch />
                 ) : (
                     <Provider store={store}>

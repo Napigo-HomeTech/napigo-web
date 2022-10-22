@@ -1,3 +1,5 @@
+import { AppConfig } from "@/config/app.config";
+
 const DEFAULT_DELAY = 2000;
 
 /**
@@ -10,7 +12,7 @@ const DEFAULT_DELAY = 2000;
  * @param delay
  */
 export const delayInvoke = (cb: () => void, delay?: number) => {
-    if (import.meta.env.VITE_MOCK_DELAYS === "true") {
+    if (AppConfig.mockFetchDelay === "true") {
         setTimeout(() => {
             cb();
         }, delay ?? DEFAULT_DELAY);

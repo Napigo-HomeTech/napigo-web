@@ -1,5 +1,7 @@
+import { AppConfig } from "@/config/app.config";
+
 export const getOrigin = () => {
-    const env = import.meta.env.VITE_ENVIRONMENT;
+    const env = AppConfig.environment;
 
     if (env === "development") {
         return "http://localhost:3000";

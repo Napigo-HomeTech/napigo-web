@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { GrowthBook, GrowthBookProvider } from "@growthbook/growthbook-react";
 import { featureFlags, getFeatureFlags } from "@/config/feature-flags";
+import { AppConfig } from "@/config/app.config";
 
 const growthbook = new GrowthBook({
     trackingCallback: (experiment, result) => {
@@ -16,13 +17,13 @@ type FeatureFlagProps = {
     children: React.ReactNode;
 };
 export const FeatureFlag: React.FC<FeatureFlagProps> = ({ children }) => {
-    const FEATURE_ENDPOINT = import.meta.env.VITE_FEATURES_ENDPOINT ?? "";
+    const FEATURE_ENDPOINT = AppConfig.featureFlag.url;
 
     useEffect(() => {
         /**
          * Use the local featureFlag configs only in development Mode
          */
-        if (import.meta.env.VITE_ENVIRONMENT === "development") {
+        if (AppConfig.environment === "development") {
             growthbook.setFeatures(getFeatureFlags([featureFlags.enable_alternative_email_backup]));
             return;
         }

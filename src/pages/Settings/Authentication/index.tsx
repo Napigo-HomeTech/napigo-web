@@ -9,7 +9,7 @@ import { fixtures } from "@/constant/datasets/fixtures";
 
 export const SettingAuthenticationPage: React.FC = () => {
     return (
-        <VStack display="flex" flexDirection="column" maxWidth="700px" py="30px" gap={5}>
+        <VStack display="flex" flexDirection="column" maxWidth="700px" p="20px" gap={5}>
             <HStack w="100%" justifyContent="space-between" p={0} alignItems="end">
                 <Heading size="lg" fontWeight={"normal"}>
                     {fixtures.settingsStrings["authentication.title"]}

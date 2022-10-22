@@ -68,7 +68,7 @@ export const ModulePage: React.FC<ModulePageProps> = (props) => {
                     ))}
                 </VStack>
             </Box>
-            <Box flex={1} margin={0} paddingX={"20px"}>
+            <Box flex={1} margin={0}>
                 <Outlet />
             </Box>
         </HStack>

@@ -1,5 +1,6 @@
 import { fixtures } from "@/constant/datasets/fixtures";
 import { AccountsPage } from "@/pages/Finance/Accounts";
+import { BudgetsPage } from "@/pages/Finance/Budgeting";
 import React from "react";
 import {
     FaDollarSign as BudgetIcon,
@@ -50,7 +51,7 @@ export const FinanceContainer: React.FC = () => {
             <Route element={<ModulePage menus={financeMenus} contentBackground="inherit" title="Finance" />}>
                 <Route index element={<Navigate to="accounts" />} />
                 <Route path="accounts" element={<AccountsPage />} />
-                <Route path="budgeting" element={<div>Budgeting</div>} />
+                <Route path="budgeting" element={<BudgetsPage />} />
                 <Route path="report" element={<div>Report</div>} />
                 <Route path="template" element={<div>Template</div>} />
                 <Route path="settings" element={<div>Settings</div>} />
