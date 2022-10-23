@@ -54,7 +54,15 @@ const ServiceItems = [
 export const ServiceMenu: React.FC = () => {
     return (
         <Menu>
-            <MenuButton as={Button} leftIcon={<ServicesIcon />} rightIcon={<DropdownIcon />} colorScheme="brand">
+            <MenuButton
+                as={Button}
+                leftIcon={<ServicesIcon />}
+                rightIcon={<DropdownIcon />}
+                bg="brand-gr"
+                color="white"
+                _hover={{ bg: "brand-gr" }}
+                _active={{ bg: "brand-gr" }}
+            >
                 {fixtures.navStrings["service.buttontext"]}
             </MenuButton>
             <MenuList width="auto" maxHeight="600px" overflow="scroll">
@@ -65,7 +73,8 @@ export const ServiceMenu: React.FC = () => {
                             to={item.goto}
                             paddingRight="40px"
                             _hover={{
-                                background: "brandAlpha.300",
+                                background: "brand-gr",
+                                color: "white",
                             }}
                         >
                             <HStack>
@@ -79,7 +88,7 @@ export const ServiceMenu: React.FC = () => {
                                     alignItems="center"
                                     justifyContent="center"
                                     rounded={"base"}
-                                    color="brand.500"
+                                    color="brand-gr"
                                 >
                                     {<item.Icon size={20} />}
                                 </Box>

@@ -39,13 +39,13 @@ const variantGhost: SystemStyleFunction = (props) => {
     const darkActiveBg = transparentize(`${c}.200`, 0.24)(theme);
 
     return {
-        color: mode(`${c}.600`, `${c}.200`)(props),
+        color: mode(`${c}.500`, `${c}.200`)(props),
         bg: "transparent",
         _hover: {
-            bg: mode(`${c}.50`, darkHoverBg)(props),
+            bg: mode(`brandAlpha.200`, darkHoverBg)(props),
         },
         _active: {
-            bg: mode(`${c}.100`, darkActiveBg)(props),
+            bg: mode("brandAlpha.200", darkActiveBg)(props),
         },
     };
 };
