@@ -1,8 +1,9 @@
 import { Pagination } from "@/elements";
 import { BudgetItem, useGetBudgetsQuery } from "@/lib/API/finance-apis";
-import { SimpleGrid, Box, HStack, Heading } from "@chakra-ui/react";
-import { uniqueId } from "lodash";
+import { SimpleGrid, Box, HStack } from "@chakra-ui/react";
 import React, { Fragment, useEffect, useState } from "react";
+import { BudgetsLoader } from "./BudgetsLoader";
+import { BudgetThumbnail } from "./BudgetThumbnail";
 
 const BudgetsGrid: React.FC = () => {
     const [page, setPage] = useState<number>(1);
@@ -15,6 +16,8 @@ const BudgetsGrid: React.FC = () => {
             setTotal(data.counts);
         }
     }, [isLoading]);
+
+    const isDataReady = Boolean(!isLoading && !isFetching && data && data.budgets && data.budgets.length > 0);
 
     return (
         <Fragment>
@@ -29,26 +32,14 @@ const BudgetsGrid: React.FC = () => {
             </HStack>
 
             <SimpleGrid columns={5} spacing={5} minChildWidth="250px" overflow="scroll" maxHeight={"500px"}>
-                {!isLoading && !isFetching && data && data.budgets && data.budgets.length > 0 && (
+                {isDataReady && (
                     <>
-                        {data.budgets.map((budget: BudgetItem) => {
-                            return (
-                                <Box
-                                    key={uniqueId()}
-                                    bg="gray.700"
-                                    rounded={"md"}
-                                    height="80px"
-                                    flexDirection={"row"}
-                                    display="flex"
-                                    justifyContent={"center"}
-                                    alignItems="center"
-                                >
-                                    <Heading size={"sm"}>{budget.revision}</Heading>
-                                </Box>
-                            );
-                        })}
+                        {data?.budgets.map((budget: BudgetItem) => (
+                            <BudgetThumbnail {...budget} />
+                        ))}
                     </>
                 )}
+                {!isDataReady && <BudgetsLoader />}
             </SimpleGrid>
         </Fragment>
     );

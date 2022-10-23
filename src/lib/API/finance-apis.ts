@@ -13,9 +13,12 @@ export type BudgetItem = {
 export const FinanceApis = createApi({
     reducerPath: "financeApis",
     tagTypes: ["Budgets"],
-    keepUnusedDataFor: 0,
+    keepUnusedDataFor: 30,
     baseQuery: fetchBaseQuery({ baseUrl: AppConfig.serviceHost + "/finance-service" }),
     endpoints: (builder) => ({
+        /**
+         *
+         */
         getBudgets: builder.query<BudgetsResponse, number>({
             query: (page) => ({
                 url: `budgets?page=${page}`,
