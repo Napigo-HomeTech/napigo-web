@@ -66,7 +66,7 @@ export const ModulePage: React.FC<ModulePageProps> = (props) => {
                         <Divider />
                     </VStack>
                 )}
-                <VStack py="30px" px="20px">
+                <VStack py="30px" px="0px">
                     {menus.map((item: MenuItem) => (
                         <Menu key={uniqueId()} {...item} />
                     ))}

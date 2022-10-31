@@ -6,9 +6,10 @@ import {
     FaDollarSign as BudgetIcon,
     FaCoins as AccountIcon,
     FaChartLine as ReportIcon,
-    FaCopy as TemplateIcon,
+    FaTelegramPlane as PlanIcon,
     FaSlidersH as SettingIcon,
 } from "react-icons/fa";
+import { BiAddToQueue as QueueIcon, BiTargetLock as GoalTargetIcon } from "react-icons/bi";
 import { Navigate, Route, Routes } from "react-router-dom";
 import { ModulePage } from "../ModulePage";
 
@@ -26,16 +27,28 @@ const financeMenus = [
         goto: "budgeting",
     },
     {
+        icon: <PlanIcon />,
+        name: "plan",
+        displayText: fixtures.financeStrings["finance.menu.plan.text"],
+        goto: "plan",
+    },
+    {
+        icon: <QueueIcon />,
+        name: "queue",
+        displayText: fixtures.financeStrings["finance.menu.queue.text"],
+        goto: "queue",
+    },
+    {
+        icon: <GoalTargetIcon />,
+        name: "goal-target",
+        displayText: fixtures.financeStrings["finance.menu.goal-target.text"],
+        goto: "goal-target",
+    },
+    {
         icon: <ReportIcon />,
         name: "report",
         displayText: fixtures.financeStrings["finance.menu.report.text"],
         goto: "report",
-    },
-    {
-        icon: <TemplateIcon />,
-        name: "template",
-        displayText: fixtures.financeStrings["finance.menu.template.text"],
-        goto: "template",
     },
     {
         icon: <SettingIcon />,
@@ -52,8 +65,10 @@ export const FinanceContainer: React.FC = () => {
                 <Route index element={<Navigate to="accounts" />} />
                 <Route path="accounts" element={<AccountsPage />} />
                 <Route path="budgeting" element={<BudgetsPage />} />
+                <Route path="plan" element={<div>Plan</div>} />
+                <Route path="queue" element={<div>Queue</div>} />
+                <Route path="goal-target" element={<div>Goals & Target</div>} />
                 <Route path="report" element={<div>Report</div>} />
-                <Route path="template" element={<div>Template</div>} />
                 <Route path="settings" element={<div>Settings</div>} />
             </Route>
         </Routes>
