@@ -53,11 +53,12 @@ export const ModulePage: React.FC<ModulePageProps> = (props) => {
                 minHeight={"calc(100vh - 70px)"}
                 height="auto"
                 borderRightWidth={"0.5px"}
+                bg={"card-body-bg"}
             >
                 {title && (
                     <VStack width="full" p="20px" paddingBottom={0} margin={0} alignItems="flex-start" justifyContent="start">
-                        <Heading size="md" fontWeight="black">
-                            {title}
+                        <Heading size="md" fontWeight="medium" letterSpacing={"wide"}>
+                            {title.toUpperCase()}
                         </Heading>
                         <Divider />
                     </VStack>
