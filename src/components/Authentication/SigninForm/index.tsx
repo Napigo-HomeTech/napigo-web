@@ -1,6 +1,6 @@
 import { IfFeatureEnabled } from "@growthbook/growthbook-react";
 import { featureFlags } from "@/config/feature-flags";
-import { BrandButton, Form } from "@/elements";
+import { GrButton, Form } from "@/elements";
 import React, { useEffect } from "react";
 import { Link as RouterLink } from "react-router-dom";
 import { useSignInForm } from "./useSignInForm";
@@ -45,9 +45,9 @@ export const SigninForm: React.FC = () => {
             <FormError message={submitError} title="Error !" alignment="stack" />
 
             <FormControl>
-                <BrandButton type="submit" isLoading={formState === "submitting"} width="100%">
+                <GrButton type="submit" isLoading={formState === "submitting"} width="100%">
                     {fixtures.authenticationStrings["login.form.submit.buttontext"]}
-                </BrandButton>
+                </GrButton>
             </FormControl>
             <IfFeatureEnabled feature={featureFlags.enable_self_registration}>
                 <Button w="100%" variant="ghost" as={RouterLink} to="register">

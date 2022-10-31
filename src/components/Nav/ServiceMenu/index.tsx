@@ -17,6 +17,7 @@ import {
     FaFileInvoice as DocumentIcon,
 } from "react-icons/fa";
 import { IfFeatureEnabled } from "@growthbook/growthbook-react";
+import { GrButton } from "@/elements";
 
 const ServiceItems = [
     {
@@ -60,8 +61,10 @@ export const ServiceMenu: React.FC = () => {
                 rightIcon={<DropdownIcon />}
                 bg="brand-gr"
                 color="white"
-                _hover={{ bg: "brand-gr" }}
+                borderWidth={1}
+                _hover={{ bg: "brand-gr", boxShadow: "md" }}
                 _active={{ bg: "brand-gr" }}
+                borderColor={"brand.500"}
             >
                 {fixtures.navStrings["service.buttontext"]}
             </MenuButton>

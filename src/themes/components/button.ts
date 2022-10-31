@@ -29,7 +29,7 @@ const variantGhost: SystemStyleFunction = (props) => {
         return {
             color: mode(`inherit`, `whiteAlpha.900`)(props),
             _hover: {
-                bg: mode(`gray.100`, `whiteAlpha.200`)(props),
+                bg: mode(`gray.200`, `whiteAlpha.200`)(props),
             },
             _active: { bg: mode(`gray.200`, `whiteAlpha.300`)(props) },
         };
