@@ -46,7 +46,9 @@ export const WorkCardForm: React.FC = () => {
     return (
         <Card width="100%">
             <HStack width="100%">
-                <Heading size="md">{fixtures.profileStrings["work.section.title"]}</Heading>
+                <Heading size="md" color="text-hard">
+                    {fixtures.profileStrings["work.section.title"]}
+                </Heading>
             </HStack>
             <Divider />
             <Grid h="200px" templateRows="repeat(2, 1fr)" templateColumns="repeat(4, 1fr)" gap={4}>

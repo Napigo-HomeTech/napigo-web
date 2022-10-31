@@ -22,7 +22,7 @@ export const Menu: React.FC<MenuItem> = (props) => {
             w="100%"
             variant={"ghost"}
             bg={isActive ? activeMenuBg : undefined}
-            color={isActive ? activeMenuTextColor : undefined}
+            color={isActive ? activeMenuTextColor : "text-hard"}
             leftIcon={React.cloneElement(icon, { size: 16 })}
             justifyContent="start"
             _hover={{

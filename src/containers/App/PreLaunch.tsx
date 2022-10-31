@@ -21,7 +21,7 @@ export const PreLaunch: React.FC = () => {
     return (
         <Fragment>
             <AnimatePresence initial={true}>
-                <Box position="fixed" left={0} top={0} w="100vw" h="100vh" bg="base-bg" zIndex="banner">
+                <Box position="fixed" left={0} top={0} w="100vw" h="100vh" bg="body" zIndex="banner">
                     <ChakraBox
                         initial={{ opacity: 0 }}
                         animate={{ opacity: "100%" }}

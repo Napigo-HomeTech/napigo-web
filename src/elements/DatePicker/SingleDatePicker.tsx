@@ -11,7 +11,7 @@ export const SingleDatePicker: React.FC = () => {
         },
         dayOfMonthBtnProps: {
             defaultBtnProps: {
-                borderColor: "card-border-color",
+                borderColor: "border",
                 _hover: {
                     background: "brand.400",
                     borderColor: "brand.400",

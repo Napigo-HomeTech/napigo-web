@@ -23,7 +23,7 @@ export const DayOfMonth: React.FC<DayOfMonthProps> = ({ dateObj, propsConfigs, i
                 size: "sm",
                 variant: "outline",
                 background: "transparent",
-                borderColor: "card-border-color",
+                borderColor: "border",
                 _after: {
                     content: "''",
                     position: "absolute",

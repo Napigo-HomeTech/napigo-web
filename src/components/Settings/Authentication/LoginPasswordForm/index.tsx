@@ -96,7 +96,7 @@ export const LoginPasswordForm: React.FC = () => {
                                     toggle();
                                 }}
                             >
-                                {fixtures.settingsStrings["authentication.passwordform.cancel.buttontext"]},
+                                {fixtures.settingsStrings["authentication.passwordform.cancel.buttontext"]}
                             </Button>
                         </HStack>
                     </VStack>

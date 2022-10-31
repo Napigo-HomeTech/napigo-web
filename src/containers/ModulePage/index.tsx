@@ -1,4 +1,4 @@
-import { Box, Divider, Heading, HStack, VStack } from "@chakra-ui/react";
+import { Box, Divider, Heading, HStack, useColorModeValue, VStack } from "@chakra-ui/react";
 import { uniqueId } from "lodash";
 import React from "react";
 import { Outlet } from "react-router-dom";
@@ -42,10 +42,12 @@ type ModulePageProps = {
 
 export const ModulePage: React.FC<ModulePageProps> = (props) => {
     const { menus, contentBackground, title } = props;
+    const drawerBorder = useColorModeValue("blackAlpha.50", "whiteAlpha.50");
+
     return (
         <HStack spacing={0} display={"flex"} flexDirection={"row"} alignItems="start" justifyContent={"flex-start"} w="100vw" bg={contentBackground}>
             <Box
-                width="300px"
+                width="250px"
                 top="70px"
                 position={"sticky"}
                 left={0}
@@ -53,12 +55,13 @@ export const ModulePage: React.FC<ModulePageProps> = (props) => {
                 minHeight={"calc(100vh - 70px)"}
                 height="auto"
                 borderRightWidth={"0.5px"}
-                bg={"card-body-bg"}
+                borderColor={drawerBorder}
+                bg={"card"}
             >
                 {title && (
                     <VStack width="full" p="20px" paddingBottom={0} margin={0} alignItems="flex-start" justifyContent="start">
-                        <Heading size="md" fontWeight="medium" letterSpacing={"wide"}>
-                            {title.toUpperCase()}
+                        <Heading size="md" fontWeight="bold" letterSpacing={"wide"} color="heading">
+                            {title}
                         </Heading>
                         <Divider />
                     </VStack>
@@ -69,7 +72,7 @@ export const ModulePage: React.FC<ModulePageProps> = (props) => {
                     ))}
                 </VStack>
             </Box>
-            <Box flex={1} margin={0}>
+            <Box flex={1} margin={0} display="flex" flexDirection="column" justifyContent="center" alignItems={"center"}>
                 <Outlet />
             </Box>
         </HStack>

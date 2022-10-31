@@ -17,7 +17,7 @@ export const AppLoader: React.FC = () => {
     return (
         <Fragment>
             <AnimatePresence initial={true}>
-                <Box position="fixed" left={0} top={0} w="100vw" h="100vh" zIndex="banner" overflow="hidden" bg={"apploader-bg"}>
+                <Box position="fixed" left={0} top={0} w="100vw" h="100vh" zIndex="banner" overflow="hidden" bg={"card"}>
                     <ChakraBox
                         initial={{ opacity: 0 }}
                         animate={{ opacity: "100%" }}

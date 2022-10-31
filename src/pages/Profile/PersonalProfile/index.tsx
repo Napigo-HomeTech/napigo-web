@@ -7,9 +7,9 @@ import { Link as RouterLink } from "react-router-dom";
 
 export const PersonalProfilePage: React.FC = () => {
     return (
-        <VStack flexDirection="column" maxWidth="100%" p="20px" gap={5}>
+        <VStack flexDirection="column" p="20px" gap={5} width="100%">
             <HStack w="100%" justifyContent="space-between" p={0} alignItems="end">
-                <Heading size="lg" fontWeight="normal">
+                <Heading size="lg" fontWeight="normal" color="heading">
                     {fixtures.profileStrings["personal-profile.personal-information.title"]}
                 </Heading>
                 <Button as={RouterLink} to={"/user/console"} size="sm">

@@ -74,7 +74,7 @@ export const MobileNumberSetting: React.FC = () => {
                 <VStack w="inherit" flex={1} gap={3}>
                     <HeadBar />
 
-                    <Text>
+                    <Text color="text-gray">
                         {formType === "notVerified" ? (
                             <>{fixtures.settingsStrings["authentication.mobileform.notverified.description"]}</>
                         ) : (
@@ -94,10 +94,10 @@ export const MobileNumberSetting: React.FC = () => {
 const HeadBar = () => (
     <VStack width="inherit">
         <HStack width="inherit">
-            <Heading size="sm" fontWeight="bold" mb="5px">
-                {fixtures.settingsStrings["authentication.mobileform.heading"]},
+            <Heading size="sm" fontWeight="bold" mb="5px" color="text-hard">
+                {fixtures.settingsStrings["authentication.mobileform.heading"]}
             </Heading>
-            <MobileIcon size={20} />
+            <MobileIcon fill="text-hard" size={20} />
         </HStack>
         <Divider />
     </VStack>

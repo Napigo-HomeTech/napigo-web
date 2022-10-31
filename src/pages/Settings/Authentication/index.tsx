@@ -11,7 +11,7 @@ export const SettingAuthenticationPage: React.FC = () => {
     return (
         <VStack display="flex" flexDirection="column" maxWidth="700px" p="20px" gap={5}>
             <HStack w="100%" justifyContent="space-between" p={0} alignItems="end">
-                <Heading size="lg" fontWeight={"normal"}>
+                <Heading size="lg" fontWeight={"normal"} color="heading">
                     {fixtures.settingsStrings["authentication.title"]}
                 </Heading>
                 <Button as={RouterLink} to={`/user/console`} size="sm">
@@ -61,7 +61,7 @@ export const SectionTitle = (props: any) => {
     return (
         <VStack width="inherit">
             <HStack width="100%" justifyContent="space-between">
-                <Heading size="sm" fontWeight="bold" mb="5px">
+                <Heading size="sm" fontWeight="bold" mb="5px" color="text-hard">
                     {title}
                 </Heading>
                 {rightControl}

@@ -2,10 +2,10 @@ const Card = {
     baseStyle: {
         display: "flex",
         flexDirection: "column",
-        background: "card-body-bg",
+        background: "card",
         padding: "10px",
         borderWidth: "1px",
-        borderColor: "card-border-color",
+        borderColor: "border",
         gap: 6,
     },
     variants: {

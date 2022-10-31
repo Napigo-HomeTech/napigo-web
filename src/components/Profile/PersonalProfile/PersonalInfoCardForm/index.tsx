@@ -15,16 +15,16 @@ export const PersonalInfoCardForm: React.FC = () => {
         <Card width={"100%"}>
             <HStack width="inherit">
                 <VStack alignItems={"flex-start"} width="inherit">
-                    <Heading size="sm" fontWeight={"normal"} color="shadow-text">
+                    <Heading size="sm" fontWeight={"semibold"} color="text-soft">
                         {fixtures.profileStrings["personal-profile.personal-information.avatar.label"]}
                     </Heading>
                     <HStack alignItems="center" justifyContent="start" gap={4} width="inherit">
                         <Avatar width="60px" height="60px" name={account?.displayName ?? ""} src={user?.photoURL ?? ""} />
                         <VStack alignItems={"flex-start"}>
-                            <Heading size="sm" py={0} lineHeight={0.5}>
+                            <Heading size="sm" py={0} lineHeight={0.5} color="text-hard">
                                 {account?.displayName}
                             </Heading>
-                            <Text textDecoration="underline" color="brand.500" size="md">
+                            <Text textDecoration="underline" color="text-gray" size="md">
                                 {account?.email}
                             </Text>
                         </VStack>

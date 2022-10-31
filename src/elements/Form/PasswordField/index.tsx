@@ -49,7 +49,7 @@ export const PasswordField: React.FC<PasswordFieldProps> = (props) => {
                     placeholder={placeholder}
                     colorScheme="brand"
                     isReadOnly={readOnly}
-                    focusBorderColor={readOnly ? "card-border-color" : undefined}
+                    focusBorderColor={readOnly ? "border" : undefined}
                     {...rest}
                 />
                 {!alwaysMask && (

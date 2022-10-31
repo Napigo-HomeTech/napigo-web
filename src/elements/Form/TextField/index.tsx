@@ -39,7 +39,7 @@ export const TextField: React.FC<TextFieldProps> = (props) => {
                     pr={inputRightElement ? "2.4rem" : undefined}
                     {...rest}
                     isReadOnly={readOnly}
-                    focusBorderColor={readOnly ? "card-border-color" : undefined}
+                    focusBorderColor={readOnly ? "border" : undefined}
                 />
 
                 {inputRightElement && <>{inputRightElement}</>}

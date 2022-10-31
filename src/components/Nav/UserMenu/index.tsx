@@ -5,22 +5,7 @@ import { useAccount } from "@/lib/Accounts/useAccount";
 import { useHandleLogoutMethod } from "@/lib/Auth";
 import React, { useCallback } from "react";
 import { Link as RouterLink } from "react-router-dom";
-import {
-    Avatar,
-    Menu,
-    MenuButton,
-    MenuList,
-    MenuGroup,
-    IconButton,
-    HStack,
-    VStack,
-    Text,
-    Link,
-    Heading,
-    Divider,
-    MenuItem,
-    useColorModeValue,
-} from "@chakra-ui/react";
+import { Avatar, Menu, MenuButton, MenuList, MenuGroup, IconButton, HStack, VStack, Text, Link, Heading, Divider, MenuItem } from "@chakra-ui/react";
 import { MdAccountCircle as ProfileIcon, MdLaunch as AccountSettingIcon, MdGroup as MembersIcon, MdLogout as LogoutIcon } from "react-icons/md";
 import { SmallAddIcon } from "@chakra-ui/icons";
 import { fixtures } from "@/constant/datasets/fixtures";
@@ -30,18 +15,18 @@ const MenuIconSize = 20;
 export const UserMenu: React.FC = () => {
     const account = useAccount();
 
-    const emailColor = useColorModeValue("blackAlpha.700", "whiteAlpha.700");
-
     const { handleLogout } = useHandleLogoutMethod();
 
     const NameHeader = useCallback(() => {
         return isEmpty(account?.displayName) ? (
             <Link as={RouterLink} to="add-name" color="brand.500">
                 <SmallAddIcon />
-                Add username
+                {fixtures.navStrings["usermenu.addusername.link"]}
             </Link>
         ) : (
-            <Heading size={"sm"}>{account?.displayName}</Heading>
+            <Heading size={"sm"} color="text-hard">
+                {account?.displayName}
+            </Heading>
         );
     }, [account?.displayName]);
 
@@ -59,12 +44,12 @@ export const UserMenu: React.FC = () => {
                     <Avatar size={"sm"} name={account?.displayName ?? account?.email} src={account?.photo_url ?? ""} />
                 </MenuButton>
                 <MenuList w="270px">
-                    <MenuGroup title={fixtures.navStrings["usermenu.dropdown.title"]}>
+                    <MenuGroup title={fixtures.navStrings["usermenu.dropdown.title"]} color="heading">
                         <HStack p={"10px"}>
                             <Avatar name={account?.displayName ?? account?.email} src={account?.photo_url ?? ""} />
                             <VStack justifyContent={"start"} alignItems="start">
                                 <NameHeader />
-                                <Text fontSize="sm" color={emailColor}>
+                                <Text fontSize="sm" color={"text-gray"}>
                                     {truncate(account?.email ?? "", { length: 26 })}
                                 </Text>
                             </VStack>
@@ -75,6 +60,7 @@ export const UserMenu: React.FC = () => {
                         <MenuItem
                             as={RouterLink}
                             to="settings/general"
+                            color="text-hard"
                             replace={window.location.pathname.includes("settings/general")}
                             icon={<AccountSettingIcon size={MenuIconSize} />}
                         >
@@ -87,6 +73,7 @@ export const UserMenu: React.FC = () => {
                             as={RouterLink}
                             to="profile"
                             replace={window.location.pathname.includes("profile")}
+                            color="text-hard"
                             icon={<ProfileIcon size={MenuIconSize} />}
                         >
                             {fixtures.navStrings["usermenu.dropdown.item.profile.linktext"]}
@@ -97,6 +84,7 @@ export const UserMenu: React.FC = () => {
                         <MenuItem
                             as={RouterLink}
                             to="members"
+                            color="text-hard"
                             replace={window.location.pathname.includes("members")}
                             icon={<MembersIcon size={MenuIconSize} />}
                         >
@@ -105,7 +93,7 @@ export const UserMenu: React.FC = () => {
                     </IfFeatureEnabled>
 
                     <Divider orientation="horizontal" />
-                    <MenuItem icon={<LogoutIcon size={MenuIconSize} />} onClick={handleLogout}>
+                    <MenuItem icon={<LogoutIcon size={MenuIconSize} />} onClick={handleLogout} color="text-hard">
                         {fixtures.navStrings["usermenu.dropdown.item.logout.linktext"]}
                     </MenuItem>
                 </MenuList>

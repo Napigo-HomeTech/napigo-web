@@ -11,7 +11,6 @@ import { fixtures } from "@/constant/datasets/fixtures";
 import { ServiceMenu } from "./ServiceMenu";
 
 export const Nav: React.FunctionComponent = () => {
-    const background = useColorModeValue("base-bg", "whiteAlpha.50");
     const borderBottom = useColorModeValue("blackAlpha.50", "whiteAlpha.50");
 
     return (
@@ -23,7 +22,7 @@ export const Nav: React.FunctionComponent = () => {
             zIndex="sticky"
             w="100vw"
             h="70px"
-            bg={background}
+            bg={"card"}
             borderBottom="1px solid"
             borderColor={borderBottom}
             px="20px"
@@ -44,7 +43,7 @@ export const Nav: React.FunctionComponent = () => {
                                     autoComplete="off"
                                     spellCheck={false}
                                     placeholder={fixtures.navStrings["search.placeholder"]}
-                                    bg="base-2-bg"
+                                    bg="body"
                                 />
                             </Box>
                         </IfFeatureEnabled>
@@ -53,10 +52,10 @@ export const Nav: React.FunctionComponent = () => {
 
                 <HStack alignItems="center" gap={0}>
                     <IfFeatureEnabled feature={featureFlags.show_navbar_notification_dropdown}>
-                        <IconButton variant="ghost" aria-label="Notifications Drawer" color="icon-base-color" mx={0} icon={<NotifIcon size={23} />} />
+                        <IconButton variant="ghost" aria-label="Notifications Drawer" mx={0} icon={<NotifIcon size={23} />} />
                     </IfFeatureEnabled>
                     <IfFeatureEnabled feature={featureFlags.show_navbar_messages_dropdown}>
-                        <IconButton variant="ghost" color="icon-base-color" aria-label="Messages Drawer" mx={0} icon={<MessageIcon size={23} />} />
+                        <IconButton variant="ghost" aria-label="Messages Drawer" mx={0} icon={<MessageIcon size={23} />} />
                     </IfFeatureEnabled>
                     <UserMenu />
                 </HStack>

@@ -5,7 +5,8 @@ const data = {
     "finance.menu.report.text": "Report",
     "finance.menu.template.text": "Template",
     "finance.menu.settings.text": "Settings",
-    "finance.accounts.empty.headingtext": "YOU HAVE NO ACCOUNT YET, PLEASE CREATE NEW ",
+    // "finance.accounts.empty.headingtext": "YOU HAVE NO ACCOUNT YET, PLEASE CREATE NEW ",
+    "finance.accounts.empty.headingtext": "You have no account yet, please create new",
     "finance.accounts.empty.createnew.buttontext": "Create Account",
 };
 

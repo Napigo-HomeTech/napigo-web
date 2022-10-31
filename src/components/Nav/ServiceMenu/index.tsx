@@ -17,7 +17,6 @@ import {
     FaFileInvoice as DocumentIcon,
 } from "react-icons/fa";
 import { IfFeatureEnabled } from "@growthbook/growthbook-react";
-import { GrButton } from "@/elements";
 
 const ServiceItems = [
     {
@@ -75,6 +74,7 @@ export const ServiceMenu: React.FC = () => {
                             as={RouterLink}
                             to={item.goto}
                             paddingRight="40px"
+                            color={"text-hard"}
                             _hover={{
                                 background: "brand-gr",
                                 color: "white",
@@ -84,7 +84,7 @@ export const ServiceMenu: React.FC = () => {
                                 <Box
                                     bg="transparent"
                                     borderWidth={1}
-                                    borderColor="card-border-color"
+                                    borderColor="border"
                                     width="50px"
                                     height="50px"
                                     display="flex"
