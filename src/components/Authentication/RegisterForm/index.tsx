@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useRegisterForm } from "./useRegisterForm";
 import { FormControl, Input, Box, FormHelperText, Alert, AlertIcon, AlertTitle, Button } from "@chakra-ui/react";
-import { GrButton, Form } from "@/elements";
+import { Form } from "@/elements";
 import { fixtures } from "@/constant/datasets/fixtures";
 
 const inputIds = {
@@ -59,9 +59,9 @@ export const RegisterForm: React.FC = () => {
                 </Alert>
             )}
 
-            <GrButton type="submit" isLoading={formStatus === "submitting"} w={"100%"}>
+            <Button colorScheme={"brand-gr"} type="submit" isLoading={formStatus === "submitting"} w={"100%"}>
                 {fixtures.authenticationStrings["register.form.submit.buttontext"]}
-            </GrButton>
+            </Button>
 
             <Button w={"100%"} variant="ghost" onClick={() => navigate("/auth")}>
                 {fixtures.authenticationStrings["register.form.login.buttontext"]}

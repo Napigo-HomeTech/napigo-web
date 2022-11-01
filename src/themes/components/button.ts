@@ -192,14 +192,12 @@ const variantSolid: SystemStyleFunction = (props) => {
             borderColor: "brand.500",
             color: mode("card", "card")(props),
             _hover: {
-                bgGradient: "linear(to-l, #3BAE5A, #1BA16E)",
                 boxShadow: "md",
                 borderColor: "brand.500",
             },
             _active: {
-                boxShadow: "md",
+                boxShadow: "xl",
                 borderColor: "brand.500",
-                backgroundPosition: "right center",
             },
         };
     }

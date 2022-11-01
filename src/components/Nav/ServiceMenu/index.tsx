@@ -54,17 +54,7 @@ const ServiceItems = [
 export const ServiceMenu: React.FC = () => {
     return (
         <Menu>
-            <MenuButton
-                as={Button}
-                leftIcon={<ServicesIcon />}
-                rightIcon={<DropdownIcon />}
-                bg="brand-gr"
-                color="white"
-                borderWidth={1}
-                _hover={{ bg: "brand-gr", boxShadow: "md" }}
-                _active={{ bg: "brand-gr" }}
-                borderColor={"brand.500"}
-            >
+            <MenuButton as={Button} leftIcon={<ServicesIcon />} rightIcon={<DropdownIcon />} colorScheme="brand-gr">
                 {fixtures.navStrings["service.buttontext"]}
             </MenuButton>
             <MenuList width="auto" maxHeight="600px" overflow="scroll">
