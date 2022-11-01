@@ -1,6 +1,7 @@
 import { Pagination } from "@/elements";
 import { BudgetItem, useGetBudgetsQuery } from "@/lib/API/finance-apis";
-import { SimpleGrid, Box, HStack } from "@chakra-ui/react";
+import { SimpleGrid, HStack } from "@chakra-ui/react";
+import { uniqueId } from "lodash";
 import React, { Fragment, useEffect, useState } from "react";
 import { BudgetsLoader } from "./BudgetsLoader";
 import { BudgetThumbnail } from "./BudgetThumbnail";
@@ -15,7 +16,7 @@ const BudgetsGrid: React.FC = () => {
         if (!isLoading && data?.counts) {
             setTotal(data.counts);
         }
-    }, [isLoading]);
+    }, [isLoading, data]);
 
     const isDataReady = Boolean(!isLoading && !isFetching && data && data.budgets && data.budgets.length > 0);
 
@@ -35,7 +36,7 @@ const BudgetsGrid: React.FC = () => {
                 {isDataReady && (
                     <>
                         {data?.budgets.map((budget: BudgetItem) => (
-                            <BudgetThumbnail {...budget} />
+                            <BudgetThumbnail key={uniqueId()} {...budget} />
                         ))}
                     </>
                 )}

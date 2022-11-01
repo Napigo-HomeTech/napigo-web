@@ -26,7 +26,7 @@ export const FinanceApis = createApi({
                 headers: createReqHeaders(),
             }),
             providesTags: ["Budgets"],
-            transformResponse: (response: { data: BudgetsResponse }, meta, arg) => response.data,
+            transformResponse: (response: { data: BudgetsResponse }, _) => response.data,
         }),
     }),
 });

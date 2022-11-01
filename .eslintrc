@@ -30,7 +30,7 @@
                 "caughtErrorsIgnorePattern": "^_"
             }
         ],
-        "indent": [4, "tab"],
+        "indent": "off",
         "react/no-children-prop": "off",
         "react-hooks/rules-of-hooks": "error",
         "react-hooks/exhaustive-deps": "warn",

@@ -9,6 +9,8 @@ const data = {
     "finance.menu.settings.text": "Settings",
     "finance.accounts.empty.headingtext": "You have no account yet, please create new",
     "finance.accounts.empty.createnew.buttontext": "Create Account",
+    "finance.page.plan.title": "Plans",
+    "finance.plan.banner.title": "Start Planning A Budget For The Month !",
 };
 
 export default data;

@@ -7,7 +7,7 @@ export const BudgetsLoader: React.FC = () => {
         <>
             {Array(8)
                 .fill(0)
-                .map((item) => (
+                .map((_) => (
                     <Box
                         key={uniqueId()}
                         bg="gray.800"

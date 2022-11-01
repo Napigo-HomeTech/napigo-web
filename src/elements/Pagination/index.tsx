@@ -39,7 +39,7 @@ const PaginationComponent = (props: PaginationProps) => {
 
     useEffect(() => {
         let i = 1;
-        let slots = [];
+        const slots = [];
         for (; i <= noOfPages && i <= MAX_BUTTONS; i++) {
             slots.push(i);
         }
@@ -108,7 +108,7 @@ const PaginationComponent = (props: PaginationProps) => {
     const disabledNext = React.useMemo(() => {
         if (noOfPages == 0) return true;
         return btnSlot[btnSlot.length - 1] === noOfPages;
-    }, [btnSlot, totalCounts, countPerPage]);
+    }, [noOfPages, btnSlot]);
 
     /**
      * Memo function to determine if the previous button should be
@@ -117,7 +117,7 @@ const PaginationComponent = (props: PaginationProps) => {
     const disabledPrevious = React.useMemo(() => {
         if (noOfPages == 0) return true;
         return btnSlot[0] === 1;
-    }, [btnSlot, totalCounts, countPerPage]);
+    }, [noOfPages, btnSlot]);
 
     /**
      * Function to generate the chakra styling props on page button
@@ -137,7 +137,7 @@ const PaginationComponent = (props: PaginationProps) => {
 
     useEffect(() => {
         onPageChange?.(activePage);
-    }, [activePage]);
+    }, [activePage, onPageChange]);
 
     return (
         <HStack gap={0}>

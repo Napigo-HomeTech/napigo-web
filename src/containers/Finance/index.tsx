@@ -12,6 +12,7 @@ import {
 import { BiAddToQueue as QueueIcon, BiTargetLock as GoalTargetIcon } from "react-icons/bi";
 import { Navigate, Route, Routes } from "react-router-dom";
 import { ModulePage } from "../ModulePage";
+import { PlanPage } from "@/pages/Finance/Plan";
 
 const financeMenus = [
     {
@@ -65,7 +66,7 @@ export const FinanceContainer: React.FC = () => {
                 <Route index element={<Navigate to="accounts" />} />
                 <Route path="accounts" element={<AccountsPage />} />
                 <Route path="budgeting" element={<BudgetsPage />} />
-                <Route path="plan" element={<div>Plan</div>} />
+                <Route path="plan" element={<PlanPage />} />
                 <Route path="queue" element={<div>Queue</div>} />
                 <Route path="goal-target" element={<div>Goals & Target</div>} />
                 <Route path="report" element={<div>Report</div>} />
