@@ -11,9 +11,9 @@ export const semanticTokens = {
         "text-soft": { _light: "rgba(125, 125, 146, 0.71)", _dark: "rgba(125, 125, 146, 0.71)" },
         "text-hard": { _light: "#344054", _dark: "#344054" },
         "text-gray": { _light: "#7D7D92", _dark: "#7D7D92" },
-        "body:": { _light: "#FAFAFA", _dark: "#FAFAFA" },
+        body: { _light: "#FAFAFA", _dark: "#FAFAFA" },
         card: { _light: "#FFFFFF", _dark: "#FFFFFF" },
         heading: { _light: "#5C5C6D", _dark: "#5C5C6D" },
-        "border:": { _light: "#E4E4E7", _dark: "#E4E4E7" },
+        border: { _light: "#E4E4E7", _dark: "#E4E4E7" },
     },
 };

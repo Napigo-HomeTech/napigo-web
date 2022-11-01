@@ -50,8 +50,52 @@ const variantGhost: SystemStyleFunction = (props) => {
     };
 };
 
+/**
+ * Custom Variant for Napigo Outline Buttons
+ * @param props
+ * @returns
+ */
 const variantOutline: SystemStyleFunction = (props) => {
     const { colorScheme: c } = props;
+
+    if (c === "base") {
+        return {
+            borderColor: "border",
+            color: "text-hard",
+            _hover: {
+                bg: "gray.100",
+            },
+            _active: {
+                bg: "gray.200",
+            },
+        };
+    }
+
+    if (c === "secondary") {
+        return {
+            borderColor: "secondary",
+            color: "secondary",
+            _hover: {
+                bg: "secondary.100",
+            },
+            _active: {
+                bg: "secondary.200",
+            },
+        };
+    }
+    if (c === "brand") {
+        return {
+            borderColor: "brand.500",
+            color: "brand.500",
+            _hover: {
+                bg: "brand.100",
+            },
+            _active: {
+                bg: "brand.200",
+            },
+        };
+    }
+
     const borderColor = mode(`gray.200`, `whiteAlpha.300`)(props);
     return {
         border: "1px solid",
@@ -255,23 +299,3 @@ const buttonStyles = {
 };
 
 export default buttonStyles;
-
-// .btn-grad {
-//     background-image: linear-gradient(to right, #DA22FF 0%, #9733EE  51%, #DA22FF  100%);
-//     margin: 10px;
-//     padding: 15px 45px;
-//     text-align: center;
-//     text-transform: uppercase;
-//     transition: 0.5s;
-//     background-size: 200% auto;
-//     color: white;
-//     box-shadow: 0 0 20px #eee;
-//     border-radius: 10px;
-//     display: block;
-//   }
-
-//   .btn-grad:hover {
-//     background-position: right center; /* change the direction of the change here */
-//     color: #fff;
-//     text-decoration: none;
-//   }

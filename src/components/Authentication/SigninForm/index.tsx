@@ -4,7 +4,7 @@ import { Form } from "@/elements";
 import React, { useEffect } from "react";
 import { Link as RouterLink } from "react-router-dom";
 import { useSignInForm } from "./useSignInForm";
-import { FormControl, Box, Button, VStack } from "@chakra-ui/react";
+import { FormControl, Box, Button } from "@chakra-ui/react";
 import { FormError } from "@/elements/Form";
 import { fixtures } from "@/constant/datasets/fixtures";
 
@@ -54,14 +54,6 @@ export const SigninForm: React.FC = () => {
                     {fixtures.authenticationStrings["login.form.register.buttontext"]}
                 </Button>
             </IfFeatureEnabled>
-
-            <VStack gap={4}>
-                <Button colorScheme={"base"}>Base Button</Button>
-                <Button colorScheme={"gray"}>Gray Button</Button>
-                <Button colorScheme={"brand-gr"}>Gray Button</Button>
-                <Button colorScheme={"secondary"}>Gray Button</Button>
-                <Button colorScheme={"brand"}>Standard</Button>
-            </VStack>
         </Box>
     );
 };
