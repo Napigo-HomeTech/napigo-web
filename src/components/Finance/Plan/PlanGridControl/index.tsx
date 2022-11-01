@@ -1,27 +1,50 @@
 import { fixtures } from "@/constant/datasets/fixtures";
 import { Card, Form } from "@/elements";
-import { Button, HStack } from "@chakra-ui/react";
-import { FaSearch as SearchIcon } from "react-icons/fa";
-import React from "react";
+import { Button, HStack, IconButton } from "@chakra-ui/react";
+import { FaSearch as SearchIcon, FaList as TableViewIcon } from "react-icons/fa";
+import { BsFillGridFill as GridViewIcon } from "react-icons/bs";
+
+import React, { useCallback, useState } from "react";
 
 export const PlanGridControl: React.FC = () => {
+    const [viewType, setViewType] = useState<"table" | "grid">("grid");
+
+    const getActiveViewButtonState = useCallback(
+        (view: string) => {
+            if (view === viewType) {
+                return {
+                    borderColor: "brand.500",
+                    color: "brand.500",
+                };
+            }
+            return {};
+        },
+        [viewType]
+    );
+
     return (
-        <Card width={"100%"} alignItems="flex-start" justifyContent="flex-start">
+        <Card width={"100%"} flexDirection="row" alignItems="flex-start" justifyContent="space-between">
             <HStack gap={0} width="inherit" alignItems="flex-end">
                 <Form.TextField
                     autoComplete="off"
                     containerWidth="auto"
                     spellCheck={false}
-                    placeholder={fixtures.navStrings["search.placeholder"]}
+                    placeholder={fixtures.financeStrings["finance.plan.gridview.control.search.placeholder"]}
                     bg="body"
                 />{" "}
-                <Button bg="white" leftIcon={<SearchIcon />}>
-                    Search
+                <Button colorScheme="base" leftIcon={<SearchIcon />}>
+                    {fixtures.financeStrings["finance.plan.gridview.control.search.button.text"]}
                 </Button>
-                <Button bg="white">In-use</Button>
-                <Button bg="secondary" color="white" borderColor="secondary" _hover={{ bg: "secondary", borderColor: "orange.600" }}>
-                    + Create Plan
-                </Button>
+                <Button colorScheme="base">In-use</Button>
+                <Button colorScheme="secondary">{fixtures.financeStrings["finance.plan.gridview.control.create-plan.button.text"]}</Button>
+            </HStack>
+            <HStack>
+                <IconButton onClick={() => setViewType("table")} colorScheme="base" aria-label="table-view" {...getActiveViewButtonState("table")}>
+                    <TableViewIcon />
+                </IconButton>
+                <IconButton onClick={() => setViewType("grid")} colorScheme="base" aria-label="grid-view" {...getActiveViewButtonState("grid")}>
+                    <GridViewIcon />
+                </IconButton>
             </HStack>
         </Card>
     );

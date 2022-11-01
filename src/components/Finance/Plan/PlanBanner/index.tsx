@@ -1,8 +1,8 @@
+import React, { useCallback } from "react";
 import { fixtures } from "@/constant/datasets/fixtures";
 import { Button, Heading, Image, VStack } from "@chakra-ui/react";
 import PlanBannerCalculator from "@/assets/images/plan-banner-calculator.svg";
 import PlanBannerCoins from "@/assets/images/plan-banner-coins.svg";
-import React, { useCallback } from "react";
 
 type PlanBannerProps = {
     title?: string;
@@ -21,14 +21,12 @@ export const PlanBanner: React.FC<PlanBannerProps> = (props) => {
             borderColor: "transparent",
             borderWidth: "1px",
             _hover: {
-                bg: "brand.600",
+                bg: "brand.700",
                 color: "card",
-                borderColor: "brand.700",
             },
             _active: {
-                bg: "brand.600",
+                bg: "brand.800",
                 color: "card",
-                borderColor: "brand.700",
             },
         };
     }, []);
@@ -55,15 +53,7 @@ export const PlanBanner: React.FC<PlanBannerProps> = (props) => {
 
             <Image src={imageLeftSrc ?? PlanBannerCalculator} alt="plan banner calculator image" />
             <Image position={"absolute"} right="5%" src={imageRightSrc ?? PlanBannerCoins} alt="plan banner calculator image" />
-            <Button
-                {...getButtonColorStyles()}
-                onClick={onClick}
-                borderColor="transparent"
-                position="absolute"
-                bottom="10%"
-                left="15%"
-                minWidth="200px"
-            >
+            <Button {...getButtonColorStyles()} size="sm" onClick={onClick} position="absolute" bottom="10%" left="15%" minWidth="200px">
                 {buttonText ?? "Find out more!"}
             </Button>
         </VStack>

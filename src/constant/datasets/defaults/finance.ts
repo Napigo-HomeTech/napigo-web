@@ -11,6 +11,9 @@ const data = {
     "finance.accounts.empty.createnew.buttontext": "Create Account",
     "finance.page.plan.title": "Plans",
     "finance.plan.banner.title": "Start Planning A Budget For The Month !",
+    "finance.plan.gridview.control.search.placeholder": "Search plan..",
+    "finance.plan.gridview.control.search.button.text": "Search",
+    "finance.plan.gridview.control.create-plan.button.text": "+ Create Plan",
 };
 
 export default data;
