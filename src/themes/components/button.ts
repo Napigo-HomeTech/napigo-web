@@ -95,6 +95,7 @@ const variantSolid: SystemStyleFunction = (props) => {
         return {
             bg,
             borderWidth: "1px",
+            color: "text-hard",
             _hover: {
                 bg: mode(`gray.200`, `whiteAlpha.300`)(props),
                 borderColor: mode(`gray.300`, `whiteAlpha.400`)(props),

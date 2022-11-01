@@ -5,6 +5,7 @@ import PlanBannerCalculator from "@/assets/images/plan-banner-calculator.svg";
 import PlanBannerCoins from "@/assets/images/plan-banner-coins.svg";
 
 import React from "react";
+import { PlanGridControl } from "@/components/Finance/Plan/PlanGridControl";
 
 export const GridView: React.FC = () => {
     return (
@@ -20,6 +21,7 @@ export const GridView: React.FC = () => {
                 imageRightSrc={PlanBannerCoins}
                 buttonText="Do it now!!"
             />
+            <PlanGridControl />
         </VStack>
     );
 };

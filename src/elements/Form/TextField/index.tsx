@@ -24,11 +24,12 @@ interface TextFieldProps extends Omit<InputProps, "isInvalid"> {
     error?: string;
     label?: string;
     helperText?: string;
+    containerWidth?: "full" | "auto";
 }
 export const TextField: React.FC<TextFieldProps> = (props) => {
-    const { error, label, isReadOnly: readOnly, helperText, inputRightElement, inputLeftElement, ...rest } = props;
+    const { error, label, isReadOnly: readOnly, helperText, inputRightElement, inputLeftElement, containerWidth = "full", ...rest } = props;
     return (
-        <FormControl isInvalid={!isEmpty(error)}>
+        <FormControl isInvalid={!isEmpty(error)} width={containerWidth == "full" ? "100%" : "auto"}>
             {!isEmpty(label) && <FormLabel>{label}</FormLabel>}
             <InputGroup>
                 {inputLeftElement && <>{inputLeftElement}</>}

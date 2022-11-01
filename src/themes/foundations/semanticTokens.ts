@@ -7,6 +7,7 @@ export const semanticTokens = {
             _light: "linear-gradient(130.99deg, #3BAE5A 3.56%, #1BA16E 99.81%)",
             _dark: "linear-gradient(130.99deg, #3BAE5A 3.56%, #1BA16E 99.81%)",
         },
+        secondary: { _light: "#F79009", _dark: "#F79009" },
         "text-soft": { _light: "rgba(125, 125, 146, 0.71)", _dark: "rgba(125, 125, 146, 0.71)" },
         "text-hard": { _light: "#344054", _dark: "#344054" },
         "text-gray": { _light: "#7D7D92", _dark: "#7D7D92" },
