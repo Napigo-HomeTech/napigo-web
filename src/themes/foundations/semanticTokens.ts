@@ -4,10 +4,10 @@ export const semanticTokens = {
         danger: { _light: "#E83C3C", _dark: "#E83C3C" },
         warning: { _light: "#E8E13C", _dark: "#E8E13C" },
         "brand-gr": {
-            _light: "linear-gradient(130.99deg, #3BAE5A 3.56%, #1BA16E 99.81%)",
-            _dark: "linear-gradient(130.99deg, #3BAE5A 3.56%, #1BA16E 99.81%)",
+            _light: "linear-gradient(to right, #3BAE5A 3.56%, #1BA16E 99.81%)",
+            _dark: "linear-gradient(to right, #3BAE5A 3.56%, #1BA16E 99.81%)",
         },
-        secondary: { _light: "#F79009", _dark: "#F79009" },
+        secondary: { _light: "secondary.500", _dark: "secondary.500" },
         "text-soft": { _light: "rgba(125, 125, 146, 0.71)", _dark: "rgba(125, 125, 146, 0.71)" },
         "text-hard": { _light: "#344054", _dark: "#344054" },
         "text-gray": { _light: "#7D7D92", _dark: "#7D7D92" },

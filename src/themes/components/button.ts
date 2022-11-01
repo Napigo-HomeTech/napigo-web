@@ -86,24 +86,77 @@ const accessibleColorMap: { [key: string]: AccessibleColor } = {
     },
 };
 
+/**
+ * Custom Variant of Napigo Buttons
+ *
+ * @param props
+ * @returns
+ */
 const variantSolid: SystemStyleFunction = (props) => {
     const { colorScheme: c } = props;
 
-    if (c === "gray") {
-        const bg = mode(`gray.100`, `whiteAlpha.200`)(props);
-
+    if (c === "base") {
         return {
-            bg,
+            bg: mode("white", "white")(props),
             borderWidth: "1px",
-            color: "text-hard",
+            borderColor: "border",
+            color: mode("text-hard", "text-hard")(props),
             _hover: {
-                bg: mode(`gray.200`, `whiteAlpha.300`)(props),
-                borderColor: mode(`gray.300`, `whiteAlpha.400`)(props),
-                _disabled: {
-                    bg,
-                },
+                bg: mode("gray.100", "gray.100")(props),
             },
-            _active: { bg: mode(`gray.300`, `whiteAlpha.400`)(props) },
+            _active: {
+                bg: mode("gray.200", "gray.200")(props),
+            },
+        };
+    }
+
+    if (c === "gray") {
+        return {
+            bg: mode("gray.100", "gray.100")(props),
+            borderWidth: "1px",
+            borderColor: "gray.200",
+            color: mode("text-hard", "text-hard")(props),
+            _hover: {
+                bg: mode("gray.200", "gray.200")(props),
+            },
+            _active: {
+                bg: mode("gray.300", "gray.300")(props),
+            },
+        };
+    }
+
+    if (c === "secondary") {
+        return {
+            bg: mode("secondary.500", "secondary.500")(props),
+            borderWidth: "1px",
+            borderColor: "secondary.500",
+            color: mode("card", "card")(props),
+            _hover: {
+                bg: mode("secondary.600", "secondary.600")(props),
+                borderColor: "secondary.600",
+            },
+            _active: {
+                bg: mode("secondary.700", "secondary.700")(props),
+                borderColor: "secondary.700",
+            },
+        };
+    }
+    if (c === "brand-gr") {
+        return {
+            bgGradient: "linear(to-r, #3BAE5A, #1BA16E)",
+            borderWidth: "1px",
+            borderColor: "brand.500",
+            color: mode("card", "card")(props),
+            _hover: {
+                bgGradient: "linear(to-l, #3BAE5A, #1BA16E)",
+                boxShadow: "md",
+                borderColor: "brand.500",
+            },
+            _active: {
+                boxShadow: "md",
+                borderColor: "brand.500",
+                backgroundPosition: "right center",
+            },
         };
     }
 
@@ -202,3 +255,23 @@ const buttonStyles = {
 };
 
 export default buttonStyles;
+
+// .btn-grad {
+//     background-image: linear-gradient(to right, #DA22FF 0%, #9733EE  51%, #DA22FF  100%);
+//     margin: 10px;
+//     padding: 15px 45px;
+//     text-align: center;
+//     text-transform: uppercase;
+//     transition: 0.5s;
+//     background-size: 200% auto;
+//     color: white;
+//     box-shadow: 0 0 20px #eee;
+//     border-radius: 10px;
+//     display: block;
+//   }
+
+//   .btn-grad:hover {
+//     background-position: right center; /* change the direction of the change here */
+//     color: #fff;
+//     text-decoration: none;
+//   }
