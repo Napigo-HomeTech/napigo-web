@@ -12,7 +12,6 @@ type InfiniteGridListProps = {
     amountOfSkeleton: number;
     itemComponent: (props: any) => React.ReactElement;
     limit?: number;
-    item: any;
     columns: {
         sm: number;
         md: number;
@@ -23,12 +22,12 @@ type InfiniteGridListProps = {
     lastPageKey: string;
 };
 export const InfiniteGridList: React.FC<InfiniteGridListProps> = (props) => {
-    const { itemComponent, amountOfSkeleton, itemSkeleton, limit, columns, fetch, item, queryKey, lastPageKey } = props;
+    const { itemComponent, amountOfSkeleton, itemSkeleton, limit, columns, fetch, queryKey, lastPageKey } = props;
 
     const [scrollPosition, setScrollPosition] = useState<number>(0);
     const loadMoreRef = useRef<HTMLDivElement>(null);
 
-    const { status, data, hasNextPage, isFetchingNextPage, fetchNextPage } = useInfiniteQuery<CollectionBasedResponse<typeof item>>([...queryKey], {
+    const { status, data, hasNextPage, isFetchingNextPage, fetchNextPage } = useInfiniteQuery<CollectionBasedResponse<any>>([...queryKey], {
         queryFn: ({ pageParam = 1 }) => fetch(pageParam, limit),
         getNextPageParam: (lastPage, allPages) => {
             const maxPage = get(lastPage.data, lastPageKey);
@@ -60,7 +59,7 @@ export const InfiniteGridList: React.FC<InfiniteGridListProps> = (props) => {
                 {status === "success" && (
                     <>
                         {data?.pages.map((page) => {
-                            return page.data.results.map((val: typeof item) => {
+                            return page.data.results.map((val) => {
                                 return itemComponent(val);
                             });
                         })}

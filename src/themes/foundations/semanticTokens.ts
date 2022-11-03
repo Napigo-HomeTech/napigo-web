@@ -1,8 +1,8 @@
 export const semanticTokens = {
     colors: {
-        success: { _light: "#3CE862", _dark: "#3CE862" },
-        danger: { _light: "#E83C3C", _dark: "#E83C3C" },
-        warning: { _light: "#E8E13C", _dark: "#E8E13C" },
+        success: { _light: "#39D89C", _dark: "#39D89C" },
+        danger: { _light: "#FF3932", _dark: "#FF3932" },
+        warning: { _light: "#FDB022", _dark: "#FDB022" },
         "brand-gr": {
             _light: "linear-gradient(to right, #3BAE5A 3.56%, #1BA16E 99.81%)",
             _dark: "linear-gradient(to right, #3BAE5A 3.56%, #1BA16E 99.81%)",

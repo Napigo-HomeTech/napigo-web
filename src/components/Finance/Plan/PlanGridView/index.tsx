@@ -1,10 +1,10 @@
-import { Card } from "@/elements";
 import { InfiniteGridList } from "@/elements/InfiniteGrid";
 import { fetchPlans } from "@/lib/Finance/finance-service-apis";
 import { PlanSummary } from "@/types/finance.type";
 import { Box } from "@chakra-ui/react";
 import { uniqueId } from "lodash";
 import React from "react";
+import { PlanItem } from "./PlanItem";
 
 export const PlanGridView: React.FC = () => {
     return (
@@ -13,20 +13,12 @@ export const PlanGridView: React.FC = () => {
             amountOfSkeleton={20}
             limit={20}
             fetch={fetchPlans}
-            item={{
-                imageUrl: "string",
-            }}
-            itemComponent={(props: PlanSummary) => (
-                <Card key={uniqueId()} width="100%" borderColor={"border"} borderWidth={1} p="10px" height="220px" rounded="md">
-                    {props.col}
-                    {props.title}
-                </Card>
-            )}
+            itemComponent={(props: PlanSummary) => <PlanItem key={uniqueId()} {...props} />}
             columns={{
                 sm: 1,
                 md: 2,
                 lg: 3,
-                xl: 4,
+                xl: 3,
             }}
             queryKey={["plans"]}
             lastPageKey="lastPage"
