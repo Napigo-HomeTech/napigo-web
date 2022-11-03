@@ -5,11 +5,11 @@ type RowStandardProps = {
     label: string;
     data: string;
 };
-export const RowStandard: React.FC<RowStandardProps> = ({ label, data }) => {
+export const DataRow: React.FC<RowStandardProps> = ({ label, data }) => {
     return (
         <HStack width={"100%"} justifyContent="space-between">
             <Text color="text-soft">{label}</Text>
-            <Text color="text-hard" fontWeight={"bold"}>
+            <Text color="text-hard" fontWeight={"semibold"}>
                 {data}
             </Text>
         </HStack>

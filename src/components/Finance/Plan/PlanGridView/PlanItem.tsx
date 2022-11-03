@@ -1,10 +1,9 @@
+import React, { useCallback } from "react";
 import { Badge, Card } from "@/elements";
 import { PlanSummary } from "@/types/finance.type";
 import { Box, Button, Heading, HStack, Text, VStack } from "@chakra-ui/react";
 import { FaReceipt as PlanIcon, FaEllipsisV as MenuIcon, FaArrowRight as UsedInIcon } from "react-icons/fa";
-
-import React, { useCallback } from "react";
-import { RowStandard } from "@/elements/DataDisplay/RowStandard";
+import { DataRow } from "@/elements/DataDisplay/DataRow";
 import { currencyFormat } from "@/lib/Finance/utils";
 
 export const PlanItem: React.FC<PlanSummary> = (props) => {
@@ -41,10 +40,10 @@ export const PlanItem: React.FC<PlanSummary> = (props) => {
                 </HStack>
             </HStack>
             <VStack>
-                <RowStandard label="Income" data={currencyFormat(props.income)} />
-                <RowStandard label="COL" data={currencyFormat(props.col)} />
-                <RowStandard label="ASM" data={currencyFormat(props.asm)} />
-                <RowStandard label="Created at" data="2 days ago" />
+                <DataRow label="Income" data={currencyFormat(props.income)} />
+                <DataRow label="COL" data={currencyFormat(props.col)} />
+                <DataRow label="ASM" data={currencyFormat(props.asm)} />
+                <DataRow label="Created at" data="2 days ago" />
                 <HStack width={"100%"} marginTop="40px" justifyContent="space-between">
                     <Button size="sm" colorScheme={"gray"}>
                         Used in <UsedInIcon />
