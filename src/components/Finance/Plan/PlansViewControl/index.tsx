@@ -1,12 +1,12 @@
 import { fixtures } from "@/constant/datasets/fixtures";
-import { Card, Form } from "@/elements";
-import { Button, HStack, IconButton } from "@chakra-ui/react";
+import { Form } from "@/elements";
+import { Button, HStack, IconButton, VStack } from "@chakra-ui/react";
 import { FaSearch as SearchIcon, FaList as TableViewIcon } from "react-icons/fa";
 import { BsFillGridFill as GridViewIcon } from "react-icons/bs";
 
 import React, { useCallback, useState } from "react";
 
-export const PlanGridControl: React.FC = () => {
+export const PlansViewControl: React.FC = () => {
     const [viewType, setViewType] = useState<"table" | "grid">("grid");
 
     const getActiveViewButtonState = useCallback(
@@ -23,7 +23,7 @@ export const PlanGridControl: React.FC = () => {
     );
 
     return (
-        <Card width={"100%"} flexDirection="row" alignItems="flex-start" justifyContent="space-between">
+        <VStack width={"100%"} flexDirection="row" alignItems="flex-start" justifyContent="space-between">
             <HStack gap={0} width="inherit" alignItems="flex-end">
                 <Form.TextField
                     autoComplete="off"
@@ -46,6 +46,6 @@ export const PlanGridControl: React.FC = () => {
                     <GridViewIcon />
                 </IconButton>
             </HStack>
-        </Card>
+        </VStack>
     );
 };

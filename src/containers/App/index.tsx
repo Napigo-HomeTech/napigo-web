@@ -11,6 +11,9 @@ import { appTheme } from "@/themes";
 import { ChakraProvider } from "@chakra-ui/react";
 import { BuildBanner } from "@/build-banner/BuildBanner";
 import { AppConfig } from "@/config/app.config";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+
+const queryClient = new QueryClient();
 
 export const NapigoApp: React.FC = () => {
     return (
@@ -23,7 +26,9 @@ export const NapigoApp: React.FC = () => {
                     <Provider store={store}>
                         <ErrorBoundary renderFallbackComponent={(err) => <ErrorDialog err={err} closeable={true} />}>
                             <FeatureFlag>
-                                <App />
+                                <QueryClientProvider client={queryClient}>
+                                    <App />
+                                </QueryClientProvider>
                             </FeatureFlag>
                         </ErrorBoundary>
                     </Provider>

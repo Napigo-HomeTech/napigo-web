@@ -1,0 +1,75 @@
+import React, { Fragment, useEffect, useRef, useState } from "react";
+import { useInfiniteQuery } from "@tanstack/react-query";
+import { fetchPlans } from "@/lib/Finance/finance-service-apis";
+import { SimpleGrid } from "@chakra-ui/react";
+import { Skeleton } from "./Skeleton";
+import { PlanSummary } from "@/types/finance.type";
+import { CollectionBasedResponse } from "@/lib/Apis";
+import { uniqueId } from "lodash";
+import { useIntersectionObserver } from "usehooks-ts";
+import { Card } from "@/elements";
+
+export const PlanGridView: React.FC = () => {
+    const loadMoreRef = useRef<HTMLDivElement>(null);
+
+    const [scrollPosition, setScrollPosition] = useState<number>(0);
+
+    const ITEM_PER_PAGE = 50;
+    const SKELETON_AMOUNT = 20;
+
+    const { status, data, hasNextPage, isFetchingNextPage, fetchNextPage } = useInfiniteQuery<CollectionBasedResponse<PlanSummary>>(["plans"], {
+        queryFn: ({ pageParam = 1 }) => fetchPlans(pageParam, ITEM_PER_PAGE),
+        getNextPageParam: (lastPage, allPages) => {
+            const maxPage = lastPage.data.lastPage;
+            const nextPage = allPages.length + 1;
+            return nextPage <= maxPage ? nextPage : undefined;
+        },
+        cacheTime: 0,
+    });
+
+    const entry = useIntersectionObserver(loadMoreRef, {});
+
+    useEffect(() => {
+        if (entry?.isIntersecting) {
+            const position = window.scrollY;
+            setScrollPosition(position);
+            fetchNextPage();
+        }
+    }, [entry, fetchNextPage]);
+
+    useEffect(() => {
+        if (!isFetchingNextPage) {
+            window.scrollTo(0, scrollPosition);
+        }
+    }, [isFetchingNextPage, scrollPosition]);
+
+    const columns = { sm: 1, md: 2, lg: 3, xl: 4 };
+
+    return (
+        <Fragment>
+            <SimpleGrid spacing={5}>
+                {status === "success" && (
+                    <>
+                        {data?.pages.map((page) => {
+                            return page.data.results.map((val: PlanSummary) => {
+                                return (
+                                    <Card key={uniqueId()} width="100%" borderColor={"border"} borderWidth={1} p="10px" height="220px" rounded="md">
+                                        {val.title}
+                                        {val.pid}
+                                        {val.income}
+                                    </Card>
+                                );
+                            });
+                        })}
+                    </>
+                )}
+                {status === "loading" && <Skeleton component={} itemAmount={SKELETON_AMOUNT} />}
+            </SimpleGrid>
+
+            <SimpleGrid mt="20px" spacing={5} ref={loadMoreRef} className={`${!hasNextPage ? "hidden" : ""}`}>
+                <div />
+                {isFetchingNextPage && <Skeleton itemAmount={SKELETON_AMOUNT} />}
+            </SimpleGrid>
+        </Fragment>
+    );
+};

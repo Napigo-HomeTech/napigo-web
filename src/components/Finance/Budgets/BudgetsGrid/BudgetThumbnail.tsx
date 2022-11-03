@@ -1,4 +1,4 @@
-import { BudgetItem } from "@/lib/API/finance-apis";
+import { BudgetItem } from "@/lib/Apis/finance-apis";
 import { Heading, VStack } from "@chakra-ui/react";
 import React from "react";
 

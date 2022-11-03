@@ -1,10 +1,7 @@
 import { AppConfig } from "@/config/app.config";
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import { CollectionBasedResponse, createReqHeaders } from ".";
+import { CollectionBasedResponse } from ".";
 
-export interface BudgetsResponse extends CollectionBasedResponse {
-    budgets: BudgetItem[];
-}
 export type BudgetItem = {
     budget_id: string;
     revision: string;
@@ -19,14 +16,14 @@ export const FinanceApis = createApi({
         /**
          *
          */
-        getBudgets: builder.query<BudgetsResponse, number>({
+        getBudgets: builder.query<CollectionBasedResponse<BudgetItem>, number>({
             query: (page) => ({
                 url: `budgets?page=${page}`,
                 method: "GET",
-                headers: createReqHeaders(),
+                headers: {},
             }),
             providesTags: ["Budgets"],
-            transformResponse: (response: { data: BudgetsResponse }, _) => response.data,
+            transformResponse: (response: { data: CollectionBasedResponse<BudgetItem> }, _) => response.data,
         }),
     }),
 });

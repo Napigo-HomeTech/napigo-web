@@ -1,4 +1,4 @@
-import { OrganisationOption } from "../Apis/organisation";
+import { OrganisationOption } from "../Api_deprecated/organisation";
 
 const organisationData: OrganisationOption[] = [];
 

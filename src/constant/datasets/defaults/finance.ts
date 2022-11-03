@@ -14,6 +14,7 @@ const data = {
     "finance.plan.gridview.control.search.placeholder": "Search plan..",
     "finance.plan.gridview.control.search.button.text": "Search",
     "finance.plan.gridview.control.create-plan.button.text": "+ Create Plan",
+    "finance.plan.emptyplan.description": "You don't have any plan",
 };
 
 export default data;
