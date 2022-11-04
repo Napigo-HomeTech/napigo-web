@@ -1,4 +1,8 @@
-import { getCountries, getCountryCallingCode, CountryCode } from "libphonenumber-js";
+import {
+    getCountries,
+    getCountryCallingCode,
+    CountryCode,
+} from "libphonenumber-js";
 import getFlag from "country-flag-icons/unicode";
 
 declare global {

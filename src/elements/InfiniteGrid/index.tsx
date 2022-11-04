@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect, useRef, useState } from "react";
+import React, { Fragment, useEffect, useRef } from "react";
 import { CollectionBasedResponse } from "@/lib/Apis";
 import { useInfiniteQuery } from "@tanstack/react-query";
 import { get } from "lodash";
@@ -22,36 +22,40 @@ type InfiniteGridListProps = {
     lastPageKey: string;
 };
 export const InfiniteGridList: React.FC<InfiniteGridListProps> = (props) => {
-    const { itemComponent, amountOfSkeleton, itemSkeleton, limit, columns, fetch, queryKey, lastPageKey } = props;
+    const {
+        itemComponent,
+        amountOfSkeleton,
+        itemSkeleton,
+        limit,
+        columns,
+        fetch,
+        queryKey,
+        lastPageKey,
+    } = props;
 
-    const [scrollPosition, setScrollPosition] = useState<number>(0);
     const loadMoreRef = useRef<HTMLDivElement>(null);
 
-    const { status, data, hasNextPage, isFetchingNextPage, fetchNextPage } = useInfiniteQuery<CollectionBasedResponse<any>>([...queryKey], {
-        queryFn: ({ pageParam = 1 }) => fetch(pageParam, limit),
-        getNextPageParam: (lastPage, allPages) => {
-            const maxPage = get(lastPage.data, lastPageKey);
-            const nextPage = allPages.length + 1;
-            return nextPage <= maxPage ? nextPage : undefined;
-        },
-        cacheTime: 0,
-    });
+    const { status, data, hasNextPage, isFetchingNextPage, fetchNextPage } =
+        useInfiniteQuery<CollectionBasedResponse<any>>([...queryKey], {
+            queryFn: ({ pageParam = 1 }) => fetch(pageParam, limit),
+            getNextPageParam: (lastPage, allPages) => {
+                const maxPage = get(lastPage.data, lastPageKey);
+                const nextPage = allPages.length + 1;
+                return nextPage <= maxPage ? nextPage : undefined;
+            },
+            staleTime: 0,
+            cacheTime: 0,
+        });
 
-    const entry = useIntersectionObserver(loadMoreRef, {});
+    const entry = useIntersectionObserver(loadMoreRef, {
+        threshold: 0.1,
+    });
 
     useEffect(() => {
         if (entry?.isIntersecting) {
-            const position = window.scrollY;
-            setScrollPosition(position);
             fetchNextPage();
         }
     }, [entry, fetchNextPage]);
-
-    useEffect(() => {
-        if (!isFetchingNextPage) {
-            window.scrollTo(0, scrollPosition);
-        }
-    }, [isFetchingNextPage, scrollPosition]);
 
     return (
         <Fragment>
@@ -65,11 +69,27 @@ export const InfiniteGridList: React.FC<InfiniteGridListProps> = (props) => {
                         })}
                     </>
                 )}
-                {status === "loading" && <Skeleton itemAmount={amountOfSkeleton} component={itemSkeleton} />}
+                {status === "loading" && (
+                    <Skeleton
+                        itemAmount={amountOfSkeleton}
+                        component={itemSkeleton}
+                    />
+                )}
             </SimpleGrid>
-            <SimpleGrid columns={columns} mt="20px" spacing={5} ref={loadMoreRef} className={`${!hasNextPage ? "hidden" : ""}`}>
+            {hasNextPage}
+            <SimpleGrid
+                columns={columns}
+                mt="20px"
+                spacing={5}
+                ref={loadMoreRef}
+            >
                 <div />
-                {isFetchingNextPage && <Skeleton itemAmount={amountOfSkeleton} component={itemSkeleton} />}
+                {isFetchingNextPage && (
+                    <Skeleton
+                        itemAmount={amountOfSkeleton}
+                        component={itemSkeleton}
+                    />
+                )}
             </SimpleGrid>
         </Fragment>
     );

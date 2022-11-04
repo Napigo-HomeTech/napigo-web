@@ -9,7 +9,8 @@ const auth = getAuth();
 export const App: React.FC = () => {
     const [isAuthenticated, setAuthenticated] = useState<boolean>(false);
     const [isAuthing, setIsAuththing] = useState<boolean>(true);
-    const [emailNeedConfirmation, setEmailNeedConfirmation] = useState<boolean>(false);
+    const [emailNeedConfirmation, setEmailNeedConfirmation] =
+        useState<boolean>(false);
 
     useEffect(() => {
         const authCheck = onAuthStateChanged(auth, (user: User | null) => {

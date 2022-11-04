@@ -34,12 +34,16 @@ export const initOrganisationData = () => {
  *
  * @param value
  */
-export const mock_getOrganisationAutoComplete = (value: string): Promise<OrganisationOption[]> => {
+export const mock_getOrganisationAutoComplete = (
+    value: string
+): Promise<OrganisationOption[]> => {
     let data = orgs;
     if (data.length === 0) {
         data = initOrganisationData();
     }
-    const result = data.filter((item: OrganisationOption) => item.value.toLowerCase().includes(value.toLowerCase()));
+    const result = data.filter((item: OrganisationOption) =>
+        item.value.toLowerCase().includes(value.toLowerCase())
+    );
     return new Promise((resolve) => {
         delayInvoke(() => {
             resolve(result);

@@ -13,8 +13,10 @@ export const FIXTURES = {
     confirm_email: {
         title: "Confirm Your Email Address",
         send_title: "Email Sent",
-        pre_description: "You have to verify and confirm your Email address before login into Napigo",
-        post_description: "We’ve sent a link to your email address for confirmation. Please check your email and click on the link provided.",
+        pre_description:
+            "You have to verify and confirm your Email address before login into Napigo",
+        post_description:
+            "We’ve sent a link to your email address for confirmation. Please check your email and click on the link provided.",
         buttonText: {
             idle: "Send Confirmation Link",
             logoutNow: "Logout now",
@@ -25,7 +27,8 @@ export const FIXTURES = {
     },
     account: {
         authentication: {
-            primary_email_input_helper_text: "This is your default email which is used to login to your account",
+            primary_email_input_helper_text:
+                "This is your default email which is used to login to your account",
         },
     },
     accountSetting: {
@@ -43,6 +46,7 @@ export const FIXTURES = {
         change_email_dialog_title: "Change Email Address",
         new_email_input: "New Email Address",
         current_password_input: "Password",
-        email_sent_for_verify_text: "We've sent you the link to verify your new email",
+        email_sent_for_verify_text:
+            "We've sent you the link to verify your new email",
     },
 };

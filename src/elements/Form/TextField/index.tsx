@@ -1,5 +1,13 @@
 import React from "react";
-import { Input, InputProps, FormControl, FormLabel, FormErrorMessage, FormHelperText, InputGroup } from "@chakra-ui/react";
+import {
+    Input,
+    InputProps,
+    FormControl,
+    FormLabel,
+    FormErrorMessage,
+    FormHelperText,
+    InputGroup,
+} from "@chakra-ui/react";
 import { isEmpty } from "lodash";
 
 interface TextFieldProps extends Omit<InputProps, "isInvalid"> {
@@ -27,9 +35,21 @@ interface TextFieldProps extends Omit<InputProps, "isInvalid"> {
     containerWidth?: "full" | "auto";
 }
 export const TextField: React.FC<TextFieldProps> = (props) => {
-    const { error, label, isReadOnly: readOnly, helperText, inputRightElement, inputLeftElement, containerWidth = "full", ...rest } = props;
+    const {
+        error,
+        label,
+        isReadOnly: readOnly,
+        helperText,
+        inputRightElement,
+        inputLeftElement,
+        containerWidth = "full",
+        ...rest
+    } = props;
     return (
-        <FormControl isInvalid={!isEmpty(error)} width={containerWidth == "full" ? "100%" : "auto"}>
+        <FormControl
+            isInvalid={!isEmpty(error)}
+            width={containerWidth == "full" ? "100%" : "auto"}
+        >
             {!isEmpty(label) && <FormLabel>{label}</FormLabel>}
             <InputGroup>
                 {inputLeftElement && <>{inputLeftElement}</>}
@@ -47,7 +67,9 @@ export const TextField: React.FC<TextFieldProps> = (props) => {
             </InputGroup>
 
             <FormErrorMessage>{error}</FormErrorMessage>
-            {!isEmpty(helperText) && <FormHelperText>{helperText}</FormHelperText>}
+            {!isEmpty(helperText) && (
+                <FormHelperText>{helperText}</FormHelperText>
+            )}
         </FormControl>
     );
 };

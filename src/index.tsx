@@ -2,7 +2,9 @@ import "./index.css";
 import ReactDOM from "react-dom/client";
 import { NapigoApp } from "./containers/App";
 
-const root = ReactDOM.createRoot(document.getElementById("app-napigo") as HTMLElement);
+const root = ReactDOM.createRoot(
+    document.getElementById("app-napigo") as HTMLElement
+);
 /**
  * @experiment the use of stric mode in production  to see for any
  * side effects happen when use, in dev mode.. turn it off

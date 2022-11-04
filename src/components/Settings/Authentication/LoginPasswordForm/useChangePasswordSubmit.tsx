@@ -33,8 +33,10 @@ export const useChangePasswordSubmit = (inputKeys: GeneralObject) => {
 
         return () => {
             Object.values(inputKeys).forEach((id) => {
-                // eslint-disable-next-line @typescript-eslint/no-empty-function
-                document.getElementById(id)?.removeEventListener("blur", () => {});
+                document
+                    .getElementById(id)
+                    // eslint-disable-next-line @typescript-eslint/no-empty-function
+                    ?.removeEventListener("blur", () => {});
             });
         };
     }, [clearFormErrors, inputKeys]);
@@ -64,7 +66,9 @@ export const useChangePasswordSubmit = (inputKeys: GeneralObject) => {
             setInputErrors({ [errPath]: err?.message });
             return;
         }
-        const canSubmit = Boolean(formState === "idle" || formState === "onerror");
+        const canSubmit = Boolean(
+            formState === "idle" || formState === "onerror"
+        );
         if (canSubmit) {
             clearFormErrors();
             setFormState("submitting");

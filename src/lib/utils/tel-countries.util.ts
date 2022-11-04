@@ -22,7 +22,9 @@ export const getCountriesOptionData = () => {
     for (; idx < n; idx++) {
         const target = countriesRawData[idx];
         options.push({
-            label: `${getCountryFlag(target[2].toString())} ${target[0]}`.toString(),
+            label: `${getCountryFlag(target[2].toString())} ${
+                target[0]
+            }`.toString(),
             value: target[2].toString(),
         });
     }
@@ -34,10 +36,15 @@ export const getCountriesOptionData = () => {
  * @param country
  * @returns
  */
-export const getOptionByCountry = (country: string): CountryOption | undefined => {
+export const getOptionByCountry = (
+    country: string
+): CountryOption | undefined => {
     const list = getCountriesOptionData();
 
-    return list.find((val: CountryOption) => val.value.toLowerCase() === country.toLowerCase());
+    return list.find(
+        (val: CountryOption) =>
+            val.value.toLowerCase() === country.toLowerCase()
+    );
 };
 
 /**
@@ -45,7 +52,10 @@ export const getOptionByCountry = (country: string): CountryOption | undefined =
  * @param phoneNumberRaw
  * @param countryCode
  */
-export const formatPhoneNumber = (phoneNumberRaw: string, countryCode: string) => {
+export const formatPhoneNumber = (
+    phoneNumberRaw: string,
+    countryCode: string
+) => {
     const code = countryCode.toUpperCase() as CountryCode;
     const raw = new AsYouType(code).input(phoneNumberRaw);
     const parseNumber = parsePhoneNumber(raw, code);

@@ -1,8 +1,16 @@
-import { AuthErrorMessages, getAuthErrorMessage } from "@/constant/error-messages";
+import {
+    AuthErrorMessages,
+    getAuthErrorMessage,
+} from "@/constant/error-messages";
 import { getUser, initializeRecaptchaVerifier } from "@/lib/Auth";
 import { delayInvoke } from "@/lib/utils/delays";
 import { FormState } from "@/types";
-import { AuthError, getAuth, linkWithPhoneNumber, PhoneAuthProvider } from "firebase/auth";
+import {
+    AuthError,
+    getAuth,
+    linkWithPhoneNumber,
+    PhoneAuthProvider,
+} from "firebase/auth";
 import React, { useCallback, useState } from "react";
 import { useAddMobileFormContext } from "..";
 import { useMobileSetting } from "../..";
@@ -18,13 +26,20 @@ export const usePhoneNumberForm = () => {
 
     const { formType } = useMobileSetting();
 
-    const { setFormType, setCachePhoneNumber, setConfirmationResult, setVerificationId } = useAddMobileFormContext();
+    const {
+        setFormType,
+        setCachePhoneNumber,
+        setConfirmationResult,
+        setVerificationId,
+    } = useAddMobileFormContext();
 
     const submit = useCallback(
         (ev: React.FormEvent) => {
             ev.preventDefault();
 
-            const elem = document.getElementById("mobile_no") as HTMLInputElement;
+            const elem = document.getElementById(
+                "mobile_no"
+            ) as HTMLInputElement;
             elem.blur();
             const { value } = elem;
             setFormState("submitting");
@@ -35,11 +50,18 @@ export const usePhoneNumberForm = () => {
                     const verifier = window.recaptchaVerifier;
 
                     if (user && formType === "notVerified") {
-                        const confirmationResult = await linkWithPhoneNumber(user, value, verifier);
+                        const confirmationResult = await linkWithPhoneNumber(
+                            user,
+                            value,
+                            verifier
+                        );
                         setConfirmationResult(confirmationResult);
                     } else if (user && formType === "onUpdate") {
                         const provider = new PhoneAuthProvider(auth);
-                        const verId = await provider.verifyPhoneNumber(value, verifier);
+                        const verId = await provider.verifyPhoneNumber(
+                            value,
+                            verifier
+                        );
                         setVerificationId(verId);
                     }
 
@@ -57,7 +79,15 @@ export const usePhoneNumberForm = () => {
                 }
             });
         },
-        [auth, formType, setCachePhoneNumber, setConfirmationResult, setFormType, setVerificationId, user]
+        [
+            auth,
+            formType,
+            setCachePhoneNumber,
+            setConfirmationResult,
+            setFormType,
+            setVerificationId,
+            user,
+        ]
     );
 
     return {

@@ -8,7 +8,10 @@ export const semanticTokens = {
             _dark: "linear-gradient(to right, #3BAE5A 3.56%, #1BA16E 99.81%)",
         },
         secondary: { _light: "secondary.500", _dark: "secondary.500" },
-        "text-soft": { _light: "rgba(125, 125, 146, 0.71)", _dark: "rgba(125, 125, 146, 0.71)" },
+        "text-soft": {
+            _light: "rgba(125, 125, 146, 0.71)",
+            _dark: "rgba(125, 125, 146, 0.71)",
+        },
         "text-hard": { _light: "#344054", _dark: "#344054" },
         "text-gray": { _light: "#7D7D92", _dark: "#7D7D92" },
         body: { _light: "#FAFAFA", _dark: "#FAFAFA" },

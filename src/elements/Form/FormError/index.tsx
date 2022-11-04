@@ -1,5 +1,11 @@
 import React from "react";
-import { Alert, AlertDescription, AlertIcon, AlertTitle, Box } from "@chakra-ui/react";
+import {
+    Alert,
+    AlertDescription,
+    AlertIcon,
+    AlertTitle,
+    Box,
+} from "@chakra-ui/react";
 import { isEmpty } from "lodash";
 
 type FormErrorProps = {
@@ -7,7 +13,11 @@ type FormErrorProps = {
     message?: string | null;
     alignment?: "inline" | "stack";
 };
-export const FormError: React.FC<FormErrorProps> = ({ title, message, alignment = "inline" }) => {
+export const FormError: React.FC<FormErrorProps> = ({
+    title,
+    message,
+    alignment = "inline",
+}) => {
     if (isEmpty(message)) {
         return null;
     }

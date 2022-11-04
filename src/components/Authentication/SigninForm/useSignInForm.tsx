@@ -31,8 +31,10 @@ export const useSignInForm = (inputKeys: GeneralObject) => {
 
         return () => {
             Object.values(inputKeys).forEach((id) => {
-                // eslint-disable-next-line @typescript-eslint/no-empty-function
-                document.getElementById(id)?.removeEventListener("blur", () => {});
+                document
+                    .getElementById(id)
+                    // eslint-disable-next-line @typescript-eslint/no-empty-function
+                    ?.removeEventListener("blur", () => {});
             });
         };
     }, [inputKeys]);
@@ -70,7 +72,9 @@ export const useSignInForm = (inputKeys: GeneralObject) => {
             return;
         }
 
-        const canSubmit = Boolean(formState === "idle" || formState === "onerror");
+        const canSubmit = Boolean(
+            formState === "idle" || formState === "onerror"
+        );
 
         if (canSubmit) {
             clearFormErrors();
@@ -83,7 +87,10 @@ export const useSignInForm = (inputKeys: GeneralObject) => {
              */
             delayInvoke(async () => {
                 try {
-                    await loginMethod(value[inputKeys.email], value[inputKeys.psw]);
+                    await loginMethod(
+                        value[inputKeys.email],
+                        value[inputKeys.psw]
+                    );
                 } catch (err: any) {
                     if (err.code) {
                         const authError = err as AuthError;
@@ -97,7 +104,9 @@ export const useSignInForm = (inputKeys: GeneralObject) => {
                                 setSubmitError("This email is not registered");
                                 break;
                             default:
-                                setSubmitError("Unable to sign in user, please contact Administrator");
+                                setSubmitError(
+                                    "Unable to sign in user, please contact Administrator"
+                                );
                                 break;
                         }
                         setFormState("onerror");

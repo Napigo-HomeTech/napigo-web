@@ -32,5 +32,12 @@ export const SingleDatePicker: React.FC = () => {
             size: "md",
         },
     };
-    return <ChakraSingleDatepicker propsConfigs={propConfigs} name="date-input" date={date} onDateChange={setDate} />;
+    return (
+        <ChakraSingleDatepicker
+            propsConfigs={propConfigs}
+            name="date-input"
+            date={date}
+            onDateChange={setDate}
+        />
+    );
 };

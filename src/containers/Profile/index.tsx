@@ -1,6 +1,9 @@
 import React from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
-import { MdOutlineAccountCircle as PersonalIcon, MdOutlineFamilyRestroom as FamilyIcon } from "react-icons/md";
+import {
+    MdOutlineAccountCircle as PersonalIcon,
+    MdOutlineFamilyRestroom as FamilyIcon,
+} from "react-icons/md";
 import { fixtures } from "@/constant/datasets/fixtures";
 import { PersonalProfilePage } from "@/pages/Profile/PersonalProfile";
 import { Heading } from "@chakra-ui/react";
@@ -27,10 +30,17 @@ const profileMenus = [
 export const ProfileContainer: React.FC = () => {
     return (
         <Routes>
-            <Route element={<ModulePage menus={profileMenus} title="Profile" />}>
+            <Route
+                element={<ModulePage menus={profileMenus} title="Profile" />}
+            >
                 <Route index element={<Navigate to="personal" />} />
                 <Route path="personal" element={<PersonalProfilePage />} />
-                <Route path="family" element={<Heading size="md">Family Page in progress..</Heading>} />
+                <Route
+                    path="family"
+                    element={
+                        <Heading size="md">Family Page in progress..</Heading>
+                    }
+                />
             </Route>
         </Routes>
     );

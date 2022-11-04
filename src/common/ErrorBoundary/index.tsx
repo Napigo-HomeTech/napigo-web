@@ -30,7 +30,10 @@ type ErrorBoundaryState = {
  * for catching any internal errors as much as possible to ensure no backtrace
  * or console logging being display back to the browser / user
  */
-export class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState> {
+export class ErrorBoundary extends Component<
+    ErrorBoundaryProps,
+    ErrorBoundaryState
+> {
     constructor(props: ErrorBoundaryProps) {
         super(props);
         this.state = {
@@ -49,7 +52,11 @@ export class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundarySt
 
     public render() {
         if (this.state.error !== null) {
-            return <Fragment>{this.props.renderFallbackComponent?.(this.state.error)}</Fragment>;
+            return (
+                <Fragment>
+                    {this.props.renderFallbackComponent?.(this.state.error)}
+                </Fragment>
+            );
         }
         return <Fragment>{this.props.children}</Fragment>;
     }

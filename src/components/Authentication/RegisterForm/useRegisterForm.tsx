@@ -35,8 +35,10 @@ export const useRegisterForm = (inputIds: GeneralObject) => {
 
         return () => {
             Object.values(inputIds).forEach((id) => {
-                // eslint-disable-next-line @typescript-eslint/no-empty-function
-                document.getElementById(id)?.removeEventListener("blur", () => {});
+                document
+                    .getElementById(id)
+                    // eslint-disable-next-line @typescript-eslint/no-empty-function
+                    ?.removeEventListener("blur", () => {});
             });
         };
     }, [inputIds]);
@@ -93,7 +95,10 @@ export const useRegisterForm = (inputIds: GeneralObject) => {
 
             delayInvoke(async () => {
                 try {
-                    const { user } = await registerMethod(formData[inputIds.email], formData[inputIds.psw]);
+                    const { user } = await registerMethod(
+                        formData[inputIds.email],
+                        formData[inputIds.psw]
+                    );
                     const username = formData[inputIds.username];
                     if (!isEmpty(username)) {
                         await updateProfile(user, { displayName: username });
@@ -124,13 +129,21 @@ export const useRegisterForm = (inputIds: GeneralObject) => {
                 handleValidationError(error);
                 return;
             }
-            const CAN_SUBMIT = Boolean(formStatus === "idle" || formStatus === "onerror");
+            const CAN_SUBMIT = Boolean(
+                formStatus === "idle" || formStatus === "onerror"
+            );
             if (CAN_SUBMIT) {
                 clearFormErrors();
                 handleFormSubmit(formData);
             }
         },
-        [clearFormErrors, formStatus, handleFormSubmit, handleValidationError, validateForm]
+        [
+            clearFormErrors,
+            formStatus,
+            handleFormSubmit,
+            handleValidationError,
+            validateForm,
+        ]
     );
 
     return {

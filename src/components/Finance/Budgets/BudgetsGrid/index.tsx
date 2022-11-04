@@ -18,7 +18,13 @@ const BudgetsGrid: React.FC = () => {
         }
     }, [isLoading, data]);
 
-    const isDataReady = Boolean(!isLoading && !isFetching && data && data.budgets && data.budgets.length > 0);
+    const isDataReady = Boolean(
+        !isLoading &&
+            !isFetching &&
+            data &&
+            data.budgets &&
+            data.budgets.length > 0
+    );
 
     return (
         <Fragment>
@@ -32,7 +38,13 @@ const BudgetsGrid: React.FC = () => {
                 />
             </HStack>
 
-            <SimpleGrid columns={5} spacing={5} minChildWidth="250px" overflow="scroll" maxHeight={"500px"}>
+            <SimpleGrid
+                columns={5}
+                spacing={5}
+                minChildWidth="250px"
+                overflow="scroll"
+                maxHeight={"500px"}
+            >
                 {isDataReady && (
                     <>
                         {data?.budgets.map((budget: BudgetItem) => (

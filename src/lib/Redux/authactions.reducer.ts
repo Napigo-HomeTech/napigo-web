@@ -4,7 +4,13 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
  * Will list all other possible auth actions
  * that will trigger onAuthStateChanged
  */
-type AuthAction = "signout" | "login" | "resetpassword" | "register" | "confirmingemail" | null;
+type AuthAction =
+    | "signout"
+    | "login"
+    | "resetpassword"
+    | "register"
+    | "confirmingemail"
+    | null;
 
 export interface AuthActionState {
     action: AuthAction;

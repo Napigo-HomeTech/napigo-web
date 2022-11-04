@@ -1,4 +1,10 @@
-import { getFirestore, doc, getDoc, setDoc, updateDoc } from "firebase/firestore";
+import {
+    getFirestore,
+    doc,
+    getDoc,
+    setDoc,
+    updateDoc,
+} from "firebase/firestore";
 import { Account } from "@/types";
 import app from "../Firebase";
 

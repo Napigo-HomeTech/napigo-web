@@ -1,6 +1,7 @@
 import { AuthErrorCodes } from "firebase/auth";
 
-const COMMON_UNAUTHORIZED_MESSAGE = "You are not authorized to perform such action";
+const COMMON_UNAUTHORIZED_MESSAGE =
+    "You are not authorized to perform such action";
 const COMMON_GENERAL_ERROR = "Error! please try again soon";
 
 export const AuthErrorMessages = {
@@ -18,9 +19,11 @@ export const AuthErrorMessages = {
     CREDENTIAL_ALREADY_IN_USE: "auth/credential-already-in-use",
     CREDENTIAL_MISMATCH: "Password failed to verify",
     CREDENTIAL_TOO_OLD_LOGIN_AGAIN: "Session timeout, please login again",
-    DEPENDENT_SDK_INIT_BEFORE_AUTH: "auth/dependent-sdk-initialized-before-auth",
+    DEPENDENT_SDK_INIT_BEFORE_AUTH:
+        "auth/dependent-sdk-initialized-before-auth",
     DYNAMIC_LINK_NOT_ACTIVATED: "Link is not activated",
-    EMAIL_CHANGE_NEEDS_VERIFICATION: "Your Email address is not verified, Please check your email and click on the link given",
+    EMAIL_CHANGE_NEEDS_VERIFICATION:
+        "Your Email address is not verified, Please check your email and click on the link given",
     EMAIL_EXISTS: "This email address is already in used, please login instead",
     EXPIRED_OOB_CODE: "auth/expired-action-code",
     EXPIRED_POPUP_REQUEST: "auth/cancelled-popup-request",

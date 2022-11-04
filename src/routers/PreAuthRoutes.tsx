@@ -9,7 +9,10 @@ export const PreAuthRoutes: React.FC = () => {
                 <Route index element={<Navigate to="confirm-email" />} />
                 <Route path="confirm-email" element={<ConfirmEmail />} />
             </Route>
-            <Route path="*" element={<Navigate to="/pre-auth/confirm-email" />} />
+            <Route
+                path="*"
+                element={<Navigate to="/pre-auth/confirm-email" />}
+            />
         </Routes>
     );
 };

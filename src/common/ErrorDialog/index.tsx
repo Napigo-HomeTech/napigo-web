@@ -1,4 +1,15 @@
-import { Heading, HStack, Modal, ModalBody, ModalCloseButton, ModalContent, ModalHeader, ModalOverlay, Text, useDisclosure } from "@chakra-ui/react";
+import {
+    Heading,
+    HStack,
+    Modal,
+    ModalBody,
+    ModalCloseButton,
+    ModalContent,
+    ModalHeader,
+    ModalOverlay,
+    Text,
+    useDisclosure,
+} from "@chakra-ui/react";
 import React from "react";
 import { FaExclamationCircle } from "react-icons/fa";
 
@@ -8,7 +19,9 @@ type ErrorDialogProps = {
 };
 
 export const ErrorDialog: React.FC<ErrorDialogProps> = ({ closeable, err }) => {
-    const { isOpen: isDisplay, onClose } = useDisclosure({ defaultIsOpen: true });
+    const { isOpen: isDisplay, onClose } = useDisclosure({
+        defaultIsOpen: true,
+    });
 
     return (
         // eslint-disable-next-line @typescript-eslint/no-empty-function
@@ -25,8 +38,9 @@ export const ErrorDialog: React.FC<ErrorDialogProps> = ({ closeable, err }) => {
                             <>{err.message}</>
                         ) : (
                             <>
-                                Sorry, We couldn &lsquo; t proceed further any operation due to some error occured, please try again sometimes or
-                                refresh the app
+                                Sorry, We couldn &lsquo; t proceed further any
+                                operation due to some error occured, please try
+                                again sometimes or refresh the app
                             </>
                         )}
                     </Text>

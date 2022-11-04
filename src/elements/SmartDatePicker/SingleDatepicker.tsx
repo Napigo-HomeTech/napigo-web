@@ -20,7 +20,11 @@ import { format } from "date-fns";
 import FocusLock from "react-focus-lock";
 import { Month_Names_Short, Weekday_Names_Short } from "./utils/calendarUtils";
 import { CalendarPanel } from "./Widgets/CalendarPanel";
-import { DatepickerConfigs, DatepickerProps, OnDateSelected } from "./utils/calendarTypes";
+import {
+    DatepickerConfigs,
+    DatepickerProps,
+    OnDateSelected,
+} from "./utils/calendarTypes";
 import { CalendarIcon } from "@chakra-ui/icons";
 
 export interface SingleDatepickerProps extends DatepickerProps {
@@ -74,16 +78,26 @@ export const SingleDatepicker: React.FC<SingleDatepickerProps> = ({
     const PopoverContentWrapper = usePortal ? Portal : React.Fragment;
 
     const inputValue = useMemo(() => {
-        return dateInView ? format(dateInView, configs.dateFormat) : rawTypedInput;
+        return dateInView
+            ? format(dateInView, configs.dateFormat)
+            : rawTypedInput;
     }, [configs.dateFormat, dateInView, rawTypedInput]);
 
-    const handleInputOnChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const handleInputOnChange = (
+        event: React.ChangeEvent<HTMLInputElement>
+    ) => {
         setRawTypedInput(event.target.value);
         setDateInView(undefined);
     };
 
     return (
-        <Popover placement="bottom-start" variant="responsive" isOpen={isOpen} onClose={onPopoverClose} isLazy>
+        <Popover
+            placement="bottom-start"
+            variant="responsive"
+            isOpen={isOpen}
+            onClose={onPopoverClose}
+            isLazy
+        >
             <PopoverTrigger>
                 <FormControl>
                     {label && <FormLabel>{label}</FormLabel>}

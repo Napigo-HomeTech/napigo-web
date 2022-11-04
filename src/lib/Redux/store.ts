@@ -10,7 +10,8 @@ export const store = configureStore({
         accountStore: accountReducer,
         [FinanceApis.reducerPath]: FinanceApis.reducer,
     },
-    middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(FinanceApis.middleware),
+    middleware: (getDefaultMiddleware) =>
+        getDefaultMiddleware().concat(FinanceApis.middleware),
 });
 
 // Infer the `RootState` and `AppDispatch` types from the store itself

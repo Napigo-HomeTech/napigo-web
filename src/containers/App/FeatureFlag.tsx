@@ -24,7 +24,9 @@ export const FeatureFlag: React.FC<FeatureFlagProps> = ({ children }) => {
          * Use the local featureFlag configs only in development Mode
          */
         if (AppConfig.environment === "development") {
-            growthbook.setFeatures(getFeatureFlags([featureFlags.enable_alternative_email_backup]));
+            growthbook.setFeatures(
+                getFeatureFlags([featureFlags.enable_alternative_email_backup])
+            );
             return;
         }
         fetch(FEATURE_ENDPOINT)
@@ -34,5 +36,9 @@ export const FeatureFlag: React.FC<FeatureFlagProps> = ({ children }) => {
             });
     }, [FEATURE_ENDPOINT]);
 
-    return <GrowthBookProvider growthbook={growthbook}>{children}</GrowthBookProvider>;
+    return (
+        <GrowthBookProvider growthbook={growthbook}>
+            {children}
+        </GrowthBookProvider>
+    );
 };

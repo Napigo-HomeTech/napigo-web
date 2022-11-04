@@ -1,7 +1,16 @@
 import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useRegisterForm } from "./useRegisterForm";
-import { FormControl, Input, Box, FormHelperText, Alert, AlertIcon, AlertTitle, Button } from "@chakra-ui/react";
+import {
+    FormControl,
+    Input,
+    Box,
+    FormHelperText,
+    Alert,
+    AlertIcon,
+    AlertTitle,
+    Button,
+} from "@chakra-ui/react";
 import { Form } from "@/elements";
 import { fixtures } from "@/constant/datasets/fixtures";
 
@@ -12,7 +21,8 @@ const inputIds = {
 };
 
 export const RegisterForm: React.FC = () => {
-    const { submit, inputErrors, submitError, formStatus, clearFormErrors } = useRegisterForm(inputIds);
+    const { submit, inputErrors, submitError, formStatus, clearFormErrors } =
+        useRegisterForm(inputIds);
 
     const navigate = useNavigate();
 
@@ -23,30 +33,52 @@ export const RegisterForm: React.FC = () => {
     }, [clearFormErrors]);
 
     return (
-        <Box as="form" display="flex" flexDirection="column" gap={4} onSubmit={submit}>
+        <Box
+            as="form"
+            display="flex"
+            flexDirection="column"
+            gap={4}
+            onSubmit={submit}
+        >
             <FormControl>
                 <Input
                     isInvalid={inputErrors[inputIds.email] !== undefined}
                     id={inputIds.email}
                     type={"email"}
-                    placeholder={fixtures.authenticationStrings["register.form.email-input.placeholder"]}
+                    placeholder={
+                        fixtures.authenticationStrings[
+                            "register.form.email-input.placeholder"
+                        ]
+                    }
                     autoComplete="off"
                     spellCheck={false}
                 />
-                {inputErrors[inputIds.email] !== undefined && <FormHelperText color={"red.200"}>{inputErrors[inputIds.email]}</FormHelperText>}
+                {inputErrors[inputIds.email] !== undefined && (
+                    <FormHelperText color={"red.200"}>
+                        {inputErrors[inputIds.email]}
+                    </FormHelperText>
+                )}
             </FormControl>
 
             <Form.PasswordField
                 id={inputIds.psw}
                 error={inputErrors[inputIds.psw]}
-                placeholder={fixtures.authenticationStrings["register.form.password-input.placholder"]}
+                placeholder={
+                    fixtures.authenticationStrings[
+                        "register.form.password-input.placholder"
+                    ]
+                }
             />
 
             <FormControl>
                 <Input
                     id={inputIds.username}
                     type={"text"}
-                    placeholder={fixtures.authenticationStrings["register.form.name-input.placeholder"]}
+                    placeholder={
+                        fixtures.authenticationStrings[
+                            "register.form.name-input.placeholder"
+                        ]
+                    }
                     autoComplete="off"
                     spellCheck={false}
                 />
@@ -59,12 +91,29 @@ export const RegisterForm: React.FC = () => {
                 </Alert>
             )}
 
-            <Button colorScheme={"brand-gr"} type="submit" isLoading={formStatus === "submitting"} w={"100%"}>
-                {fixtures.authenticationStrings["register.form.submit.buttontext"]}
+            <Button
+                colorScheme={"brand-gr"}
+                type="submit"
+                isLoading={formStatus === "submitting"}
+                w={"100%"}
+            >
+                {
+                    fixtures.authenticationStrings[
+                        "register.form.submit.buttontext"
+                    ]
+                }
             </Button>
 
-            <Button w={"100%"} variant="ghost" onClick={() => navigate("/auth")}>
-                {fixtures.authenticationStrings["register.form.login.buttontext"]}
+            <Button
+                w={"100%"}
+                variant="ghost"
+                onClick={() => navigate("/auth")}
+            >
+                {
+                    fixtures.authenticationStrings[
+                        "register.form.login.buttontext"
+                    ]
+                }
             </Button>
         </Box>
     );

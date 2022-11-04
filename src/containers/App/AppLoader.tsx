@@ -17,7 +17,16 @@ export const AppLoader: React.FC = () => {
     return (
         <Fragment>
             <AnimatePresence initial={true}>
-                <Box position="fixed" left={0} top={0} w="100vw" h="100vh" zIndex="banner" overflow="hidden" bg={"card"}>
+                <Box
+                    position="fixed"
+                    left={0}
+                    top={0}
+                    w="100vw"
+                    h="100vh"
+                    zIndex="banner"
+                    overflow="hidden"
+                    bg={"card"}
+                >
                     <ChakraBox
                         initial={{ opacity: 0 }}
                         animate={{ opacity: "100%" }}
@@ -60,7 +69,12 @@ export const AppLoader: React.FC = () => {
                                 duration: 0.6,
                             }}
                         >
-                            <Spinner color="brand.500" size="lg" thickness="4px" emptyColor="brandAlpha.300" />
+                            <Spinner
+                                color="brand.500"
+                                size="lg"
+                                thickness="4px"
+                                emptyColor="brandAlpha.300"
+                            />
                         </ChakraBox>
                     </ChakraBox>
                 </Box>

@@ -24,33 +24,70 @@ import { fixtures } from "@/constant/datasets/fixtures";
  * @returns
  */
 export const OtpForm: React.FC = () => {
-    const { formState, submit, submitError, cachePhoneNumber, resendOtp, resending } = useOtpForm();
+    const {
+        formState,
+        submit,
+        submitError,
+        cachePhoneNumber,
+        resendOtp,
+        resending,
+    } = useOtpForm();
 
     const { setFormType } = useAddMobileFormContext();
 
     const [otpValue, setOtpValue] = useState<string | null>();
 
-    const ShowSentNotif = Boolean(formState === "idle" || formState === "submitting" || formState === "onerror");
+    const ShowSentNotif = Boolean(
+        formState === "idle" ||
+            formState === "submitting" ||
+            formState === "onerror"
+    );
     return (
-        <VStack gap={2} mt={5} width="100%" justifyContent="start" alignItems="flex-start">
+        <VStack
+            gap={2}
+            mt={5}
+            width="100%"
+            justifyContent="start"
+            alignItems="flex-start"
+        >
             {ShowSentNotif && (
                 <FormLabel
                     children={
                         <>
-                            {fixtures.settingsStrings["authentication.mobileform.otp-sent.description"]}
+                            {
+                                fixtures.settingsStrings[
+                                    "authentication.mobileform.otp-sent.description"
+                                ]
+                            }
                             <Text color="brand.500">{cachePhoneNumber}</Text>
                         </>
                     }
                 />
             )}
 
-            <FormControl isInvalid={!isEmpty(submitError)} display="flex" flexDirection="column">
+            <FormControl
+                isInvalid={!isEmpty(submitError)}
+                display="flex"
+                flexDirection="column"
+            >
                 <HStack width="100%">
                     {formState === "onsuccess" ? (
                         <Alert status="success" variant="left-accent">
                             <VStack alignItems="flex-start">
-                                <AlertTitle>{fixtures.settingsStrings["authentication.mobileform.otp-success.title"]}</AlertTitle>
-                                <AlertDescription>{fixtures.settingsStrings["authentication.mobileform.otp-success.description"]}</AlertDescription>
+                                <AlertTitle>
+                                    {
+                                        fixtures.settingsStrings[
+                                            "authentication.mobileform.otp-success.title"
+                                        ]
+                                    }
+                                </AlertTitle>
+                                <AlertDescription>
+                                    {
+                                        fixtures.settingsStrings[
+                                            "authentication.mobileform.otp-success.description"
+                                        ]
+                                    }
+                                </AlertDescription>
                             </VStack>
                         </Alert>
                     ) : (
@@ -73,7 +110,14 @@ export const OtpForm: React.FC = () => {
                                 <PinInputField data-id="otp-field" />
                             </PinInput>
 
-                            {formState === "submitting" && <Spinner color="brand.500" size="md" thickness="2px" emptyColor="brandAlpha.300" />}
+                            {formState === "submitting" && (
+                                <Spinner
+                                    color="brand.500"
+                                    size="md"
+                                    thickness="2px"
+                                    emptyColor="brandAlpha.300"
+                                />
+                            )}
                         </>
                     )}
                 </HStack>
@@ -81,7 +125,11 @@ export const OtpForm: React.FC = () => {
             </FormControl>
             {resending === "sent" && formState === "idle" && (
                 <Text fontSize="sm" color="green.500">
-                    {fixtures.settingsStrings["authentication.mobileform.otp-resent.description"]}
+                    {
+                        fixtures.settingsStrings[
+                            "authentication.mobileform.otp-resent.description"
+                        ]
+                    }
                 </Text>
             )}
 
@@ -96,7 +144,11 @@ export const OtpForm: React.FC = () => {
                         }}
                         isLoading={resending === "sending"}
                     >
-                        {fixtures.settingsStrings["authentication.mobileform.otp-resend.buttontext"]}
+                        {
+                            fixtures.settingsStrings[
+                                "authentication.mobileform.otp-resend.buttontext"
+                            ]
+                        }
                     </Button>
 
                     <Button
@@ -106,7 +158,11 @@ export const OtpForm: React.FC = () => {
                             setFormType?.("phone-number");
                         }}
                     >
-                        {fixtures.settingsStrings["authentication.mobileform.otp.use-another-number.buttontext"]}
+                        {
+                            fixtures.settingsStrings[
+                                "authentication.mobileform.otp.use-another-number.buttontext"
+                            ]
+                        }
                     </Button>
                 </HStack>
             )}

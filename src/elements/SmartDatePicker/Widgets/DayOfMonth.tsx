@@ -1,7 +1,10 @@
 import { Button } from "@chakra-ui/react";
 import { DateObj, RenderProps } from "dayzed";
 import React, { useMemo } from "react";
-import { DatepickerProps, DayOfMonthBtnStyleProps } from "../utils/calendarTypes";
+import {
+    DatepickerProps,
+    DayOfMonthBtnStyleProps,
+} from "../utils/calendarTypes";
 
 interface DayOfMonthProps extends DatepickerProps {
     renderProps: RenderProps;
@@ -12,10 +15,21 @@ interface DayOfMonthProps extends DatepickerProps {
 
 const halfGap = 0.125; //default Chakra-gap-space-1 is 0.25rem
 
-export const DayOfMonth: React.FC<DayOfMonthProps> = ({ dateObj, propsConfigs, isInRange, renderProps, onMouseEnter }) => {
+export const DayOfMonth: React.FC<DayOfMonthProps> = ({
+    dateObj,
+    propsConfigs,
+    isInRange,
+    renderProps,
+    onMouseEnter,
+}) => {
     const { date, selected, selectable, today } = dateObj;
     const { getDateProps } = renderProps;
-    const { defaultBtnProps, isInRangeBtnProps, selectedBtnProps, todayBtnProps } = propsConfigs?.dayOfMonthBtnProps || {};
+    const {
+        defaultBtnProps,
+        isInRangeBtnProps,
+        selectedBtnProps,
+        todayBtnProps,
+    } = propsConfigs?.dayOfMonthBtnProps || {};
 
     const styleBtnProps: DayOfMonthBtnStyleProps = useMemo(
         () => ({
@@ -55,7 +69,13 @@ export const DayOfMonth: React.FC<DayOfMonthProps> = ({ dateObj, propsConfigs, i
                 ...todayBtnProps,
             },
         }),
-        [defaultBtnProps, isInRangeBtnProps, selectedBtnProps, todayBtnProps, selectable]
+        [
+            defaultBtnProps,
+            isInRangeBtnProps,
+            selectedBtnProps,
+            todayBtnProps,
+            selectable,
+        ]
     );
 
     return (

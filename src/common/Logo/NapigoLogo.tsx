@@ -5,7 +5,15 @@ export const NapigoLogo: React.FC<LogoProps> = (props) => {
     const { className, handleClick } = props;
 
     return (
-        <svg {...props} width={122} height={38} fill="none" onClick={handleClick} className={`${className ?? ""}`} xmlns="http://www.w3.org/2000/svg">
+        <svg
+            {...props}
+            width={122}
+            height={38}
+            fill="none"
+            onClick={handleClick}
+            className={`${className ?? ""}`}
+            xmlns="http://www.w3.org/2000/svg"
+        >
             <g clipPath="url(#a)">
                 <path
                     fillRule="evenodd"
@@ -23,11 +31,25 @@ export const NapigoLogo: React.FC<LogoProps> = (props) => {
                 fill="currentColor"
             />
             <defs>
-                <linearGradient id="b" x1={0} y1={0.1} x2={55.671} y2={35.903} gradientUnits="userSpaceOnUse">
+                <linearGradient
+                    id="b"
+                    x1={0}
+                    y1={0.1}
+                    x2={55.671}
+                    y2={35.903}
+                    gradientUnits="userSpaceOnUse"
+                >
                     <stop stopColor="#3BAE5A" />
                     <stop offset={1} stopColor="#1BA16E" />
                 </linearGradient>
-                <linearGradient id="c" x1={8.507} y1={11.051} x2={32.589} y2={28.983} gradientUnits="userSpaceOnUse">
+                <linearGradient
+                    id="c"
+                    x1={8.507}
+                    y1={11.051}
+                    x2={32.589}
+                    y2={28.983}
+                    gradientUnits="userSpaceOnUse"
+                >
                     <stop stopColor="#3BAE5A" />
                     <stop offset={1} stopColor="#1BA16E" />
                 </linearGradient>

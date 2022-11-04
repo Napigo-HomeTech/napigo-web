@@ -126,10 +126,7 @@ const PaginationComponent = (props: PaginationProps) => {
     const pageButtonStyles = React.useCallback(
         (slotNo: number) => {
             return {
-                bg: slotNo == activePage ? "brand.500" : "base",
-                _hover: {
-                    bg: slotNo == activePage ? "brand.500" : "base",
-                },
+                colorScheme: slotNo == activePage ? "brand-gr" : "base",
             };
         },
         [activePage]
@@ -145,7 +142,12 @@ const PaginationComponent = (props: PaginationProps) => {
                 Previous
             </Button>
             {btnSlot.map((slotNo) => (
-                <Button key={uniqueId()} size={"sm"} {...pageButtonStyles(slotNo)} onClick={() => onPageClick(slotNo)}>
+                <Button
+                    key={uniqueId()}
+                    size={"sm"}
+                    {...pageButtonStyles(slotNo)}
+                    onClick={() => onPageClick(slotNo)}
+                >
                     {slotNo}
                 </Button>
             ))}
@@ -164,11 +166,20 @@ const PaginationComponent = (props: PaginationProps) => {
  * @param prevProps
  * @param nextProps
  */
-const comparePaginationProps = (prevProps: PaginationProps, nextProps: PaginationProps) => {
-    if (prevProps.countPerPage !== nextProps.countPerPage || prevProps.totalCounts !== nextProps.totalCounts) {
+const comparePaginationProps = (
+    prevProps: PaginationProps,
+    nextProps: PaginationProps
+) => {
+    if (
+        prevProps.countPerPage !== nextProps.countPerPage ||
+        prevProps.totalCounts !== nextProps.totalCounts
+    ) {
         return false;
     }
     return true;
 };
 
-export const Pagination = React.memo(PaginationComponent, comparePaginationProps);
+export const Pagination = React.memo(
+    PaginationComponent,
+    comparePaginationProps
+);

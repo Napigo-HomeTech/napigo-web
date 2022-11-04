@@ -17,7 +17,8 @@ const inputIds = {
 };
 
 export const SigninForm: React.FC = () => {
-    const { submit, inputErrors, formState, submitError, clearFormErrors } = useSignInForm(inputIds);
+    const { submit, inputErrors, formState, submitError, clearFormErrors } =
+        useSignInForm(inputIds);
 
     useEffect(() => {
         return () => {
@@ -26,32 +27,63 @@ export const SigninForm: React.FC = () => {
     }, [clearFormErrors]);
 
     return (
-        <Box as="form" display="flex" flexDirection={"column"} gap={4} onSubmit={submit}>
+        <Box
+            as="form"
+            display="flex"
+            flexDirection={"column"}
+            gap={4}
+            onSubmit={submit}
+        >
             <Form.TextField
                 error={inputErrors[inputIds.email]}
                 id={inputIds.email}
                 type="email"
-                placeholder={fixtures.authenticationStrings["login.form.email-input.placeholder"]}
+                placeholder={
+                    fixtures.authenticationStrings[
+                        "login.form.email-input.placeholder"
+                    ]
+                }
                 autoComplete="off"
                 spellCheck={false}
             />
 
             <Form.PasswordField
                 id={inputIds.psw}
-                placeholder={fixtures.authenticationStrings["login.form.password-input.placeholder"]}
+                placeholder={
+                    fixtures.authenticationStrings[
+                        "login.form.password-input.placeholder"
+                    ]
+                }
                 error={inputErrors[inputIds.psw]}
             />
 
-            <FormError message={submitError} title="Error !" alignment="stack" />
+            <FormError
+                message={submitError}
+                title="Error !"
+                alignment="stack"
+            />
 
             <FormControl>
-                <Button type="submit" colorScheme="brand-gr" isLoading={formState === "submitting"} width="100%">
-                    {fixtures.authenticationStrings["login.form.submit.buttontext"]}
+                <Button
+                    type="submit"
+                    colorScheme="brand-gr"
+                    isLoading={formState === "submitting"}
+                    width="100%"
+                >
+                    {
+                        fixtures.authenticationStrings[
+                            "login.form.submit.buttontext"
+                        ]
+                    }
                 </Button>
             </FormControl>
             <IfFeatureEnabled feature={featureFlags.enable_self_registration}>
                 <Button w="100%" variant="ghost" as={RouterLink} to="register">
-                    {fixtures.authenticationStrings["login.form.register.buttontext"]}
+                    {
+                        fixtures.authenticationStrings[
+                            "login.form.register.buttontext"
+                        ]
+                    }
                 </Button>
             </IfFeatureEnabled>
         </Box>

@@ -11,7 +11,10 @@ import {
     FormHelperText,
     FormErrorMessage,
 } from "@chakra-ui/react";
-import { MdVisibility as VisibleIcon, MdVisibilityOff as VisibleOffIcon } from "react-icons/md";
+import {
+    MdVisibility as VisibleIcon,
+    MdVisibilityOff as VisibleOffIcon,
+} from "react-icons/md";
 import { isEmpty } from "lodash";
 
 const ShowIcon = () => {
@@ -31,7 +34,17 @@ interface PasswordFieldProps extends Omit<InputProps, "isInvalid"> {
 }
 
 export const PasswordField: React.FC<PasswordFieldProps> = (props) => {
-    const { id, placeholder, size, label, error, alwaysMask, helperText, isReadOnly: readOnly, ...rest } = props;
+    const {
+        id,
+        placeholder,
+        size,
+        label,
+        error,
+        alwaysMask,
+        helperText,
+        isReadOnly: readOnly,
+        ...rest
+    } = props;
 
     const [show, setShow] = useState<boolean>(false);
 
@@ -61,14 +74,18 @@ export const PasswordField: React.FC<PasswordFieldProps> = (props) => {
                             variant="ghost"
                             backgroundColor={"transparent"}
                             onClick={() => setShow(!show)}
-                            aria-label={show ? "password visible" : "password hidden"}
+                            aria-label={
+                                show ? "password visible" : "password hidden"
+                            }
                             icon={show ? <ShowIcon /> : <HideIcon />}
                         />
                     </InputRightElement>
                 )}
             </InputGroup>
             <FormErrorMessage>{error}</FormErrorMessage>
-            {!isEmpty(helperText) && <FormHelperText>{helperText}</FormHelperText>}
+            {!isEmpty(helperText) && (
+                <FormHelperText>{helperText}</FormHelperText>
+            )}
         </FormControl>
     );
 };

@@ -15,7 +15,9 @@ type AppUserContextProps = {
     children: React.ReactNode;
 };
 export const AppUserContext: React.FC<AppUserContextProps> = ({ children }) => {
-    const { loading } = useSelector((state: RootState) => state.appContextStore);
+    const { loading } = useSelector(
+        (state: RootState) => state.appContextStore
+    );
     const dispatch = useDispatch();
 
     useInitDataLoadingListener();
@@ -27,14 +29,20 @@ export const AppUserContext: React.FC<AppUserContextProps> = ({ children }) => {
                 /**
                  * Set The User Account information
                  */
-                const acc: Account = (await accountStore.getAccount(user.uid)) as Account;
+                const acc: Account = (await accountStore.getAccount(
+                    user.uid
+                )) as Account;
 
                 delayInvoke(() => {
                     dispatch(AccountActions.setAccount(acc));
                     dispatch(AppContextActions.accountReady(true));
                 }, 3000);
             } catch (err) {
-                dispatch(AppContextActions.error("Error initializing / loading app data ..."));
+                dispatch(
+                    AppContextActions.error(
+                        "Error initializing / loading app data ..."
+                    )
+                );
             }
         },
         [dispatch]
@@ -63,7 +71,9 @@ export const AppUserContext: React.FC<AppUserContextProps> = ({ children }) => {
  */
 const useInitDataLoadingListener = () => {
     const dispatch = useDispatch();
-    const { accountReady } = useSelector((state: RootState) => state.appContextStore);
+    const { accountReady } = useSelector(
+        (state: RootState) => state.appContextStore
+    );
     useEffect(() => {
         const moduleStates = [accountReady];
         let appReady = true;

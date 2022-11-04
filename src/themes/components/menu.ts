@@ -1,5 +1,9 @@
 import { menuAnatomy as parts } from "@chakra-ui/anatomy";
-import type { PartsStyleFunction, SystemStyleFunction, SystemStyleObject } from "@chakra-ui/styled-system";
+import type {
+    PartsStyleFunction,
+    SystemStyleFunction,
+    SystemStyleObject,
+} from "@chakra-ui/styled-system";
 import { mode } from "@chakra-ui/theme-tools";
 
 const baseStyleList: SystemStyleFunction = (props) => {

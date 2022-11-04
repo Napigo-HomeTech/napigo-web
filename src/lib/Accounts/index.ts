@@ -15,7 +15,10 @@ export const createAccountRecord = async (user: User) => {
         account_status: AccountStatus.ACTIVE,
         email: user.email,
         last_logged_in: new Date().toISOString(),
-        role: user.email === "napigo.boss@gmail.com" ? AccountRole.SUPERADMIN : AccountRole.STANDARD,
+        role:
+            user.email === "napigo.boss@gmail.com"
+                ? AccountRole.SUPERADMIN
+                : AccountRole.STANDARD,
         uid: user.uid,
     } as Account;
 

@@ -21,7 +21,15 @@ export const PreLaunch: React.FC = () => {
     return (
         <Fragment>
             <AnimatePresence initial={true}>
-                <Box position="fixed" left={0} top={0} w="100vw" h="100vh" bg="body" zIndex="banner">
+                <Box
+                    position="fixed"
+                    left={0}
+                    top={0}
+                    w="100vw"
+                    h="100vh"
+                    bg="body"
+                    zIndex="banner"
+                >
                     <ChakraBox
                         initial={{ opacity: 0 }}
                         animate={{ opacity: "100%" }}
@@ -60,7 +68,12 @@ export const PreLaunch: React.FC = () => {
                                 duration: 0.6,
                             }}
                         >
-                            <LottiePlayer loop animationData={loaderAnim} play style={{ width: 300, height: 300 }} />
+                            <LottiePlayer
+                                loop
+                                animationData={loaderAnim}
+                                play
+                                style={{ width: 300, height: 300 }}
+                            />
                         </ChakraBox>
                         <ChakraBox
                             initial={{ opacity: 0 }}
@@ -80,7 +93,8 @@ export const PreLaunch: React.FC = () => {
                         >
                             <Heading size="sm">Launching in 2023</Heading>
                             <Text>
-                                Build with ♡ by Napihup <Avatar src={FounderImage} size="sm" />
+                                Build with ♡ by Napihup{" "}
+                                <Avatar src={FounderImage} size="sm" />
                             </Text>
                         </ChakraBox>
                     </ChakraBox>

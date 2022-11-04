@@ -42,9 +42,12 @@ export const MobileForm: React.FC = () => {
     const [formType, setFormType] = useState<FormType>("phone-number");
     const [verificationId, setVerificationId] = useState<string | null>(null);
 
-    const [confirmationResult, setConfirmationResult] = useState<ConfirmationResult | null>(null);
+    const [confirmationResult, setConfirmationResult] =
+        useState<ConfirmationResult | null>(null);
 
-    const [cachePhoneNumber, setCachePhoneNumber] = useState<string | null>(null);
+    const [cachePhoneNumber, setCachePhoneNumber] = useState<string | null>(
+        null
+    );
 
     const value = {
         verificationId,

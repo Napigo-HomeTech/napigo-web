@@ -12,7 +12,8 @@ type PlanBannerProps = {
     imageRightSrc?: string;
 };
 export const PlanBanner: React.FC<PlanBannerProps> = (props) => {
-    const { title, onButtonClick, imageLeftSrc, imageRightSrc, buttonText } = props;
+    const { title, onButtonClick, imageLeftSrc, imageRightSrc, buttonText } =
+        props;
 
     const getButtonColorStyles = useCallback(() => {
         return {
@@ -51,9 +52,25 @@ export const PlanBanner: React.FC<PlanBannerProps> = (props) => {
                 {title ?? fixtures.financeStrings["finance.plan.banner.title"]}
             </Heading>
 
-            <Image src={imageLeftSrc ?? PlanBannerCalculator} alt="plan banner calculator image" />
-            <Image position={"absolute"} right="5%" src={imageRightSrc ?? PlanBannerCoins} alt="plan banner calculator image" />
-            <Button {...getButtonColorStyles()} size="sm" onClick={onClick} position="absolute" bottom="10%" left="15%" minWidth="200px">
+            <Image
+                src={imageLeftSrc ?? PlanBannerCalculator}
+                alt="plan banner calculator image"
+            />
+            <Image
+                position={"absolute"}
+                right="5%"
+                src={imageRightSrc ?? PlanBannerCoins}
+                alt="plan banner calculator image"
+            />
+            <Button
+                {...getButtonColorStyles()}
+                size="sm"
+                onClick={onClick}
+                position="absolute"
+                bottom="10%"
+                left="15%"
+                minWidth="200px"
+            >
                 {buttonText ?? "Find out more!"}
             </Button>
         </VStack>

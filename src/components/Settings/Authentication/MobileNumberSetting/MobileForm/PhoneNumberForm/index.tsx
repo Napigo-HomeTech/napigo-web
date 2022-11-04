@@ -1,8 +1,23 @@
 import React, { useCallback, useMemo, useState } from "react";
 import { isEmpty } from "lodash";
-import { Alert, AlertDescription, AlertTitle, Box, Button, CloseButton, HStack, InputLeftElement, VStack } from "@chakra-ui/react";
+import {
+    Alert,
+    AlertDescription,
+    AlertTitle,
+    Box,
+    Button,
+    CloseButton,
+    HStack,
+    InputLeftElement,
+    VStack,
+} from "@chakra-ui/react";
 import { Select } from "chakra-react-select";
-import { getCountriesOptionData, CountryOption, getOptionByCountry, formatPhoneNumber } from "@/lib/utils/tel-countries.util";
+import {
+    getCountriesOptionData,
+    CountryOption,
+    getOptionByCountry,
+    formatPhoneNumber,
+} from "@/lib/utils/tel-countries.util";
 import { Form } from "@/elements";
 import { PhoneIcon } from "@chakra-ui/icons";
 import parsePhoneNumber from "libphonenumber-js";
@@ -46,7 +61,8 @@ export const PhoneNumberForm: React.FC = () => {
      */
     const [phoneNumber, setPhoneNumber] = useState<string>("");
 
-    const { submit, submitError, setSubmitError, formState } = usePhoneNumberForm();
+    const { submit, submitError, setSubmitError, formState } =
+        usePhoneNumberForm();
 
     const getDefaultSelectedCountry = useCallback(() => {
         return _getSelected(verifiedPhoneNumber ?? "");
@@ -74,7 +90,9 @@ export const PhoneNumberForm: React.FC = () => {
     const handleOnChangeCountry = (country: CountryOption) => {
         if (phoneNumber.length > 0) {
             try {
-                setPhoneNumber(formatPhoneNumber(phoneNumber, country.value.toUpperCase()));
+                setPhoneNumber(
+                    formatPhoneNumber(phoneNumber, country.value.toUpperCase())
+                );
             } catch (err) {
                 /**
                  * Ignore the error as User may not yet enter any phone number at this
@@ -86,14 +104,25 @@ export const PhoneNumberForm: React.FC = () => {
     };
 
     return (
-        <VStack as="form" onSubmit={submit} gap={2} width="100%" justifyContent="start" alignItems="flex-start">
+        <VStack
+            as="form"
+            onSubmit={submit}
+            gap={2}
+            width="100%"
+            justifyContent="start"
+            alignItems="flex-start"
+        >
             <HStack width="inherit">
                 <Box width="100%" cursor="pointer">
                     <Select
                         selectedOptionStyle="check"
                         size="md"
                         useBasicStyles
-                        placeholder={fixtures.settingsStrings["authentication.mobileform.notverified.select-country.input.placeholder"]}
+                        placeholder={
+                            fixtures.settingsStrings[
+                                "authentication.mobileform.notverified.select-country.input.placeholder"
+                            ]
+                        }
                         defaultValue={getDefaultSelectedCountry()}
                         options={countries}
                         onChange={(data) => {
@@ -105,7 +134,11 @@ export const PhoneNumberForm: React.FC = () => {
                     name="mobile_no"
                     id="mobile_no"
                     value={phoneNumber}
-                    placeholder={fixtures.settingsStrings["authentication.mobileform.notverified.mobile-no.input.placeholder"]}
+                    placeholder={
+                        fixtures.settingsStrings[
+                            "authentication.mobileform.notverified.mobile-no.input.placeholder"
+                        ]
+                    }
                     onChange={(ev) => {
                         setPhoneNumber(formatNumber(ev.target.value ?? ""));
                     }}
@@ -124,20 +157,45 @@ export const PhoneNumberForm: React.FC = () => {
             <div id="recaptcha-container" />
             {!isEmpty(submitError) && (
                 <Alert status="error" variant="left-accent">
-                    <CloseButton position="absolute" top={2} right={1} onClick={() => setSubmitError(null)} />
+                    <CloseButton
+                        position="absolute"
+                        top={2}
+                        right={1}
+                        onClick={() => setSubmitError(null)}
+                    />
                     <Box>
-                        <AlertTitle>{fixtures.commonStrings["alert.error.title"]}</AlertTitle>
+                        <AlertTitle>
+                            {fixtures.commonStrings["alert.error.title"]}
+                        </AlertTitle>
                         <AlertDescription>{submitError} </AlertDescription>
                     </Box>
                 </Alert>
             )}
             <HStack>
-                <Button size="sm" type="submit" isLoading={formState === "submitting"} disabled={disableSendOtp}>
-                    {fixtures.settingsStrings["authentication.mobileform.notverified.send-otp.buttontext"]}
+                <Button
+                    size="sm"
+                    type="submit"
+                    isLoading={formState === "submitting"}
+                    disabled={disableSendOtp}
+                >
+                    {
+                        fixtures.settingsStrings[
+                            "authentication.mobileform.notverified.send-otp.buttontext"
+                        ]
+                    }
                 </Button>
                 {formType === "onUpdate" && (
-                    <Button size="sm" type="button" variant="ghost" onClick={() => setFormType("verified")}>
-                        {fixtures.settingsStrings["authentication.mobileform.update-no.cancel.buttontext"]}
+                    <Button
+                        size="sm"
+                        type="button"
+                        variant="ghost"
+                        onClick={() => setFormType("verified")}
+                    >
+                        {
+                            fixtures.settingsStrings[
+                                "authentication.mobileform.update-no.cancel.buttontext"
+                            ]
+                        }
                     </Button>
                 )}
             </HStack>

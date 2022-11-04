@@ -1,5 +1,9 @@
 import { inputAnatomy as parts } from "@chakra-ui/anatomy";
-import type { PartsStyleFunction, PartsStyleObject, SystemStyleObject } from "@chakra-ui/styled-system";
+import type {
+    PartsStyleFunction,
+    PartsStyleObject,
+    SystemStyleObject,
+} from "@chakra-ui/styled-system";
 import { getColor } from "../foundations/colors";
 import { mode } from "@chakra-ui/theme-tools";
 

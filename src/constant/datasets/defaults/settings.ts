@@ -5,17 +5,22 @@ const data = {
     "authentication.back-console.buttontext": "Back to console",
     "authentication.emailloginform.heading": "Login Email Address",
     "authentication.emailloginform.primary.input.label": "Primary",
-    "authentication.emailloginform.primary.input.helpertext": "This is your default email which is used to login to your account",
-    "authentication.emailloginform.alternative.input.label": "Alternative Email",
-    "authentication.emailloginform.alternative.input.placeholder": "Enter Alternative Email Address",
+    "authentication.emailloginform.primary.input.helpertext":
+        "This is your default email which is used to login to your account",
+    "authentication.emailloginform.alternative.input.label":
+        "Alternative Email",
+    "authentication.emailloginform.alternative.input.placeholder":
+        "Enter Alternative Email Address",
     "authentication.emailloginform.submit.buttontext": "Confirm",
     "authentication.emailloginform.cancel.buttontext": "Cancel",
     "authentication.emailloginform.add.buttontext": "Cancel",
     "authentication.passwordform.heading": "Password -  Credential",
     "authentication.passwordform.readonly-input": "************",
     "authentication.passwordform.changepassword.buttontext": "Change password",
-    "authentication.passwordform.forgotpassword.buttontext": "Forgot password ?",
-    "authentication.passwordform.input.currentpassword.label": "Current password",
+    "authentication.passwordform.forgotpassword.buttontext":
+        "Forgot password ?",
+    "authentication.passwordform.input.currentpassword.label":
+        "Current password",
     "authentication.passwordform.input.newpassword.label": "New password",
     "authentication.passwordform.input.newpassword.helpertext":
         "Please make sure that your password is at least 8 charaters with alphanumeric and digits",
@@ -33,17 +38,22 @@ const data = {
   better security login`,
     "authentication.mobileform.readonly.input.placeholder": "Mobile number",
     "authentication.mobileform.update-number.buttontext": "Update phone number",
-    "authentication.mobileform.notverified.select-country.input.placeholder": "Select country",
-    "authentication.mobileform.notverified.mobile-no.input.placeholder": "Mobile number",
+    "authentication.mobileform.notverified.select-country.input.placeholder":
+        "Select country",
+    "authentication.mobileform.notverified.mobile-no.input.placeholder":
+        "Mobile number",
     "authentication.mobileform.notverified.send-otp.buttontext": "Send OTP",
     "authentication.mobileform.update-no.cancel.buttontext": "Cancel",
-    "authentication.mobileform.otp-sent.description": "Enter the code we`ve just sent on your mobile phone \n",
+    "authentication.mobileform.otp-sent.description":
+        "Enter the code we`ve just sent on your mobile phone \n",
     "authentication.mobileform.otp-success.title": "Verified!",
     "authentication.mobileform.otp-success.description": `Your Phone number have been added, you can now setup MFA for
   better security login`,
-    "authentication.mobileform.otp-resent.description": "Re sent OTP to your mobile!",
+    "authentication.mobileform.otp-resent.description":
+        "Re sent OTP to your mobile!",
     "authentication.mobileform.otp-resend.buttontext": "Resend OTP",
-    "authentication.mobileform.otp.use-another-number.buttontext": "Use another number",
+    "authentication.mobileform.otp.use-another-number.buttontext":
+        "Use another number",
 };
 
 export default data;

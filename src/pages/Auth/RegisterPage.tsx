@@ -10,7 +10,13 @@ export const RegisterPage: React.FC = () => {
     useFeatureRestrictRoute(featureFlags.enable_self_registration);
 
     return (
-        <Box display={"flex"} flexDirection="column" gap={6} maxWidth="400px" mx={"auto"}>
+        <Box
+            display={"flex"}
+            flexDirection="column"
+            gap={6}
+            maxWidth="400px"
+            mx={"auto"}
+        >
             <Text fontSize="xl" fontWeight={"bold"}>
                 {fixtures.authenticationStrings["register.form.title"]}
             </Text>

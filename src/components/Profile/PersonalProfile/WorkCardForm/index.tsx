@@ -2,7 +2,15 @@ import { Card } from "@/elements";
 import { SingleDatepicker } from "@/elements/SmartDatePicker";
 import { TextField } from "@/elements/Form";
 import { getOrganisationAutoComplete } from "@/lib/Api_deprecated/organisation";
-import { Divider, FormControl, FormLabel, Grid, GridItem, Heading, HStack } from "@chakra-ui/react";
+import {
+    Divider,
+    FormControl,
+    FormLabel,
+    Grid,
+    GridItem,
+    Heading,
+    HStack,
+} from "@chakra-ui/react";
 import { AsyncCreatableSelect, Select } from "chakra-react-select";
 import React from "react";
 import { fixtures } from "@/constant/datasets/fixtures";
@@ -51,23 +59,54 @@ export const WorkCardForm: React.FC = () => {
                 </Heading>
             </HStack>
             <Divider />
-            <Grid h="200px" templateRows="repeat(2, 1fr)" templateColumns="repeat(4, 1fr)" gap={4}>
+            <Grid
+                h="200px"
+                templateRows="repeat(2, 1fr)"
+                templateColumns="repeat(4, 1fr)"
+                gap={4}
+            >
                 <GridItem colSpan={2}>
                     <TextField
-                        label={fixtures.profileStrings["work.job-title.input.label"]}
-                        placeholder={fixtures.profileStrings["work.job-title.input.placeholder"]}
+                        label={
+                            fixtures.profileStrings[
+                                "work.job-title.input.label"
+                            ]
+                        }
+                        placeholder={
+                            fixtures.profileStrings[
+                                "work.job-title.input.placeholder"
+                            ]
+                        }
                     />
                 </GridItem>
                 <GridItem colSpan={2}>
                     <FormControl>
-                        <FormLabel>{fixtures.profileStrings["work.employment-type.select.label"]}</FormLabel>
-                        <Select selectedOptionStyle="check" size="md" useBasicStyles placeholder="Employment Type" options={employmentTypeOptions} />
+                        <FormLabel>
+                            {
+                                fixtures.profileStrings[
+                                    "work.employment-type.select.label"
+                                ]
+                            }
+                        </FormLabel>
+                        <Select
+                            selectedOptionStyle="check"
+                            size="md"
+                            useBasicStyles
+                            placeholder="Employment Type"
+                            options={employmentTypeOptions}
+                        />
                     </FormControl>
                 </GridItem>
 
                 <GridItem colSpan={2}>
                     <FormControl>
-                        <FormLabel>{fixtures.profileStrings["work.organization.select.label"]}</FormLabel>
+                        <FormLabel>
+                            {
+                                fixtures.profileStrings[
+                                    "work.organization.select.label"
+                                ]
+                            }
+                        </FormLabel>
                         <AsyncCreatableSelect
                             selectedOptionStyle="check"
                             isMulti={false}
@@ -77,9 +116,11 @@ export const WorkCardForm: React.FC = () => {
                             }}
                             size="md"
                             loadOptions={(inputValue: string, callback) => {
-                                getOrganisationAutoComplete(inputValue).then((result) => {
-                                    callback(result);
-                                });
+                                getOrganisationAutoComplete(inputValue).then(
+                                    (result) => {
+                                        callback(result);
+                                    }
+                                );
                             }}
                             useBasicStyles
                             placeholder="Company Name"
@@ -96,7 +137,11 @@ export const WorkCardForm: React.FC = () => {
                                      *@TODO need to redefined date formating accross entities and layers
                                      */
                                 }}
-                                label={fixtures.profileStrings["work.start.input.label"]}
+                                label={
+                                    fixtures.profileStrings[
+                                        "work.start.input.label"
+                                    ]
+                                }
                             />
                         </FormControl>
                         <FormControl>
@@ -106,7 +151,11 @@ export const WorkCardForm: React.FC = () => {
                                      *@TODO need to redefined date formating accross entities and layers
                                      */
                                 }}
-                                label={fixtures.profileStrings["work.until.input.label"]}
+                                label={
+                                    fixtures.profileStrings[
+                                        "work.until.input.label"
+                                    ]
+                                }
                             />
                         </FormControl>
                     </HStack>

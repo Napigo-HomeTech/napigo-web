@@ -5,7 +5,15 @@ import { TextField } from "@/elements/Form";
 import { useAccount } from "@/lib/Accounts/useAccount";
 import { getUser } from "@/lib/Auth";
 import { EditIcon } from "@chakra-ui/icons";
-import { Heading, HStack, VStack, Text, Button, Divider, Grid } from "@chakra-ui/react";
+import {
+    Heading,
+    HStack,
+    VStack,
+    Text,
+    Button,
+    Divider,
+    Grid,
+} from "@chakra-ui/react";
 import React from "react";
 
 export const PersonalInfoCardForm: React.FC = () => {
@@ -15,16 +23,43 @@ export const PersonalInfoCardForm: React.FC = () => {
         <Card width={"100%"}>
             <HStack width="inherit">
                 <VStack alignItems={"flex-start"} width="inherit">
-                    <Heading size="sm" fontWeight={"semibold"} color="text-soft">
-                        {fixtures.profileStrings["personal-profile.personal-information.avatar.label"]}
+                    <Heading
+                        size="sm"
+                        fontWeight={"semibold"}
+                        color="text-soft"
+                    >
+                        {
+                            fixtures.profileStrings[
+                                "personal-profile.personal-information.avatar.label"
+                            ]
+                        }
                     </Heading>
-                    <HStack alignItems="center" justifyContent="start" gap={4} width="inherit">
-                        <Avatar width="60px" height="60px" name={account?.displayName ?? ""} src={user?.photoURL ?? ""} />
+                    <HStack
+                        alignItems="center"
+                        justifyContent="start"
+                        gap={4}
+                        width="inherit"
+                    >
+                        <Avatar
+                            width="60px"
+                            height="60px"
+                            name={account?.displayName ?? ""}
+                            src={user?.photoURL ?? ""}
+                        />
                         <VStack alignItems={"flex-start"}>
-                            <Heading size="sm" py={0} lineHeight={0.5} color="text-hard">
+                            <Heading
+                                size="sm"
+                                py={0}
+                                lineHeight={0.5}
+                                color="text-hard"
+                            >
                                 {account?.displayName}
                             </Heading>
-                            <Text textDecoration="underline" color="text-gray" size="md">
+                            <Text
+                                textDecoration="underline"
+                                color="text-gray"
+                                size="md"
+                            >
                                 {account?.email}
                             </Text>
                         </VStack>
@@ -35,9 +70,22 @@ export const PersonalInfoCardForm: React.FC = () => {
                 </VStack>
             </HStack>
             <Divider />
-            <Grid templateRows="repeat(1, 1fr)" templateColumns="1fr 1fr" gap={4} paddingBottom={0}>
-                <TextField label="Profile Name" isReadOnly value={account?.displayName ?? ""} />
-                <TextField label="Profile Name" isReadOnly value={account?.displayName ?? ""} />
+            <Grid
+                templateRows="repeat(1, 1fr)"
+                templateColumns="1fr 1fr"
+                gap={4}
+                paddingBottom={0}
+            >
+                <TextField
+                    label="Profile Name"
+                    isReadOnly
+                    value={account?.displayName ?? ""}
+                />
+                <TextField
+                    label="Profile Name"
+                    isReadOnly
+                    value={account?.displayName ?? ""}
+                />
             </Grid>
         </Card>
     );

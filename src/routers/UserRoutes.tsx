@@ -15,9 +15,18 @@ export const UserRoutes: React.FC = () => {
                     <Route element={<UserLayout />}>
                         <Route index element={<Navigate to="console" />} />
                         <Route path="console/*" element={<ConsolePage />} />
-                        <Route path="settings/*" element={<SettingsContainer />} />
-                        <Route path="profile/*" element={<ProfileContainer />} />
-                        <Route path="finance/*" element={<FinanceContainer />} />
+                        <Route
+                            path="settings/*"
+                            element={<SettingsContainer />}
+                        />
+                        <Route
+                            path="profile/*"
+                            element={<ProfileContainer />}
+                        />
+                        <Route
+                            path="finance/*"
+                            element={<FinanceContainer />}
+                        />
                     </Route>
                 </Route>
                 <Route path="/" element={<Navigate to="user" />} />

@@ -16,7 +16,8 @@ export const BuildBanner: React.FC = () => {
                 gap={2}
             >
                 <Text fontSize={"sm"} fontWeight="normal">
-                    UAT Environment Build ID: {AppConfig.build.id}, Build Commit Ref: {AppConfig.build.commitRef}, powered by{" "}
+                    UAT Environment Build ID: {AppConfig.build.id}, Build Commit
+                    Ref: {AppConfig.build.commitRef}, powered by{" "}
                     {AppConfig.build.poweredBy}
                 </Text>
             </Box>

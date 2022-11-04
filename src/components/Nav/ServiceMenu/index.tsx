@@ -1,5 +1,14 @@
 import React from "react";
-import { Button, Menu, MenuButton, MenuList, MenuItem, HStack, Text, Box } from "@chakra-ui/react";
+import {
+    Button,
+    Menu,
+    MenuButton,
+    MenuList,
+    MenuItem,
+    HStack,
+    Text,
+    Box,
+} from "@chakra-ui/react";
 import { uniqueId } from "lodash";
 import { MdSpaceDashboard as ServicesIcon } from "react-icons/md";
 import { IoChevronDown as DropdownIcon } from "react-icons/io5";
@@ -54,12 +63,20 @@ const ServiceItems = [
 export const ServiceMenu: React.FC = () => {
     return (
         <Menu>
-            <MenuButton as={Button} leftIcon={<ServicesIcon />} rightIcon={<DropdownIcon />} colorScheme="brand-gr">
+            <MenuButton
+                as={Button}
+                leftIcon={<ServicesIcon />}
+                rightIcon={<DropdownIcon />}
+                colorScheme="brand-gr"
+            >
                 {fixtures.navStrings["service.buttontext"]}
             </MenuButton>
             <MenuList width="auto" maxHeight="600px" overflow="scroll">
                 {ServiceItems.map((item) => (
-                    <IfFeatureEnabled key={uniqueId()} feature={item.featureFlag}>
+                    <IfFeatureEnabled
+                        key={uniqueId()}
+                        feature={item.featureFlag}
+                    >
                         <MenuItem
                             as={RouterLink}
                             to={item.goto}

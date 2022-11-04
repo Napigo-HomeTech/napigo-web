@@ -8,7 +8,11 @@ type AuthGreetingProps = {
 };
 export const AuthGreeting: React.FC<AuthGreetingProps> = ({ type }) => {
     return (
-        <VStack display="flex" alignItems={{ base: "center", sm: "center", md: "start" }} gap={0}>
+        <VStack
+            display="flex"
+            alignItems={{ base: "center", sm: "center", md: "start" }}
+            gap={0}
+        >
             <Box>
                 <Logo />
             </Box>

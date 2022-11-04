@@ -2,7 +2,11 @@ import React, { useCallback } from "react";
 import { Badge, Card } from "@/elements";
 import { PlanSummary } from "@/types/finance.type";
 import { Box, Button, Heading, HStack, Text, VStack } from "@chakra-ui/react";
-import { FaReceipt as PlanIcon, FaEllipsisV as MenuIcon, FaArrowRight as UsedInIcon } from "react-icons/fa";
+import {
+    FaReceipt as PlanIcon,
+    FaEllipsisV as MenuIcon,
+    FaArrowRight as UsedInIcon,
+} from "react-icons/fa";
 import { DataRow } from "@/elements/DataDisplay/DataRow";
 import { currencyFormat } from "@/lib/Finance/utils";
 
@@ -20,8 +24,20 @@ export const PlanItem: React.FC<PlanSummary> = (props) => {
 
     const isInUsed = Boolean(props.in_use);
     return (
-        <Card width="100%" borderColor={isInUsed ? "brand.500" : "border"} borderWidth={1} p="10px" rounded="md">
-            <HStack width={"100%"} borderBottom={"1px"} borderBottomColor="border" justifyContent="space-between" pb="10px">
+        <Card
+            width="100%"
+            borderColor={isInUsed ? "brand.500" : "border"}
+            borderWidth={1}
+            p="10px"
+            rounded="md"
+        >
+            <HStack
+                width={"100%"}
+                borderBottom={"1px"}
+                borderBottomColor="border"
+                justifyContent="space-between"
+                pb="10px"
+            >
                 <HStack>
                     <Box color={"brand.500"}>
                         <PlanIcon color="inherit" />
@@ -30,7 +46,12 @@ export const PlanItem: React.FC<PlanSummary> = (props) => {
                 </HStack>
                 <HStack>
                     {props.in_use && (
-                        <Box bg="brand.50" px="20px" rounded="md" color="brand.500">
+                        <Box
+                            bg="brand.50"
+                            px="20px"
+                            rounded="md"
+                            color="brand.500"
+                        >
                             <Text>In-use</Text>
                         </Box>
                     )}
@@ -44,7 +65,11 @@ export const PlanItem: React.FC<PlanSummary> = (props) => {
                 <DataRow label="COL" data={currencyFormat(props.col)} />
                 <DataRow label="ASM" data={currencyFormat(props.asm)} />
                 <DataRow label="Created at" data="2 days ago" />
-                <HStack width={"100%"} marginTop="40px" justifyContent="space-between">
+                <HStack
+                    width={"100%"}
+                    marginTop="40px"
+                    justifyContent="space-between"
+                >
                     <Button size="sm" colorScheme={"gray"}>
                         Used in <UsedInIcon />
                     </Button>

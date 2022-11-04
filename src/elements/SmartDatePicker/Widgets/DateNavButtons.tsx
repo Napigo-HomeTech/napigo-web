@@ -19,7 +19,9 @@ const DefaultBtnStyle: ButtonProps = {
     size: "sm",
 };
 
-export const DatepickerBackBtns: React.FC<DatepickerBackBtnsProps> = (props) => {
+export const DatepickerBackBtns: React.FC<DatepickerBackBtnsProps> = (
+    props
+) => {
     const { calendars, getBackProps } = props;
     const customBtnProps = props.propsConfigs?.dateNavBtnProps;
     return (
@@ -34,7 +36,11 @@ export const DatepickerBackBtns: React.FC<DatepickerBackBtnsProps> = (props) => 
             >
                 <YearBackIcon size={20} />
             </Button>
-            <Button {...getBackProps({ calendars })} {...DefaultBtnStyle} {...customBtnProps}>
+            <Button
+                {...getBackProps({ calendars })}
+                {...DefaultBtnStyle}
+                {...customBtnProps}
+            >
                 <MonthBackIcon size={20} />
             </Button>
         </Fragment>
@@ -46,12 +52,18 @@ export interface DatepickerForwardBtnsProps extends DatepickerProps {
     getForwardProps: (data: GetBackForwardPropsOptions) => Record<string, any>;
 }
 
-export const DatepickerForwardBtns: React.FC<DatepickerForwardBtnsProps> = (props) => {
+export const DatepickerForwardBtns: React.FC<DatepickerForwardBtnsProps> = (
+    props
+) => {
     const { calendars, getForwardProps } = props;
     const customBtnProps = props.propsConfigs?.dateNavBtnProps;
     return (
         <Fragment>
-            <Button {...getForwardProps({ calendars })} {...DefaultBtnStyle} {...customBtnProps}>
+            <Button
+                {...getForwardProps({ calendars })}
+                {...DefaultBtnStyle}
+                {...customBtnProps}
+            >
                 <MonthForwardIcon size={20} />
             </Button>
             <Button

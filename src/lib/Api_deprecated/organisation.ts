@@ -10,7 +10,9 @@ export interface OrganisationOption extends OptionBase {
  * Only used for get autocomplete on a 'select oragnisation' component
  * @param value
  */
-export const getOrganisationAutoComplete = (value: string): Promise<OrganisationOption[]> => {
+export const getOrganisationAutoComplete = (
+    value: string
+): Promise<OrganisationOption[]> => {
     if (import.meta.env.VITE_MOCK_ORGANISATION_API == "true") {
         return mock_getOrganisationAutoComplete(value);
     }

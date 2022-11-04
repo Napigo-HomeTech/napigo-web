@@ -9,19 +9,46 @@ import { fixtures } from "@/constant/datasets/fixtures";
 
 export const SettingAuthenticationPage: React.FC = () => {
     return (
-        <VStack display="flex" flexDirection="column" maxWidth="700px" p="20px" gap={5}>
-            <HStack w="100%" justifyContent="space-between" p={0} alignItems="end">
+        <VStack
+            display="flex"
+            flexDirection="column"
+            maxWidth="700px"
+            p="20px"
+            gap={5}
+        >
+            <HStack
+                w="100%"
+                justifyContent="space-between"
+                p={0}
+                alignItems="end"
+            >
                 <Heading size="lg" fontWeight={"normal"} color="heading">
                     {fixtures.settingsStrings["authentication.title"]}
                 </Heading>
                 <Button as={RouterLink} to={`/user/console`} size="sm">
-                    {fixtures.settingsStrings["authentication.back-console.buttontext"]}
+                    {
+                        fixtures.settingsStrings[
+                            "authentication.back-console.buttontext"
+                        ]
+                    }
                 </Button>
             </HStack>
-            <SectionContainer title={fixtures.settingsStrings["authentication.emailloginform.heading"]}>
+            <SectionContainer
+                title={
+                    fixtures.settingsStrings[
+                        "authentication.emailloginform.heading"
+                    ]
+                }
+            >
                 <LoginEmailForm />
             </SectionContainer>
-            <SectionContainer title={fixtures.settingsStrings["authentication.passwordform.heading"]}>
+            <SectionContainer
+                title={
+                    fixtures.settingsStrings[
+                        "authentication.passwordform.heading"
+                    ]
+                }
+            >
                 <LoginPasswordForm />
             </SectionContainer>
             <MobileNumberSetting />

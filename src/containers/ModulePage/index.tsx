@@ -1,4 +1,11 @@
-import { Box, Divider, Heading, HStack, useColorModeValue, VStack } from "@chakra-ui/react";
+import {
+    Box,
+    Divider,
+    Heading,
+    HStack,
+    useColorModeValue,
+    VStack,
+} from "@chakra-ui/react";
 import { uniqueId } from "lodash";
 import React from "react";
 import { Outlet } from "react-router-dom";
@@ -45,7 +52,15 @@ export const ModulePage: React.FC<ModulePageProps> = (props) => {
     const drawerBorder = useColorModeValue("blackAlpha.50", "whiteAlpha.50");
 
     return (
-        <HStack spacing={0} display={"flex"} flexDirection={"row"} alignItems="start" justifyContent={"flex-start"} w="100vw" bg={contentBackground}>
+        <HStack
+            spacing={0}
+            display={"flex"}
+            flexDirection={"row"}
+            alignItems="start"
+            justifyContent={"flex-start"}
+            w="100vw"
+            bg={contentBackground}
+        >
             <Box
                 width="250px"
                 top="70px"
@@ -59,8 +74,20 @@ export const ModulePage: React.FC<ModulePageProps> = (props) => {
                 bg={"card"}
             >
                 {title && (
-                    <VStack width="full" p="20px" paddingBottom={0} margin={0} alignItems="flex-start" justifyContent="start">
-                        <Heading size="md" fontWeight="bold" letterSpacing={"wide"} color="heading">
+                    <VStack
+                        width="full"
+                        p="20px"
+                        paddingBottom={0}
+                        margin={0}
+                        alignItems="flex-start"
+                        justifyContent="start"
+                    >
+                        <Heading
+                            size="md"
+                            fontWeight="bold"
+                            letterSpacing={"wide"}
+                            color="heading"
+                        >
                             {title}
                         </Heading>
                         <Divider />
@@ -72,7 +99,14 @@ export const ModulePage: React.FC<ModulePageProps> = (props) => {
                     ))}
                 </VStack>
             </Box>
-            <Box flex={1} margin={0} display="flex" flexDirection="column" justifyContent="center" alignItems={"center"}>
+            <Box
+                flex={1}
+                margin={0}
+                display="flex"
+                flexDirection="column"
+                justifyContent="center"
+                alignItems={"center"}
+            >
                 <Outlet />
             </Box>
         </HStack>

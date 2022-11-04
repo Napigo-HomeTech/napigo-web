@@ -4,8 +4,18 @@ import { FormState } from "@/types";
 import { useCallback, useState } from "react";
 import { useAddMobileFormContext } from "..";
 import { useMobileSetting } from "../..";
-import { AuthError, getAuth, linkWithPhoneNumber, PhoneAuthProvider, updatePhoneNumber, User } from "firebase/auth";
-import { AuthErrorMessages, getAuthErrorMessage } from "@/constant/error-messages";
+import {
+    AuthError,
+    getAuth,
+    linkWithPhoneNumber,
+    PhoneAuthProvider,
+    updatePhoneNumber,
+    User,
+} from "firebase/auth";
+import {
+    AuthErrorMessages,
+    getAuthErrorMessage,
+} from "@/constant/error-messages";
 import { getUser, initializeRecaptchaVerifier } from "@/lib/Auth";
 
 const _getAllPinInput = () => {
@@ -22,8 +32,15 @@ export const useOtpForm = () => {
     const [resending, setResending] = useState<"sending" | "sent" | null>(null);
     const [submitError, setSubmitError] = useState<string | null>(null);
 
-    const { verificationId, setVerificationId, confirmationResult, setConfirmationResult, cachePhoneNumber } = useAddMobileFormContext();
-    const { formType, setFormType, setNumber, isRecentlyVerified } = useMobileSetting();
+    const {
+        verificationId,
+        setVerificationId,
+        confirmationResult,
+        setConfirmationResult,
+        cachePhoneNumber,
+    } = useAddMobileFormContext();
+    const { formType, setFormType, setNumber, isRecentlyVerified } =
+        useMobileSetting();
 
     /**
      *
@@ -47,7 +64,10 @@ export const useOtpForm = () => {
                             await confirmationResult.confirm(value);
                         }
                     } else if (formType === "onUpdate") {
-                        const cred = PhoneAuthProvider.credential(verificationId ?? "", value);
+                        const cred = PhoneAuthProvider.credential(
+                            verificationId ?? "",
+                            value
+                        );
                         await updatePhoneNumber(user as User, cred);
                     }
                     setSubmitError(null);
@@ -69,7 +89,16 @@ export const useOtpForm = () => {
                 }
             });
         },
-        [cachePhoneNumber, confirmationResult, formType, isRecentlyVerified, setFormType, setNumber, user, verificationId]
+        [
+            cachePhoneNumber,
+            confirmationResult,
+            formType,
+            isRecentlyVerified,
+            setFormType,
+            setNumber,
+            user,
+            verificationId,
+        ]
     );
 
     const resendOtp = useCallback(() => {
@@ -88,15 +117,29 @@ export const useOtpForm = () => {
 
             const verifier = window.recaptchaVerifier;
             if (user && formType === "notVerified") {
-                const confirmationResult = await linkWithPhoneNumber(user, cachePhoneNumber ?? "", verifier);
+                const confirmationResult = await linkWithPhoneNumber(
+                    user,
+                    cachePhoneNumber ?? "",
+                    verifier
+                );
                 setConfirmationResult(confirmationResult);
             } else if (user && formType === "onUpdate") {
                 const provider = new PhoneAuthProvider(auth);
-                const verId = await provider.verifyPhoneNumber(cachePhoneNumber ?? "", verifier);
+                const verId = await provider.verifyPhoneNumber(
+                    cachePhoneNumber ?? "",
+                    verifier
+                );
                 setVerificationId(verId);
             }
         });
-    }, [auth, cachePhoneNumber, formType, setConfirmationResult, setVerificationId, user]);
+    }, [
+        auth,
+        cachePhoneNumber,
+        formType,
+        setConfirmationResult,
+        setVerificationId,
+        user,
+    ]);
 
     return {
         submit,

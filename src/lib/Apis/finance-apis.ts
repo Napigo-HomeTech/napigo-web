@@ -11,7 +11,9 @@ export const FinanceApis = createApi({
     reducerPath: "financeApis",
     tagTypes: ["Budgets"],
     keepUnusedDataFor: 30,
-    baseQuery: fetchBaseQuery({ baseUrl: AppConfig.serviceHost + "/finance-service" }),
+    baseQuery: fetchBaseQuery({
+        baseUrl: AppConfig.serviceHost + "/finance-service",
+    }),
     endpoints: (builder) => ({
         /**
          *
@@ -23,7 +25,10 @@ export const FinanceApis = createApi({
                 headers: {},
             }),
             providesTags: ["Budgets"],
-            transformResponse: (response: { data: CollectionBasedResponse<BudgetItem> }, _) => response.data,
+            transformResponse: (
+                response: { data: CollectionBasedResponse<BudgetItem> },
+                _
+            ) => response.data,
         }),
     }),
 });

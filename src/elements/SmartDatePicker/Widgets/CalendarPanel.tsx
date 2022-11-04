@@ -1,4 +1,12 @@
-import { HStack, VStack, Heading, Divider, SimpleGrid, Box, Stack } from "@chakra-ui/react";
+import {
+    HStack,
+    VStack,
+    Heading,
+    Divider,
+    SimpleGrid,
+    Box,
+    Stack,
+} from "@chakra-ui/react";
 import { useDayzed, Props as DayzedHookProps } from "dayzed";
 import { ArrowKeysReact } from "../utils/arrowKeys";
 import React, { useCallback } from "react";
@@ -14,7 +22,13 @@ interface CalendarPanelProps extends DatepickerProps {
 }
 
 export const CalendarPanel: React.FC<CalendarPanelProps> = (props) => {
-    const { dayzedHookProps, configs, propsConfigs, onMouseEnterHighlight, isInRange } = props;
+    const {
+        dayzedHookProps,
+        configs,
+        propsConfigs,
+        onMouseEnterHighlight,
+        isInRange,
+    } = props;
 
     const renderProps = useDayzed(dayzedHookProps);
     const { calendars, getBackProps, getForwardProps } = renderProps;
@@ -50,21 +64,41 @@ export const CalendarPanel: React.FC<CalendarPanelProps> = (props) => {
     });
 
     return (
-        <Stack direction={["column", "column", "row"]} {...arrowKeys.getEvents()}>
+        <Stack
+            direction={["column", "column", "row"]}
+            {...arrowKeys.getEvents()}
+        >
             {calendars.map((calendar, calendarIdx) => {
                 return (
                     <VStack key={calendarIdx} height="100%" rounded={"md"}>
                         <HStack>
-                            <DatepickerBackBtns calendars={calendars} getBackProps={getBackProps} propsConfigs={propsConfigs} />
-                            <Heading size="sm" minWidth={"5rem"} textAlign="center">
-                                {configs.monthNames[calendar.month]} {calendar.year}
+                            <DatepickerBackBtns
+                                calendars={calendars}
+                                getBackProps={getBackProps}
+                                propsConfigs={propsConfigs}
+                            />
+                            <Heading
+                                size="sm"
+                                minWidth={"5rem"}
+                                textAlign="center"
+                            >
+                                {configs.monthNames[calendar.month]}{" "}
+                                {calendar.year}
                             </Heading>
-                            <DatepickerForwardBtns calendars={calendars} getForwardProps={getForwardProps} propsConfigs={propsConfigs} />
+                            <DatepickerForwardBtns
+                                calendars={calendars}
+                                getForwardProps={getForwardProps}
+                                propsConfigs={propsConfigs}
+                            />
                         </HStack>
                         <Divider />
                         <SimpleGrid columns={7} spacing={1} textAlign="center">
                             {configs.dayNames.map((day, dayIdx) => (
-                                <Box fontSize="sm" fontWeight="semibold" key={dayIdx}>
+                                <Box
+                                    fontSize="sm"
+                                    fontWeight="semibold"
+                                    key={dayIdx}
+                                >
                                     {day}
                                 </Box>
                             ))}
@@ -79,9 +113,12 @@ export const CalendarPanel: React.FC<CalendarPanelProps> = (props) => {
                                             dateObj={dateObj}
                                             propsConfigs={propsConfigs}
                                             renderProps={renderProps}
-                                            isInRange={isInRange && isInRange(date)}
+                                            isInRange={
+                                                isInRange && isInRange(date)
+                                            }
                                             onMouseEnter={() => {
-                                                if (onMouseEnterHighlight) onMouseEnterHighlight(date);
+                                                if (onMouseEnterHighlight)
+                                                    onMouseEnterHighlight(date);
                                             }}
                                         />
                                     );

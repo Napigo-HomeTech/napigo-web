@@ -14,7 +14,8 @@ const data = {
     "register.form.login.buttontext": "Or login here",
     "email-confirmation.pre.title": "Confirm your email address",
     "email-confirmation.post.title": "Email Sent",
-    "email-confirmation.pre.description": "You have to verify and confirm your Email address before login into Napigo",
+    "email-confirmation.pre.description":
+        "You have to verify and confirm your Email address before login into Napigo",
     "email-confirmation.post.description":
         "We've sent a link to your email address for confirmation. Please check your email and click on the link provided.",
     "email-confirmation.idle.buttontext": "Send confirmation link",

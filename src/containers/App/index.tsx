@@ -24,7 +24,11 @@ export const NapigoApp: React.FC = () => {
                     <PreLaunch />
                 ) : (
                     <Provider store={store}>
-                        <ErrorBoundary renderFallbackComponent={(err) => <ErrorDialog err={err} closeable={true} />}>
+                        <ErrorBoundary
+                            renderFallbackComponent={(err) => (
+                                <ErrorDialog err={err} closeable={true} />
+                            )}
+                        >
                             <FeatureFlag>
                                 <QueryClientProvider client={queryClient}>
                                     <App />

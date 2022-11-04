@@ -18,9 +18,13 @@ export const ConfirmEmail: React.FC = () => {
 
     const DescriptionText = useMemo(() => {
         if (loadStatus === "onsuccess") {
-            return fixtures.authenticationStrings["email-confirmation.post.description"];
+            return fixtures.authenticationStrings[
+                "email-confirmation.post.description"
+            ];
         }
-        return fixtures.authenticationStrings["email-confirmation.pre.description"];
+        return fixtures.authenticationStrings[
+            "email-confirmation.pre.description"
+        ];
     }, [loadStatus]);
 
     const sendEmail = async (_: React.MouseEvent) => {
@@ -46,8 +50,20 @@ export const ConfirmEmail: React.FC = () => {
     }
 
     return (
-        <Box mx="auto" display="flex" flexDirection="row" alignItems="center" justifyContent="center" h="100vh">
-            <Card maxWidth="500px" h="auto" alignItems="center" justifyContent="center">
+        <Box
+            mx="auto"
+            display="flex"
+            flexDirection="row"
+            alignItems="center"
+            justifyContent="center"
+            h="100vh"
+        >
+            <Card
+                maxWidth="500px"
+                h="auto"
+                alignItems="center"
+                justifyContent="center"
+            >
                 {loadStatus === "onsuccess" ? (
                     <Box color="brand.500" className="text-success mb-[10px]">
                         <FaCheckCircle size={60} />
@@ -60,17 +76,33 @@ export const ConfirmEmail: React.FC = () => {
 
                 <Heading size="md">
                     {loadStatus === "onsuccess"
-                        ? fixtures.authenticationStrings["email-confirmation.post.title"]
-                        : fixtures.authenticationStrings["email-confirmation.pre.title"]}
+                        ? fixtures.authenticationStrings[
+                              "email-confirmation.post.title"
+                          ]
+                        : fixtures.authenticationStrings[
+                              "email-confirmation.pre.title"
+                          ]}
                 </Heading>
                 <Text textAlign="center">{DescriptionText}</Text>
 
                 <HStack gap={2}>
-                    <Button colorScheme="brand" onClick={sendEmail} isLoading={loadStatus === "loading"}>
-                        {fixtures.authenticationStrings[`email-confirmation.${loadStatus}.buttontext`]}
+                    <Button
+                        colorScheme="brand"
+                        onClick={sendEmail}
+                        isLoading={loadStatus === "loading"}
+                    >
+                        {
+                            fixtures.authenticationStrings[
+                                `email-confirmation.${loadStatus}.buttontext`
+                            ]
+                        }
                     </Button>
                     <Button variant="ghost" onClick={handleLogout}>
-                        {fixtures.authenticationStrings["email-confirmation.logoutnow.buttontext"]}
+                        {
+                            fixtures.authenticationStrings[
+                                "email-confirmation.logoutnow.buttontext"
+                            ]
+                        }
                     </Button>
                 </HStack>
             </Card>

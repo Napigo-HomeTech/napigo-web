@@ -1,5 +1,8 @@
 import { mode, transparentize } from "@chakra-ui/theme-tools";
-import type { SystemStyleObject, SystemStyleFunction } from "@chakra-ui/styled-system";
+import type {
+    SystemStyleObject,
+    SystemStyleFunction,
+} from "@chakra-ui/styled-system";
 
 const baseStyle: SystemStyleObject = {
     lineHeight: "1.2",
@@ -202,7 +205,12 @@ const variantSolid: SystemStyleFunction = (props) => {
         };
     }
 
-    const { bg = `${c}.500`, color = "white", hoverBg = `${c}.600`, activeBg = `${c}.700` } = accessibleColorMap[c] ?? {};
+    const {
+        bg = `${c}.500`,
+        color = "white",
+        hoverBg = `${c}.600`,
+        activeBg = `${c}.700`,
+    } = accessibleColorMap[c] ?? {};
 
     const background = mode(bg, `${c}.600`)(props);
 

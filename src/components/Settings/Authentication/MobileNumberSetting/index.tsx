@@ -4,7 +4,13 @@ import { getUser } from "@/lib/Auth";
 import { DefaultCallback } from "@/types";
 import { Divider, Heading, HStack, Text, VStack } from "@chakra-ui/react";
 import { isEmpty } from "lodash";
-import React, { createContext, useCallback, useContext, useEffect, useState } from "react";
+import React, {
+    createContext,
+    useCallback,
+    useContext,
+    useEffect,
+    useState,
+} from "react";
 import parsePhoneNumber from "libphonenumber-js";
 import { MdPhoneIphone as MobileIcon } from "react-icons/md";
 import { MobileForm } from "./MobileForm";
@@ -48,7 +54,9 @@ export const MobileNumberSetting: React.FC = () => {
         const phoneNo = user?.phoneNumber ?? null;
         if (!isEmpty(phoneNo) || phoneNo !== null) {
             setFormType("verified");
-            const formattedPhoneNumber = parsePhoneNumber(phoneNo as string)?.formatInternational();
+            const formattedPhoneNumber = parsePhoneNumber(
+                phoneNo as string
+            )?.formatInternational();
             /**
              * fallback to original format provided by Firebase if
              * parsing the number failed get result
@@ -76,9 +84,21 @@ export const MobileNumberSetting: React.FC = () => {
 
                     <Text color="text-gray">
                         {formType === "notVerified" ? (
-                            <>{fixtures.settingsStrings["authentication.mobileform.notverified.description"]}</>
+                            <>
+                                {
+                                    fixtures.settingsStrings[
+                                        "authentication.mobileform.notverified.description"
+                                    ]
+                                }
+                            </>
                         ) : (
-                            <>{fixtures.settingsStrings["authentication.mobileform.verified.description"]}</>
+                            <>
+                                {
+                                    fixtures.settingsStrings[
+                                        "authentication.mobileform.verified.description"
+                                    ]
+                                }
+                            </>
                         )}
                     </Text>
                     {formType === "onLoading" && <></>}
