@@ -1,7 +1,15 @@
-import React, { useCallback } from "react";
+import React, { useCallback, useMemo } from "react";
 import { Badge, Card } from "@/elements";
 import { PlanSummary } from "@/types/finance.type";
-import { Box, Button, Heading, HStack, Text, VStack } from "@chakra-ui/react";
+import {
+    Box,
+    Button,
+    Divider,
+    Heading,
+    HStack,
+    Text,
+    VStack,
+} from "@chakra-ui/react";
 import {
     FaReceipt as PlanIcon,
     FaEllipsisV as MenuIcon,
@@ -12,17 +20,24 @@ import { currencyFormat } from "@/lib/Finance/utils";
 
 export const PlanItem: React.FC<PlanSummary> = (props) => {
     const getHealthColor = useCallback(() => {
-        switch (props.asm_health) {
-            case "healthy":
+        switch (props.health_status) {
+            case "HEALTHY":
                 return "success";
-            case "warning":
+            case "WARNING":
                 return "warning";
-            case "danger":
+            case "DANGER":
                 return "danger";
         }
-    }, [props.asm_health]);
+    }, [props.health_status]);
 
     const isInUsed = Boolean(props.in_use);
+
+    const transformAsmData = useMemo(() => {
+        const curr = currencyFormat(props.asm_amount);
+        const percent = `(${props.asm_percent}%)`;
+        return `${curr} ${percent}`;
+    }, [props.asm_amount, props.asm_percent]);
+
     return (
         <Card
             width="100%"
@@ -30,13 +45,13 @@ export const PlanItem: React.FC<PlanSummary> = (props) => {
             borderWidth={1}
             p="10px"
             rounded="md"
+            gap={2}
         >
             <HStack
                 width={"100%"}
-                borderBottom={"1px"}
-                borderBottomColor="border"
+                // borderBottom={"1px"}
+                // borderBottomColor="border"
                 justifyContent="space-between"
-                pb="10px"
             >
                 <HStack>
                     <Box color={"brand.500"}>
@@ -60,20 +75,24 @@ export const PlanItem: React.FC<PlanSummary> = (props) => {
                     </Button>
                 </HStack>
             </HStack>
+            <Divider />
             <VStack>
-                <DataRow label="Income" data={currencyFormat(props.income)} />
+                <DataRow
+                    label="Income"
+                    data={currencyFormat(props.net_income)}
+                />
                 <DataRow label="COL" data={currencyFormat(props.col)} />
-                <DataRow label="ASM" data={currencyFormat(props.asm)} />
+                <DataRow label="ASM" data={transformAsmData} />
                 <DataRow label="Created at" data="2 days ago" />
-                <HStack
-                    width={"100%"}
-                    marginTop="40px"
-                    justifyContent="space-between"
-                >
-                    <Button size="sm" colorScheme={"gray"}>
+                <Divider />
+                <HStack width={"100%"} justifyContent="space-between">
+                    <Button size="xs" colorScheme={"gray"}>
                         Used in <UsedInIcon />
                     </Button>
-                    <Badge color={getHealthColor()} status={props.asm_health} />
+                    <Badge
+                        color={getHealthColor()}
+                        status={props.health_status.toLowerCase()}
+                    />
                 </HStack>
             </VStack>
         </Card>

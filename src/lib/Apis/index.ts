@@ -23,7 +23,12 @@ const axiosInstance = axios.create({
  * @returns
  */
 const requestInterceptorHandler = (config: AxiosRequestConfig) => {
-    config.headers = { ..._createReqHeaders() };
+    config.headers = {
+        ..._createReqHeaders(
+            // TODO:  Auth extraction from firebase
+            "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6InZ6cjNLclNmMDFianU2VWNjUjg4YjVaQWUxbWZ1NXVjIn0.eyJ1c2VySWQiOiJoYW5hZmkiLCJpYXQiOjE2NjgwNjQyNDMsImV4cCI6MTY2ODA2OTI0MywiYXVkIjoibmFwaWdvLXdlYiIsImlzcyI6Im5hcGlnby1kZXYtaXNzdWVyIiwic3ViIjoiaGFuYWZpIn0.SV9t_si-MEBEcE01NlhooYHBYl8DkoGYT-27mqCsu0w"
+        ),
+    };
     return config;
 };
 
@@ -38,15 +43,14 @@ axiosInstance.interceptors.request.use(requestInterceptorHandler);
  * Attached all the required header for every api calls,
  * including Auth token, Idempotent Key etc..whichever required or available
  */
-const _createReqHeaders = () => {
+const _createReqHeaders = (token: string) => {
     /**
      * As for now, simple implementation until we have design the full flow
      * of user session fetching
      */
     return {
         "Content-Type": "application/json",
-        Authorization: "Bearer jwtvhdvidcdv6897vdsvdaivdavav",
-        "X-Token-Auth": "123346744",
+        Authorization: `Bearer ${token}`,
     };
 };
 
@@ -58,10 +62,10 @@ export interface CollectionBasedResponse<T> {
     code: number;
     status: string;
     data: {
-        counts: number;
+        total_counts: number;
         limit: number;
-        page: number;
         offset: number;
+        page: number;
         lastPage: number;
         results: T[];
     };

@@ -8,9 +8,9 @@ type BadgeProps = {
 export const Badge: React.FC<BadgeProps> = (props) => {
     const { color, status } = props;
     return (
-        <HStack>
+        <HStack bg="brandAlpha.200" px="10px" py="3px" rounded="md">
             <Box width="10px" height="10px" rounded="full" bg={color} />
-            <Text size="sm" color={color} fontWeight="semibold">
+            <Text fontSize={"xs"} color={color} fontWeight="semibold">
                 {status}
             </Text>
         </HStack>

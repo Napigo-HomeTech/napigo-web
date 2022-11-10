@@ -1,7 +1,7 @@
 /**
  *
  */
-export type ASMHealthStatus = "healthy" | "warning" | "danger";
+export type ASMHealthStatus = "HEALTHY" | "WARNING" | "DANGER";
 /**
  *
  */
@@ -9,9 +9,10 @@ export type PlanSummary = {
     pid: string;
     title: string;
     in_use: boolean;
-    income: number;
+    net_income: number;
     col: number;
-    asm: number;
+    asm_amount: number;
+    asm_percent: number;
     created_at: string;
-    asm_health: ASMHealthStatus;
+    health_status: ASMHealthStatus;
 };
