@@ -9,9 +9,7 @@ export const DataRow: React.FC<RowStandardProps> = ({ label, data }) => {
     return (
         <HStack width={"100%"} justifyContent="space-between" fontSize={"sm"}>
             <Text color="text-soft">{label}</Text>
-            <Text color="text-hard" fontWeight={"semibold"}>
-                {data}
-            </Text>
+            <Text color="text-hard">{data}</Text>
         </HStack>
     );
 };

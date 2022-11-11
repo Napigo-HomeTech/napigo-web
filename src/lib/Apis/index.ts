@@ -4,6 +4,7 @@
  */
 import { AppConfig } from "@/config/app.config";
 import axios, { AxiosRequestConfig } from "axios";
+import { store } from "../Redux/store";
 
 /**
  * The main instance of axios instantiate with its basic config such as timeout and basic headers
@@ -23,11 +24,10 @@ const axiosInstance = axios.create({
  * @returns
  */
 const requestInterceptorHandler = (config: AxiosRequestConfig) => {
+    const csrfToken = store.getState().accountStore.csrf ?? "";
+
     config.headers = {
-        ..._createReqHeaders(
-            // TODO:  Auth extraction from firebase
-            "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6InZ6cjNLclNmMDFianU2VWNjUjg4YjVaQWUxbWZ1NXVjIn0.eyJ1c2VySWQiOiJoYW5hZmkiLCJpYXQiOjE2NjgwNjQyNDMsImV4cCI6MTY2ODA2OTI0MywiYXVkIjoibmFwaWdvLXdlYiIsImlzcyI6Im5hcGlnby1kZXYtaXNzdWVyIiwic3ViIjoiaGFuYWZpIn0.SV9t_si-MEBEcE01NlhooYHBYl8DkoGYT-27mqCsu0w"
-        ),
+        ..._createReqHeaders(csrfToken),
     };
     return config;
 };
@@ -51,6 +51,7 @@ const _createReqHeaders = (token: string) => {
     return {
         "Content-Type": "application/json",
         Authorization: `Bearer ${token}`,
+        "X-CSRF-Token": token,
     };
 };
 

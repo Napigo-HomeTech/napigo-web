@@ -1,6 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { setupListeners } from "@reduxjs/toolkit/query";
-import { FinanceApis } from "../Apis/finance-apisold";
 import accountReducer from "./account.reducer";
 import appContextReducer from "./appcontext.reducer";
 
@@ -8,10 +7,8 @@ export const store = configureStore({
     reducer: {
         appContextStore: appContextReducer,
         accountStore: accountReducer,
-        [FinanceApis.reducerPath]: FinanceApis.reducer,
     },
-    middleware: (getDefaultMiddleware) =>
-        getDefaultMiddleware().concat(FinanceApis.middleware),
+    devTools: true,
 });
 
 // Infer the `RootState` and `AppDispatch` types from the store itself

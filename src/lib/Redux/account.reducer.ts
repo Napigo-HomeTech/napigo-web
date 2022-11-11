@@ -3,20 +3,26 @@ import type { Account } from "@/types";
 
 export interface AccountState {
     account: Account | null;
+    csrf: string | null;
 }
 
 const initialState: AccountState = {
     account: null,
+    csrf: null,
 };
 
 /**
  * Actionc creators
  */
 const setAccount = createAction<Account | null>("account/setAccount");
+const setCSRF = createAction<string | null>("account/csrf");
 
 const accountReducer = createReducer(initialState, (build) => {
     build.addCase(setAccount, (state, action) => {
         state.account = action.payload;
+    });
+    build.addCase(setCSRF, (state, action) => {
+        state.csrf = action.payload;
     });
 });
 
@@ -25,6 +31,7 @@ const accountReducer = createReducer(initialState, (build) => {
  */
 export const actions = {
     setAccount,
+    setCSRF,
 };
 
 export default accountReducer;

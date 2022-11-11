@@ -16,6 +16,7 @@ import { AccountActions, AppContextActions } from "@/lib/Redux";
 import { delayInvoke } from "@/lib/utils/delays";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
+import { post } from "../Apis";
 
 declare global {
     interface Window {
@@ -152,4 +153,20 @@ export const initializeRecaptchaVerifier = () => {
         },
         firebaseAuth
     );
+};
+
+/**
+ * A api fetch function for retrieving the X-CSRF-Token value from
+ * the account-service
+ * @param firebaseIdToken
+ */
+export const getCSRFToken = async (firebaseIdToken: string) => {
+    const response = await post(
+        "/account-service/csrf",
+        {},
+        {
+            id_token: firebaseIdToken,
+        }
+    );
+    return response.data;
 };

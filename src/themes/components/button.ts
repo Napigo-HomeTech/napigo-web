@@ -7,7 +7,7 @@ import type {
 const baseStyle: SystemStyleObject = {
     lineHeight: "1.2",
     borderRadius: "md",
-    fontWeight: "semibold",
+    fontWeight: "normal",
     transitionProperty: "common",
     transitionDuration: "normal",
     _focusVisible: {

@@ -1,5 +1,5 @@
 import { PlanSummary } from "@/types/finance.type";
-import { CollectionBasedResponse, get } from "../Apis";
+import { CollectionBasedResponse, get } from "@/lib/Apis";
 
 /**
  *
