@@ -7,9 +7,9 @@ const organisationData: OrganisationOption[] = [];
  * @returns
  */
 export const getRapidApiOrganisations = async (): Promise<
-    OrganisationOption[]
+  OrganisationOption[]
 > => {
-    return await organisationData;
+  return await organisationData;
 };
 
 /**
@@ -17,7 +17,7 @@ export const getRapidApiOrganisations = async (): Promise<
  * @returns
  */
 export const getOrgAutoCompleteFromRapidApi = async (): Promise<
-    OrganisationOption[]
+  OrganisationOption[]
 > => {
-    return await organisationData;
+  return await organisationData;
 };

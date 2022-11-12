@@ -7,90 +7,79 @@ import { SimpleGrid } from "@chakra-ui/react";
 import { Skeleton } from "./Skeleton";
 
 type InfiniteGridListProps = {
-    itemSkeleton: React.ReactElement;
-    fetch: any;
-    amountOfSkeleton: number;
-    itemComponent: (props: any) => React.ReactElement;
-    limit?: number;
-    columns: {
-        sm: number;
-        md: number;
-        lg: number;
-        xl: number;
-    };
-    queryKey: string[];
-    lastPageKey: string;
+  itemSkeleton: React.ReactElement;
+  fetch: any;
+  amountOfSkeleton: number;
+  itemComponent: (props: any) => React.ReactElement;
+  limit?: number;
+  columns: {
+    sm: number;
+    md: number;
+    lg: number;
+    xl: number;
+  };
+  queryKey: string[];
+  lastPageKey: string;
 };
 export const InfiniteGridList: React.FC<InfiniteGridListProps> = (props) => {
-    const {
-        itemComponent,
-        amountOfSkeleton,
-        itemSkeleton,
-        limit,
-        columns,
-        fetch,
-        queryKey,
-        lastPageKey,
-    } = props;
+  const {
+    itemComponent,
+    amountOfSkeleton,
+    itemSkeleton,
+    limit,
+    columns,
+    fetch,
+    queryKey,
+    lastPageKey,
+  } = props;
 
-    const loadMoreRef = useRef<HTMLDivElement>(null);
+  const loadMoreRef = useRef<HTMLDivElement>(null);
 
-    const { status, data, hasNextPage, isFetchingNextPage, fetchNextPage } =
-        useInfiniteQuery<CollectionBasedResponse<any>>([...queryKey], {
-            queryFn: ({ pageParam = 1 }) => fetch(pageParam, limit),
-            getNextPageParam: (lastPage, allPages) => {
-                const maxPage = get(lastPage.data, lastPageKey);
-                const nextPage = allPages.length + 1;
-                return nextPage <= maxPage ? nextPage : undefined;
-            },
-            staleTime: 0,
-            cacheTime: 0,
-        });
-
-    const entry = useIntersectionObserver(loadMoreRef, {
-        threshold: 0.1,
+  const { status, data, hasNextPage, isFetchingNextPage, fetchNextPage } =
+    useInfiniteQuery<CollectionBasedResponse<any>>([...queryKey], {
+      queryFn: ({ pageParam = 1 }) => fetch(pageParam, limit),
+      getNextPageParam: (lastPage, allPages) => {
+        const maxPage = get(lastPage.data, lastPageKey);
+        const nextPage = allPages.length + 1;
+        return nextPage <= maxPage ? nextPage : undefined;
+      },
+      staleTime: 0,
+      cacheTime: 0,
     });
 
-    useEffect(() => {
-        if (entry?.isIntersecting) {
-            fetchNextPage();
-        }
-    }, [entry, fetchNextPage]);
+  const entry = useIntersectionObserver(loadMoreRef, {
+    threshold: 0.1,
+  });
 
-    return (
-        <Fragment>
-            <SimpleGrid columns={columns} spacing={5}>
-                {status === "success" && (
-                    <>
-                        {data?.pages.map((page) => {
-                            return page.data.results.map((val) => {
-                                return itemComponent(val);
-                            });
-                        })}
-                    </>
-                )}
-                {status === "loading" && (
-                    <Skeleton
-                        itemAmount={amountOfSkeleton}
-                        component={itemSkeleton}
-                    />
-                )}
-            </SimpleGrid>
-            {hasNextPage}
-            <SimpleGrid
-                columns={columns}
-                mt="20px"
-                spacing={5}
-                ref={loadMoreRef}
-            >
-                <div />
-                {isFetchingNextPage && (
-                    <Skeleton
-                        itemAmount={amountOfSkeleton}
-                        component={itemSkeleton}
-                    />
-                )}
-            </SimpleGrid>
-        </Fragment>
-    );
+  useEffect(() => {
+    if (entry?.isIntersecting) {
+      fetchNextPage();
+    }
+  }, [entry, fetchNextPage]);
+
+  return (
+    <Fragment>
+      <SimpleGrid columns={columns} spacing={5}>
+        {status === "success" && (
+          <>
+            {data?.pages.map((page) => {
+              return page.data.results.map((val) => {
+                return itemComponent(val);
+              });
+            })}
+          </>
+        )}
+        {status === "loading" && (
+          <Skeleton itemAmount={amountOfSkeleton} component={itemSkeleton} />
+        )}
+      </SimpleGrid>
+      {hasNextPage}
+      <SimpleGrid columns={columns} mt="20px" spacing={5} ref={loadMoreRef}>
+        <div />
+        {isFetchingNextPage && (
+          <Skeleton itemAmount={amountOfSkeleton} component={itemSkeleton} />
+        )}
+      </SimpleGrid>
+    </Fragment>
+  );
 };

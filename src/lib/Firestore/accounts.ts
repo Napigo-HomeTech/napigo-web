@@ -1,9 +1,9 @@
 import {
-    getFirestore,
-    doc,
-    getDoc,
-    setDoc,
-    updateDoc,
+  getFirestore,
+  doc,
+  getDoc,
+  setDoc,
+  updateDoc,
 } from "firebase/firestore";
 import { Account } from "@/types";
 import app from "../Firebase";
@@ -16,16 +16,16 @@ const db = getFirestore(app);
  * @returns
  */
 const getAccount = async (uid: string) => {
-    const docRef = doc(db, "accounts", uid);
-    const docSnap = await getDoc(docRef);
+  const docRef = doc(db, "accounts", uid);
+  const docSnap = await getDoc(docRef);
 
-    if (docSnap.exists()) {
-        const data = docSnap.data();
-        data.last_logged_in = new Date(data.last_logged_in).toISOString();
-        return data;
-    } else {
-        return null;
-    }
+  if (docSnap.exists()) {
+    const data = docSnap.data();
+    data.last_logged_in = new Date(data.last_logged_in).toISOString();
+    return data;
+  } else {
+    return null;
+  }
 };
 
 /**
@@ -34,8 +34,8 @@ const getAccount = async (uid: string) => {
  * @returns
  */
 const saveAccount = async (acc: Account) => {
-    const docRef = doc(db, "accounts", acc.uid);
-    await setDoc(docRef, acc);
+  const docRef = doc(db, "accounts", acc.uid);
+  await setDoc(docRef, acc);
 };
 
 /**
@@ -44,15 +44,15 @@ const saveAccount = async (acc: Account) => {
  * @returns
  */
 const updateAccount = async (uid: string, newEmail: string) => {
-    const docRef = doc(db, "accounts", uid);
-    await updateDoc(docRef, { email: newEmail });
+  const docRef = doc(db, "accounts", uid);
+  await updateDoc(docRef, { email: newEmail });
 };
 
 /**
  *
  */
 export const accountStore = {
-    getAccount,
-    saveAccount,
-    updateAccount,
+  getAccount,
+  saveAccount,
+  updateAccount,
 };

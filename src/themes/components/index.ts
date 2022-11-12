@@ -7,11 +7,11 @@ import Alert from "./alert";
 import PinInput from "./pin-input";
 
 export const components: Record<string, any> = {
-    Modal,
-    Card,
-    Menu,
-    Button,
-    Input,
-    Alert,
-    PinInput,
+  Modal,
+  Card,
+  Menu,
+  Button,
+  Input,
+  Alert,
+  PinInput,
 };

@@ -1,29 +1,29 @@
 const Card = {
-    baseStyle: {
-        display: "flex",
-        flexDirection: "column",
-        background: "card",
-        padding: "10px",
-        borderWidth: "1px",
-        borderColor: "border",
-        gap: 6,
+  baseStyle: {
+    display: "flex",
+    flexDirection: "column",
+    background: "card",
+    padding: "10px",
+    borderWidth: "1px",
+    borderColor: "border",
+    gap: 6,
+  },
+  variants: {
+    rounded: {
+      padding: 8,
+      borderRadius: "xl",
     },
-    variants: {
-        rounded: {
-            padding: 8,
-            borderRadius: "xl",
-        },
-        smooth: {
-            padding: 6,
-            borderRadius: "md",
-        },
-        ghost: {
-            background: "inherit",
-        },
+    smooth: {
+      padding: 6,
+      borderRadius: "md",
     },
-    defaultProps: {
-        variant: "smooth",
+    ghost: {
+      background: "inherit",
     },
+  },
+  defaultProps: {
+    variant: "smooth",
+  },
 };
 
 export default Card;

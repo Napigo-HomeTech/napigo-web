@@ -1,15 +1,15 @@
 import {
-    getAuth,
-    signInWithEmailAndPassword,
-    sendEmailVerification,
-    User,
-    browserLocalPersistence,
-    createUserWithEmailAndPassword,
-    EmailAuthProvider,
-    reauthenticateWithCredential,
-    updatePassword,
-    updateEmail,
-    RecaptchaVerifier,
+  getAuth,
+  signInWithEmailAndPassword,
+  sendEmailVerification,
+  User,
+  browserLocalPersistence,
+  createUserWithEmailAndPassword,
+  EmailAuthProvider,
+  reauthenticateWithCredential,
+  updatePassword,
+  updateEmail,
+  RecaptchaVerifier,
 } from "firebase/auth";
 import { freezePage } from "@/lib/Dom";
 import { AccountActions, AppContextActions } from "@/lib/Redux";
@@ -19,10 +19,10 @@ import { useDispatch } from "react-redux";
 import { post } from "../Apis";
 
 declare global {
-    interface Window {
-        recaptchaVerifier: any;
-        phoneVerificationId: any;
-    }
+  interface Window {
+    recaptchaVerifier: any;
+    phoneVerificationId: any;
+  }
 }
 
 /** The Auth  SDK instance for Firebase based on current configuration and Firebase project
@@ -37,15 +37,15 @@ export const auth = firebaseAuth;
  * Normally will be used before updating new password for user
  */
 export const reauthenticate = async (user: User, password: string) => {
-    const creds = EmailAuthProvider.credential(user.email as string, password);
-    await reauthenticateWithCredential(user, creds);
+  const creds = EmailAuthProvider.credential(user.email as string, password);
+  await reauthenticateWithCredential(user, creds);
 };
 
 /**
  *
  */
 export const updatePasswordMethod = async (user: User, newPassword: string) => {
-    return updatePassword(user, newPassword);
+  return updatePassword(user, newPassword);
 };
 
 /**
@@ -55,7 +55,7 @@ export const updatePasswordMethod = async (user: User, newPassword: string) => {
  * @returns
  */
 export const updateEmailMethod = async (user: User, newEmail: string) => {
-    await updateEmail(user, newEmail);
+  await updateEmail(user, newEmail);
 };
 
 /**
@@ -64,7 +64,7 @@ export const updateEmailMethod = async (user: User, newEmail: string) => {
  * @param password
  */
 export const loginMethod = async (email: string, password: string) => {
-    return signInWithEmailAndPassword(firebaseAuth, email, password);
+  return signInWithEmailAndPassword(firebaseAuth, email, password);
 };
 
 /**
@@ -75,15 +75,15 @@ export const loginMethod = async (email: string, password: string) => {
  * @param nickname
  */
 export const registerMethod = async (email: string, password: string) => {
-    return createUserWithEmailAndPassword(firebaseAuth, email, password);
+  return createUserWithEmailAndPassword(firebaseAuth, email, password);
 };
 
 /**
  * @returns Logged in User
  */
 export const getUser = () => {
-    const user = firebaseAuth.currentUser;
-    return user;
+  const user = firebaseAuth.currentUser;
+  return user;
 };
 
 /**
@@ -92,8 +92,8 @@ export const getUser = () => {
  * @returns boolean
  */
 export const isUserLoggedIn = () => {
-    const user = firebaseAuth.currentUser;
-    return Boolean(user !== null);
+  const user = firebaseAuth.currentUser;
+  return Boolean(user !== null);
 };
 
 /**
@@ -102,14 +102,14 @@ export const isUserLoggedIn = () => {
  * @param user
  */
 export const sendEmailVerificationMethod = async (user: User) => {
-    try {
-        await sendEmailVerification(user, {
-            url: window.location.origin,
-        });
-    } catch (err: any) {
-        // eslint-disable-next-line no-console
-        console.log(err);
-    }
+  try {
+    await sendEmailVerification(user, {
+      url: window.location.origin,
+    });
+  } catch (err: any) {
+    // eslint-disable-next-line no-console
+    console.log(err);
+  }
 };
 
 /**
@@ -117,42 +117,42 @@ export const sendEmailVerificationMethod = async (user: User) => {
  * @returns
  */
 export const useHandleLogoutMethod = () => {
-    const [loggingOut, setLoggingOut] = useState<boolean>(false);
+  const [loggingOut, setLoggingOut] = useState<boolean>(false);
 
-    const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
-    const handleLogout = async () => {
-        setLoggingOut(true);
-        freezePage(true);
+  const handleLogout = async () => {
+    setLoggingOut(true);
+    freezePage(true);
 
-        /** Clear out all app data from cache redux before logout */
-        delayInvoke(async () => {
-            dispatch(AccountActions.setAccount(null));
-            dispatch(AppContextActions.accountReady(false));
+    /** Clear out all app data from cache redux before logout */
+    delayInvoke(async () => {
+      dispatch(AccountActions.setAccount(null));
+      dispatch(AppContextActions.accountReady(false));
 
-            await firebaseAuth.signOut();
-            freezePage(false);
+      await firebaseAuth.signOut();
+      freezePage(false);
 
-            setLoggingOut(false);
-        }, 1000);
-    };
+      setLoggingOut(false);
+    }, 1000);
+  };
 
-    return {
-        loggingOut,
-        handleLogout,
-    };
+  return {
+    loggingOut,
+    handleLogout,
+  };
 };
 
 export const initializeRecaptchaVerifier = () => {
-    window.recaptchaVerifier = new RecaptchaVerifier(
-        "recaptcha-container",
-        {
-            size: "invisible",
-            // eslint-disable-next-line @typescript-eslint/no-empty-function
-            callback: (_response: any) => {},
-        },
-        firebaseAuth
-    );
+  window.recaptchaVerifier = new RecaptchaVerifier(
+    "recaptcha-container",
+    {
+      size: "invisible",
+      // eslint-disable-next-line @typescript-eslint/no-empty-function
+      callback: (_response: any) => {},
+    },
+    firebaseAuth
+  );
 };
 
 /**
@@ -161,12 +161,12 @@ export const initializeRecaptchaVerifier = () => {
  * @param firebaseIdToken
  */
 export const getCSRFToken = async (firebaseIdToken: string) => {
-    const response = await post(
-        "/account-service/csrf",
-        {},
-        {
-            id_token: firebaseIdToken,
-        }
-    );
-    return response.data;
+  const response = await post(
+    "/account-service/csrf",
+    {},
+    {
+      id_token: firebaseIdToken,
+    }
+  );
+  return response.data;
 };

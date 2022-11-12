@@ -1,5 +1,5 @@
 const data = {
-    "apploader.text": "",
+  "apploader.text": "",
 };
 
 export default data;

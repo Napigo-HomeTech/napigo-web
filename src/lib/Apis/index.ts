@@ -10,12 +10,12 @@ import { store } from "../Redux/store";
  * The main instance of axios instantiate with its basic config such as timeout and basic headers
  */
 const axiosInstance = axios.create({
-    baseURL: AppConfig.serviceHost,
-    timeout: 5000,
-    headers: {
-        "Content-Type": "application/json",
-        Accept: "",
-    },
+  baseURL: AppConfig.serviceHost,
+  timeout: 5000,
+  headers: {
+    "Content-Type": "application/json",
+    Accept: "",
+  },
 });
 
 /**
@@ -24,12 +24,12 @@ const axiosInstance = axios.create({
  * @returns
  */
 const requestInterceptorHandler = (config: AxiosRequestConfig) => {
-    const csrfToken = store.getState().accountStore.csrf ?? "";
+  const csrfToken = store.getState().accountStore.csrf ?? "";
 
-    config.headers = {
-        ..._createReqHeaders(csrfToken),
-    };
-    return config;
+  config.headers = {
+    ..._createReqHeaders(csrfToken),
+  };
+  return config;
 };
 
 /**
@@ -44,15 +44,15 @@ axiosInstance.interceptors.request.use(requestInterceptorHandler);
  * including Auth token, Idempotent Key etc..whichever required or available
  */
 const _createReqHeaders = (token: string) => {
-    /**
-     * As for now, simple implementation until we have design the full flow
-     * of user session fetching
-     */
-    return {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
-        "X-CSRF-Token": token,
-    };
+  /**
+   * As for now, simple implementation until we have design the full flow
+   * of user session fetching
+   */
+  return {
+    "Content-Type": "application/json",
+    Authorization: `Bearer ${token}`,
+    "X-CSRF-Token": token,
+  };
 };
 
 /**
@@ -60,73 +60,73 @@ const _createReqHeaders = (token: string) => {
  * resources
  */
 export interface CollectionBasedResponse<T> {
-    code: number;
-    status: string;
-    data: {
-        total_counts: number;
-        limit: number;
-        offset: number;
-        page: number;
-        lastPage: number;
-        results: T[];
-    };
+  code: number;
+  status: string;
+  data: {
+    total_counts: number;
+    limit: number;
+    offset: number;
+    page: number;
+    lastPage: number;
+    results: T[];
+  };
 }
 
 /**
  *
  */
 const get = async (url = "", params = {}, body = {}) => {
-    return await axiosInstance({
-        url,
-        method: "get",
-        params,
-        data: { ...body },
-    });
+  return await axiosInstance({
+    url,
+    method: "get",
+    params,
+    data: { ...body },
+  });
 };
 /**
  *
  */
 const post = async (url = "", params = {}, body = {}) => {
-    return await axiosInstance({
-        url,
-        method: "post",
-        params,
-        data: { ...body },
-    });
+  return await axiosInstance({
+    url,
+    method: "post",
+    params,
+    data: { ...body },
+  });
 };
 /**
  *
  */
 const put = async (url = "", params = {}, body = {}) => {
-    return await axiosInstance({
-        url,
-        method: "put",
-        params,
-        data: { ...body },
-    });
+  return await axiosInstance({
+    url,
+    method: "put",
+    params,
+    data: { ...body },
+  });
 };
 /**
  *
  */
 const patch = async (url = "", params = {}, body = {}) => {
-    return await axiosInstance({
-        url,
-        method: "patch",
-        params,
-        data: { ...body },
-    });
+  return await axiosInstance({
+    url,
+    method: "patch",
+    params,
+    data: { ...body },
+  });
 };
 /**
  * Since the delete  is clash with the js keywords, we renamed it as
  * remove.. but the http verb should be DELETE
  */
 const remove = async (url = "", params = {}, body = {}) => {
-    return await axiosInstance({
-        url,
-        method: "delete",
-        params,
-        data: { ...body },
-    });
+  return await axiosInstance({
+    url,
+    method: "delete",
+    params,
+    data: { ...body },
+  });
 };
 
 export { axiosInstance, get, post, put, patch, remove };

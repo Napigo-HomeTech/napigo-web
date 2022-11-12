@@ -4,8 +4,8 @@ import parsePhoneNumber, { AsYouType, CountryCode } from "libphonenumber-js";
 import countriesRawData from "./countriesRawData";
 
 export interface CountryOption extends OptionBase {
-    label: string;
-    value: string;
+  label: string;
+  value: string;
 }
 
 /**
@@ -14,21 +14,19 @@ export interface CountryOption extends OptionBase {
  * @returns
  */
 export const getCountriesOptionData = () => {
-    const options: CountryOption[] = [];
+  const options: CountryOption[] = [];
 
-    const n = countriesRawData.length;
-    let idx = 0;
+  const n = countriesRawData.length;
+  let idx = 0;
 
-    for (; idx < n; idx++) {
-        const target = countriesRawData[idx];
-        options.push({
-            label: `${getCountryFlag(target[2].toString())} ${
-                target[0]
-            }`.toString(),
-            value: target[2].toString(),
-        });
-    }
-    return options;
+  for (; idx < n; idx++) {
+    const target = countriesRawData[idx];
+    options.push({
+      label: `${getCountryFlag(target[2].toString())} ${target[0]}`.toString(),
+      value: target[2].toString(),
+    });
+  }
+  return options;
 };
 
 /**
@@ -37,14 +35,13 @@ export const getCountriesOptionData = () => {
  * @returns
  */
 export const getOptionByCountry = (
-    country: string
+  country: string
 ): CountryOption | undefined => {
-    const list = getCountriesOptionData();
+  const list = getCountriesOptionData();
 
-    return list.find(
-        (val: CountryOption) =>
-            val.value.toLowerCase() === country.toLowerCase()
-    );
+  return list.find(
+    (val: CountryOption) => val.value.toLowerCase() === country.toLowerCase()
+  );
 };
 
 /**
@@ -53,11 +50,11 @@ export const getOptionByCountry = (
  * @param countryCode
  */
 export const formatPhoneNumber = (
-    phoneNumberRaw: string,
-    countryCode: string
+  phoneNumberRaw: string,
+  countryCode: string
 ) => {
-    const code = countryCode.toUpperCase() as CountryCode;
-    const raw = new AsYouType(code).input(phoneNumberRaw);
-    const parseNumber = parsePhoneNumber(raw, code);
-    return parseNumber?.formatInternational() ?? phoneNumberRaw;
+  const code = countryCode.toUpperCase() as CountryCode;
+  const raw = new AsYouType(code).input(phoneNumberRaw);
+  const parseNumber = parsePhoneNumber(raw, code);
+  return parseNumber?.formatInternational() ?? phoneNumberRaw;
 };

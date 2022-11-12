@@ -2,20 +2,20 @@ import { uniqueId } from "lodash";
 import React, { Fragment } from "react";
 
 type SkeletonProps = {
-    itemAmount?: number;
-    component: React.ReactElement;
+  itemAmount?: number;
+  component: React.ReactElement;
 };
 export const Skeleton: React.FC<SkeletonProps> = ({
-    itemAmount = 20,
-    component,
+  itemAmount = 20,
+  component,
 }) => {
-    return (
-        <Fragment>
-            {Array(itemAmount)
-                .fill(0)
-                .map((_) => (
-                    <div key={uniqueId()}>{component}</div>
-                ))}
-        </Fragment>
-    );
+  return (
+    <Fragment>
+      {Array(itemAmount)
+        .fill(0)
+        .map((_) => (
+          <div key={uniqueId()}>{component}</div>
+        ))}
+    </Fragment>
+  );
 };

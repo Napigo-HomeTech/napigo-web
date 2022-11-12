@@ -6,6 +6,6 @@ import { useSelector } from "react-redux";
  * @returns
  */
 export const useAccount = () => {
-    const { account } = useSelector((state: RootState) => state.accountStore);
-    return account;
+  const { account } = useSelector((state: RootState) => state.accountStore);
+  return account;
 };

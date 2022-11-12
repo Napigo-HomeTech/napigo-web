@@ -12,55 +12,51 @@ import { AppLoader } from "./AppLoader";
 const auth = getAuth();
 
 type AppUserContextProps = {
-    children: React.ReactNode;
+  children: React.ReactNode;
 };
 export const AppUserContext: React.FC<AppUserContextProps> = ({ children }) => {
-    const { loading } = useSelector(
-        (state: RootState) => state.appContextStore
-    );
-    const dispatch = useDispatch();
+  const { loading } = useSelector((state: RootState) => state.appContextStore);
+  const dispatch = useDispatch();
 
-    useInitDataLoadingListener();
+  useInitDataLoadingListener();
 
-    const initializeAppData = useCallback(
-        async (user: User) => {
-            dispatch(AppContextActions.loading(true));
-            try {
-                /**
-                 * Set The User Account information
-                 */
-                const acc: Account = (await accountStore.getAccount(
-                    user.uid
-                )) as Account;
+  const initializeAppData = useCallback(
+    async (user: User) => {
+      dispatch(AppContextActions.loading(true));
+      try {
+        /**
+         * Set The User Account information
+         */
+        const acc: Account = (await accountStore.getAccount(
+          user.uid
+        )) as Account;
 
-                delayInvoke(() => {
-                    dispatch(AccountActions.setAccount(acc));
-                    dispatch(AppContextActions.accountReady(true));
-                }, 3000);
-            } catch (err) {
-                dispatch(
-                    AppContextActions.error(
-                        "Error initializing / loading app data ..."
-                    )
-                );
-            }
-        },
-        [dispatch]
-    );
+        delayInvoke(() => {
+          dispatch(AccountActions.setAccount(acc));
+          dispatch(AppContextActions.accountReady(true));
+        }, 3000);
+      } catch (err) {
+        dispatch(
+          AppContextActions.error("Error initializing / loading app data ...")
+        );
+      }
+    },
+    [dispatch]
+  );
 
-    useEffect(() => {
-        const currentUser = auth.currentUser;
-        if (currentUser) {
-            initializeAppData(currentUser);
-        }
-    }, [initializeAppData]);
+  useEffect(() => {
+    const currentUser = auth.currentUser;
+    if (currentUser) {
+      initializeAppData(currentUser);
+    }
+  }, [initializeAppData]);
 
-    return (
-        <Fragment>
-            {loading && <AppLoader />}
-            {children}
-        </Fragment>
-    );
+  return (
+    <Fragment>
+      {loading && <AppLoader />}
+      {children}
+    </Fragment>
+  );
 };
 
 /**
@@ -70,21 +66,21 @@ export const AppUserContext: React.FC<AppUserContextProps> = ({ children }) => {
  *
  */
 const useInitDataLoadingListener = () => {
-    const dispatch = useDispatch();
-    const { accountReady } = useSelector(
-        (state: RootState) => state.appContextStore
-    );
-    useEffect(() => {
-        const moduleStates = [accountReady];
-        let appReady = true;
-        moduleStates.forEach((mod) => {
-            if (!mod) {
-                appReady = false;
-            }
-        });
-        if (appReady) {
-            dispatch(AppContextActions.loading(false));
-            freezePage(false);
-        }
-    }, [accountReady, dispatch]);
+  const dispatch = useDispatch();
+  const { accountReady } = useSelector(
+    (state: RootState) => state.appContextStore
+  );
+  useEffect(() => {
+    const moduleStates = [accountReady];
+    let appReady = true;
+    moduleStates.forEach((mod) => {
+      if (!mod) {
+        appReady = false;
+      }
+    });
+    if (appReady) {
+      dispatch(AppContextActions.loading(false));
+      freezePage(false);
+    }
+  }, [accountReady, dispatch]);
 };

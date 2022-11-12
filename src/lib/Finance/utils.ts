@@ -4,8 +4,8 @@
  * @returns
  */
 const currencyFormat = (data: number) => {
-    const sgdFormat = Intl.NumberFormat("en-sg");
-    return "$" + sgdFormat.format(data);
+  const sgdFormat = Intl.NumberFormat("en-sg");
+  return "$" + sgdFormat.format(data);
 };
 
 export { currencyFormat };

@@ -7,14 +7,14 @@ import { semanticTokens } from "./foundations/semanticTokens";
 import { components } from "./components";
 
 export const appTheme = extendTheme({
-    config: {
-        initialColorMode: "dark",
-        useSystemColorMode: true,
-    },
-    semanticTokens,
-    colors,
-    styles,
-    fonts,
-    shadows,
-    components,
+  config: {
+    initialColorMode: "dark",
+    useSystemColorMode: true,
+  },
+  semanticTokens,
+  colors,
+  styles,
+  fonts,
+  shadows,
+  components,
 });

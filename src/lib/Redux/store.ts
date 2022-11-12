@@ -4,11 +4,11 @@ import accountReducer from "./account.reducer";
 import appContextReducer from "./appcontext.reducer";
 
 export const store = configureStore({
-    reducer: {
-        appContextStore: appContextReducer,
-        accountStore: accountReducer,
-    },
-    devTools: true,
+  reducer: {
+    appContextStore: appContextReducer,
+    accountStore: accountReducer,
+  },
+  devTools: true,
 });
 
 // Infer the `RootState` and `AppDispatch` types from the store itself

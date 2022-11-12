@@ -1,19 +1,19 @@
 {
-    "count": 10,
-    "limit": 20,
-    "page": 1,
-    "data": [
-        {
-            "account_id": "sscsv86578986d",
-            "type": "",
-            "title": "",
-            "description": ""
-        },
-        {
-            "account_id": "sscsv86578986d",
-            "type": "",
-            "title": "",
-            "description": ""
-        }
-    ]
+  "count": 10,
+  "limit": 20,
+  "page": 1,
+  "data": [
+    {
+      "account_id": "sscsv86578986d",
+      "type": "",
+      "title": "",
+      "description": ""
+    },
+    {
+      "account_id": "sscsv86578986d",
+      "type": "",
+      "title": "",
+      "description": ""
+    }
+  ]
 }

@@ -8,9 +8,9 @@ import React from "react";
  * @returns
  */
 export const AccountsPage: React.FC = () => {
-    return (
-        <Box>
-            <EmptyAccountGrid />
-        </Box>
-    );
+  return (
+    <Box>
+      <EmptyAccountGrid />
+    </Box>
+  );
 };

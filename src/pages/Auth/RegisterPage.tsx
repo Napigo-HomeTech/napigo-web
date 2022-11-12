@@ -7,20 +7,20 @@ import { useFeatureRestrictRoute } from "@/routers/useFeatureRestrictRoute";
 import { fixtures } from "@/constant/datasets/fixtures";
 
 export const RegisterPage: React.FC = () => {
-    useFeatureRestrictRoute(featureFlags.enable_self_registration);
+  useFeatureRestrictRoute(featureFlags.enable_self_registration);
 
-    return (
-        <Box
-            display={"flex"}
-            flexDirection="column"
-            gap={6}
-            maxWidth="400px"
-            mx={"auto"}
-        >
-            <Text fontSize="xl" fontWeight={"bold"}>
-                {fixtures.authenticationStrings["register.form.title"]}
-            </Text>
-            <RegisterForm />
-        </Box>
-    );
+  return (
+    <Box
+      display={"flex"}
+      flexDirection="column"
+      gap={6}
+      maxWidth="400px"
+      mx={"auto"}
+    >
+      <Text fontSize="xl" fontWeight={"bold"}>
+        {fixtures.authenticationStrings["register.form.title"]}
+      </Text>
+      <RegisterForm />
+    </Box>
+  );
 };

@@ -7,24 +7,24 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 type RegistrationStatus = "idle" | "processing" | "onsuccess" | "onerror";
 
 export interface RegistrationState {
-    status: RegistrationStatus;
+  status: RegistrationStatus;
 }
 
 const initialState: RegistrationState = {
-    status: "idle",
+  status: "idle",
 };
 
 /**
  * Slices for the auth actions
  */
 const registrationStatusSlice = createSlice({
-    name: "registration-status",
-    initialState,
-    reducers: {
-        updateStatus: (state, action: PayloadAction<RegistrationStatus>) => {
-            state.status = action.payload;
-        },
+  name: "registration-status",
+  initialState,
+  reducers: {
+    updateStatus: (state, action: PayloadAction<RegistrationStatus>) => {
+      state.status = action.payload;
     },
+  },
 });
 
 export const actions = registrationStatusSlice.actions;
