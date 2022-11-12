@@ -11,7 +11,7 @@ export const UserRoutes: React.FC = () => {
   return (
     <AppUserContext>
       <Routes>
-        <Route path="user">
+        <Route path="">
           <Route element={<UserLayout />}>
             <Route index element={<Navigate to="console" />} />
             <Route path="console/*" element={<ConsolePage />} />
@@ -20,8 +20,7 @@ export const UserRoutes: React.FC = () => {
             <Route path="finance/*" element={<FinanceContainer />} />
           </Route>
         </Route>
-        <Route path="/" element={<Navigate to="user" />} />
-        <Route path="*" element={<Navigate to="user" />} />
+        <Route path="*" element={<Navigate to="console" />} />
       </Routes>
     </AppUserContext>
   );

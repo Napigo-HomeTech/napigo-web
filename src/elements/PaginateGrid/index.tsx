@@ -83,8 +83,8 @@ export const PaginateGrid: React.FC<PaginateGridProps> = ({
       <HStack width="inherit" justifyContent="flex-end">
         {!noResult && (
           <Pagination
-            totalCounts={1000}
-            countPerPage={20}
+            totalCount={response?.data.total_count ?? 0}
+            countPerPage={itemPerPage}
             onPageChange={(page: number) => {
               setPage(page);
             }}

@@ -5,9 +5,9 @@ import { PlanSummary } from "@/types/finance.type";
 import { Box, HStack, Text } from "@chakra-ui/react";
 import { uniqueId } from "lodash";
 import React from "react";
-import { PlanItem } from "./PlanItem";
+import { PlanGridCard } from "../PlanGridCard";
 
-export const PlanGridView: React.FC = () => {
+export const PlanListing: React.FC = () => {
   return (
     <PaginateGrid
       emptyPlaceholder={
@@ -29,7 +29,7 @@ export const PlanGridView: React.FC = () => {
       itemPerPage={9}
       fetchResource={fetchPlans}
       itemComponent={(props: PlanSummary) => (
-        <PlanItem key={uniqueId()} {...props} />
+        <PlanGridCard key={uniqueId()} {...props} />
       )}
       columns={{
         sm: 1,

@@ -16,3 +16,7 @@ export type PlanSummary = {
   created_at: string;
   health_status: ASMHealthStatus;
 };
+
+export interface PlanIdResponse {
+  plan_id: string;
+}

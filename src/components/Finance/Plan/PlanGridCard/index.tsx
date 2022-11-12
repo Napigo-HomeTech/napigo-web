@@ -18,8 +18,13 @@ import {
 import { DataRow } from "@/elements/DataDisplay/DataRow";
 import { currencyFormat } from "@/lib/Finance/utils";
 
-export const PlanItem: React.FC<PlanSummary> = (props) => {
-  const getHealthColor = useCallback(() => {
+/**
+ *
+ * @param props
+ * @returns
+ */
+export const PlanGridCard: React.FC<PlanSummary> = (props) => {
+  const asmHealthStatus = useMemo(() => {
     switch (props.health_status) {
       case "HEALTHY":
         return "success";
@@ -27,6 +32,8 @@ export const PlanItem: React.FC<PlanSummary> = (props) => {
         return "warning";
       case "DANGER":
         return "danger";
+      default:
+        null;
     }
   }, [props.health_status]);
 
@@ -38,16 +45,31 @@ export const PlanItem: React.FC<PlanSummary> = (props) => {
     return `${curr} ${percent}`;
   }, [props.asm_amount, props.asm_percent]);
 
+  const onItemClick = useCallback(() => {
+    // TODO
+  }, []);
+
   return (
     <Card
+      onClick={onItemClick}
       width="100%"
+      _hover={{
+        borderColor: "brand.400",
+        cursor: "pointer",
+      }}
       borderColor={isInUsed ? "brand.500" : "border"}
       borderWidth={1}
       p="10px"
       rounded="md"
       gap={2}
     >
-      <HStack width={"100%"} justifyContent="space-between">
+      <HStack
+        width={"100%"}
+        justifyContent="space-between"
+        borderBottom="1px"
+        borderColor="border"
+        paddingBottom="5px"
+      >
         <HStack>
           <Box color={"brand.500"}>
             <PlanIcon color="inherit" />
@@ -60,12 +82,17 @@ export const PlanItem: React.FC<PlanSummary> = (props) => {
               <Text>In-use</Text>
             </Box>
           )}
-          <Button colorScheme="gray" variant={"ghost"} px="3px">
+          <Button
+            size="sm"
+            colorScheme="gray"
+            variant={"ghost"}
+            px="3px"
+            rounded="full"
+          >
             <MenuIcon />
           </Button>
         </HStack>
       </HStack>
-      <Divider />
       <VStack>
         <DataRow label="Income" data={currencyFormat(props.net_income)} />
         <DataRow label="COL" data={currencyFormat(props.col)} />
@@ -76,10 +103,12 @@ export const PlanItem: React.FC<PlanSummary> = (props) => {
           <Button size="xs" colorScheme={"gray"}>
             Used in <UsedInIcon />
           </Button>
-          <Badge
-            color={getHealthColor()}
-            status={props.health_status.toLowerCase()}
-          />
+          {asmHealthStatus && asmHealthStatus !== null && (
+            <Badge
+              color={asmHealthStatus as string}
+              status={asmHealthStatus!.toLowerCase()}
+            />
+          )}
         </HStack>
       </VStack>
     </Card>

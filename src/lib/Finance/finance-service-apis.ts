@@ -1,5 +1,5 @@
-import { PlanSummary } from "@/types/finance.type";
-import { CollectionBasedResponse, get } from "@/lib/Apis";
+import { PlanIdResponse, PlanSummary } from "@/types/finance.type";
+import { BasedResponse, CollectionBasedResponse, get, post } from "@/lib/Apis";
 
 /**
  *
@@ -15,4 +15,12 @@ const fetchPlans = async (
   return response.data;
 };
 
-export { fetchPlans };
+/**
+ *@returns { plan_id: string }
+ */
+const createPlan = async (): Promise<BasedResponse<PlanIdResponse>> => {
+  const response = await post(`/finance-service/plans`);
+  return response.data;
+};
+
+export { fetchPlans, createPlan };

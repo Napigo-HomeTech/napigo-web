@@ -63,13 +63,18 @@ export interface CollectionBasedResponse<T> {
   code: number;
   status: string;
   data: {
-    total_counts: number;
+    total_count: number;
     limit: number;
     offset: number;
     page: number;
     lastPage: number;
     results: T[];
   };
+}
+export interface BasedResponse<T> {
+  code: number;
+  data: T;
+  status: string;
 }
 
 /**

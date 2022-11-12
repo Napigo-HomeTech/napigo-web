@@ -12,7 +12,7 @@ type PaginationProps = {
   /**
    * Total items available, this info should be fetchedf from Backend API
    */
-  totalCounts: number;
+  totalCount: number;
 
   /**
    * Callback handler, triggers when user changing the page by clicking on
@@ -21,11 +21,11 @@ type PaginationProps = {
   onPageChange: (page: number) => void;
 };
 const PaginationComponent = (props: PaginationProps) => {
-  const { countPerPage, totalCounts, onPageChange } = props;
+  const { countPerPage, totalCount, onPageChange } = props;
 
   const noOfPages = React.useMemo(() => {
-    return Math.ceil(totalCounts / countPerPage);
-  }, [totalCounts, countPerPage]);
+    return Math.ceil(totalCount / countPerPage);
+  }, [totalCount, countPerPage]);
 
   /**
    * The current page where user is at, this will update when user click on any
@@ -172,7 +172,7 @@ const comparePaginationProps = (
 ) => {
   if (
     prevProps.countPerPage !== nextProps.countPerPage ||
-    prevProps.totalCounts !== nextProps.totalCounts
+    prevProps.totalCount !== nextProps.totalCount
   ) {
     return false;
   }
