@@ -6,7 +6,7 @@ export type ASMHealthStatus = "HEALTHY" | "WARNING" | "DANGER";
  *
  */
 export type PlanSummary = {
-  pid: string;
+  _id: string;
   title: string;
   in_use: boolean;
   net_income: number;

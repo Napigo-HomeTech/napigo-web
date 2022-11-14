@@ -17,6 +17,7 @@ import {
 } from "react-icons/fa";
 import { DataRow } from "@/elements/DataDisplay/DataRow";
 import { currencyFormat } from "@/lib/Finance/utils";
+import { useNavigate } from "react-router-dom";
 
 /**
  *
@@ -38,6 +39,7 @@ export const PlanGridCard: React.FC<PlanSummary> = (props) => {
   }, [props.health_status]);
 
   const isInUsed = Boolean(props.in_use);
+  const navigate = useNavigate();
 
   const transformAsmData = useMemo(() => {
     const curr = currencyFormat(props.asm_amount);
@@ -46,8 +48,8 @@ export const PlanGridCard: React.FC<PlanSummary> = (props) => {
   }, [props.asm_amount, props.asm_percent]);
 
   const onItemClick = useCallback(() => {
-    // TODO
-  }, []);
+    navigate(`${props._id}`);
+  }, [navigate, props._id]);
 
   return (
     <Card
