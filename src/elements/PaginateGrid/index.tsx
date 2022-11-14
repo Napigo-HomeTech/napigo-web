@@ -48,7 +48,7 @@ export const PaginateGrid: React.FC<PaginateGridProps> = ({
     queryFn: () => fetchResource(page, itemPerPage),
     keepPreviousData: true,
     staleTime: 0,
-    cacheTime: 0,
+    cacheTime: 30000,
   });
 
   useEffect(() => {
