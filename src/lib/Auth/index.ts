@@ -161,12 +161,11 @@ export const initializeRecaptchaVerifier = () => {
  * @param firebaseIdToken
  */
 export const getCSRFToken = async (firebaseIdToken: string) => {
-  const response = await post(
-    "/account-service/csrf",
-    {},
-    {
-      id_token: firebaseIdToken,
-    }
-  );
+  const response = await post({
+    url: "/account-service/csrf",
+    body: { id_token: firebaseIdToken },
+    withAuth: true,
+  });
+
   return response.data;
 };
