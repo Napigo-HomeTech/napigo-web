@@ -1,6 +1,35 @@
-import { HStack, IconButton, Input } from "@chakra-ui/react";
-import React, { ChangeEvent, Fragment, useRef, useState } from "react";
+/* eslint-disable @typescript-eslint/no-unused-vars */
+import {
+  ButtonGroup,
+  Editable,
+  EditableInput,
+  EditablePreview,
+  IconButton,
+  Tooltip,
+  useEditableControls,
+} from "@chakra-ui/react";
+import React from "react";
 import { MdCheck as SaveIcon, MdClose as CancelIcon } from "react-icons/md";
+
+function EditableControls() {
+  const { isEditing, getSubmitButtonProps, getCancelButtonProps } =
+    useEditableControls();
+
+  return isEditing ? (
+    <ButtonGroup justifyContent="start" size="sm">
+      <IconButton
+        aria-label="save"
+        icon={<SaveIcon />}
+        {...getSubmitButtonProps()}
+      />
+      <IconButton
+        aria-label="cancel"
+        icon={<CancelIcon />}
+        {...getCancelButtonProps()}
+      />
+    </ButtonGroup>
+  ) : null;
+}
 
 interface PlanTitleEditableProps {
   defaultValue: string;
@@ -10,69 +39,35 @@ export const PlanTitleEditableComponent: React.FC<PlanTitleEditableProps> = ({
   defaultValue,
   onInputChange,
 }) => {
-  const [onEdit, setOnEdit] = useState<boolean>(false);
-  const [defaultVal, _] = useState<string>(defaultValue);
-  const inputRef = useRef<HTMLInputElement>(null);
-
-  const onChange = (ev: React.ChangeEvent<HTMLInputElement>) => {
-    const value = ev.target.value;
-    onInputChange?.(value);
-  };
-
-  const onEditClick = (_: React.MouseEvent) => {
-    const edit = !onEdit;
-    setOnEdit(edit);
-  };
-
   return (
-    <HStack>
-      <Input
-        ref={inputRef}
-        padding={0}
-        onFocus={() => {
-          setOnEdit(true);
-        }}
-        onBlur={(ev: ChangeEvent<HTMLInputElement>) => {
-          setOnEdit(false);
-          ev.target.value = defaultVal;
-        }}
-        rounded="none"
-        _disabled={{
-          color: "text-hard",
-        }}
+    <Editable
+      defaultValue="Rasengan "
+      isPreviewFocusable={true}
+      selectAllOnFocus={false}
+      display="flex"
+      flexDirection="row"
+      gap={2}
+      alignItems={"center"}
+      justifyContent="flex-start"
+      margin={0}
+    >
+      <Tooltip label="Click to edit">
+        <EditablePreview fontSize={"30px"} fontWeight="bold" />
+      </Tooltip>
+      <EditableInput
+        rounded={"none"}
         _focus={{
-          borderWidth: 0,
-          borderBottomWidth: 1,
-          outline: "none",
+          borderColor: "transparent",
           boxShadow: "none",
+          borderBottomWidth: 1,
+          borderBottomColor: "brand.500",
         }}
-        borderWidth="0px"
-        fontSize="30px"
-        fontWeight={"bold"}
-        defaultValue={defaultVal}
-        onChange={onChange}
+        width={"500px"}
+        fontSize={"30px"}
+        fontWeight="bold"
       />
-      {onEdit && (
-        <Fragment>
-          <IconButton
-            size={"sm"}
-            aria-label="save"
-            variant={"outline"}
-            colorScheme="brand"
-            onClick={onEditClick}
-            icon={<SaveIcon />}
-          />
-          <IconButton
-            size={"sm"}
-            aria-label="cancel"
-            variant={"outline"}
-            colorScheme="gray"
-            onClick={onEditClick}
-            icon={<CancelIcon />}
-          />
-        </Fragment>
-      )}
-    </HStack>
+      <EditableControls />
+    </Editable>
   );
 };
 
