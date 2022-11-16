@@ -1,5 +1,11 @@
-import { PlanIdResponse, PlanSummary } from "@/types/finance.type";
-import { BasedResponse, CollectionBasedResponse, get, post } from "@/lib/Apis";
+import { PlanForm, PlanIdResponse, PlanSummary } from "@/types/finance.type";
+import {
+  BasedResponse,
+  CollectionBasedResponse,
+  get,
+  post,
+  put,
+} from "@/lib/Apis";
 
 /**
  *
@@ -17,6 +23,20 @@ const fetchPlans = async (
 };
 
 /**
+ *
+ * @param plan_id
+ */
+const fetchPlanById = async (
+  plan_id: string
+): Promise<BasedResponse<PlanForm>> => {
+  const response = await get({
+    url: `/finance-service/plans/${plan_id}`,
+    withAuth: true,
+  });
+  return response.data;
+};
+
+/**
  *@returns { plan_id: string }
  */
 const createPlan = async (): Promise<BasedResponse<PlanIdResponse>> => {
@@ -27,4 +47,26 @@ const createPlan = async (): Promise<BasedResponse<PlanIdResponse>> => {
   return response.data;
 };
 
-export { fetchPlans, createPlan };
+/**
+ *
+ * @param plan_id
+ * @param title
+ * @returns
+ */
+const updatePlanTitle = async (
+  plan_id: string,
+  title: string
+): Promise<BasedResponse<{ _id: string }>> => {
+  const response = await put({
+    url: `/finance-service/plans/title`,
+    body: {
+      plan_id,
+      title,
+    },
+    withAuth: true,
+  });
+
+  return response.data;
+};
+
+export { fetchPlans, createPlan, fetchPlanById, updatePlanTitle };

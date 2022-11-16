@@ -1,21 +1,20 @@
 import { HStack, VStack } from "@chakra-ui/react";
-import React from "react";
-import { PlanTitleEditable } from "./PlanTitleEditable";
-import { SavingIndicator } from "./SavingIndicator";
+import React, { Fragment } from "react";
+import { PlanFormLoader } from "./PlanFormLoader";
+import { PlanFormUpdater } from "./PlanFormUpdater";
+import { PlanTitle } from "./PlanTitle";
 
 export const PlanForm: React.FC = () => {
   return (
-    <VStack width={"inherit"}>
-      <HStack width={"inherit"} gap={0} justifyContent={"flex-start"}>
-        <PlanTitleEditable
-          defaultValue="Hello world"
-          onInputChange={(_: string) => {
-            /** @todo */
-          }}
-        />
-        <SavingIndicator />
-        <HStack></HStack>
-      </HStack>
-    </VStack>
+    <Fragment>
+      <PlanFormLoader />
+      <PlanFormUpdater />
+      <VStack width={"inherit"}>
+        <HStack width={"inherit"} gap={0} justifyContent={"flex-start"}>
+          <PlanTitle />
+          <HStack></HStack>
+        </HStack>
+      </VStack>
+    </Fragment>
   );
 };

@@ -31,17 +31,17 @@ function EditableControls() {
   ) : null;
 }
 
-interface PlanTitleEditableProps {
+interface PlanTitleUIProps {
   defaultValue: string;
   onInputChange?: (value: string) => void;
 }
-export const PlanTitleEditableComponent: React.FC<PlanTitleEditableProps> = ({
+export const PlanTitleUIComponent: React.FC<PlanTitleUIProps> = ({
   defaultValue,
   onInputChange,
 }) => {
   return (
     <Editable
-      defaultValue="Rasengan "
+      defaultValue={defaultValue}
       isPreviewFocusable={true}
       selectAllOnFocus={false}
       display="flex"
@@ -50,6 +50,7 @@ export const PlanTitleEditableComponent: React.FC<PlanTitleEditableProps> = ({
       alignItems={"center"}
       justifyContent="flex-start"
       margin={0}
+      onSubmit={(nextValue) => onInputChange?.(nextValue)}
     >
       <Tooltip label="Click to edit">
         <EditablePreview fontSize={"30px"} fontWeight="bold" />
@@ -77,8 +78,8 @@ export const PlanTitleEditableComponent: React.FC<PlanTitleEditableProps> = ({
  * @param nextProps
  */
 const comparePlanTitleEditableProps = (
-  prevProps: PlanTitleEditableProps,
-  nextProps: PlanTitleEditableProps
+  prevProps: PlanTitleUIProps,
+  nextProps: PlanTitleUIProps
 ) => {
   if (prevProps.defaultValue !== nextProps.defaultValue) {
     return false;
@@ -86,7 +87,7 @@ const comparePlanTitleEditableProps = (
   return true;
 };
 
-export const PlanTitleEditable = React.memo(
-  PlanTitleEditableComponent,
+export const PlanTitleUI = React.memo(
+  PlanTitleUIComponent,
   comparePlanTitleEditableProps
 );

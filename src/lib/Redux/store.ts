@@ -2,11 +2,14 @@ import { configureStore } from "@reduxjs/toolkit";
 import { setupListeners } from "@reduxjs/toolkit/query";
 import accountReducer from "./account.reducer";
 import appContextReducer from "./appcontext.reducer";
+import { reducers } from "./plan-form-reducer";
 
 export const store = configureStore({
   reducer: {
     appContextStore: appContextReducer,
     accountStore: accountReducer,
+    plan_titleStore: reducers.planTitleReducer,
+    plan_eventCountStore: reducers.planEventCountReducer,
   },
   devTools: true,
 });
