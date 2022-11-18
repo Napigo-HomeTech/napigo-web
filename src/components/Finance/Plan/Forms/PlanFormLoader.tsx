@@ -1,10 +1,11 @@
+import { usePrompt } from "@/elements/Prompt";
 import { fetchPlanById } from "@/lib/Finance/finance-service-apis";
 import { actions } from "@/lib/Redux/plan-form-reducer";
-import { store } from "@/lib/Redux/store";
+import { RootState, store } from "@/lib/Redux/store";
 import { EnumPlanStatus, PlanForm } from "@/types/finance.type";
 import { useQuery } from "@tanstack/react-query";
 import React, { useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 
 /**
@@ -19,11 +20,21 @@ export const PlanFormLoader: React.FC = () => {
   const { plan_id } = useParams();
 
   const dispatch = useDispatch();
+  const { count, onSaving } = useSelector((state: RootState) => ({
+    count: state.plan_eventCountStore.count,
+    onSaving: state.plan_onSavingStore.onSaving,
+  }));
 
   const { data: response, isLoading } = useQuery(["plan"], {
     queryFn: () => fetchPlanById(plan_id as string),
     cacheTime: 0,
     staleTime: 0,
+  });
+
+  usePrompt({
+    header: "Are you sure you want to leave ?",
+    message: "Changes that you made may not be saved",
+    when: count > 0 || onSaving,
   });
 
   useEffect(() => {

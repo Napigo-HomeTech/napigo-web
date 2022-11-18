@@ -22,9 +22,14 @@ export const PlanFormUpdater: React.FC = () => {
       if (count === 0) {
         return;
       }
-
       dispatch(actions.resetPlanEventsCount());
+
+      dispatch(actions.updatePlanOnSaving(true));
       await updatePlanTitle(plan_id as string, title);
+
+      setTimeout(() => {
+        dispatch(actions.updatePlanOnSaving(false));
+      }, 5000);
     }, 1000);
 
     return () => {

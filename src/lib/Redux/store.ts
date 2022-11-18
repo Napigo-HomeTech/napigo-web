@@ -10,6 +10,7 @@ export const store = configureStore({
     accountStore: accountReducer,
     plan_titleStore: reducers.planTitleReducer,
     plan_eventCountStore: reducers.planEventCountReducer,
+    plan_onSavingStore: reducers.planFormOnSavingReducer,
   },
   devTools: true,
 });
