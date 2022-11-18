@@ -5,6 +5,7 @@ import {
   get,
   post,
   put,
+  remove,
 } from "@/lib/Apis";
 
 /**
@@ -69,4 +70,18 @@ const updatePlanTitle = async (
   return response.data;
 };
 
-export { fetchPlans, createPlan, fetchPlanById, updatePlanTitle };
+/**
+ *
+ * @param plan_id
+ */
+const deletePlan = async (
+  plan_id: string
+): Promise<BasedResponse<{ _id: string }>> => {
+  const response = await remove({
+    url: `/finance-service/plans/${plan_id}`,
+    withAuth: true,
+  });
+  return response.data;
+};
+
+export { fetchPlans, createPlan, fetchPlanById, updatePlanTitle, deletePlan };

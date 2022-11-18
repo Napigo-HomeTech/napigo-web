@@ -19,6 +19,11 @@ const data = {
     "You don't have a plan yet, please create one",
   "finance.plan.emptyplan.description": "You don't have any plan",
   "finance.planform.button.back": "Back",
+  "finance.plan.delete-dialog.button.delete": "Confirm Delete",
+  "finance.plan.delete-dialog.button.cancel": "Cancel",
+  "finance.plan.delete-dialog.title": "Delete Plan?",
+  "finance.plan.delete-dialog.message":
+    "Are you sure you want to delete this plan? If you are still using this plan in the current budget, you won't be able to make references anymore.",
 };
 
 export default data;

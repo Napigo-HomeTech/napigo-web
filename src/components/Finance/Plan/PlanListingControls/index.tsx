@@ -77,7 +77,7 @@ export const PlanListingControls: React.FC = () => {
           }
         </Button>
         <Button colorScheme="base">In-use</Button>
-        <Button colorScheme="secondary" onClick={() => onCreatePlan.mutate()}>
+        <Button colorScheme="purple" onClick={() => onCreatePlan.mutate()}>
           {
             fixtures.financeStrings[
               "finance.plan.gridview.control.create-plan.button.text"
