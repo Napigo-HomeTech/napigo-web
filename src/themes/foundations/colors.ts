@@ -43,7 +43,7 @@ export const colors: Colors = {
     800: "#09291B",
     900: "#04100B",
   },
-  secondary: {
+  secondary_old: {
     50: "#FFF4E7",
     100: "#FDE9CE",
     200: "#FCD39D",
@@ -54,6 +54,18 @@ export const colors: Colors = {
     700: "#7C4805",
     800: "#3E2402",
     900: "#190E01",
+  },
+  secondary: {
+    50: "#F6EAEF",
+    100: "#EDD3DF",
+    200: "#DBA7BE",
+    300: "#C87B9E",
+    400: "#B64F7D",
+    500: "#A4235D",
+    600: "#7B1A46",
+    700: "#52122F",
+    800: "#290917",
+    900: "#100409",
   },
   gray: {
     50: "#fafafa",

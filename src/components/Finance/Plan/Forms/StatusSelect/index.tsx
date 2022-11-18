@@ -16,7 +16,7 @@ const statusOptions: Option[] = [
   {
     label: "IN-QUEUE",
     value: "IN-QUEUE",
-    color: "secondary.500",
+    color: "orange.400",
   },
 ];
 

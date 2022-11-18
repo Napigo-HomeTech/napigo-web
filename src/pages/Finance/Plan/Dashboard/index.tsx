@@ -15,7 +15,7 @@ export const PlanDashboard: React.FC = () => {
       </HStack>
       <PlanBanner
         title={fixtures.financeStrings["finance.plan.banner.title"]}
-        buttonText="Do it now!!"
+        buttonText="Find out more"
       />
       <PlanListingControlPanelForm />
       <PlanListing />
