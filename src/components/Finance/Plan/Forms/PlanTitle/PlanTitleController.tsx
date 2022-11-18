@@ -18,8 +18,10 @@ export const PlanTitleContoller: React.FC = () => {
         <PlanTitleUI
           defaultValue={title}
           onInputChange={(val: string) => {
-            dispatch(actions.updateTitle(val));
-            dispatch(actions.increasePlanEventsCount());
+            if (val !== title) {
+              dispatch(actions.updateTitle(val));
+              dispatch(actions.increasePlanEventsCount());
+            }
           }}
         />
       ) : (

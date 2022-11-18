@@ -12,10 +12,15 @@ export const PlanFormUpdater: React.FC = () => {
   const { plan_id } = useParams();
 
   useEffect(() => {
+    /**
+     * @ONWATCH
+     * This interval is doing some async operations and will take sometimes
+     * for it to be done, while, doing the work, there are possibility that the interval
+     * will fire anthor async operation in the background.. thus the function beloww
+     * may run in "parallel" somehow..please watch over any unexpected side effects
+     * or data out of sync , race condition etc... fix or refactor if needed
+     */
     _updaterInterval = setInterval(async () => {
-      /**
-       * @Todo
-       */
       const { count } = store.getState().plan_eventCountStore;
       const { title } = store.getState().plan_titleStore;
 
@@ -27,9 +32,7 @@ export const PlanFormUpdater: React.FC = () => {
       dispatch(actions.updatePlanOnSaving(true));
       await updatePlanTitle(plan_id as string, title);
 
-      setTimeout(() => {
-        dispatch(actions.updatePlanOnSaving(false));
-      }, 5000);
+      dispatch(actions.updatePlanOnSaving(false));
     }, 1000);
 
     return () => {
