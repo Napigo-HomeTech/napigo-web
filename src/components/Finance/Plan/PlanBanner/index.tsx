@@ -1,8 +1,7 @@
 import React, { useCallback } from "react";
 import { fixtures } from "@/constant/datasets/fixtures";
-import { Button, Heading, Image, VStack } from "@chakra-ui/react";
-import PlanBannerCalculator from "@/assets/images/plan-banner-calculator.svg";
-import PlanBannerCoins from "@/assets/images/plan-banner-coins.svg";
+import { Box, Button, Heading, VStack } from "@chakra-ui/react";
+import { ReactComponent as Background } from "@/assets/images/plan-banner-3.svg";
 
 type PlanBannerProps = {
   title?: string;
@@ -12,8 +11,7 @@ type PlanBannerProps = {
   imageRightSrc?: string;
 };
 export const PlanBanner: React.FC<PlanBannerProps> = (props) => {
-  const { title, onButtonClick, imageLeftSrc, imageRightSrc, buttonText } =
-    props;
+  const { title, onButtonClick, buttonText } = props;
 
   const getButtonColorStyles = useCallback(() => {
     return {
@@ -43,32 +41,34 @@ export const PlanBanner: React.FC<PlanBannerProps> = (props) => {
       height="130px"
       rounded={"md"}
       p="10px"
-      justifyContent={"flex-start"}
+      justifyContent={"space-between"}
       alignItems="flex-start"
       position={"relative"}
       overflow={"hidden"}
     >
-      <Heading size="sm" color="card">
+      <Box
+        position={"absolute"}
+        width="100%"
+        height="100%"
+        top={0}
+        left={0}
+        zIndex={10}
+        display={"flex"}
+        flexDirection="row"
+        alignItems={"center"}
+        justifyContent="center"
+      >
+        <Background />
+      </Box>
+      <Heading size="md" color="card" zIndex={20}>
         {title ?? fixtures.financeStrings["finance.plan.banner.title"]}
       </Heading>
 
-      <Image
-        src={imageLeftSrc ?? PlanBannerCalculator}
-        alt="plan banner calculator image"
-      />
-      <Image
-        position={"absolute"}
-        right="5%"
-        src={imageRightSrc ?? PlanBannerCoins}
-        alt="plan banner calculator image"
-      />
       <Button
+        zIndex={20}
         {...getButtonColorStyles()}
         size="sm"
         onClick={onClick}
-        position="absolute"
-        bottom="10%"
-        left="15%"
         minWidth="200px"
       >
         {buttonText ?? "Find out more!"}

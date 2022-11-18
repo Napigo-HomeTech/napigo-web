@@ -18,6 +18,7 @@ const data = {
   "finance.plan.gridview.no-result.text":
     "You don't have a plan yet, please create one",
   "finance.plan.emptyplan.description": "You don't have any plan",
+  "finance.planform.button.back": "Back",
 };
 
 export default data;

@@ -67,7 +67,7 @@ export const PlanListingControls: React.FC = () => {
               "finance.plan.gridview.control.search.placeholder"
             ]
           }
-          bg="body"
+          bg="card"
         />{" "}
         <Button colorScheme="base" leftIcon={<SearchIcon />}>
           {

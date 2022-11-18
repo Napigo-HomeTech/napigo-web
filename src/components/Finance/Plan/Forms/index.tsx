@@ -1,14 +1,20 @@
 import { usePrompt } from "@/elements/Prompt";
 import { RootState } from "@/lib/Redux/store";
-import { HStack, VStack } from "@chakra-ui/react";
+import { Button, HStack, VStack } from "@chakra-ui/react";
 import React, { Fragment } from "react";
 import { useSelector } from "react-redux";
 import { PlanFormLoader } from "./PlanFormLoader";
 import { PlanFormUpdater } from "./PlanFormUpdater";
 import { PlanTitle } from "./PlanTitle";
 import { SavingIndicator } from "./SavingIndicator";
+import { MdArrowBack as BackIcon } from "react-icons/md";
+import { PlanStatusSelect } from "./StatusSelect";
+import { fixtures } from "@/constant/datasets/fixtures";
+import { useNavigate } from "react-router-dom";
 
 export const PlanForm: React.FC = () => {
+  const navigate = useNavigate();
+
   const { count, onSaving } = useSelector((state: RootState) => ({
     count: state.plan_eventCountStore.count,
     onSaving: state.plan_onSavingStore.onSaving,
@@ -25,10 +31,21 @@ export const PlanForm: React.FC = () => {
       <PlanFormLoader />
       <PlanFormUpdater />
       <VStack width={"inherit"}>
-        <HStack width={"inherit"} gap={0} justifyContent={"flex-start"}>
-          <PlanTitle />
-          <SavingIndicator />
-          <HStack></HStack>
+        <HStack width={"inherit"} gap={0} justifyContent={"space-between"}>
+          <HStack>
+            <PlanTitle />
+            <SavingIndicator />
+          </HStack>
+          <HStack justifyContent="flex-end">
+            <PlanStatusSelect />
+            <Button
+              colorScheme={"base"}
+              leftIcon={<BackIcon />}
+              onClick={() => navigate(-1)}
+            >
+              {fixtures.financeStrings["finance.planform.button.back"]}
+            </Button>
+          </HStack>
         </HStack>
       </VStack>
     </Fragment>

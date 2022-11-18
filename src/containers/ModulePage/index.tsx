@@ -69,7 +69,7 @@ export const ModulePage: React.FC<ModulePageProps> = (props) => {
         margin={0}
         minHeight={"calc(100vh - 70px)"}
         height="auto"
-        borderRightWidth={"0.5px"}
+        borderRightWidth={"1px"}
         borderColor={drawerBorder}
         bg={"card"}
       >

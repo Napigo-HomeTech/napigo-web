@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import {
   ButtonGroup,
   Editable,
@@ -50,21 +49,23 @@ export const PlanTitleUIComponent: React.FC<PlanTitleUIProps> = ({
       alignItems={"center"}
       justifyContent="flex-start"
       margin={0}
+      padding={0}
       onSubmit={(nextValue) => onInputChange?.(nextValue)}
     >
       <Tooltip label="Click to edit">
-        <EditablePreview fontSize={"30px"} fontWeight="bold" />
+        <EditablePreview fontSize={"25px"} fontWeight="bold" />
       </Tooltip>
       <EditableInput
         rounded={"none"}
+        spellCheck={false}
         _focus={{
           borderColor: "transparent",
           boxShadow: "none",
           borderBottomWidth: 1,
           borderBottomColor: "brand.500",
         }}
-        width={"500px"}
-        fontSize={"30px"}
+        width={"300px"}
+        fontSize={"25px"}
         fontWeight="bold"
       />
       <EditableControls />

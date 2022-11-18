@@ -2,7 +2,7 @@ import { fixtures } from "@/constant/datasets/fixtures";
 import { PaginateGrid } from "@/elements/PaginateGrid";
 import { fetchPlans } from "@/lib/Finance/finance-service-apis";
 import { PlanSummary } from "@/types/finance.type";
-import { Box, HStack, Text } from "@chakra-ui/react";
+import { HStack, Skeleton, Text } from "@chakra-ui/react";
 import { uniqueId } from "lodash";
 import React from "react";
 import { PlanGridCard } from "../PlanGridCard";
@@ -23,7 +23,13 @@ export const PlanListing: React.FC = () => {
         </HStack>
       }
       itemSkeleton={
-        <Box width="100%" rounded="md" bg="gray.100" height="220px" />
+        <Skeleton
+          width={"100%"}
+          height="220px"
+          rounded="md"
+          startColor="gray.100"
+          endColor="gray.200"
+        />
       }
       amountOfSkeleton={9}
       itemPerPage={9}

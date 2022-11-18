@@ -4,7 +4,7 @@ import React from "react";
 
 export const PlanFormPage: React.FC = () => {
   return (
-    <VStack width={"100%"} gap={2} p="20px">
+    <VStack width={"100%"} height="100%" gap={2} p="20px">
       <PlanForm />
     </VStack>
   );

@@ -25,7 +25,13 @@ export const PlanTitleContoller: React.FC = () => {
           }}
         />
       ) : (
-        <Skeleton height={"40px"} width="30%" rounded={"md"} />
+        <Skeleton
+          height={"46px"}
+          width="300px"
+          rounded={"md"}
+          startColor="gray.100"
+          endColor="gray.200"
+        />
       )}
     </Fragment>
   );
