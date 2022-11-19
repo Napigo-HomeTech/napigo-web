@@ -5,7 +5,7 @@ import { FormControl } from "@chakra-ui/react";
 type Option = {
   label: string;
   value: string;
-  color: string;
+  color?: string;
 };
 const statusOptions: Option[] = [
   {
@@ -76,7 +76,6 @@ export const PlanStatusSelect: React.FC = () => {
         chakraStyles={chakraStyles}
         selectedOptionStyle="check"
         defaultValue={statusOptions[0]}
-        isReadOnly
         colorScheme="brand"
         size="md"
         placeholder="Status"

@@ -53,7 +53,12 @@ export const PlanTitleUIComponent: React.FC<PlanTitleUIProps> = ({
       onSubmit={(nextValue) => onInputChange?.(nextValue)}
     >
       <Tooltip label="Click to edit">
-        <EditablePreview fontSize={"25px"} fontWeight="bold" />
+        <EditablePreview
+          fontSize={"25px"}
+          borderBottomWidth={1}
+          borderBottomColor={"transparent"}
+          fontWeight="bold"
+        />
       </Tooltip>
       <EditableInput
         rounded={"none"}

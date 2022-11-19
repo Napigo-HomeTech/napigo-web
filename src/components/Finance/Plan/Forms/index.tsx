@@ -11,6 +11,7 @@ import { MdArrowBack as BackIcon } from "react-icons/md";
 import { PlanStatusSelect } from "./StatusSelect";
 import { fixtures } from "@/constant/datasets/fixtures";
 import { useNavigate } from "react-router-dom";
+import { MainSection } from "./MainSection";
 
 export const PlanForm: React.FC = () => {
   const navigate = useNavigate();
@@ -30,8 +31,13 @@ export const PlanForm: React.FC = () => {
     <Fragment>
       <PlanFormLoader />
       <PlanFormUpdater />
-      <VStack width={"inherit"}>
-        <HStack width={"inherit"} gap={0} justifyContent={"space-between"}>
+      <VStack width={"inherit"} gap={2}>
+        <HStack
+          width={"inherit"}
+          gap={0}
+          justifyContent={"space-between"}
+          maxHeight={"70px"}
+        >
           <HStack>
             <PlanTitle />
             <SavingIndicator />
@@ -47,6 +53,7 @@ export const PlanForm: React.FC = () => {
             </Button>
           </HStack>
         </HStack>
+        <MainSection />
       </VStack>
     </Fragment>
   );

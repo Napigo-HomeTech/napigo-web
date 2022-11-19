@@ -34,6 +34,7 @@
     "chakra-dayzed-datepicker": "^0.2.3",
     "chakra-react-select": "^4.1.4",
     "country-flag-icons": "^1.5.5",
+    "currency.js": "^2.0.4",
     "date-fns": "^2.29.2",
     "dayzed": "^3.2.3",
     "firebase": "^9.9.0",
