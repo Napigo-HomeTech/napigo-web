@@ -1,4 +1,9 @@
-import { PlanForm, PlanIdResponse, PlanSummary } from "@/types/finance.type";
+import {
+  PlanForm,
+  PlanFormUpdateRequest,
+  PlanIdResponse,
+  PlanSummary,
+} from "@/types/finance.type";
 import {
   BasedResponse,
   CollectionBasedResponse,
@@ -49,7 +54,24 @@ const createPlan = async (): Promise<BasedResponse<PlanIdResponse>> => {
 };
 
 /**
- * NEW version endpoint which replace deprecated updatePlanTitle()
+ * @New version endpoint for updating plan form
+ * @param payload
+ * @returns
+ */
+const updatePlan = async (
+  payload: PlanFormUpdateRequest
+): Promise<BasedResponse<{ _id: string }>> => {
+  const response = await put({
+    url: "/finance-service/plans",
+    body: payload,
+    withAuth: true,
+  });
+
+  return response.data;
+};
+
+/**
+ * @deprecated
  * @param plan_id
  * @param datafield_name
  * @param datafield_type
@@ -94,6 +116,7 @@ export {
   fetchPlans,
   createPlan,
   fetchPlanById,
+  updatePlan,
   updatePlanDatafield,
   deletePlan,
 };

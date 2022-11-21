@@ -1,5 +1,5 @@
 import { Card, Form } from "@/elements";
-import { actions } from "@/lib/Redux/plan-form-reducer";
+import { PlanformActions } from "@/lib/Redux/planform.reducer";
 import { RootState } from "@/lib/Redux/store";
 import {
   FormControl,
@@ -9,6 +9,7 @@ import {
   Heading,
   HStack,
   NumberInput,
+  Skeleton,
   Slider,
   SliderFilledTrack,
   SliderThumb,
@@ -21,6 +22,20 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 export const MainSection: React.FC = () => {
+  const { isReady } = useSelector((state: RootState) => state.planformStore);
+
+  if (!isReady) {
+    return (
+      <Skeleton
+        width={"100%"}
+        height="200px"
+        rounded="md"
+        startColor="gray.100"
+        endColor="gray.200"
+      />
+    );
+  }
+
   return (
     <Card width={"100%"} padding={0}>
       <Grid templateRows="repeat(1, 1fr)" templateColumns="repeat(8, 1fr)">
@@ -62,17 +77,16 @@ export const MainSection: React.FC = () => {
 export const IncomeInput: React.FC = () => {
   const dispatch = useDispatch();
 
-  const { amount } = useSelector(
-    (state: RootState) => state.plan_datafield_income
-  );
+  const { net_income } = useSelector((state: RootState) => state.planformStore);
+
   return (
     <Form.CurrencyField
       label="Net income"
       bg="card"
       placeholder="0.00"
-      defaultValue={amount}
+      defaultValue={net_income}
       onInputChange={(amount: string) => {
-        dispatch(actions.updateIncomeDataField(amount));
+        dispatch(PlanformActions.updateIncome(amount));
       }}
     />
   );

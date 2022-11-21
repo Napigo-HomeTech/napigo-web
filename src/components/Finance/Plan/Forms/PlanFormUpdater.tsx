@@ -7,6 +7,10 @@ import { useParams } from "react-router-dom";
 
 let _updaterInterval: any = null;
 
+/**
+ * @deprecated
+ * @returns
+ */
 export const PlanFormUpdater: React.FC = () => {
   const dispatch = useDispatch();
   const { plan_id } = useParams();

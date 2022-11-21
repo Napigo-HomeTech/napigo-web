@@ -27,9 +27,9 @@ export type PlanSummary = Pick<
 
 export interface PlanForm {
   _id: string;
-  owner_id: string;
   title: string;
   net_income: string;
+  owner_id: string;
   esm_percent: number;
   esm_amount: string;
   asm_percent: number;
@@ -41,6 +41,7 @@ export interface PlanForm {
   status: PlanStatus;
   active_on: null | string;
   health_status: ASMHealthStatus | null;
+  categories: string[];
   items: PlanItem[];
 }
 
@@ -52,4 +53,17 @@ export interface PlanItem {
 
 export interface PlanIdResponse {
   plan_id: string;
+}
+
+export interface PlanFormUpdateRequest {
+  _id: string;
+  title: string;
+  net_income: string;
+  asm_percent: number;
+  asm_amount: string;
+  esm_percent: number;
+  esm_amount: string;
+  col: string;
+  categories: string[];
+  items: PlanItem[];
 }

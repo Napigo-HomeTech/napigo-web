@@ -12,6 +12,7 @@ import { useParams } from "react-router-dom";
  * into the redux..once everything is ready, will start to render each and every plan form component.
  * This is to make sure that each part of the form's redux store is ready to be use before we render the
  * UI component and start to use whatever value set from the redux store to dislay
+ * @deprecated
  * @param param0
  * @returns
  */
@@ -48,9 +49,9 @@ export const PlanFormLoader: React.FC = () => {
        */
       const payload: PlanForm = {
         _id: "",
-        owner_id: "",
         title: store.getState().plan_datafield_title.title,
         net_income: "0.00",
+        owner_id: "",
         esm_percent: 0,
         esm_amount: "0.00",
         asm_percent: 0,
@@ -62,6 +63,7 @@ export const PlanFormLoader: React.FC = () => {
         status: PlanStatus.draft,
         active_on: null,
         health_status: "DANGER",
+        categories: [],
         items: [],
       };
 
