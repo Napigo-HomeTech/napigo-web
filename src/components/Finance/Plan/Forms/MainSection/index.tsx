@@ -1,18 +1,24 @@
 import { Card, Form } from "@/elements";
+import { actions } from "@/lib/Redux/plan-form-reducer";
+import { RootState } from "@/lib/Redux/store";
 import {
   FormControl,
   FormLabel,
   Grid,
   GridItem,
+  Heading,
   HStack,
   NumberInput,
   Slider,
   SliderFilledTrack,
   SliderThumb,
   SliderTrack,
+  VStack,
 } from "@chakra-ui/react";
+import currency from "currency.js";
 import { isNaN } from "lodash";
 import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
 export const MainSection: React.FC = () => {
   return (
@@ -31,10 +37,18 @@ export const MainSection: React.FC = () => {
           <IncomeInput />
           <ASMInput />
         </GridItem>
-        <GridItem colSpan={1} borderLeftWidth={1} borderLeftColor="border" />
-        <GridItem colSpan={1} borderLeftWidth={1} borderLeftColor="border" />
-        <GridItem colSpan={1} borderLeftWidth={1} borderLeftColor="border" />
-        <GridItem colSpan={1} borderLeftWidth={1} borderLeftColor="border" />
+        <GridItem colSpan={1} borderLeftWidth={1} borderLeftColor="border">
+          <ESMAmountDisplay />
+        </GridItem>
+        <GridItem colSpan={1} borderLeftWidth={1} borderLeftColor="border">
+          <ASMPercentDisplay />
+        </GridItem>
+        <GridItem colSpan={1} borderLeftWidth={1} borderLeftColor="border">
+          <ASMAmountDisplay />
+        </GridItem>
+        <GridItem colSpan={1} borderLeftWidth={1} borderLeftColor="border">
+          <COLDisplay />
+        </GridItem>
       </Grid>
     </Card>
   );
@@ -45,13 +59,21 @@ export const MainSection: React.FC = () => {
  * Income Input
  * --------------------------------------------------------------------------------
  */
-const IncomeInput: React.FC = () => {
+export const IncomeInput: React.FC = () => {
+  const dispatch = useDispatch();
+
+  const { amount } = useSelector(
+    (state: RootState) => state.plan_datafield_income
+  );
   return (
     <Form.CurrencyField
       label="Net income"
       bg="card"
       placeholder="0.00"
-      defaultValue={"0.00"}
+      defaultValue={amount}
+      onInputChange={(amount: string) => {
+        dispatch(actions.updateIncomeDataField(amount));
+      }}
     />
   );
 };
@@ -62,7 +84,7 @@ const IncomeInput: React.FC = () => {
  * --------------------------------------------------------------------------------
  */
 
-const ASMInput: React.FC = () => {
+export const ASMInput: React.FC = () => {
   const [value, setValue] = useState<number | string>(0);
 
   return (
@@ -105,5 +127,77 @@ const ASMInput: React.FC = () => {
         </Slider>
       </HStack>
     </FormControl>
+  );
+};
+
+/**
+ * --------------------------------------------------------------------------------
+ * ESM Amount
+ * --------------------------------------------------------------------------------
+ */
+export const ESMAmountDisplay: React.FC = () => {
+  return (
+    <VStack alignItems="center" justifyContent="center" height="100%" gap={3}>
+      <Heading color="text-soft" size={"xs"} fontWeight="bold">
+        ESM $
+      </Heading>
+      <Heading color="text-hard" size="sm">
+        {currency(5230.0, { precision: 2 }).format()}
+      </Heading>
+    </VStack>
+  );
+};
+
+/**
+ * --------------------------------------------------------------------------------
+ * ASM % Input
+ * --------------------------------------------------------------------------------
+ */
+export const ASMPercentDisplay: React.FC = () => {
+  return (
+    <VStack alignItems="center" justifyContent="center" height="100%" gap={3}>
+      <Heading color="text-soft" size={"xs"} fontWeight="bold">
+        ASM %
+      </Heading>
+      <Heading color="text-hard" size="sm">
+        0 %
+      </Heading>
+    </VStack>
+  );
+};
+
+/**
+ * --------------------------------------------------------------------------------
+ * ASM Amount Input
+ * --------------------------------------------------------------------------------
+ */
+export const ASMAmountDisplay: React.FC = () => {
+  return (
+    <VStack alignItems="center" justifyContent="center" height="100%" gap={3}>
+      <Heading color="text-soft" size={"xs"} fontWeight="bold">
+        ASM $
+      </Heading>
+      <Heading color="text-hard" size="sm">
+        {currency("2234.230", { precision: 2 }).format()}
+      </Heading>
+    </VStack>
+  );
+};
+
+/**
+ * --------------------------------------------------------------------------------
+ * COL Input
+ * --------------------------------------------------------------------------------
+ */
+export const COLDisplay: React.FC = () => {
+  return (
+    <VStack alignItems="center" justifyContent="center" height="100%" gap={3}>
+      <Heading color="text-soft" size={"xs"} fontWeight="bold">
+        COL $
+      </Heading>
+      <Heading color="text-hard" size="sm">
+        {currency(5230.0, { precision: 2 }).format()}
+      </Heading>
+    </VStack>
   );
 };

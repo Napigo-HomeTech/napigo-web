@@ -9,7 +9,7 @@ export const PlanTitleContoller: React.FC = () => {
   const dispatch = useDispatch();
 
   const { title, isReady } = useSelector(
-    (state: RootState) => state.plan_titleStore
+    (state: RootState) => state.plan_datafield_title
   );
 
   return (

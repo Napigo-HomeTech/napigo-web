@@ -6,38 +6,39 @@ export type ASMHealthStatus = "HEALTHY" | "WARNING" | "DANGER";
  *
  */
 
-export enum EnumPlanStatus {
+export enum PlanStatus {
   in_queue = "IN-QUEUE",
   in_used = "IN-USE",
   draft = "DRAFT",
 }
 
-export type PlanSummary = {
-  _id: string;
-  title: string;
-  in_use: boolean;
-  net_income: number;
-  col: number;
-  asm_amount: number;
-  asm_percent: number;
-  created_at: string;
-  health_status: ASMHealthStatus;
-};
+export type PlanSummary = Pick<
+  PlanForm,
+  | "_id"
+  | "title"
+  | "net_income"
+  | "col"
+  | "asm_amount"
+  | "asm_percent"
+  | "created_at"
+  | "status"
+  | "health_status"
+>;
 
 export interface PlanForm {
-  _id?: string;
+  _id: string;
   owner_id: string;
   title: string;
-  net_income: number;
+  net_income: string;
   esm_percent: number;
-  esm_amount: number;
+  esm_amount: string;
   asm_percent: number;
-  asm_amount: number;
-  col: number;
+  asm_amount: string;
+  col: string;
   created_at: string;
   updated_at: null | string;
   deleted: 0 | 1;
-  status: EnumPlanStatus;
+  status: PlanStatus;
   active_on: null | string;
   health_status: ASMHealthStatus | null;
   items: PlanItem[];

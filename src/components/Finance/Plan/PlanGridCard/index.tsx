@@ -1,6 +1,6 @@
 import React, { Fragment, useCallback, useMemo } from "react";
 import { Badge, Card } from "@/elements";
-import { PlanSummary } from "@/types/finance.type";
+import { PlanStatus, PlanSummary } from "@/types/finance.type";
 import {
   AlertDialog,
   AlertDialogBody,
@@ -29,11 +29,11 @@ import {
   FaArrowRight as UsedInIcon,
 } from "react-icons/fa";
 import { DataRow } from "@/elements/DataDisplay/DataRow";
-import { currencyFormat } from "@/lib/Finance/utils";
 import { useNavigate } from "react-router-dom";
 import { fixtures } from "@/constant/datasets/fixtures";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { deletePlan } from "@/lib/Finance/finance-service-apis";
+import currency from "currency.js";
 
 /**
  *
@@ -66,11 +66,11 @@ export const PlanGridCard: React.FC<PlanSummary> = (props) => {
     }
   }, [props.health_status]);
 
-  const isInUsed = Boolean(props.in_use);
+  const isInUsed = Boolean(props.status === PlanStatus.in_used);
   const navigate = useNavigate();
 
   const transformAsmData = useMemo(() => {
-    const curr = currencyFormat(props.asm_amount);
+    const curr = currency(props.asm_amount, { precision: 2 }).format();
     const percent = `(${props.asm_percent}%)`;
     return `${curr} ${percent}`;
   }, [props.asm_amount, props.asm_percent]);
@@ -124,7 +124,7 @@ export const PlanGridCard: React.FC<PlanSummary> = (props) => {
             <Heading size={"sm"}>{props.title}</Heading>
           </HStack>
           <HStack>
-            {props.in_use && (
+            {isInUsed && (
               <Box bg="brand.50" px="20px" rounded="md" color="brand.500">
                 <Text>In-use</Text>
               </Box>
@@ -147,8 +147,14 @@ export const PlanGridCard: React.FC<PlanSummary> = (props) => {
           </HStack>
         </HStack>
         <VStack>
-          <DataRow label="Income" data={currencyFormat(props.net_income)} />
-          <DataRow label="COL" data={currencyFormat(props.col)} />
+          <DataRow
+            label="Income"
+            data={currency(props.net_income, { precision: 2 }).format()}
+          />
+          <DataRow
+            label="COL"
+            data={currency(props.col, { precision: 2 }).format()}
+          />
           <DataRow label="ASM" data={transformAsmData} />
           <DataRow label="Created at" data="2 days ago" />
           <Divider />

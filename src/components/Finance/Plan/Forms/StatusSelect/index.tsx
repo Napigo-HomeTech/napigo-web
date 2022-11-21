@@ -30,6 +30,7 @@ export const PlanStatusSelect: React.FC = () => {
         ...provided,
         paddingLeft: "20px",
         fontWeight: "semibold",
+        fontSize: "12px",
         color: "text-hard",
         _before: {
           content: `""`,

@@ -1,4 +1,4 @@
-import { updatePlanTitle } from "@/lib/Finance/finance-service-apis";
+import { updatePlanDatafield } from "@/lib/Finance/finance-service-apis";
 import { actions } from "@/lib/Redux/plan-form-reducer";
 import { store } from "@/lib/Redux/store";
 import React, { useEffect } from "react";
@@ -22,7 +22,7 @@ export const PlanFormUpdater: React.FC = () => {
      */
     _updaterInterval = setInterval(async () => {
       const { count } = store.getState().plan_eventCountStore;
-      const { title } = store.getState().plan_titleStore;
+      const { title } = store.getState().plan_datafield_title;
 
       if (count === 0) {
         return;
@@ -30,7 +30,7 @@ export const PlanFormUpdater: React.FC = () => {
       dispatch(actions.resetPlanEventsCount());
 
       dispatch(actions.updatePlanOnSaving(true));
-      await updatePlanTitle(plan_id as string, title);
+      await updatePlanDatafield(plan_id as string, "title", "string", title);
 
       dispatch(actions.updatePlanOnSaving(false));
     }, 1000);

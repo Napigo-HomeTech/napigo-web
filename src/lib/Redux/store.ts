@@ -8,9 +8,10 @@ export const store = configureStore({
   reducer: {
     appContextStore: appContextReducer,
     accountStore: accountReducer,
-    plan_titleStore: reducers.planTitleReducer,
     plan_eventCountStore: reducers.planEventCountReducer,
     plan_onSavingStore: reducers.planFormOnSavingReducer,
+    plan_datafield_income: reducers.planIncomeDataFieldReducer,
+    plan_datafield_title: reducers.planTitleReducer,
   },
   devTools: true,
 });

@@ -49,20 +49,26 @@ const createPlan = async (): Promise<BasedResponse<PlanIdResponse>> => {
 };
 
 /**
- *
+ * NEW version endpoint which replace deprecated updatePlanTitle()
  * @param plan_id
- * @param title
+ * @param datafield_name
+ * @param datafield_type
+ * @param datafield_value
  * @returns
  */
-const updatePlanTitle = async (
+const updatePlanDatafield = async (
   plan_id: string,
-  title: string
+  datafield_name: string,
+  datafield_type: string,
+  datafield_value: any
 ): Promise<BasedResponse<{ _id: string }>> => {
   const response = await put({
-    url: `/finance-service/plans/title`,
+    url: `/finance-service/plans/datafield`,
     body: {
       plan_id,
-      title,
+      datafield_name,
+      datafield_type,
+      datafield_value,
     },
     withAuth: true,
   });
@@ -84,4 +90,10 @@ const deletePlan = async (
   return response.data;
 };
 
-export { fetchPlans, createPlan, fetchPlanById, updatePlanTitle, deletePlan };
+export {
+  fetchPlans,
+  createPlan,
+  fetchPlanById,
+  updatePlanDatafield,
+  deletePlan,
+};

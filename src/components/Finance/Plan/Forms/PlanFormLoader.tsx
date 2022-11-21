@@ -1,7 +1,7 @@
 import { fetchPlanById } from "@/lib/Finance/finance-service-apis";
 import { actions } from "@/lib/Redux/plan-form-reducer";
 import { store } from "@/lib/Redux/store";
-import { EnumPlanStatus, PlanForm } from "@/types/finance.type";
+import { PlanStatus, PlanForm } from "@/types/finance.type";
 import { useQuery } from "@tanstack/react-query";
 import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
@@ -49,17 +49,17 @@ export const PlanFormLoader: React.FC = () => {
       const payload: PlanForm = {
         _id: "",
         owner_id: "",
-        title: store.getState().plan_titleStore.title,
-        net_income: 0,
+        title: store.getState().plan_datafield_title.title,
+        net_income: "0.00",
         esm_percent: 0,
-        esm_amount: 0,
+        esm_amount: "0.00",
         asm_percent: 0,
-        asm_amount: 0,
-        col: 0,
+        asm_amount: "0.00",
+        col: "0.00",
         created_at: "",
         updated_at: null,
         deleted: 0,
-        status: EnumPlanStatus.draft,
+        status: PlanStatus.draft,
         active_on: null,
         health_status: "DANGER",
         items: [],
@@ -85,9 +85,19 @@ export const PlanFormLoader: React.FC = () => {
        * ----------------------------------------------------------
        * @ Setting up the Title Component
        * ---------------------------------------------------------*/
-      const { title } = response.data;
+      const { title, net_income } = response.data;
+
+      /**
+       * Title DataField
+       */
       dispatch(actions.updateTitle(title));
       dispatch(actions.titleIsReady(true));
+
+      /**
+       * Income DataField
+       */
+      dispatch(actions.updateIncomeDataField(net_income));
+      dispatch(actions.incomeDataFieldIsReady(true));
     }
   }, [isLoading, response, dispatch]);
 
