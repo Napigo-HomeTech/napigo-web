@@ -4,9 +4,7 @@ import React from "react";
 import { useSelector } from "react-redux";
 
 export const SavingIndicator: React.FC = () => {
-  const { onSaving } = useSelector(
-    (state: RootState) => state.plan_onSavingStore
-  );
+  const { onSaving } = useSelector((state: RootState) => state.planformStore);
 
   if (onSaving) {
     return (
