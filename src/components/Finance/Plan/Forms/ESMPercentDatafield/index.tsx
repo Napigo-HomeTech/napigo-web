@@ -25,18 +25,18 @@ export const ESMPercentDatafield: React.FC = () => {
 
   const [value, setValue] = useState<number | string>(esm_percent as number);
 
+  /**
+   *
+   */
   const updateEsmPercentAndAmount = useCallback(() => {
     const val = value === "" ? 0 : (value as number);
     dispatch(PlanformActions.updateESM(val));
     /**
      * Update the ESM Amount too
      */
-    const esmValue = calculateESMAmount(
-      net_income as string,
-      esm_percent as number
-    );
+    const esmValue = calculateESMAmount(net_income as string, val as number);
     dispatch(PlanformActions.updateESMAmount(esmValue));
-  }, [dispatch, esm_percent, net_income, value]);
+  }, [dispatch, net_income, value]);
 
   const onBlur = (_: React.FocusEvent<HTMLInputElement>) => {
     updateEsmPercentAndAmount();
