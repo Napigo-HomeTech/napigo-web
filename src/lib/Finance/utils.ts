@@ -1,11 +1,16 @@
+import currency from "currency.js";
+
 /**
- * Format any number amount into string currency display
- * @param data
- * @returns
+ *
+ * @param income
+ * @param esm_percent
  */
-const currencyFormat = (data: number) => {
-  const sgdFormat = Intl.NumberFormat("en-sg");
-  return "$" + sgdFormat.format(data);
+const calculateESMAmount = (income: string, esm_percent: number): string => {
+  const incomeVal = currency(income).value;
+  const result = currency((incomeVal / 100) * esm_percent).format({
+    precision: 2,
+  });
+  return result;
 };
 
-export { currencyFormat };
+export { calculateESMAmount };

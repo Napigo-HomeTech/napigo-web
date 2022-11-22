@@ -53,9 +53,7 @@ export const PlanformManager: React.FC = () => {
       const payload: PlanForm = response.data;
       dispatch(PlanformActions.loadData(payload));
       dispatch(PlanformActions.setLoadingError(null));
-      setTimeout(() => {
-        dispatch(PlanformActions.planFormIsReady(true));
-      }, 1000);
+      dispatch(PlanformActions.planFormIsReady(true));
     }
   }, [isLoading, response, dispatch]);
 

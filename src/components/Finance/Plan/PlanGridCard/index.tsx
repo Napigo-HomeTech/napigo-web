@@ -1,5 +1,6 @@
 import React, { Fragment, useCallback, useMemo } from "react";
 import { Badge, Card } from "@/elements";
+import moment from "moment";
 import { PlanStatus, PlanSummary } from "@/types/finance.type";
 import {
   AlertDialog,
@@ -34,6 +35,7 @@ import { fixtures } from "@/constant/datasets/fixtures";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { deletePlan } from "@/lib/Finance/finance-service-apis";
 import currency from "currency.js";
+import { isEmpty } from "lodash";
 
 /**
  *
@@ -156,7 +158,22 @@ export const PlanGridCard: React.FC<PlanSummary> = (props) => {
             data={currency(props.col, { precision: 2 }).format()}
           />
           <DataRow label="ASM" data={transformAsmData} />
-          <DataRow label="Created at" data="2 days ago" />
+          <DataRow
+            label={
+              isEmpty(props.updated_at)
+                ? fixtures.financeStrings[
+                    "finance.plan.gridview.card.created_at"
+                  ]
+                : fixtures.financeStrings[
+                    "finance.plan.gridview.card.updated_at"
+                  ]
+            }
+            data={
+              isEmpty(props.updated_at)
+                ? moment(props.created_at).calendar().toString()
+                : moment(props.updated_at).calendar().toString()
+            }
+          />
           <Divider />
           <HStack width={"100%"} justifyContent="space-between">
             <Button size="xs" colorScheme={"gray"}>

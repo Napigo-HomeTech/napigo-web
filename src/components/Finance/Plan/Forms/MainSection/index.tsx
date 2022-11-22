@@ -1,25 +1,14 @@
-import { Card, Form } from "@/elements";
-import { PlanformActions } from "@/lib/Redux/planform.reducer";
+import { Card } from "@/elements";
 import { RootState } from "@/lib/Redux/store";
-import {
-  FormControl,
-  FormLabel,
-  Grid,
-  GridItem,
-  Heading,
-  HStack,
-  NumberInput,
-  Skeleton,
-  Slider,
-  SliderFilledTrack,
-  SliderThumb,
-  SliderTrack,
-  VStack,
-} from "@chakra-ui/react";
-import currency from "currency.js";
-import { isNaN } from "lodash";
-import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { Grid, GridItem, Skeleton } from "@chakra-ui/react";
+import React from "react";
+import { useSelector } from "react-redux";
+import { ASMAmountDatafield } from "../ASMAmountDatafield";
+import { ASMPercentDatafield } from "../ASMPercentDatafield";
+import { COLDatafield } from "../COLDatafield";
+import { ESMAmountDatafield } from "../ESMAmountDatafield";
+import { ESMPercentDatafield } from "../ESMPercentDatafield";
+import { NetIncomeDatafield } from "../NetIncomeDataField";
 
 export const MainSection: React.FC = () => {
   const { isReady } = useSelector((state: RootState) => state.planformStore);
@@ -49,169 +38,22 @@ export const MainSection: React.FC = () => {
           flexDirection="row"
           gap={4}
         >
-          <IncomeInput />
-          <ASMInput />
+          <NetIncomeDatafield />
+          <ESMPercentDatafield />
         </GridItem>
         <GridItem colSpan={1} borderLeftWidth={1} borderLeftColor="border">
-          <ESMAmountDisplay />
+          <ESMAmountDatafield />
         </GridItem>
         <GridItem colSpan={1} borderLeftWidth={1} borderLeftColor="border">
-          <ASMPercentDisplay />
+          <ASMPercentDatafield />
         </GridItem>
         <GridItem colSpan={1} borderLeftWidth={1} borderLeftColor="border">
-          <ASMAmountDisplay />
+          <ASMAmountDatafield />
         </GridItem>
         <GridItem colSpan={1} borderLeftWidth={1} borderLeftColor="border">
-          <COLDisplay />
+          <COLDatafield />
         </GridItem>
       </Grid>
     </Card>
-  );
-};
-
-/**
- * --------------------------------------------------------------------------------
- * Income Input
- * --------------------------------------------------------------------------------
- */
-export const IncomeInput: React.FC = () => {
-  const dispatch = useDispatch();
-
-  const { net_income } = useSelector((state: RootState) => state.planformStore);
-
-  return (
-    <Form.CurrencyField
-      label="Net income"
-      bg="card"
-      placeholder="0.00"
-      defaultValue={net_income}
-      onInputChange={(amount: string) => {
-        dispatch(PlanformActions.updateIncome(amount));
-      }}
-    />
-  );
-};
-
-/**
- * --------------------------------------------------------------------------------
- * ASM Input
- * --------------------------------------------------------------------------------
- */
-
-export const ASMInput: React.FC = () => {
-  const [value, setValue] = useState<number | string>(0);
-
-  return (
-    <FormControl>
-      <FormLabel>ESM %</FormLabel>
-      <HStack gap={0}>
-        <NumberInput>
-          <Form.TextField
-            bg="card"
-            maxW="70px"
-            mr="2rem"
-            type="number"
-            value={value}
-            onChange={(ev: React.ChangeEvent<HTMLInputElement>) => {
-              const num = Number.parseInt(ev.target.value);
-              if (isNaN(num)) {
-                setValue("");
-                return;
-              }
-              setValue(num);
-            }}
-          />
-        </NumberInput>
-
-        <Slider
-          flex="1"
-          focusThumbOnChange={false}
-          value={isNaN(value) ? 0 : (value as number)}
-          colorScheme="brand"
-          onChange={(val: number) => setValue(val)}
-        >
-          <SliderTrack>
-            <SliderFilledTrack />
-          </SliderTrack>
-          <SliderThumb
-            fontSize="sm"
-            boxSize="32px"
-            children={isNaN(value) || value === "" ? 0 : value}
-          />
-        </Slider>
-      </HStack>
-    </FormControl>
-  );
-};
-
-/**
- * --------------------------------------------------------------------------------
- * ESM Amount
- * --------------------------------------------------------------------------------
- */
-export const ESMAmountDisplay: React.FC = () => {
-  return (
-    <VStack alignItems="center" justifyContent="center" height="100%" gap={3}>
-      <Heading color="text-soft" size={"xs"} fontWeight="bold">
-        ESM $
-      </Heading>
-      <Heading color="text-hard" size="sm">
-        {currency(5230.0, { precision: 2 }).format()}
-      </Heading>
-    </VStack>
-  );
-};
-
-/**
- * --------------------------------------------------------------------------------
- * ASM % Input
- * --------------------------------------------------------------------------------
- */
-export const ASMPercentDisplay: React.FC = () => {
-  return (
-    <VStack alignItems="center" justifyContent="center" height="100%" gap={3}>
-      <Heading color="text-soft" size={"xs"} fontWeight="bold">
-        ASM %
-      </Heading>
-      <Heading color="text-hard" size="sm">
-        0 %
-      </Heading>
-    </VStack>
-  );
-};
-
-/**
- * --------------------------------------------------------------------------------
- * ASM Amount Input
- * --------------------------------------------------------------------------------
- */
-export const ASMAmountDisplay: React.FC = () => {
-  return (
-    <VStack alignItems="center" justifyContent="center" height="100%" gap={3}>
-      <Heading color="text-soft" size={"xs"} fontWeight="bold">
-        ASM $
-      </Heading>
-      <Heading color="text-hard" size="sm">
-        {currency("2234.230", { precision: 2 }).format()}
-      </Heading>
-    </VStack>
-  );
-};
-
-/**
- * --------------------------------------------------------------------------------
- * COL Input
- * --------------------------------------------------------------------------------
- */
-export const COLDisplay: React.FC = () => {
-  return (
-    <VStack alignItems="center" justifyContent="center" height="100%" gap={3}>
-      <Heading color="text-soft" size={"xs"} fontWeight="bold">
-        COL $
-      </Heading>
-      <Heading color="text-hard" size="sm">
-        {currency(5230.0, { precision: 2 }).format()}
-      </Heading>
-    </VStack>
   );
 };

@@ -32,6 +32,8 @@ const setLoadingError = createAction<Error | null>(
 const loadData = createAction<PlanForm>("planform/load-data");
 const updateTitle = createAction<string>("planform/update-title");
 const updateIncome = createAction<string>("planform/update-income");
+const updateESM = createAction<number>("planform/update-esm");
+const updateESMAmount = createAction<string>("planform/update-esm-amount");
 
 const PlanformReducer = createReducer(initialPlanformStore, (build) => {
   build.addCase(resetPlanformDefaultState, () => {
@@ -75,6 +77,26 @@ const PlanformReducer = createReducer(initialPlanformStore, (build) => {
       }
     );
   });
+  build.addCase(updateESM, (state, action) => {
+    return Object.assign(
+      state,
+      {},
+      {
+        esm_percent: action.payload,
+        eventCounts: state.eventCounts + 1,
+      }
+    );
+  });
+  build.addCase(updateESMAmount, (state, action) => {
+    return Object.assign(
+      state,
+      {},
+      {
+        esm_amount: action.payload,
+        evenCounts: state.eventCounts + 1,
+      }
+    );
+  });
 });
 
 export const reducers = {
@@ -91,4 +113,6 @@ export const PlanformActions = {
   loadData,
   updateTitle,
   updateIncome,
+  updateESM,
+  updateESMAmount,
 };

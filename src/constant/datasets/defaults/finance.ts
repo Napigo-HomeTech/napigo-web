@@ -17,6 +17,8 @@ const data = {
   "finance.plan.gridview.control.create-plan.button.text": "+ Create Plan",
   "finance.plan.gridview.no-result.text":
     "You don't have a plan yet, please create one",
+  "finance.plan.gridview.card.created_at": "Created At",
+  "finance.plan.gridview.card.updated_at": "Updated At",
   "finance.plan.emptyplan.description": "You don't have any plan",
   "finance.planform.button.back": "Back",
   "finance.plan.delete-dialog.button.delete": "Confirm Delete",

@@ -21,6 +21,7 @@ export type PlanSummary = Pick<
   | "asm_amount"
   | "asm_percent"
   | "created_at"
+  | "updated_at"
   | "status"
   | "health_status"
 >;
