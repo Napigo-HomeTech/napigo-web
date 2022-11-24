@@ -42,9 +42,14 @@ export interface PlanForm {
   status: PlanStatus;
   active_on: null | string;
   health_status: ASMHealthStatus | null;
-  categories: string[];
+  categories: Category[];
   items: PlanItem[];
 }
+
+export type Category = {
+  name: string;
+  colorHex: string;
+};
 
 export interface PlanItem {
   name: string;
@@ -65,6 +70,6 @@ export interface PlanFormUpdateRequest {
   esm_percent: number;
   esm_amount: string;
   col: string;
-  categories: string[];
+  categories: Category[];
   items: PlanItem[];
 }

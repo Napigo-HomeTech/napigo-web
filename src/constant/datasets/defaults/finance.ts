@@ -26,6 +26,8 @@ const data = {
   "finance.plan.delete-dialog.title": "Delete Plan?",
   "finance.plan.delete-dialog.message":
     "Are you sure you want to delete this plan? If you are still using this plan in the current budget, you won't be able to make references anymore.",
+  "finance.planform.new-category.buttontext": "+ New Category",
+  "finance.planform.summarycard.header": "Summary",
 };
 
 export default data;

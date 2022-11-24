@@ -5,6 +5,7 @@ import {
 } from "@/lib/Redux/planform.reducer";
 import { store } from "@/lib/Redux/store";
 import {
+  Category,
   PlanForm,
   PlanFormUpdateRequest,
   PlanItem,
@@ -90,7 +91,7 @@ export const PlanformManager: React.FC = () => {
         esm_percent: payload.esm_percent as number,
         esm_amount: payload.esm_amount as string,
         col: payload.col as string,
-        categories: payload.categories as string[],
+        categories: payload.categories as Category[],
         items: payload.items as PlanItem[],
       };
 
