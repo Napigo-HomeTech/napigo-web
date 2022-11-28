@@ -52,9 +52,10 @@ export type Category = {
 };
 
 export interface PlanItem {
-  name: string;
+  item_id: string;
   category: string;
-  amount: number;
+  name: string;
+  amount: string;
 }
 
 export interface PlanIdResponse {

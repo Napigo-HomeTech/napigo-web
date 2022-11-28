@@ -9,6 +9,7 @@ const calculateESMAmount = (income: string, esm_percent: number): string => {
   const incomeVal = currency(income).value;
   const result = currency((incomeVal / 100) * esm_percent).format({
     precision: 2,
+    symbol: "",
   });
   return result;
 };

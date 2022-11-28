@@ -1,5 +1,6 @@
-import { PlanForm } from "@/types/finance.type";
+import { PlanForm, PlanItem } from "@/types/finance.type";
 import { createAction, createReducer } from "@reduxjs/toolkit";
+import { find, findIndex } from "lodash";
 
 export interface PlanformStoreState extends Partial<PlanForm> {
   isReady: boolean;
@@ -34,6 +35,15 @@ const updateTitle = createAction<string>("planform/update-title");
 const updateIncome = createAction<string>("planform/update-income");
 const updateESM = createAction<number>("planform/update-esm");
 const updateESMAmount = createAction<string>("planform/update-esm-amount");
+const addNewPlanItem = createAction<PlanItem>("planform/add-new-plan-item");
+const updatePlanItemNameDatafield = createAction<{
+  itemId: string;
+  value: string;
+}>("planform/update-plan-item-name-datafield");
+const updatePlanItemAmountDatafield = createAction<{
+  itemId: string;
+  value: string;
+}>("planform/update-plan-item-amount-datafield");
 
 const PlanformReducer = createReducer(initialPlanformStore, (build) => {
   build.addCase(resetPlanformDefaultState, () => {
@@ -93,9 +103,62 @@ const PlanformReducer = createReducer(initialPlanformStore, (build) => {
       {},
       {
         esm_amount: action.payload,
-        evenCounts: state.eventCounts + 1,
+        eventCounts: state.eventCounts + 1,
       }
     );
+  });
+  build.addCase(addNewPlanItem, (state, action) => {
+    return Object.assign(
+      state,
+      {},
+      {
+        items: [...state.items!, action.payload],
+        eventCounts: state.eventCounts + 1,
+      }
+    );
+  });
+  build.addCase(updatePlanItemNameDatafield, (state, action) => {
+    /**
+     * @ONWATCH
+     */
+    const { itemId, value } = action.payload;
+    const target = find(state.items, { item_id: itemId });
+    if (target) {
+      const targetIndex = findIndex(state.items, { item_id: itemId });
+      state.items?.splice(
+        targetIndex,
+        1,
+        Object.assign(target, {}, { name: value })
+      );
+      return Object.assign(
+        state,
+        {},
+        {
+          items: [...state.items!],
+          eventCounts: state.eventCounts + 1,
+        }
+      );
+    }
+  });
+  build.addCase(updatePlanItemAmountDatafield, (state, action) => {
+    const { itemId, value } = action.payload;
+    const target = find(state.items, { item_id: itemId });
+    if (target) {
+      const targetIndex = findIndex(state.items, { item_id: itemId });
+      state.items?.splice(
+        targetIndex,
+        1,
+        Object.assign(target, {}, { amount: value })
+      );
+      return Object.assign(
+        state,
+        {},
+        {
+          items: [...state.items!],
+          eventCounts: state.eventCounts + 1,
+        }
+      );
+    }
   });
 });
 
@@ -115,4 +178,7 @@ export const PlanformActions = {
   updateIncome,
   updateESM,
   updateESMAmount,
+  addNewPlanItem,
+  updatePlanItemNameDatafield,
+  updatePlanItemAmountDatafield,
 };

@@ -7,8 +7,20 @@ import { CategorySection } from "./CategorySection";
 import { uniqueId } from "lodash";
 
 export const ItemsTable: React.FC = () => {
-  const { categories } = useSelector((state: RootState) => state.planformStore);
+  const categories: Category[] | undefined = useSelector(
+    (state: RootState) => state.planformStore.categories
+  );
 
+  if (categories) {
+    return <AccordionsItemTable categories={categories} />;
+  }
+  return null;
+};
+
+type ItemsTableProps = {
+  categories: Category[];
+};
+const MemoizedAccordionsItemTable = ({ categories }: ItemsTableProps) => {
   return (
     <Accordion allowMultiple width={"100%"} paddingRight="20px">
       {categories?.map((item: Category) => (
@@ -17,3 +29,5 @@ export const ItemsTable: React.FC = () => {
     </Accordion>
   );
 };
+
+const AccordionsItemTable = React.memo(MemoizedAccordionsItemTable);

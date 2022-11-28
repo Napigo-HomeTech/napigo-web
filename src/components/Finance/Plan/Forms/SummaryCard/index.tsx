@@ -8,7 +8,13 @@ import React from "react";
 import { useSelector } from "react-redux";
 
 export const SummaryCard: React.FC = () => {
-  const { categories } = useSelector((state: RootState) => state.planformStore);
+  const { categories, isReady } = useSelector(
+    (state: RootState) => state.planformStore
+  );
+
+  if (!isReady) {
+    return null;
+  }
   return (
     <Card>
       <VStack width="100%" alignItems={"flex-start"}>

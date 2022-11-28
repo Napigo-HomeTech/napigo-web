@@ -28,6 +28,10 @@ const data = {
     "Are you sure you want to delete this plan? If you are still using this plan in the current budget, you won't be able to make references anymore.",
   "finance.planform.new-category.buttontext": "+ New Category",
   "finance.planform.summarycard.header": "Summary",
+  "finance.planform.tableform.tablehead.itemname.text": "Item Name",
+  "finance.planform.tableform.tablehead.amount.text": "Amount",
+  "finance.planform.tableform.tablehead.action.text": "Actions",
+  "finance.planform.tableform.additem.buttontext": "+ Add Item",
 };
 
 export default data;

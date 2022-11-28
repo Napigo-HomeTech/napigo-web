@@ -9,15 +9,10 @@ import {
 } from "@chakra-ui/react";
 import { FaEllipsisV as MenuIcon } from "react-icons/fa";
 import React, { Fragment } from "react";
+import { TableForm } from "./TableForm";
+import { Category } from "@/types/finance.type";
 
-type CategorySectionProps = {
-  name: string;
-  colorHex?: string;
-};
-export const CategorySection: React.FC<CategorySectionProps> = ({
-  name,
-  colorHex,
-}) => {
+export const CategorySection: React.FC<Category> = ({ name, colorHex }) => {
   const onMenuClick = (ev: React.MouseEvent) => {
     ev.stopPropagation();
   };
@@ -67,10 +62,7 @@ export const CategorySection: React.FC<CategorySectionProps> = ({
           />
         </Heading>
         <AccordionPanel pb={4} bg="card" rounded={"md"} borderTopRadius="0">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat.
+          <TableForm category={name} />
         </AccordionPanel>
       </AccordionItem>
     </Fragment>
