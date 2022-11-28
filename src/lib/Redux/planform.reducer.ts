@@ -1,6 +1,6 @@
 import { PlanForm, PlanItem } from "@/types/finance.type";
 import { createAction, createReducer } from "@reduxjs/toolkit";
-import { find, findIndex } from "lodash";
+import { find, findIndex, remove } from "lodash";
 
 export interface PlanformStoreState extends Partial<PlanForm> {
   isReady: boolean;
@@ -36,6 +36,7 @@ const updateIncome = createAction<string>("planform/update-income");
 const updateESM = createAction<number>("planform/update-esm");
 const updateESMAmount = createAction<string>("planform/update-esm-amount");
 const addNewPlanItem = createAction<PlanItem>("planform/add-new-plan-item");
+const removePlanItem = createAction<string>("planform/remove-plan-item");
 const updatePlanItemNameDatafield = createAction<{
   itemId: string;
   value: string;
@@ -117,6 +118,17 @@ const PlanformReducer = createReducer(initialPlanformStore, (build) => {
       }
     );
   });
+  build.addCase(removePlanItem, (state, action) => {
+    remove(state.items!, { item_id: action.payload });
+    return Object.assign(
+      state,
+      {},
+      {
+        items: [...state.items!],
+        eventCounts: state.eventCounts + 1,
+      }
+    );
+  });
   build.addCase(updatePlanItemNameDatafield, (state, action) => {
     /**
      * @ONWATCH
@@ -179,6 +191,7 @@ export const PlanformActions = {
   updateESM,
   updateESMAmount,
   addNewPlanItem,
+  removePlanItem,
   updatePlanItemNameDatafield,
   updatePlanItemAmountDatafield,
 };

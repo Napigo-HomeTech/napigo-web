@@ -32,6 +32,12 @@ const data = {
   "finance.planform.tableform.tablehead.amount.text": "Amount",
   "finance.planform.tableform.tablehead.action.text": "Actions",
   "finance.planform.tableform.additem.buttontext": "+ Add Item",
+  "finance.planform.tableform.item.dialog.deleteitem.header":
+    "Deleting this item?",
+  "finance.planform.tableform.item.dialog.deleteitem.message":
+    "Are you sure you want to delete this item from the plan?",
+  "finance.planform.tableform.item.dialog.deleteitem.button-cancel": "Cancel",
+  "finance.planform.tableform.item.dialog.deleteitem.button-delete": "Delete",
 };
 
 export default data;
