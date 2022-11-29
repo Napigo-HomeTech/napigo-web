@@ -1,3 +1,4 @@
+import { PlanItem } from "@/types/finance.type";
 import currency from "currency.js";
 
 /**
@@ -14,4 +15,21 @@ const calculateESMAmount = (income: string, esm_percent: number): string => {
   return result;
 };
 
-export { calculateESMAmount };
+const calculateCOL = (items: PlanItem[]) => {
+  let sum = "0.00";
+  items.forEach((item: PlanItem) => {
+    sum = currency(sum).add(item.amount).format();
+  });
+  return currency(sum).format({ precision: 2, symbol: "" });
+};
+
+const calculateASM = (net_income: string, col: string) => {
+  return currency(net_income)
+    .subtract(col)
+    .format({ precision: 2, symbol: "" });
+};
+
+const calculateASMPercent = (esm: string, asm: string): number => {
+  return currency(asm).divide(esm).multiply(100).value;
+};
+export { calculateESMAmount, calculateCOL, calculateASM, calculateASMPercent };

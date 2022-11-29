@@ -1,4 +1,4 @@
-import { PlanForm, PlanItem } from "@/types/finance.type";
+import { ASMHealthStatus, PlanForm, PlanItem } from "@/types/finance.type";
 import { createAction, createReducer } from "@reduxjs/toolkit";
 import { find, findIndex, remove } from "lodash";
 
@@ -33,8 +33,11 @@ const setLoadingError = createAction<Error | null>(
 const loadData = createAction<PlanForm>("planform/load-data");
 const updateTitle = createAction<string>("planform/update-title");
 const updateIncome = createAction<string>("planform/update-income");
+const updateCOL = createAction<string>("planform/update-col");
 const updateESM = createAction<number>("planform/update-esm");
+const updateASM = createAction<number>("planform/update-asm");
 const updateESMAmount = createAction<string>("planform/update-esm-amount");
+const updateASMAmount = createAction<string>("planform/update-asm-amount");
 const addNewPlanItem = createAction<PlanItem>("planform/add-new-plan-item");
 const removePlanItem = createAction<string>("planform/remove-plan-item");
 const updatePlanItemNameDatafield = createAction<{
@@ -45,6 +48,9 @@ const updatePlanItemAmountDatafield = createAction<{
   itemId: string;
   value: string;
 }>("planform/update-plan-item-amount-datafield");
+const updateHealthStatus = createAction<ASMHealthStatus>(
+  "planform/update-health-status"
+);
 
 const PlanformReducer = createReducer(initialPlanformStore, (build) => {
   build.addCase(resetPlanformDefaultState, () => {
@@ -172,6 +178,46 @@ const PlanformReducer = createReducer(initialPlanformStore, (build) => {
       );
     }
   });
+  build.addCase(updateCOL, (state, action) => {
+    return Object.assign(
+      state,
+      {},
+      {
+        col: action.payload,
+        eventCounts: state.eventCounts + 1,
+      }
+    );
+  });
+  build.addCase(updateASMAmount, (state, action) => {
+    return Object.assign(
+      state,
+      {},
+      {
+        asm_amount: action.payload,
+        eventCounts: state.eventCounts + 1,
+      }
+    );
+  });
+  build.addCase(updateASM, (state, action) => {
+    return Object.assign(
+      state,
+      {},
+      {
+        asm_percent: action.payload,
+        eventCounts: state.eventCounts + 1,
+      }
+    );
+  });
+  build.addCase(updateHealthStatus, (state, action) => {
+    return Object.assign(
+      state,
+      {},
+      {
+        health_status: action.payload,
+        eventCounts: state.eventCounts + 1,
+      }
+    );
+  });
 });
 
 export const reducers = {
@@ -194,4 +240,8 @@ export const PlanformActions = {
   removePlanItem,
   updatePlanItemNameDatafield,
   updatePlanItemAmountDatafield,
+  updateCOL,
+  updateASMAmount,
+  updateASM,
+  updateHealthStatus,
 };

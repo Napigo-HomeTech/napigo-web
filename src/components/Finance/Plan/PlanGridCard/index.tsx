@@ -63,8 +63,10 @@ export const PlanGridCard: React.FC<PlanSummary> = (props) => {
         return "warning";
       case "DANGER":
         return "danger";
+      case "NONE":
+        return "no status";
       default:
-        null;
+        return "no status";
     }
   }, [props.health_status]);
 
@@ -182,7 +184,7 @@ export const PlanGridCard: React.FC<PlanSummary> = (props) => {
             {asmHealthStatus && asmHealthStatus !== null && (
               <Badge
                 color={asmHealthStatus as string}
-                status={asmHealthStatus!.toLowerCase()}
+                status={props.health_status!.toLowerCase()}
               />
             )}
           </HStack>

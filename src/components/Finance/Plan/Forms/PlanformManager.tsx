@@ -5,6 +5,7 @@ import {
 } from "@/lib/Redux/planform.reducer";
 import { store } from "@/lib/Redux/store";
 import {
+  ASMHealthStatus,
   Category,
   PlanForm,
   PlanFormUpdateRequest,
@@ -92,6 +93,7 @@ export const PlanformManager: React.FC = () => {
         esm_amount: payload.esm_amount as string,
         col: payload.col as string,
         categories: payload.categories as Category[],
+        health_status: payload.health_status as ASMHealthStatus,
         items: payload.items as PlanItem[],
       };
 

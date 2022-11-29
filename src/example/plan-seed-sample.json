@@ -1,0 +1,273 @@
+[
+  {
+    "_id": {
+      "$oid": "6385ac3e68d804f8c54808ed"
+    },
+    "owner_id": "Znjo2LD3ewRIZyywvlqIlqZlHMh1",
+    "title": "Test Hanafi Budget",
+    "net_income": "6,395.35",
+    "esm_percent": 30,
+    "esm_amount": "1,918.61",
+    "asm_percent": 82,
+    "asm_amount": "1,566.07",
+    "col": "4,829.28",
+    "created_at": "2022-11-29T06:52:46.897Z",
+    "updated_at": "2022-11-29T07:24:36.733Z",
+    "deleted": 0,
+    "status": "DRAFT",
+    "active_on": null,
+    "health_status": "HEALTHY",
+    "categories": [
+      {
+        "name": "DEBT & LOANS",
+        "colorHex": "#C65757"
+      },
+      {
+        "name": "LIABILITIES",
+        "colorHex": "#387BBA"
+      },
+      {
+        "name": "SUBSCRIPTIONS",
+        "colorHex": "#A3814E"
+      },
+      {
+        "name": "ADVISORY & SUPPORT",
+        "colorHex": "#028A89"
+      },
+      {
+        "name": "INSURANCE & INVESTMENT",
+        "colorHex": "#C657A7"
+      },
+      {
+        "name": "LIFE & EVENTS",
+        "colorHex": "#66AC4D"
+      },
+      {
+        "name": "SAVING",
+        "colorHex": "#7B57C6"
+      },
+      {
+        "name": "UN-ASSIGNED",
+        "colorHex": "#344054"
+      }
+    ],
+    "items": [
+      {
+        "item_id": "Me-gR6EkHd3Ymg2wl3YpU",
+        "category": "DEBT & LOANS",
+        "name": "DBS RENO LOAN",
+        "amount": "549.00"
+      },
+      {
+        "item_id": "I_sZPydLU7vfJUx9jem9L",
+        "category": "DEBT & LOANS",
+        "name": "OCBC RENO LOAN",
+        "amount": "554.95"
+      },
+      {
+        "item_id": "pr-NfEx7Oec1vHMriwU31",
+        "category": "DEBT & LOANS",
+        "name": "CIMB RENO LOAN",
+        "amount": "371.95"
+      },
+      {
+        "item_id": "EZdlx5jKjFMkPs5mEsZjJ",
+        "category": "DEBT & LOANS",
+        "name": "SC PERSONAL LOAN",
+        "amount": "93.67"
+      },
+      {
+        "item_id": "OdSqEysdLcSm6A8H05jL9",
+        "category": "DEBT & LOANS",
+        "name": "YALE LOAN",
+        "amount": "0.00"
+      },
+      {
+        "item_id": "HKPpqGAeO1k2nPjIiGk_p",
+        "category": "DEBT & LOANS",
+        "name": "WIFEY IPHONE",
+        "amount": "86.21"
+      },
+      {
+        "item_id": "V4d-anyzGIrTox4cZQQww",
+        "category": "DEBT & LOANS",
+        "name": "NAPI IPHONE 14",
+        "amount": "82.04"
+      },
+      {
+        "item_id": "QUJksXVsZ84_plGK_YYfV",
+        "category": "DEBT & LOANS",
+        "name": "MACBOOK 14 PRO",
+        "amount": "178.08"
+      },
+      {
+        "item_id": "dBTcE2ATeUi4QYtLmOKQx",
+        "category": "UN-ASSIGNED",
+        "name": "MAID YALE LOAN",
+        "amount": "650.00"
+      },
+      {
+        "item_id": "Q65wAj4TAK4XxRWNtap6Y",
+        "category": "UN-ASSIGNED",
+        "name": "MAID LEVY",
+        "amount": "60.00"
+      },
+      {
+        "item_id": "gBzUjehzBsT96rchZvQyh",
+        "category": "UN-ASSIGNED",
+        "name": "MAID OT",
+        "amount": "86.20"
+      },
+      {
+        "item_id": "mK4bj6YfWgJ4ynfkqmvUZ",
+        "category": "SUBSCRIPTIONS",
+        "name": "NETFLIX",
+        "amount": "21.98"
+      },
+      {
+        "item_id": "Lh9W8Vp_GPvHM1-cGmYBX",
+        "category": "SUBSCRIPTIONS",
+        "name": "ADBOE CC PRO PDF",
+        "amount": "19.72"
+      },
+      {
+        "item_id": "9rUtjWCPTH8vARaMwquGX",
+        "category": "SUBSCRIPTIONS",
+        "name": "SPOTIFY",
+        "amount": "9.00"
+      },
+      {
+        "item_id": "dtR-RM3Gn1b1TNyKmBSOE",
+        "category": "SUBSCRIPTIONS",
+        "name": " PHOTOROOM YEARLY SUBS",
+        "amount": "0.00"
+      },
+      {
+        "item_id": "9_gOxKjfumNymGrbbiydu",
+        "category": "SUBSCRIPTIONS",
+        "name": "AMAZON PRIMES VIDEO",
+        "amount": "2.99"
+      },
+      {
+        "item_id": "a5s8LOdyK7BgB-RGnxeGw",
+        "category": "SUBSCRIPTIONS",
+        "name": "YOUTUBE PREMIUM",
+        "amount": "17.98"
+      },
+      {
+        "item_id": "TB2vxT8-MH1-H0QJAgwzM",
+        "category": "SUBSCRIPTIONS",
+        "name": "GOOGLE STORAGE",
+        "amount": "2.79"
+      },
+      {
+        "item_id": "bHRa8l-j7V17ZQNTzifV3",
+        "category": "UN-ASSIGNED",
+        "name": "TAX - INCOME TAX",
+        "amount": "80.65"
+      },
+      {
+        "item_id": "NiyW5OrrzVheZUAgTGPwV",
+        "category": "UN-ASSIGNED",
+        "name": "TAX - PROPERTY TAX",
+        "amount": "22.56"
+      },
+      {
+        "item_id": "FbtxBPkYmcWPLlqlqRUrL",
+        "category": "LIABILITIES",
+        "name": "ME & WIFE PHONE BILLS",
+        "amount": "46.00"
+      },
+      {
+        "item_id": "tTnU6b4sVTezMqIG1bD99",
+        "category": "LIABILITIES",
+        "name": "CONVERVANCY CHARGES",
+        "amount": "63.00"
+      },
+      {
+        "item_id": "OK2M0Id9sKN1G6j-rlNVe",
+        "category": "LIABILITIES",
+        "name": "SP BILL HOUSE",
+        "amount": "349.21"
+      },
+      {
+        "item_id": "M2R3j-4Uc_Ila6HnBLI-G",
+        "category": "LIABILITIES",
+        "name": "GRAB PAY",
+        "amount": "155.45"
+      },
+      {
+        "item_id": "Yh7peNsGMUIF6ptebSval",
+        "category": "LIABILITIES",
+        "name": "SINGTEL WIFI",
+        "amount": "55.75"
+      },
+      {
+        "item_id": "o6N-_RQxpM03kE_Zag1zh",
+        "category": "LIABILITIES",
+        "name": "GROCERIES BUDGET",
+        "amount": "500.00"
+      },
+      {
+        "item_id": "AejGFGDb468xquDmc0ux9",
+        "category": "ADVISORY & SUPPORT",
+        "name": "WIFEY",
+        "amount": "300.00"
+      },
+      {
+        "item_id": "kba0o5Fdg5-zyAlr8MmYf",
+        "category": "ADVISORY & SUPPORT",
+        "name": "MAMA",
+        "amount": "300.00"
+      },
+      {
+        "item_id": "DnpYLmfz-QXq_dWg335m7",
+        "category": "ADVISORY & SUPPORT",
+        "name": "CHILDRENS SUPPORT",
+        "amount": "0.00"
+      },
+      {
+        "item_id": "SFSnYYK1LaCkFQo_kE2Mt",
+        "category": "LIABILITIES",
+        "name": "ARRISA SCHOOL FEE",
+        "amount": "0.00"
+      },
+      {
+        "item_id": "RwgWLPJGF4LqdiB3e3fGl",
+        "category": "LIABILITIES",
+        "name": "AWISH SCHOOL FEE",
+        "amount": "0.00"
+      },
+      {
+        "item_id": "t6e6X2aUGHrNVK-6fmqr2",
+        "category": "INSURANCE & INVESTMENT",
+        "name": "PRU - PERSONAL INCIDENT",
+        "amount": "14.88"
+      },
+      {
+        "item_id": "t0HjApUgvaT5T6UO8Rljh",
+        "category": "INSURANCE & INVESTMENT",
+        "name": "PRU - ENDOWNMENT",
+        "amount": "110.00"
+      },
+      {
+        "item_id": "R6czgzT6CokQmslsZaTJb",
+        "category": "INSURANCE & INVESTMENT",
+        "name": "PRU - ARISSA MEDICAL INSURANCE",
+        "amount": "14.96"
+      },
+      {
+        "item_id": "bObDmjuK7l8mb40XP1ZPK",
+        "category": "INSURANCE & INVESTMENT",
+        "name": "PRU - AWISH MEDICAL INSURANCE",
+        "amount": "14.96"
+      },
+      {
+        "item_id": "XquidfqkdfQGLQbFe3Zub",
+        "category": "INSURANCE & INVESTMENT",
+        "name": "PRU - WIFEY MEDICAL INSURANCE",
+        "amount": "15.30"
+      }
+    ]
+  }
+]

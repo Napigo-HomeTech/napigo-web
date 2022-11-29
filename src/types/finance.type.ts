@@ -1,7 +1,7 @@
 /**
  *
  */
-export type ASMHealthStatus = "HEALTHY" | "WARNING" | "DANGER";
+export type ASMHealthStatus = "HEALTHY" | "WARNING" | "DANGER" | "NONE";
 /**
  *
  */
@@ -71,6 +71,7 @@ export interface PlanFormUpdateRequest {
   esm_percent: number;
   esm_amount: string;
   col: string;
+  health_status: ASMHealthStatus;
   categories: Category[];
   items: PlanItem[];
 }

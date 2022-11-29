@@ -38,6 +38,9 @@ const data = {
     "Are you sure you want to delete this item from the plan?",
   "finance.planform.tableform.item.dialog.deleteitem.button-cancel": "Cancel",
   "finance.planform.tableform.item.dialog.deleteitem.button-delete": "Delete",
+  "finance.planform.tableform.mainsection.col.headertext": "COL $",
+  "finance.planform.tableform.mainsection.asm-amount.headertext": "ASM $",
+  "finance.planform.tableform.mainsection.asm-percent.headertext": "ASM %",
 };
 
 export default data;
