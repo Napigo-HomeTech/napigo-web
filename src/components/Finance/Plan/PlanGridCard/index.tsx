@@ -215,7 +215,12 @@ export const PlanGridCard: React.FC<PlanSummary> = (props) => {
                 ]
               }
             </Button>
-            <Button colorScheme="red" ml={3} onClick={onConfirmDelete}>
+            <Button
+              colorScheme="red"
+              variant={"outline"}
+              ml={3}
+              onClick={onConfirmDelete}
+            >
               {
                 fixtures.financeStrings[
                   "finance.plan.delete-dialog.button.delete"

@@ -106,7 +106,7 @@ const variantOutline: SystemStyleFunction = (props) => {
     ".chakra-button__group[data-attached] > &:not(:last-of-type)": {
       marginEnd: "-1px",
     },
-    ...variantGhost(props),
+    // ...variantGhost(props),
   };
 };
 
