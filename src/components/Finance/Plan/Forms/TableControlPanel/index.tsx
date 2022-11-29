@@ -1,8 +1,8 @@
-import { fixtures } from "@/constant/datasets/fixtures";
 import { RootState } from "@/lib/Redux/store";
-import { Button, HStack } from "@chakra-ui/react";
+import { HStack } from "@chakra-ui/react";
 import React from "react";
 import { useSelector } from "react-redux";
+import { AddCategoryForm } from "./AddCategoryForm";
 
 export const TableControlPanel: React.FC = () => {
   const { isReady } = useSelector((state: RootState) => state.planformStore);
@@ -12,9 +12,7 @@ export const TableControlPanel: React.FC = () => {
   }
   return (
     <HStack width={"100%"}>
-      <Button variant={"outline"} colorScheme="brand">
-        {fixtures.financeStrings["finance.planform.new-category.buttontext"]}
-      </Button>
+      <AddCategoryForm />
     </HStack>
   );
 };

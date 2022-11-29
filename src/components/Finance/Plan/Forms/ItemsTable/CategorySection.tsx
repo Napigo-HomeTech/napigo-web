@@ -3,19 +3,15 @@ import {
   Heading,
   AccordionButton,
   AccordionIcon,
-  IconButton,
   AccordionPanel,
   Box,
 } from "@chakra-ui/react";
-import { FaEllipsisV as MenuIcon } from "react-icons/fa";
 import React, { Fragment } from "react";
 import { TableForm } from "./TableForm";
 import { Category } from "@/types/finance.type";
+import { CategoryMenu } from "./CategoryMenu";
 
 export const CategorySection: React.FC<Category> = ({ name, colorHex }) => {
-  const onMenuClick = (ev: React.MouseEvent) => {
-    ev.stopPropagation();
-  };
   return (
     <Fragment>
       <AccordionItem
@@ -54,12 +50,7 @@ export const CategorySection: React.FC<Category> = ({ name, colorHex }) => {
               <AccordionIcon />
             </Box>
           </AccordionButton>
-          <IconButton
-            colorScheme={"base"}
-            aria-label="menu"
-            icon={<MenuIcon />}
-            onClick={onMenuClick}
-          />
+          <CategoryMenu category={{ name, colorHex }} />
         </Heading>
         <AccordionPanel pb={4} bg="card" rounded={"md"} borderTopRadius="0">
           <TableForm category={name} />

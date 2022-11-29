@@ -33,8 +33,10 @@ interface TextFieldProps extends Omit<InputProps, "isInvalid"> {
   label?: string;
   helperText?: string;
   containerWidth?: "full" | "auto";
+  ref?: React.RefObject<HTMLInputElement>;
 }
-export const TextField: React.FC<TextFieldProps> = (props) => {
+
+export const TextField = React.forwardRef((props: TextFieldProps, ref: any) => {
   const {
     error,
     label,
@@ -45,6 +47,7 @@ export const TextField: React.FC<TextFieldProps> = (props) => {
     containerWidth = "full",
     ...rest
   } = props;
+
   return (
     <FormControl
       isInvalid={!isEmpty(error)}
@@ -58,6 +61,7 @@ export const TextField: React.FC<TextFieldProps> = (props) => {
           cursor={readOnly ? "default" : "text"}
           pl={inputLeftElement ? "2.4rem" : undefined}
           pr={inputRightElement ? "2.4rem" : undefined}
+          ref={ref}
           {...rest}
           isReadOnly={readOnly}
           focusBorderColor={readOnly ? "border" : undefined}
@@ -70,4 +74,5 @@ export const TextField: React.FC<TextFieldProps> = (props) => {
       {!isEmpty(helperText) && <FormHelperText>{helperText}</FormHelperText>}
     </FormControl>
   );
-};
+});
+TextField.displayName = "TextField";

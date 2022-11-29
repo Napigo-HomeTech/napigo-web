@@ -41,6 +41,23 @@ const data = {
   "finance.planform.tableform.mainsection.col.headertext": "COL $",
   "finance.planform.tableform.mainsection.asm-amount.headertext": "ASM $",
   "finance.planform.tableform.mainsection.asm-percent.headertext": "ASM %",
+  "finance.planform.controlpanel.add-category.modal.header": "Add Category",
+  "finance.planform.controlpanel.add-category.modal.color-input.label":
+    "Label Color",
+  "finance.planform.controlpanel.add-category.modal.name-input.label":
+    "Name your category",
+  "finance.planform.controlpanel.add-category.modal.buttons.create.text":
+    "Create",
+  "finance.planform.controlpanel.add-category.modal.buttons.cancel.text":
+    "Cancel",
+  "finance.planform.category.menu.edit.text": "Edit",
+  "finance.planform.category.menu.delete.text": "Delete",
+  "finance.planform.category.menu.delete.dialog.header":
+    "Deleting this category?",
+  "finance.planform.category.menu.delete.dialog.message":
+    "Are you sure you want to delete this category? All your items will be transfered to Unassigned category",
+  "finance.planform.category.menu.delete.dialog.button.delete": "Delete",
+  "finance.planform.category.menu.delete.dialog.button.cancel": "Cancel",
 };
 
 export default data;

@@ -146,6 +146,15 @@ export const PlanGridCard: React.FC<PlanSummary> = (props) => {
 
               <MenuList>
                 <MenuItem onClick={onDelete}>Delete</MenuItem>
+                <MenuItem
+                  onClick={() => {
+                    /**
+                     * @TODO
+                     */
+                  }}
+                >
+                  Copy
+                </MenuItem>
               </MenuList>
             </Menu>
           </HStack>

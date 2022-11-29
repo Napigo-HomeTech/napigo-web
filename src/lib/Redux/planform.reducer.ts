@@ -1,4 +1,9 @@
-import { ASMHealthStatus, PlanForm, PlanItem } from "@/types/finance.type";
+import {
+  ASMHealthStatus,
+  Category,
+  PlanForm,
+  PlanItem,
+} from "@/types/finance.type";
 import { createAction, createReducer } from "@reduxjs/toolkit";
 import { find, findIndex, remove } from "lodash";
 
@@ -38,6 +43,9 @@ const updateESM = createAction<number>("planform/update-esm");
 const updateASM = createAction<number>("planform/update-asm");
 const updateESMAmount = createAction<string>("planform/update-esm-amount");
 const updateASMAmount = createAction<string>("planform/update-asm-amount");
+const updatePlanItemsList = createAction<PlanItem[]>(
+  "planform/update-plan-items-list"
+);
 const addNewPlanItem = createAction<PlanItem>("planform/add-new-plan-item");
 const removePlanItem = createAction<string>("planform/remove-plan-item");
 const updatePlanItemNameDatafield = createAction<{
@@ -51,6 +59,8 @@ const updatePlanItemAmountDatafield = createAction<{
 const updateHealthStatus = createAction<ASMHealthStatus>(
   "planform/update-health-status"
 );
+const addNewCategory = createAction<Category>("planform/add-new-category");
+const removeCategory = createAction<Category>("planform/remove-category");
 
 const PlanformReducer = createReducer(initialPlanformStore, (build) => {
   build.addCase(resetPlanformDefaultState, () => {
@@ -218,6 +228,29 @@ const PlanformReducer = createReducer(initialPlanformStore, (build) => {
       }
     );
   });
+  build.addCase(addNewCategory, (state, action) => {
+    state.categories?.push(action.payload);
+    return Object.assign(
+      state,
+      {},
+      {
+        categories: [...state.categories!],
+      }
+    );
+  });
+  build.addCase(removeCategory, (state, action) => {
+    remove(state.categories!, { name: action.payload.name });
+    return Object.assign(
+      state,
+      {},
+      {
+        categories: [...state.categories!],
+      }
+    );
+  });
+  build.addCase(updatePlanItemsList, (state, action) => {
+    return Object.assign(state, {}, { items: [...action.payload] });
+  });
 });
 
 export const reducers = {
@@ -244,4 +277,7 @@ export const PlanformActions = {
   updateASMAmount,
   updateASM,
   updateHealthStatus,
+  addNewCategory,
+  removeCategory,
+  updatePlanItemsList,
 };
