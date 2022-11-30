@@ -50,7 +50,9 @@ export const CategorySection: React.FC<Category> = ({ name, colorHex }) => {
               <AccordionIcon />
             </Box>
           </AccordionButton>
-          <CategoryMenu category={{ name, colorHex }} />
+          {name !== "UN-ASSIGNED" && (
+            <CategoryMenu category={{ name, colorHex }} />
+          )}
         </Heading>
         <AccordionPanel pb={4} bg="card" rounded={"md"} borderTopRadius="0">
           <TableForm category={name} />

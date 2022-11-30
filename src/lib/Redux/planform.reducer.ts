@@ -229,12 +229,13 @@ const PlanformReducer = createReducer(initialPlanformStore, (build) => {
     );
   });
   build.addCase(addNewCategory, (state, action) => {
-    state.categories?.push(action.payload);
+    state.categories?.unshift(action.payload);
     return Object.assign(
       state,
       {},
       {
         categories: [...state.categories!],
+        eventCounts: state.eventCounts + 1,
       }
     );
   });
@@ -245,11 +246,16 @@ const PlanformReducer = createReducer(initialPlanformStore, (build) => {
       {},
       {
         categories: [...state.categories!],
+        eventCounts: state.eventCounts + 1,
       }
     );
   });
   build.addCase(updatePlanItemsList, (state, action) => {
-    return Object.assign(state, {}, { items: [...action.payload] });
+    return Object.assign(
+      state,
+      {},
+      { items: [...action.payload], eventCounts: state.eventCounts + 1 }
+    );
   });
 });
 
