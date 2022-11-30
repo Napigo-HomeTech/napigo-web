@@ -19,13 +19,17 @@ const data = {
     "You don't have a plan yet, please create one",
   "finance.plan.gridview.card.created_at": "Created At",
   "finance.plan.gridview.card.updated_at": "Updated At",
+  "finance.plan.gridview.card.menu.delete": "Delete",
+  "finance.plan.gridview.card.menu.copy": "Copy",
   "finance.plan.emptyplan.description": "You don't have any plan",
   "finance.planform.button.back": "Back",
   "finance.plan.delete-dialog.button.delete": "Confirm Delete",
   "finance.plan.delete-dialog.button.cancel": "Cancel",
   "finance.plan.delete-dialog.title": "Delete Plan?",
-  "finance.plan.delete-dialog.message":
-    "Are you sure you want to delete this plan? If you are still using this plan in the current budget, you won't be able to make references anymore.",
+  "finance.plan.delete-dialog.message.first":
+    "Are you sure you want to delete this plan -",
+  "finance.plan.delete-dialog.message.second":
+    "If you are still using this plan in the current budget, you won't be able to make references anymore.",
   "finance.planform.new-category.buttontext": "+ New Category",
   "finance.planform.summarycard.header": "Summary",
   "finance.planform.tableform.tablehead.itemname.text": "Item Name",
