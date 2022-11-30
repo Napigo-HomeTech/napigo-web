@@ -14,6 +14,8 @@ import {
   MenuButton,
   MenuList,
   MenuItem,
+  Heading,
+  Text,
 } from "@chakra-ui/react";
 import { FaEllipsisV as MenuIcon } from "react-icons/fa";
 import React, { useCallback, useRef } from "react";
@@ -101,7 +103,7 @@ export const CategoryMenu: React.FC<CategoryMenuProps> = ({ category }) => {
       >
         <AlertDialogOverlay />
         <AlertDialogContent>
-          <AlertDialogHeader>
+          <AlertDialogHeader color="text-hard">
             {
               fixtures.financeStrings[
                 "finance.planform.category.menu.delete.dialog.header"
@@ -110,11 +112,14 @@ export const CategoryMenu: React.FC<CategoryMenuProps> = ({ category }) => {
           </AlertDialogHeader>
           <AlertDialogCloseButton />
           <AlertDialogBody>
-            {
-              fixtures.financeStrings[
-                "finance.planform.category.menu.delete.dialog.message"
-              ]
-            }
+            <Heading size="sm">{category.name}</Heading>
+            <Text color="text-hard">
+              {
+                fixtures.financeStrings[
+                  "finance.planform.category.menu.delete.dialog.message"
+                ]
+              }
+            </Text>
           </AlertDialogBody>
           <AlertDialogFooter>
             <Button ref={cancelRef} onClick={delOnClose}>
