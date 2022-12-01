@@ -47,13 +47,14 @@ export interface PlanForm {
 }
 
 export type Category = {
+  categ_id: string;
   name: string;
   colorHex: string;
 };
 
 export interface PlanItem {
   item_id: string;
-  category: string;
+  category_id: string;
   name: string;
   amount: string;
 }

@@ -11,7 +11,11 @@ import { TableForm } from "./TableForm";
 import { Category } from "@/types/finance.type";
 import { CategoryMenu } from "./CategoryMenu";
 
-export const CategorySection: React.FC<Category> = ({ name, colorHex }) => {
+export const CategorySection: React.FC<Category> = ({
+  categ_id,
+  name,
+  colorHex,
+}) => {
   return (
     <Fragment>
       <AccordionItem
@@ -51,11 +55,11 @@ export const CategorySection: React.FC<Category> = ({ name, colorHex }) => {
             </Box>
           </AccordionButton>
           {name !== "UN-ASSIGNED" && (
-            <CategoryMenu category={{ name, colorHex }} />
+            <CategoryMenu category={{ categ_id, name, colorHex }} />
           )}
         </Heading>
         <AccordionPanel pb={4} bg="card" rounded={"md"} borderTopRadius="0">
-          <TableForm category={name} />
+          <TableForm category={{ categ_id, name, colorHex }} />
         </AccordionPanel>
       </AccordionItem>
     </Fragment>

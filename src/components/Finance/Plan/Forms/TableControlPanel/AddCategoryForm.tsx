@@ -17,6 +17,7 @@ import {
   VStack,
 } from "@chakra-ui/react";
 import { isEmpty } from "lodash";
+import { nanoid } from "nanoid";
 import React, { useCallback, useRef, useState } from "react";
 import { useDispatch } from "react-redux";
 import { ColorDropdown } from "./ColorsDropdown";
@@ -38,6 +39,7 @@ export const AddCategoryForm: React.FC = () => {
       ev.preventDefault();
 
       const categ: Category = {
+        categ_id: nanoid(),
         name: isEmpty(categName) ? "Untitled" : (categName as string),
         colorHex: color,
       };

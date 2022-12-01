@@ -1,7 +1,7 @@
 import { fixtures } from "@/constant/datasets/fixtures";
 import { PlanformActions } from "@/lib/Redux/planform.reducer";
 import { RootState } from "@/lib/Redux/store";
-import { PlanItem } from "@/types/finance.type";
+import { Category, PlanItem } from "@/types/finance.type";
 import {
   Button,
   Table,
@@ -20,7 +20,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { DatafieldRow } from "./DatafieldRow";
 
 type TableFormControllerProps = {
-  category: string;
+  category: Category;
 };
 export const TableForm: React.FC<TableFormControllerProps> = ({ category }) => {
   const dispatch = useDispatch();
@@ -32,14 +32,13 @@ export const TableForm: React.FC<TableFormControllerProps> = ({ category }) => {
   );
 
   /**
-   * Collect all the item object which belong to this category
-   * based on the category property.
+   * Collect all the item object which belong to this category by categ_id
    * @return List of item_ids, example;
    * ['V1StGXR8_Z5jdHi6B-myT', 'V1StGXR8_Z5jdHi6B-mydv', 'V1StGXR8_Z5jdHi6B-myT']
    */
   const ItemsInCategory = useMemo(() => {
     const items = planItems
-      ?.filter((item: PlanItem) => item.category === category)
+      ?.filter((item: PlanItem) => item.category_id === category.categ_id)
       .map((item: PlanItem) => item.item_id);
     return items ?? [];
   }, [planItems, category]);
@@ -53,7 +52,7 @@ export const TableForm: React.FC<TableFormControllerProps> = ({ category }) => {
     dispatch(
       PlanformActions.addNewPlanItem({
         item_id: nanoid(),
-        category,
+        category_id: category.categ_id,
         name: "",
         amount: currency(0.0, { precision: 2, symbol: "" }).format(),
       })

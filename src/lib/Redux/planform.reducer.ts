@@ -61,6 +61,7 @@ const updateHealthStatus = createAction<ASMHealthStatus>(
 );
 const addNewCategory = createAction<Category>("planform/add-new-category");
 const removeCategory = createAction<Category>("planform/remove-category");
+const editCategory = createAction<Category>("planform/edit-category");
 
 const PlanformReducer = createReducer(initialPlanformStore, (build) => {
   build.addCase(resetPlanformDefaultState, () => {
@@ -257,6 +258,21 @@ const PlanformReducer = createReducer(initialPlanformStore, (build) => {
       { items: [...action.payload], eventCounts: state.eventCounts + 1 }
     );
   });
+  build.addCase(editCategory, (state, action) => {
+    const targetIndex = findIndex(state.categories, {
+      categ_id: action.payload.categ_id,
+    });
+    state.categories!.splice(targetIndex, 1, action.payload);
+
+    return Object.assign(
+      state,
+      {},
+      {
+        categories: [...state.categories!],
+        eventCounts: state.eventCounts + 1,
+      }
+    );
+  });
 });
 
 export const reducers = {
@@ -286,4 +302,5 @@ export const PlanformActions = {
   addNewCategory,
   removeCategory,
   updatePlanItemsList,
+  editCategory,
 };

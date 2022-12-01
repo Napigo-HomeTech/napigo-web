@@ -9,10 +9,13 @@ import { useSelector } from "react-redux";
 export const CategoryDatafieldController: React.FC<Category> = (props) => {
   const { items } = useSelector((state: RootState) => state.planformStore);
 
+  /**
+   * The value defined by its sum total of all items which falls under
+   * the same category by its "categ_id"
+   */
   const totalAmount = useMemo(() => {
     const targets = items!.filter(
-      (item: PlanItem) =>
-        item.category.toUpperCase() === props.name.toUpperCase()
+      (item: PlanItem) => item.category_id === props.categ_id
     );
     let sum = "0.00";
     targets.forEach((item: PlanItem) => {
@@ -20,7 +23,7 @@ export const CategoryDatafieldController: React.FC<Category> = (props) => {
     });
 
     return currency(sum, { precision: 2, symbol: "$" }).format();
-  }, [items, props.name]);
+  }, [items, props.categ_id]);
 
   return (
     <MemoCategoryDatafield

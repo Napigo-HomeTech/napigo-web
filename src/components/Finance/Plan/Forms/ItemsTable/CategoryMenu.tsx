@@ -23,6 +23,7 @@ import { Category, PlanItem } from "@/types/finance.type";
 import { store } from "@/lib/Redux/store";
 import { useDispatch } from "react-redux";
 import { PlanformActions } from "@/lib/Redux/planform.reducer";
+import { EditCategory } from "./EditCategory";
 
 type CategoryMenuProps = {
   category: Category;
@@ -32,6 +33,12 @@ export const CategoryMenu: React.FC<CategoryMenuProps> = ({ category }) => {
     isOpen: delIsOpen,
     onClose: delOnClose,
     onOpen: delOnOpen,
+  } = useDisclosure();
+
+  const {
+    isOpen: editIsOpen,
+    onClose: editOnClose,
+    onOpen: editOnOpen,
   } = useDisclosure();
 
   const dispatch = useDispatch();
@@ -47,16 +54,21 @@ export const CategoryMenu: React.FC<CategoryMenuProps> = ({ category }) => {
 
   const onConfirmDelete = useCallback(() => {
     /**
-     *@Step1 Extract all itesm falled in this category and then update its cateogry to unassigned
+     *@Step1 Extract all items falls in this category ( by categ_id ) and then update move it to unassigned
+     Unassigned categ_id should be value of "unassigned". Its a constant value defined by backend for the
+     sake of simplicity
      */
     const items: PlanItem[] = store.getState().planformStore
       .items as PlanItem[];
 
     const targetItems = items.map((item: PlanItem) => {
-      if (item.category === category.name) {
+      if (item.category_id === category.categ_id) {
+        /**
+         * @ONWATCH - WILL GET BACK HERE
+         */
         return {
           ...item,
-          category: "UN-ASSIGNED",
+          category_id: "unassigned",
         };
       }
       return item;
@@ -65,6 +77,10 @@ export const CategoryMenu: React.FC<CategoryMenuProps> = ({ category }) => {
     dispatch(PlanformActions.removeCategory(category));
     delOnClose();
   }, [category, dispatch, delOnClose]);
+
+  const onEdit = useCallback(() => {
+    editOnOpen();
+  }, [editOnOpen]);
 
   return (
     <>
@@ -77,7 +93,7 @@ export const CategoryMenu: React.FC<CategoryMenuProps> = ({ category }) => {
         />
 
         <MenuList>
-          <MenuItem onClick={onDelete} fontSize="md">
+          <MenuItem onClick={onEdit} fontSize="md">
             {
               fixtures.financeStrings[
                 "finance.planform.category.menu.edit.text"
@@ -93,6 +109,12 @@ export const CategoryMenu: React.FC<CategoryMenuProps> = ({ category }) => {
           </MenuItem>
         </MenuList>
       </Menu>
+      {/* Editing Form */}
+      <EditCategory
+        isOpen={editIsOpen}
+        onClose={editOnClose}
+        category={category}
+      />
       {/* Deleting Form */}
       <AlertDialog
         motionPreset="slideInBottom"

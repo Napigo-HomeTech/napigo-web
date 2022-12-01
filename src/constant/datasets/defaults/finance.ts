@@ -62,6 +62,11 @@ const data = {
     "Are you sure you want to delete this category? All your items will be transfered to Unassigned category",
   "finance.planform.category.menu.delete.dialog.button.delete": "Delete",
   "finance.planform.category.menu.delete.dialog.button.cancel": "Cancel",
+  "finance.planform.category.menu.edit.dialog.header-text":
+    "Edit This Category",
+  "finance.planform.category.menu.edit.dialog.save-change.buttontext":
+    "Save changes",
+  "finance.planform.category.menu.edit.dialog.cancel.buttontext": "Cancel",
 };
 
 export default data;

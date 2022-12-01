@@ -19,34 +19,42 @@
     "health_status": "HEALTHY",
     "categories": [
       {
+        "categ_id": "s8av6sv",
         "name": "DEBT & LOANS",
         "colorHex": "#C65757"
       },
       {
+        "categ_id": "s8av6dsv",
         "name": "LIABILITIES",
         "colorHex": "#387BBA"
       },
       {
+        "categ_id": "s8av6sdva",
         "name": "SUBSCRIPTIONS",
         "colorHex": "#A3814E"
       },
       {
+        "categ_id": "s8av6casvv",
         "name": "ADVISORY & SUPPORT",
         "colorHex": "#028A89"
       },
       {
+        "categ_id": "s8236safv",
         "name": "INSURANCE & INVESTMENT",
         "colorHex": "#C657A7"
       },
       {
+        "categ_id": "s8avdjvv",
         "name": "LIFE & EVENTS",
         "colorHex": "#66AC4D"
       },
       {
+        "categ_id": "s8av087",
         "name": "SAVING",
         "colorHex": "#7B57C6"
       },
       {
+        "categ_id": "unassigned",
         "name": "UN-ASSIGNED",
         "colorHex": "#344054"
       }
@@ -54,217 +62,217 @@
     "items": [
       {
         "item_id": "Me-gR6EkHd3Ymg2wl3YpU",
-        "category": "DEBT & LOANS",
+        "category_id": "s8av6sv",
         "name": "DBS RENO LOAN",
         "amount": "549.00"
       },
       {
         "item_id": "I_sZPydLU7vfJUx9jem9L",
-        "category": "DEBT & LOANS",
+        "category_id": "s8av6sv",
         "name": "OCBC RENO LOAN",
         "amount": "554.95"
       },
       {
         "item_id": "pr-NfEx7Oec1vHMriwU31",
-        "category": "DEBT & LOANS",
+        "category_id": "s8av6sv",
         "name": "CIMB RENO LOAN",
         "amount": "371.95"
       },
       {
         "item_id": "EZdlx5jKjFMkPs5mEsZjJ",
-        "category": "DEBT & LOANS",
+        "category_id": "s8av6sv",
         "name": "SC PERSONAL LOAN",
         "amount": "93.67"
       },
       {
         "item_id": "OdSqEysdLcSm6A8H05jL9",
-        "category": "DEBT & LOANS",
+        "category_id": "s8av6sv",
         "name": "YALE LOAN",
         "amount": "0.00"
       },
       {
         "item_id": "HKPpqGAeO1k2nPjIiGk_p",
-        "category": "DEBT & LOANS",
+        "category_id": "s8av6sv",
         "name": "WIFEY IPHONE",
         "amount": "86.21"
       },
       {
         "item_id": "V4d-anyzGIrTox4cZQQww",
-        "category": "DEBT & LOANS",
+        "category_id": "s8av6sv",
         "name": "NAPI IPHONE 14",
         "amount": "82.04"
       },
       {
         "item_id": "QUJksXVsZ84_plGK_YYfV",
-        "category": "DEBT & LOANS",
+        "category_id": "s8av6sv",
         "name": "MACBOOK 14 PRO",
         "amount": "178.08"
       },
       {
         "item_id": "dBTcE2ATeUi4QYtLmOKQx",
-        "category": "UN-ASSIGNED",
+        "category_id": "unassigned",
         "name": "MAID YALE LOAN",
         "amount": "650.00"
       },
       {
         "item_id": "Q65wAj4TAK4XxRWNtap6Y",
-        "category": "UN-ASSIGNED",
+        "category_id": "unassigned",
         "name": "MAID LEVY",
         "amount": "60.00"
       },
       {
         "item_id": "gBzUjehzBsT96rchZvQyh",
-        "category": "UN-ASSIGNED",
+        "category_id": "unassigned",
         "name": "MAID OT",
         "amount": "86.20"
       },
       {
         "item_id": "mK4bj6YfWgJ4ynfkqmvUZ",
-        "category": "SUBSCRIPTIONS",
+        "category_id": "s8av6sdva",
         "name": "NETFLIX",
         "amount": "21.98"
       },
       {
         "item_id": "Lh9W8Vp_GPvHM1-cGmYBX",
-        "category": "SUBSCRIPTIONS",
+        "category_id": "s8av6sdva",
         "name": "ADBOE CC PRO PDF",
         "amount": "19.72"
       },
       {
         "item_id": "9rUtjWCPTH8vARaMwquGX",
-        "category": "SUBSCRIPTIONS",
+        "category_id": "s8av6sdva",
         "name": "SPOTIFY",
         "amount": "9.00"
       },
       {
         "item_id": "dtR-RM3Gn1b1TNyKmBSOE",
-        "category": "SUBSCRIPTIONS",
+        "category_id": "s8av6sdva",
         "name": " PHOTOROOM YEARLY SUBS",
         "amount": "0.00"
       },
       {
         "item_id": "9_gOxKjfumNymGrbbiydu",
-        "category": "SUBSCRIPTIONS",
+        "category_id": "s8av6sdva",
         "name": "AMAZON PRIMES VIDEO",
         "amount": "2.99"
       },
       {
         "item_id": "a5s8LOdyK7BgB-RGnxeGw",
-        "category": "SUBSCRIPTIONS",
+        "category_id": "s8av6sdva",
         "name": "YOUTUBE PREMIUM",
         "amount": "17.98"
       },
       {
         "item_id": "TB2vxT8-MH1-H0QJAgwzM",
-        "category": "SUBSCRIPTIONS",
+        "category_id": "s8av6sdva",
         "name": "GOOGLE STORAGE",
         "amount": "2.79"
       },
       {
         "item_id": "bHRa8l-j7V17ZQNTzifV3",
-        "category": "UN-ASSIGNED",
+        "category_id": "unassigned",
         "name": "TAX - INCOME TAX",
         "amount": "80.65"
       },
       {
         "item_id": "NiyW5OrrzVheZUAgTGPwV",
-        "category": "UN-ASSIGNED",
+        "category_id": "unassigned",
         "name": "TAX - PROPERTY TAX",
         "amount": "22.56"
       },
       {
         "item_id": "FbtxBPkYmcWPLlqlqRUrL",
-        "category": "LIABILITIES",
+        "category_id": "s8av6dsv",
         "name": "ME & WIFE PHONE BILLS",
         "amount": "46.00"
       },
       {
         "item_id": "tTnU6b4sVTezMqIG1bD99",
-        "category": "LIABILITIES",
+        "category_id": "s8av6dsv",
         "name": "CONVERVANCY CHARGES",
         "amount": "63.00"
       },
       {
         "item_id": "OK2M0Id9sKN1G6j-rlNVe",
-        "category": "LIABILITIES",
+        "category_id": "s8av6dsv",
         "name": "SP BILL HOUSE",
         "amount": "349.21"
       },
       {
         "item_id": "M2R3j-4Uc_Ila6HnBLI-G",
-        "category": "LIABILITIES",
+        "category_id": "s8av6dsv",
         "name": "GRAB PAY",
         "amount": "155.45"
       },
       {
         "item_id": "Yh7peNsGMUIF6ptebSval",
-        "category": "LIABILITIES",
+        "category_id": "s8av6dsv",
         "name": "SINGTEL WIFI",
         "amount": "55.75"
       },
       {
         "item_id": "o6N-_RQxpM03kE_Zag1zh",
-        "category": "LIABILITIES",
+        "category_id": "s8av6dsv",
         "name": "GROCERIES BUDGET",
         "amount": "500.00"
       },
       {
         "item_id": "AejGFGDb468xquDmc0ux9",
-        "category": "ADVISORY & SUPPORT",
+        "category_id": "s8av6casvv",
         "name": "WIFEY",
         "amount": "300.00"
       },
       {
         "item_id": "kba0o5Fdg5-zyAlr8MmYf",
-        "category": "ADVISORY & SUPPORT",
+        "category_id": "s8av6casvv",
         "name": "MAMA",
         "amount": "300.00"
       },
       {
         "item_id": "DnpYLmfz-QXq_dWg335m7",
-        "category": "ADVISORY & SUPPORT",
+        "category_id": "s8av6casvv",
         "name": "CHILDRENS SUPPORT",
         "amount": "0.00"
       },
       {
         "item_id": "SFSnYYK1LaCkFQo_kE2Mt",
-        "category": "LIABILITIES",
+        "category_id": "s8av6dsv",
         "name": "ARRISA SCHOOL FEE",
         "amount": "0.00"
       },
       {
         "item_id": "RwgWLPJGF4LqdiB3e3fGl",
-        "category": "LIABILITIES",
+        "category_id": "s8av6dsv",
         "name": "AWISH SCHOOL FEE",
         "amount": "0.00"
       },
       {
         "item_id": "t6e6X2aUGHrNVK-6fmqr2",
-        "category": "INSURANCE & INVESTMENT",
+        "category_id": "s8236safv",
         "name": "PRU - PERSONAL INCIDENT",
         "amount": "14.88"
       },
       {
         "item_id": "t0HjApUgvaT5T6UO8Rljh",
-        "category": "INSURANCE & INVESTMENT",
+        "category_id": "s8236safv",
         "name": "PRU - ENDOWNMENT",
         "amount": "110.00"
       },
       {
         "item_id": "R6czgzT6CokQmslsZaTJb",
-        "category": "INSURANCE & INVESTMENT",
+        "category_id": "s8236safv",
         "name": "PRU - ARISSA MEDICAL INSURANCE",
         "amount": "14.96"
       },
       {
         "item_id": "bObDmjuK7l8mb40XP1ZPK",
-        "category": "INSURANCE & INVESTMENT",
+        "category_id": "s8236safv",
         "name": "PRU - AWISH MEDICAL INSURANCE",
         "amount": "14.96"
       },
       {
         "item_id": "XquidfqkdfQGLQbFe3Zub",
-        "category": "INSURANCE & INVESTMENT",
+        "category_id": "s8236safv",
         "name": "PRU - WIFEY MEDICAL INSURANCE",
         "amount": "15.30"
       }
