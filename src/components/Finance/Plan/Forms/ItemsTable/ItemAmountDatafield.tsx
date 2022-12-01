@@ -46,9 +46,11 @@ const MemoizedItemAmountDatafield = ({
     <FormControl>
       <Form.CurrencyField
         bg="card"
+        size="sm"
         placeholder="Name"
         defaultValue={value}
         onInputChange={onInputChange}
+        rounded="md"
       />
     </FormControl>
   );

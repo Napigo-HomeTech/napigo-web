@@ -61,10 +61,12 @@ const MemoizedItemNameDatafield = ({
     <FormControl>
       <Form.TextField
         bg="card"
+        size="sm"
         placeholder="Name"
         defaultValue={value}
         onKeyDown={onKeyPress}
         onBlur={onBlur}
+        rounded="md"
       />
     </FormControl>
   );

@@ -34,6 +34,7 @@ export const CurrencyField: React.FC<CurrencyFieldProps> = (props) => {
     containerWidth = "full",
     onInputChange,
     defaultValue,
+    size,
     ...rest
   } = props;
 
@@ -82,15 +83,16 @@ export const CurrencyField: React.FC<CurrencyFieldProps> = (props) => {
       width={containerWidth == "full" ? "100%" : "auto"}
     >
       {!isEmpty(label) && <FormLabel>{label}</FormLabel>}
-      <InputGroup>
+      <InputGroup size={size}>
         <InputLeftElement
           pointerEvents="none"
           color="gray.300"
-          fontSize="1.2em"
+          fontSize={"sm"}
           children="$"
         />
         <Input
           onKeyDown={onKeyDown}
+          size={size}
           pointerEvents={readOnly ? "none" : undefined}
           cursor={readOnly ? "default" : "text"}
           pl={inputLeftElement ? "2.4rem" : undefined}

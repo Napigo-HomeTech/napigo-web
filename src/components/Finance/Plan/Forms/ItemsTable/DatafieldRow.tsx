@@ -1,5 +1,5 @@
 import React from "react";
-import { Tr, Td } from "@chakra-ui/react";
+import { Tr, Td, Checkbox } from "@chakra-ui/react";
 
 import { ItemNameDatafield } from "./ItemNameDatafield";
 import { ItemAmountDatafield } from "./ItemAmountDatafield";
@@ -18,8 +18,16 @@ export const DatafieldRow: React.FC<DatafieldRowProps> = ({ itemId }) => {
       <Td>
         <ItemAmountDatafield itemId={itemId} />
       </Td>
-      <Td paddingRight={1} isNumeric>
+      <Td
+        paddingRight={0}
+        isNumeric
+        display={"flex"}
+        flexDirection="row"
+        justifyContent={"flex-end"}
+        gap="20px"
+      >
         <ItemRemove itemId={itemId} />
+        <Checkbox colorScheme={"brand"} />
       </Td>
     </Tr>
   );

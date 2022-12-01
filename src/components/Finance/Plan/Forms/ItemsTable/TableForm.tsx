@@ -4,6 +4,7 @@ import { RootState } from "@/lib/Redux/store";
 import { Category, PlanItem } from "@/types/finance.type";
 import {
   Button,
+  Checkbox,
   Table,
   TableContainer,
   Tbody,
@@ -70,18 +71,19 @@ const MemoTableFormV2: React.FC<TableFormProps> = ({ itemIds, onAddItem }) => {
 
   return (
     <TableContainer>
-      <Table variant={"simple"}>
+      <Table variant="simple" size="sm">
         {ShouldRenderTable && (
           <>
             <Thead>
               <Tr>
-                <Th paddingLeft={0}>
+                <Th paddingLeft={1}>
                   {
                     fixtures.financeStrings[
                       "finance.planform.tableform.tablehead.itemname.text"
                     ]
                   }
                 </Th>
+
                 <Th>
                   {
                     fixtures.financeStrings[
@@ -89,12 +91,21 @@ const MemoTableFormV2: React.FC<TableFormProps> = ({ itemIds, onAddItem }) => {
                     ]
                   }
                 </Th>
-                <Th paddingRight={0} align="right" isNumeric>
+
+                <Th
+                  paddingRight={0}
+                  isNumeric
+                  display={"flex"}
+                  flexDirection="row"
+                  justifyContent={"flex-end"}
+                  gap="20px"
+                >
                   {
                     fixtures.financeStrings[
                       "finance.planform.tableform.tablehead.action.text"
                     ]
                   }
+                  <Checkbox colorScheme={"brand"} />
                 </Th>
               </Tr>
             </Thead>
@@ -107,8 +118,8 @@ const MemoTableFormV2: React.FC<TableFormProps> = ({ itemIds, onAddItem }) => {
         )}
         <Tfoot>
           <Tr>
-            <Th paddingLeft={0}>
-              <Button onClick={onAddItem}>
+            <Th paddingLeft={0} paddingTop={2}>
+              <Button onClick={onAddItem} size="sm">
                 {
                   fixtures.financeStrings[
                     "finance.planform.tableform.additem.buttontext"

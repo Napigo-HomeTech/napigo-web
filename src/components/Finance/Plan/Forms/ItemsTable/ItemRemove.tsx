@@ -57,6 +57,7 @@ const MemoItemRemove = ({ itemName, onConfirmDelete }: MemoItemRemoveProps) => {
         aria-label="Remove item"
         onClick={() => onOpen()}
         color="red.500"
+        size="sm"
         icon={<RemoveItemIcon />}
       />
       <AlertDialog
