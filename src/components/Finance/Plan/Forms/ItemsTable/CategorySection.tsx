@@ -55,7 +55,7 @@ export const CategorySection: React.FC<Category> = ({
               <AccordionIcon />
             </Box>
           </AccordionButton>
-          <CategoryControls />
+          <CategoryControls categId={categ_id} />
           {name !== "UN-ASSIGNED" && (
             <CategoryMenu category={{ categ_id, name, colorHex }} />
           )}

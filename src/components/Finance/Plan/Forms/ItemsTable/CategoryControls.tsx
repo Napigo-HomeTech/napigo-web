@@ -1,8 +1,14 @@
 import { Button, Checkbox, HStack } from "@chakra-ui/react";
 import React, { ChangeEvent, useCallback } from "react";
 import { useCategoryTable } from "./CategoryTableContext";
+import { MoveToCategorySelect } from "./MoveToCategorySelect";
 
-export const CategoryControls: React.FC = () => {
+type CategoryControlsProps = {
+  categId: string;
+};
+export const CategoryControls: React.FC<CategoryControlsProps> = ({
+  categId,
+}) => {
   const { selectedItems, checkedAllItems, unCheckedAllItems, checkedAll } =
     useCategoryTable();
 
@@ -22,11 +28,7 @@ export const CategoryControls: React.FC = () => {
   );
   return (
     <HStack marginRight="20px">
-      {selectedItems.length > 0 && (
-        <Button size="sm" colorScheme={"base"}>
-          Move to{" "}
-        </Button>
-      )}
+      {selectedItems.length > 0 && <MoveToCategorySelect categId={categId} />}
       <Checkbox
         colorScheme="brand"
         borderColor={"text-soft"}
