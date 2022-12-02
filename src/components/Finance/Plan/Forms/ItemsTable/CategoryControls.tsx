@@ -1,4 +1,4 @@
-import { Button, Checkbox, HStack } from "@chakra-ui/react";
+import { Checkbox, HStack } from "@chakra-ui/react";
 import React, { ChangeEvent, useCallback } from "react";
 import { useCategoryTable } from "./CategoryTableContext";
 import { MoveToCategorySelect } from "./MoveToCategorySelect";
