@@ -1,11 +1,6 @@
 import { RootState } from "@/lib/Redux/store";
 import { Category, PlanItem } from "@/types/finance.type";
-import React, {
-  PropsWithChildren,
-  useContext,
-  useEffect,
-  useState,
-} from "react";
+import React, { PropsWithChildren, useContext, useState } from "react";
 import { useSelector } from "react-redux";
 
 type CategoryTableContextProps = {
@@ -94,17 +89,15 @@ export const CategoryTableContextProvider = (
   const checkedItem = (itemId: string) => {
     selectedItems.push(itemId);
     setSelectItems([...selectedItems]);
+    setCheckedAll(listing?.length === [...selectedItems].length);
   };
 
   const uncheckedItem = (itemId: string) => {
     const idx = selectedItems.indexOf(itemId);
     selectedItems.splice(idx, 1);
     setSelectItems([...selectedItems]);
+    setCheckedAll(listing?.length === [...selectedItems].length);
   };
-
-  useEffect(() => {
-    setCheckedAll(listing?.length === selectedItems.length);
-  }, [listing, selectedItems]);
 
   return (
     <CategoryTableContext.Provider
