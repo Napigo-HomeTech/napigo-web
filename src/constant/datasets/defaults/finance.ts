@@ -58,8 +58,8 @@ const data = {
   "finance.planform.category.menu.delete.text": "Delete",
   "finance.planform.category.menu.delete.dialog.header":
     "Deleting this category?",
-  "finance.planform.category.menu.delete.dialog.message":
-    "Are you sure you want to delete this category? All your items will be transfered to Unassigned category",
+  "finance.planform.category.menu.delete.dialog.transfer-item.message":
+    "Do you want to transfer all item into unassigned category ? If no, all your items will be deleted too",
   "finance.planform.category.menu.delete.dialog.button.delete": "Delete",
   "finance.planform.category.menu.delete.dialog.button.cancel": "Cancel",
   "finance.planform.category.menu.edit.dialog.header-text":
