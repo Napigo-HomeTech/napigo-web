@@ -10,6 +10,7 @@ import React, { Fragment } from "react";
 import { TableForm } from "./TableForm";
 import { Category } from "@/types/finance.type";
 import { CategoryMenu } from "./CategoryMenu";
+import { CategoryControls } from "./CategoryControls";
 
 export const CategorySection: React.FC<Category> = ({
   categ_id,
@@ -54,6 +55,7 @@ export const CategorySection: React.FC<Category> = ({
               <AccordionIcon />
             </Box>
           </AccordionButton>
+          <CategoryControls />
           {name !== "UN-ASSIGNED" && (
             <CategoryMenu category={{ categ_id, name, colorHex }} />
           )}

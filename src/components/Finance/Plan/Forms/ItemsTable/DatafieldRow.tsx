@@ -1,10 +1,11 @@
 import React from "react";
-import { Tr, Td, Checkbox } from "@chakra-ui/react";
+import { Tr, Td } from "@chakra-ui/react";
 
 import { ItemNameDatafield } from "./ItemNameDatafield";
 import { ItemAmountDatafield } from "./ItemAmountDatafield";
 
 import { ItemRemove } from "./ItemRemove";
+import { DatafieldItemCheckbox } from "./DatafieldItemCheckbox";
 
 type DatafieldRowProps = {
   itemId: string;
@@ -27,7 +28,7 @@ export const DatafieldRow: React.FC<DatafieldRowProps> = ({ itemId }) => {
         gap="20px"
       >
         <ItemRemove itemId={itemId} />
-        <Checkbox colorScheme={"brand"} />
+        <DatafieldItemCheckbox itemId={itemId} />
       </Td>
     </Tr>
   );

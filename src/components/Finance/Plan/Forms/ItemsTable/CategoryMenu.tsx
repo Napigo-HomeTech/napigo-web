@@ -88,6 +88,7 @@ export const CategoryMenu: React.FC<CategoryMenuProps> = ({ category }) => {
         <MenuButton
           as={IconButton}
           colorScheme={"base"}
+          size="sm"
           icon={<MenuIcon />}
           onClick={(ev: React.MouseEvent) => ev.stopPropagation()}
         />

@@ -4,7 +4,6 @@ import { RootState } from "@/lib/Redux/store";
 import { Category, PlanItem } from "@/types/finance.type";
 import {
   Button,
-  Checkbox,
   Table,
   TableContainer,
   Tbody,
@@ -105,7 +104,6 @@ const MemoTableFormV2: React.FC<TableFormProps> = ({ itemIds, onAddItem }) => {
                       "finance.planform.tableform.tablehead.action.text"
                     ]
                   }
-                  <Checkbox colorScheme={"brand"} />
                 </Th>
               </Tr>
             </Thead>
