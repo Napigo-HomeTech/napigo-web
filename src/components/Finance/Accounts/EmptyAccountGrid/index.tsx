@@ -21,4 +21,3 @@ export const EmptyAccountGrid: React.FC = () => {
     </Box>
   );
 };
-0;
